@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-28T03:33:10.000Z">
+<meta property="og:updated_time" content="2019-05-29T05:21:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「西瓜书学习」Ch02.模型评估与选择">
 <meta name="twitter:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
@@ -363,6 +363,21 @@ TN（真反例）
 <p>查准率P与查全率R分别定义为</p>
 <p><span class="math display">\[P = \frac{TP}{TP + FP} \tag{2.8}\]</span></p>
 <p><span class="math display">\[R = \frac{TP}{TP + FN} \tag{2.9}\]</span></p>
+<p>查准率和查全率是一对矛盾的度量。一般来说，查准率高时，查全率往往偏低，而查全率高时，查准率往往偏低。</p>
+<p>以查准率为纵轴，查全率为横轴作图，就得到查准率-查全率曲线，简称"P-R曲线"，显示该曲线的图称为"P-R图"。在进行比较时，若一个学习器的P-R曲线被另一个学习器的曲线完全"包住"，则可以断言后者的性能优于前者。</p>
+<p>"平衡点"(Break-Event Point，简称BEP)就是这样一个度量，它是"查准率=查全率"时的取值，但还是太简化了些，更常用的是F1度量，F1是基于查准率和查全率的调和平均（harmonic mean）定义的</p>
+<p><span class="math display">\[F1 = \frac{1}{\frac{1}{2}(\frac{1}{P}+\frac{1}{R})} = \frac{2 \times P \times R } {P + R} = \frac{2 \times TP}{样例总数 + TP - TN} \tag{2.10}\]</span></p>
+<p>F1度量的一般形式-<span class="math inline">\(F_\beta\)</span>能让我们表达出对查准率/查全率的不同偏好，是加权调和平均</p>
+<p><span class="math display">\[F_\beta = \frac{1}{\frac{1}{1+\beta^2}(\frac{1}{P} + \frac{\beta^2}{R})} = \frac{(1 + \beta^2)\times P\times R}{(\beta^2\times{P})+R} \tag{2.11}\]</span></p>
+<p>其中<span class="math inline">\(\beta&gt;0\)</span>度量了查全率对查准率的相对重要性，<span class="math inline">\(\beta=1\)</span>时退化为标准的F1，<span class="math inline">\(\beta &gt;1\)</span>时查全率有更大影响，<span class="math inline">\(\beta&lt;1\)</span>时查准率有更大影响</p>
+<p>有时我们希望在n个二分类混淆矩阵上综合考虑查准率和查全率，一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率，记为<span class="math inline">\((P_1, R_1),(P_2, R_2),…,(P_n, R_n)\)</span>，再计算平均值，这样就得到"宏查准率"(macro-P)，"宏查全率"(macro-R)，以及对应的"宏F1"(macro-F1)：</p>
+<p><span class="math display">\[macro-P = \frac{1}{n}\sum\limits_{i=1}^nP_i \tag{2.12}\]</span></p>
+<p><span class="math display">\[macro-R = \frac{1}{n}\sum\limits_{i=1}^nR_i \tag{2.13}\]</span></p>
+<p><span class="math display">\[macro-F1 = \frac{2\times{macro-P}\times{macro-R}}{macro-P+macro-R} \tag{2.14}\]</span></p>
+<p>还可以将各混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为<span class="math inline">\(\bar{TP}、\bar{FP}、\bar{TN}、\bar{FN}\)</span>，再基于这些平均值计算出"微查准率"(micro-P)、"微查全率"(micro-R)和"微F1"(micro-F1)：</p>
+<p><span class="math display">\[micro-P = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.15}\]</span></p>
+<p><span class="math display">\[micro-R = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.16}\]</span></p>
+<p><span class="math display">\[micro-F1 = \frac{2\times{micro-P}\times{micro-R}}{micro-P+micro-R} \tag{2.17}\]</span></p>
 
       
 
@@ -686,6 +701,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -694,23 +713,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Datawhale</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,6 +734,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,6 +782,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
