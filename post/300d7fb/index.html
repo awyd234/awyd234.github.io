@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-29T11:24:27.000Z">
+<meta property="og:updated_time" content="2019-05-29T12:03:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「西瓜书学习」Ch02.模型评估与选择">
 <meta name="twitter:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
@@ -371,13 +371,13 @@ TN（真反例）
 <p><span class="math display">\[F_\beta = \frac{1}{\frac{1}{1+\beta^2}(\frac{1}{P} + \frac{\beta^2}{R})} = \frac{(1 + \beta^2)\times P\times R}{(\beta^2\times{P})+R} \tag{2.11}\]</span></p>
 <p>其中<span class="math inline">\(\beta&gt;0\)</span>度量了查全率对查准率的相对重要性，<span class="math inline">\(\beta=1\)</span>时退化为标准的F1，<span class="math inline">\(\beta &gt;1\)</span>时查全率有更大影响，<span class="math inline">\(\beta&lt;1\)</span>时查准率有更大影响</p>
 <p>有时我们希望在n个二分类混淆矩阵上综合考虑查准率和查全率，一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率，记为<span class="math inline">\((P_1, R_1),(P_2, R_2),…,(P_n, R_n)\)</span>，再计算平均值，这样就得到"宏查准率"(macro-P)，"宏查全率"(macro-R)，以及对应的"宏F1"(macro-F1)：</p>
-<p><span class="math display">\[macro-P = \frac{1}{n}\sum\limits_{i=1}^nP_i \tag{2.12}\]</span></p>
-<p><span class="math display">\[macro-R = \frac{1}{n}\sum\limits_{i=1}^nR_i \tag{2.13}\]</span></p>
-<p><span class="math display">\[macro-F1 = \frac{2\times{macro-P}\times{macro-R}}{macro-P+macro-R} \tag{2.14}\]</span></p>
+<p><span class="math display">\[macro\text{-}P = \frac{1}{n}\sum\limits_{i=1}^nP_i \tag{2.12}\]</span></p>
+<p><span class="math display">\[macro\text{-}R = \frac{1}{n}\sum\limits_{i=1}^nR_i \tag{2.13}\]</span></p>
+<p><span class="math display">\[macro\text{-}F1 = \frac{2\times{macro\text{-}P}\times{macro\text{-}R}}{macro\text{-}P+macro\text{-}R} \tag{2.14}\]</span></p>
 <p>还可以将各混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为<span class="math inline">\(\bar{TP}、\bar{FP}、\bar{TN}、\bar{FN}\)</span>，再基于这些平均值计算出"微查准率"(micro-P)、"微查全率"(micro-R)和"微F1"(micro-F1)：</p>
-<p><span class="math display">\[micro-P = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.15}\]</span></p>
-<p><span class="math display">\[micro-R = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.16}\]</span></p>
-<p><span class="math display">\[micro-F1 = \frac{2\times{micro-P}\times{micro-R}}{micro-P+micro-R} \tag{2.17}\]</span></p>
+<p><span class="math display">\[micro\text{-}P = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.15}\]</span></p>
+<p><span class="math display">\[micro\text{-}R = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.16}\]</span></p>
+<p><span class="math display">\[micro\text{-}F1 = \frac{2\times{micro\text{-}P}\times{micro\text{-}R}}{micro\text{-}P+micro\text{-}R} \tag{2.17}\]</span></p>
 <h3 id="roc与auc">3.3 ROC与AUC</h3>
 <p>ROC全称是"受试者工作特征"(Receiver Operating Characteristic)曲线，与P-R曲线相似，我们根据学习器的预测结果对样例进行排序，按此顺序逐个把样本作为正例进行预测，每次计算出两个重要量的值，分别以它们为横、纵坐标作图，就得到了"ROC"曲线，ROC曲线的纵轴是"真正例率"(True Positive Rate，简称TPR)，横轴是"假正例率"(False Positive Rate，简称FPR)，两者可以分别定义为</p>
 <p><span class="math display">\[TPR = \frac{TP}{TP + FN} \tag{2.18}\]</span></p>
@@ -390,6 +390,79 @@ TN（真反例）
 <p><span class="math display">\[\ell_{rank} = \frac{1}{m^+m^-}\sum\limits_{x^+\sim\mathcal{D^+}}\sum\limits_{x^-\sim\mathcal{D^-}}\Bigg (II(f(x^+)&lt;f(x^-))+\frac{1}{2}II(f(x^+)=f(x^-))\Bigg ) \tag{2.21}\]</span></p>
 <p>即考虑每一对正、反例，若正例的预测值小于反例，则记一个"罚分"，若相等，则记0.5个"罚分"，容易看出，<span class="math inline">\(\ell_{rank}\)</span>对应的是ROC曲线之上的面积，若一个正例在ROC曲线上对应标记点的坐标为<span class="math inline">\((x,y)\)</span>，则<span class="math inline">\(x\)</span>恰是排序在其之前的反例所占的比例，即假正例率，因此有</p>
 <p><span class="math display">\[AUC = 1 - \ell_{rank} \tag{2.22}\]</span></p>
+<h3 id="代价敏感错误率与代价曲线">3.4 代价敏感错误率与代价曲线</h3>
+<p>为权衡不同类型错误所造成的不同损失，可为错误赋予"非均等代价"(unequal cost)</p>
+<p>以二分类任务为例，我们可以根据任务的领域知识设定一个"代价矩阵"(cost matrix)，其中<span class="math inline">\(cost_{ij}\)</span>表示将第<span class="math inline">\(i\)</span>类样本预测为第<span class="math inline">\(j\)</span>类样本的代价，一般来说，<span class="math inline">\(cost_{ii}=0\)</span>；若将第0类判别为第1类所造成的损失更大，则<span class="math inline">\(cost_{01}&gt;cost_{10}\)</span>；损失程度相差越大，<span class="math inline">\(cost_{01}\)</span>与<span class="math inline">\(cost_{10}\)</span>值的差别越大。</p>
+<center>
+<strong>表2.2 </strong>二分类代价矩阵
+</center>
+<table style="text-align:center; board: 1px solid;">
+​
+<tr>
+​
+<td rowspan="2">
+真实类别
+</td>
+​
+<td colspan="2">
+预测类别
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+第0类
+</td>
+​
+<td>
+第1类
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+第0类
+</td>
+​
+<td>
+0
+</td>
+​
+<td>
+<span class="math inline">\(cost_{01}\)</span>
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+第1类
+</td>
+​
+<td>
+<span class="math inline">\(cost_{10}\)</span>
+</td>
+​
+<td>
+0
+</td>
+​
+</tr>
+</table>
+<p>在非均等代价下，我们所希望的不再是简单地最小化错误次数，而是希望最小化"总体代价"(total cost)，若将表2.2中的第0类作为正类，第1类作为反类，令<span class="math inline">\(D^+\)</span>和<span class="math inline">\(D^-\)</span>分别表示样例集<span class="math inline">\(D\)</span>的正例子集和反例子集，则"代价敏感"(cost-sensitive)错误率为</p>
+<p><span class="math display">\[E(f;D;cost)=\frac{1}{m}\Bigg(\sum\limits_{x_i\sim\mathcal{D^+}}II(f(x_i)\ne y_i)\times cost_{01}+\sum\limits_{x_i\sim\mathcal{D^-}}II(f(x_i)\ne y_i)\times cost_{10}\Bigg) \tag{2.23}\]</span></p>
+<p>类似地，可给出基于分布定义的代价敏感错误率，以及其他一些性能度量如精度的代价敏感版本，令<span class="math inline">\(cost_{ij}\)</span>中的<span class="math inline">\(i、j\)</span>取值不限于0、1，则可定义出多任务分类的代价敏感性能度量。</p>
+<p>在非均等代价下，ROC曲线不能直接反映出学习器的期望总体代价，而"代价曲线"(cost curve则可达到该目的，代价曲线图的横轴是取值为[0,1]的正例概率代价</p>
+<p><span class="math display">\[P(+)cost=\frac{p\times cost_{01}}{p\times cost_{01} + (1-p)\times cost_{10}} \tag{2.24}\]</span></p>
+<p>其中<span class="math inline">\(p\)</span>是样例为正例的概率；纵轴是取值为[0,1]的归一化代价</p>
+<p><span class="math display">\[cost_{norm}=\frac{FNR\times{p}\times{cost_{01}}+FPR\times{(1-p)}\times{cost_{10}}}{p\times{cost_{01}}+(1-p)\times{cost_{10}}} \tag{2.25}\]</span></p>
+<p>其中<span class="math inline">\(FPR\)</span>是式<span class="math inline">\((2.19)\)</span>定义的假正例率，<span class="math inline">\(FNR=1-TPR\)</span>是假反例率，代价曲线绘制很简单：ROC曲线上每一点对应了代价平面上的一条线段，设ROC曲线上的点的坐标为<span class="math inline">\((FPR, TPR)\)</span>，则可相应计算出<span class="math inline">\(FNR\)</span>，然后在代价平面上绘制一条从<span class="math inline">\((0,FPR)\)</span>到<span class="math inline">\((TPR,0)\)</span>的线段，线段下的面积即表示了该条件下的期望总体代价；如此将ROC曲线上的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价</p>
+<h2 id="比较检验">4. 比较检验</h2>
 
       
 
@@ -540,7 +613,7 @@ TN（真反例）
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经验误差与过拟合"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#误差error"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过拟合overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欠拟合underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估方法"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#留出法hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证法cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自助法bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调参parameter-tuning与最终模型"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能度量performance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误率与精度"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查准率查全率与f1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc与auc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经验误差与过拟合"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#误差error"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过拟合overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欠拟合underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估方法"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#留出法hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证法cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自助法bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调参parameter-tuning与最终模型"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能度量performance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误率与精度"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查准率查全率与f1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc与auc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代价敏感错误率与代价曲线"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较检验"><span class="toc-number">4.</span> <span class="toc-text">4. 比较检验</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -773,10 +846,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -793,15 +862,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,6 +875,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
             
             <div class="clearfix"></div>
