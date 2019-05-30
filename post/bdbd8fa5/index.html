@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Tag: Hexo | Wind Track</title>
+  <title>「西瓜书学习」Ch03.线性模型 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/tags/Hexo/index.html">
+  <meta name="description" content="1. 基本形式 给定由\(d\)个属性描述的示例\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)，其中\(x_i\)是\(\boldsymbol{x}\)在第\(i\)个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即 \[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b \tag{3.1}\] 一般用向量形式写成 \">
+<meta name="keywords" content="AI,Machine Learning,Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「西瓜书学习」Ch03.线性模型">
+<meta property="og:url" content="http://windtrack.xyz/post/bdbd8fa5/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="1. 基本形式 给定由\(d\)个属性描述的示例\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)，其中\(x_i\)是\(\boldsymbol{x}\)在第\(i\)个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即 \[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b \tag{3.1}\] 一般用向量形式写成 \">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-30T05:32:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wind Track">
-<meta name="twitter:description" content="Keep curious to the world, and do cool things that matter.">
+<meta name="twitter:title" content="「西瓜书学习」Ch03.线性模型">
+<meta name="twitter:description" content="1. 基本形式 给定由\(d\)个属性描述的示例\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)，其中\(x_i\)是\(\boldsymbol{x}\)在第\(i\)个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即 \[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b \tag{3.1}\] 一般用向量形式写成 \">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -208,64 +210,236 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-「西瓜书学习」Ch03-线性模型" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/47b88860/" class="archive-article-date">
-  	<time datetime="2018-12-23T18:01:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/47b88860/">Hexo渲染LaTex数学公式的方法</a>
+    <h1 class="article-title" itemprop="name">
+      「西瓜书学习」Ch03.线性模型
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/post/bdbd8fa5/" class="archive-article-date">
+  	<time datetime="2019-05-30T04:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本形式">1. 基本形式</h2>
+<p>给定由<span class="math inline">\(d\)</span>个属性描述的示例<span class="math inline">\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)</span>，其中<span class="math inline">\(x_i\)</span>是<span class="math inline">\(\boldsymbol{x}\)</span>在第<span class="math inline">\(i\)</span>个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即</p>
+<p><span class="math display">\[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b \tag{3.1}\]</span></p>
+<p>一般用向量形式写成</p>
+<p><span class="math display">\[f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b \tag{3.2}\]</span></p>
+<p>其中<span class="math inline">\(\boldsymbol{w}=(w_1;w_2;…;w_d)\)</span>。<span class="math inline">\(\boldsymbol{w}\)</span>和<span class="math inline">\(b\)</span>学得之后，模型就得以确定</p>
+<h2 id="线性回归">2. 线性回归</h2>
+<p>给定数据集<span class="math inline">\(D={(\boldsymbol{x}_1,y_1), (\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}\)</span>，其中<span class="math inline">\(\boldsymbol{x}_i=(x_{i1}, x_{i2},…,x_{id}), y_i\in\mathbb{R}\)</span>，"线性回归"(linear regression)试图学得一个线性模型以尽可能准确地预测实值输出标记。</p>
+<p>我们先考虑一种最简单的情形：输入属性的数目只有一个。为便于讨论，此时我们忽略关于属性的下标，即<span class="math inline">\(D=\{(x_i,y_i)\}_{i=1}^m\)</span>，其中<span class="math inline">\(x_i\in\mathbb{R}\)</span>，对于离散属性，若属性值之间存在"序"(order)的关系，可通过连续化将其转化为连续值；若属性值间不存在序关系，假定有<span class="math inline">\(k\)</span>个属性值，则通常转化为<span class="math inline">\(k\)</span>维向量。</p>
+<p>线性回归试图学得</p>
+<p><span class="math display">\[f(x_i)=wx_i+b，使得f(x_i)\simeq{y_i} \tag{3.3}\]</span></p>
+<p>均方误差是回归任务中最常用的性能度量，因此我们可以试图让均方误差最小化，即</p>
+<p><span class="math display">\[\begin{align}
+
+(w^*,b^*) &amp;= \mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(f(x_i)-y_i)^2\\ &amp;= \mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(y_i-wx_i-b)^2 \tag{3.4}
+
+\end{align}\]</span></p>
+<p>均方误差有非常好的几何意义，它对应了常用的欧几里得距离或简称"欧氏距离"(Euclidean distance)，基于均方误差最小化来进行模型求解的方法称为"最小二乘法"(least square method)。在线性回归中，最小二乘法就是试图找到一条直线，使所有样本到直线的欧氏距离之和最小。</p>
+<p>求解<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>使<span class="math inline">\(E_{(w,b)}=\sum_{i=1}^m(y_i-wx_i-b)^2\)</span>最小化的过程，称为线性回归模型的最小二乘"参数估计"(parameter estimation)。我们可将<span class="math inline">\(E_{(w,b)}\)</span>分别对<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>求导，得到</p>
+<p><span class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{w}}=2\Bigg(w\sum\limits_{i=1}^nx_i^2-\sum\limits_{i=1}^m(y_i-b)x_i\Bigg) \tag{3.5}\]</span></p>
+<p><span class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{b}}=2\Bigg(mb-\sum\limits_{i=1}^m(y_i-wx_i)\Bigg) \tag{3.6}\]</span></p>
+<p>然后令式<span class="math inline">\((3.5)\)</span>和<span class="math inline">\((3.6)\)</span>为0，得到<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>的最优解的闭式(closed-form)解</p>
+<p><span class="math display">\[w=\frac{\sum\limits_{i=1}^my_i(x_i-\bar{x})}{\sum\limits_{i=1}^mx_i^2-\frac{1}{m}(\sum\limits_{i=1}^mx_i)^2} \tag{3.7}\]</span></p>
+<p><span class="math display">\[b=\frac{1}{m}\sum\limits_{i=1}^m(y_i-wx_i) \tag{3.8}\]</span></p>
+<p>其中<span class="math inline">\(\bar{x}=\frac{1}{m}\sum\limits_{i=1}^mx_i\)</span>为<span class="math inline">\(x\)</span>的均值。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LaTex</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/bdbd8fa5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/post/e19625d/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">「MySQL基础」Day6 复杂项目</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本形式"><span class="toc-number">1.</span> <span class="toc-text">1. 基本形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性回归"><span class="toc-number">2.</span> <span class="toc-text">2. 线性回归</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px 30px auto 30px;background:white;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "imK0RcP7ddqUYlG7rwQ0oA1q-gzGzoHsz",
+            app_key: "bBmMsz6VMYBUvyKIwRaqjOfl",
+            placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+            avatar:"undefined"
+        });
+    }
+</script>
+
+    </section>
+  
 
 
           </div>
@@ -288,9 +462,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

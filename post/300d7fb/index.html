@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-29T13:27:32.000Z">
+<meta property="og:updated_time" content="2019-05-30T03:30:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「西瓜书学习」Ch02.模型评估与选择">
 <meta name="twitter:description" content="1. 经验误差与过拟合 1.1 误差(Error) 学习器的实际预测输出与样本的真实输出之间的差异  训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差 泛化误差(Generalization Error)：在新样本上的误差  1.2 过拟合(Overfitting) 可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导">
@@ -487,6 +487,124 @@ TN（真反例）
 <p>对假设"<span class="math inline">\(\mu=\epsilon_0\)</span>"和显著度<span class="math inline">\(\alpha\)</span>，我们可计算出当测试错误率均值为<span class="math inline">\(\epsilon_0\)</span>时，在<span class="math inline">\(1-\alpha\)</span>概率内能观测的最大错误率，即临界值。这里考虑双边(two-tailed)假设，两边阴影面积各有<span class="math inline">\(\frac{\alpha}{2}\)</span>的面积，假定阴影部分范围分别为<span class="math inline">\((-\infty, t_{-\frac{\alpha}{2}}]\)</span>和<span class="math inline">\([t_{\frac{\alpha}{2}},\infty)\)</span>，若平均错误率<span class="math inline">\(\mu\)</span>与<span class="math inline">\(\epsilon_0\)</span>之差<span class="math inline">\(|\mu-\epsilon_0|\)</span>位于临界值范围<span class="math inline">\([t_{-\frac{\alpha}{2}}, t_{\frac{\alpha}{2}}]\)</span>内，则不能拒绝假设"<span class="math inline">\(\mu=\epsilon_0\)</span>"，即可认为泛化错误率为<span class="math inline">\(\epsilon_0\)</span>，置信度为<span class="math inline">\(1-\alpha\)</span>；否则可拒绝该假设，即在该显著度下可认为泛化错误率与<span class="math inline">\(\epsilon_0\)</span>有显著不同，<span class="math inline">\(\alpha\)</span>的常用取值有0.05和0.1</p>
 <p>以上介绍的两种方法都是对单个学习器泛化性能的假设进行检验</p>
 <h3 id="交叉验证t检验">4.2 交叉验证<span class="math inline">\(t\)</span>检验</h3>
+<p>对两个学习器A和B，若我们使用<span class="math inline">\(k\)</span>折交叉验证法得到的测试错误率分别为<span class="math inline">\(\epsilon_1^A,\epsilon_2^A,…\epsilon_k^A\)</span>和<span class="math inline">\(\epsilon_1^B,\epsilon_2^B,…\epsilon_k^B\)</span>，其中<span class="math inline">\(\epsilon_i^A\)</span>和<span class="math inline">\(\epsilon_i^B\)</span>是在相同的第<span class="math inline">\(i\)</span>折训练/测试集上得到的结果，则可用<span class="math inline">\(k\)</span>折交叉验证"成对t检验"(paired t-tests)来进行比较检验。这里的基本思想是若两个学习器的性能相同，则它们使用相同的训练/测试集得到的测试错误率应相同，即<span class="math inline">\(\epsilon_i^A=\epsilon_i^B\)</span></p>
+<p>具体来说，对<span class="math inline">\(k\)</span>折交叉验证产生的<span class="math inline">\(k\)</span>对测试错误率：先对每对结果求差，<span class="math inline">\(\Delta_i=\epsilon_i^A-\epsilon_i^B\)</span>；若两个学习器性能相同，这差值均值应为0，因此，可以根据差值<span class="math inline">\(\Delta_1,\Delta_2,…,\Delta_k\)</span>来对"学习器A与B性能相同"这个假设做<span class="math inline">\(t\)</span>检验，计算出差值的均值<span class="math inline">\(\mu\)</span>和方差<span class="math inline">\(\sigma^2\)</span>，在显著度<span class="math inline">\(\alpha\)</span>下，若变量</p>
+<p><span class="math display">\[\tau_t = |\frac{\sqrt{k}\mu}{\sigma}| \tag{2.31}\]</span></p>
+<p>小于临界值<span class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>，则假设不能被拒绝，即认为两个学习器的性能没有显著差别；否则可以认为两个学习器的性能有显著差别，且平均错误率较小的那个学习器性能较优，这里<span class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>是自由度为<span class="math inline">\(k-1\)</span>的<span class="math inline">\(t\)</span>分布上尾部累积分布为<span class="math inline">\(\frac{\alpha}{2}\)</span>的临界值</p>
+<p>欲进行有效的假设检验，一个重要的前提是测试错误率均为泛化错误率的独立采样，然而通常情况下由于样本有限，在使用交叉验证等实验估计方法时，不同轮次的训练集会有一定程度的重叠，这就使得测试错误率实际上并不独立，会导致过高估计假设成立的概率，为缓解这一问题，可采用"<span class="math inline">\(5\times 2\)</span>交叉验证"法</p>
+<p><span class="math inline">\(5\times 2\)</span>交叉验证是做5次2折交叉验证，在每次2折交叉验证之前随机将数据打乱，使得5次交叉验证中的数据划分均不重复，对两个学习器A和B，第<span class="math inline">\(i\)</span>次2折交叉验证将产生两对测试错误率，我们对它们分别求差，得到第1折上的差值<span class="math inline">\(\Delta_i^1\)</span>和第2折上的差值<span class="math inline">\(\Delta_i^2\)</span>，为缓解测试错误率的非独立性，我们仅计算第1次2折交叉验证的两个结果的平均值<span class="math inline">\(\mu=0.5(\Delta_1^1+\Delta_1^2)\)</span>，但对每次2折实验的结果都计算出其方差<span class="math inline">\(\sigma^2=(\Delta_i^1-\frac{\Delta_i^1+\Delta_i^2}{2})^2+(\Delta_i^2-\frac{\Delta_i^1+\Delta_i^2}{2})^2\)</span>，变量</p>
+<p><span class="math display">\[\tau_t=\frac{\mu}{\sqrt{0.2\sum\limits_{i=1}^5\sigma_i^2}} \tag{2.32}\]</span></p>
+<p>服从自由度为5的<span class="math inline">\(t\)</span>分布，其双边检验的临界值<span class="math inline">\(t_{\frac{\alpha}{2,5}}\)</span>，当<span class="math inline">\(\alpha=0.05\)</span>时为2.5706，<span class="math inline">\(\alpha=0.1\)</span>时为2.0150</p>
+<h3 id="mcnemar检验">4.3 McNemar检验</h3>
+<center>
+<strong>表2.4</strong> 两学习器分类差别列联表(contingency table)
+</center>
+<table style="text-align:center; board: 1px solid;">
+​
+<tr>
+​
+<td rowspan="2">
+算法B
+</td>
+​
+<td colspan="2">
+算法A
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+正确
+</td>
+​
+<td>
+错误
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+正确
+</td>
+​
+<td>
+<span class="math inline">\(e_{00}\)</span>
+</td>
+​
+<td>
+<span class="math inline">\(e_{01}\)</span>
+</td>
+​
+</tr>
+​
+<tr>
+​
+<td>
+错误
+</td>
+​
+<td>
+<span class="math inline">\(e_{10}\)</span>
+</td>
+​
+<td>
+<span class="math inline">\(e_{11}\)</span>
+</td>
+​
+</tr>
+</table>
+<p>若我们做的假设是两学习器性能相同，则应用<span class="math inline">\(e_{01}=e_{10}\)</span>，那么变量<span class="math inline">\(|e_{01}-e_{10}|\)</span>应服从正态分布，McNemar检验考虑变量</p>
+<p><span class="math display">\[\tau_{\chi^2}=\frac{(|e_{01}-e_{10}|-1)^2}{e_{01}+e_{10}} \tag{2.33}\]</span></p>
+<p>服从自由度为1的<span class="math inline">\(\chi^2\)</span>分布，即标准正态分布变量的平方。给定显著度<span class="math inline">\(\alpha\)</span>，当以上变量值小于临界值<span class="math inline">\(\chi_\alpha^2\)</span>时，不能拒绝假设，即认为两学习器的性能没有显著差别；否则拒绝假设，即认为两者性能有显著差别，且平均错误率较小的那个学习器性能较优，自由度为1的<span class="math inline">\(\chi^2\)</span>检验的临界值当<span class="math inline">\(\alpha=0.05\)</span>时为3.8415，<span class="math inline">\(\alpha=0.1\)</span>时为2.7055</p>
+<h3 id="friedman检验与nemenyi后续检验">4.4 Friedman检验与Nemenyi后续检验</h3>
+<p>在一组数据集上对多个算法进行比较，使用的基于算法排序的Friedman检验，使用Friedman检验来判断这些算法是否性能都相同，若相同，则它们的平均序值应当相同。假定我们在N个数据集上比较<span class="math inline">\(k\)</span>个算法，令<span class="math inline">\(r_i\)</span>表示第<span class="math inline">\(i\)</span>个算法的平均序值，为简化讨论，暂不考虑平分序值的情况，则<span class="math inline">\(r_i\)</span>的均值和方差分别为<span class="math inline">\((k+1)/2\)</span>和<span class="math inline">\((k^2-1)/12N\)</span>，变量</p>
+<p><span class="math display">\[\begin{align}
+
+\tau_{\chi^2} &amp;= \frac{k-1}{k}·\frac{12N}{k^2-1}\sum\limits_{i=1}^k(r_i-\frac{k+1}{2})^2 \tag{2.34}\\ &amp;= \frac{12N}{k(k+1)}(\sum\limits_{i=1}^k{r_i^2}-\frac{k(k+1)^2}{4}) 
+
+\end{align}\]</span></p>
+<p>在<span class="math inline">\(k\)</span>和N都较大时，服从自由度为<span class="math inline">\(k-1\)</span>的<span class="math inline">\(\chi^2\)</span>分布</p>
+<p>然而，上述这样的"原始Friedman检验"过于保守，现在通常使用变量</p>
+<p><span class="math display">\[\tau_F=\frac{(N-1)\tau_\chi^2}{N(k-1)-\tau_\chi^2} \tag{2.35}\]</span></p>
+<p>其中<span class="math inline">\(\tau_\chi^2\)</span>由式(2.34)得到，<span class="math inline">\(\tau_F\)</span>服从自由度为<span class="math inline">\(k-1\)</span>和<span class="math inline">\((k-1)(N-1)\)</span>的F分布</p>
+<p>若"所有算法的性能相同"这个假设被拒绝，则说明算法的性能显著不同，这时需进行"后续检验"(post-hoc test)来进一步区分各算法，常用的有Nemenyi后续检验</p>
+<p>Nemenyi检验计算出平均序值差别的临界值域</p>
+<p><span class="math display">\[CD = q_\alpha\sqrt{\frac{k(k+1)}{6N}} \tag{2.36}\]</span></p>
+<p>若两个算法的平均序值之差超出了临界值域CD，则以相同的置信度拒绝"两个算法性能相同"这一假设</p>
+<h2 id="偏差与方差">5. 偏差与方差</h2>
+<p>"偏差-方差分解"(bias-variance decomposition)是解释学习算法泛化性能的一种重要工具</p>
+<p>偏差-方差分解试图对学习算法的期望泛化错误率进行拆解，我们知道，算法在不同训练集上学得的结果很可能不同，即便这些训练集是来自同一个分布，对测试样本<span class="math inline">\(x\)</span>，另<span class="math inline">\(y_D\)</span>为<span class="math inline">\(x\)</span>在数据集中的标记，<span class="math inline">\(y\)</span>为<span class="math inline">\(x\)</span>的真实标记，<span class="math inline">\(f(x;D)\)</span>为训练集<span class="math inline">\(D\)</span>上学得模型<span class="math inline">\(f\)</span>在<span class="math inline">\(x\)</span>上的预测输出。以回归任务为例，学习算法的期望预测为</p>
+<p><span class="math display">\[\bar{f}(x)=\mathbb{E}_D[f(x;D)] \tag{2.37}\]</span>，</p>
+<p>使用样本数相同的不同训练集产生的方差为</p>
+<p><span class="math display">\[var(x)=\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] \tag{2.38}\]</span></p>
+<p>噪声为</p>
+<p><span class="math display">\[\mathcal{E}^2=\mathbb{E}_D[(y_D-y)^2] \tag{2.39}\]</span></p>
+<p>期望输出与真实标记的差别称为偏差(bias)，即</p>
+<p><span class="math display">\[bias^2(x)=(\bar{f}(x)-y)^2 \tag{2.40}\]</span></p>
+<p>为便于讨论，假定噪声期望为0，即<span class="math inline">\(\mathbb{E}_D[y_D-y]=0\)</span>。通过简单的多项式展开合并，可对算法的期望泛化误差进行分解：</p>
+<p><span class="math display">\[\begin{align}
+
+E(f;D) &amp;= \mathbb{E}_D[(f(x;D)-y_D)^2]\\ &amp;= \mathbb{E}_D[(f(x;D)-\bar{f}(x)+\bar{f}(x)-y_D)^2] \\ &amp;= 
+
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] + \mathbb{E}[(\bar{f}(x)-y_D)^2]+\mathbb{E}_D[2(f(x;D)-\bar{f}(x))(\bar{f}(x)-y_D)]\\ &amp;= 
+
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y_D)]\\ &amp;= 
+
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] + \mathbb{E}_D[(\bar{f}(x)-y+y-y_D)^2]\\ &amp;= 
+
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y)^2]+\mathbb{E}_D[(y-y_D)^2]+2\mathbb{E}_D[(\bar{f}(x)-y)(y-y_D)]\\ &amp;=  
+
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+(\bar{f}(x)-y)^2+\mathbb{E}_D[(y_D-y)^2] \tag{2.41}
+
+\end{align}\]</span></p>
+<p>于是，</p>
+<p><span class="math display">\[E(f;D) = bias^2(x)+var(x)+\mathcal{E}^2 \tag{2.42}\]</span></p>
+<p>也就是说，泛化误差可以分解为偏差，方差与噪声之和。</p>
+<p>偏差-方差分解说明，泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的，给定学习任务，为了取得更好的泛化性能，则需使偏差较小，即能够充分拟合数据，并且使方差较小，即使得数据扰动产生的影响小。</p>
 
       
 
@@ -637,7 +755,7 @@ TN（真反例）
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经验误差与过拟合"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#误差error"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过拟合overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欠拟合underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估方法"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#留出法hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证法cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自助法bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调参parameter-tuning与最终模型"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能度量performance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误率与精度"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查准率查全率与f1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc与auc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代价敏感错误率与代价曲线"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较检验"><span class="toc-number">4.</span> <span class="toc-text">4. 比较检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#假设检验"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证t检验"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 交叉验证\(t\)检验</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经验误差与过拟合"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#误差error"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过拟合overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欠拟合underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估方法"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#留出法hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证法cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自助法bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调参parameter-tuning与最终模型"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能度量performance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误率与精度"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查准率查全率与f1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc与auc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代价敏感错误率与代价曲线"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较检验"><span class="toc-number">4.</span> <span class="toc-text">4. 比较检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#假设检验"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证t检验"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 交叉验证\(t\)检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mcnemar检验"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 McNemar检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friedman检验与nemenyi后续检验"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 Friedman检验与Nemenyi后续检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏差与方差"><span class="toc-number">5.</span> <span class="toc-text">5. 偏差与方差</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -826,6 +944,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DataStructure</a>
               </li>
              
@@ -843,10 +973,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,6 +996,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -886,7 +1016,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -895,18 +1025,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
             
             <div class="clearfix"></div>
