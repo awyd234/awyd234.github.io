@@ -1,730 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
+  
   <url>
     <loc>http://windtrack.xyz/post/bdbd8fa5/</loc>
-    <lastmod>2019-05-30T05:32:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>「西瓜书学习」Ch03.线性模型</title>
-        <pubTime>2019-05-30T04:46:23.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Machine Learning </tag>
-         
-        <tag>Notes </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-06-06T05:02:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/300d7fb/</loc>
-    <lastmod>2019-05-30T03:30:47.000Z</lastmod>
-    <data>
-        <display>
-        <title>「西瓜书学习」Ch02.模型评估与选择</title>
-        <pubTime>2018-12-23T17:14:23.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Machine Learning </tag>
-         
-        <tag>Notes </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-30T03:30:47.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/d568403d/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>「统计学学习」Day1 基本知识与大数定律</title>
-        <pubTime>2019-01-04T06:52:38.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/65492eb6/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>「统计学学习」Day2 中心极限定理与置信区间</title>
-        <pubTime>2019-01-05T13:22:13.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/4534d777/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>「统计学学习」Day3 假设检验</title>
-        <pubTime>2019-01-07T13:30:56.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/3e18c504/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>「统计学学习」Day4 回归分析与卡方分布</title>
-        <pubTime>2019-01-09T17:56:58.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/27f87702/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>在已有目录上添加Git</title>
-        <pubTime>2017-12-28T04:34:15.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Git" url="http://windtrack.xyz/categories/Git/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://windtrack.xyz/post/8ecc0390/</loc>
     <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>将linux下的rm改造成mv</title>
-        <pubTime>2017-05-26T03:37:13.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/a9dc50af/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>真二叉重构（Proper Rebuild）</title>
-        <pubTime>2018-12-05T11:25:32.000Z</pubTime>
-        
-        <tag>Algorithm </tag>
-         
-        <tag>DataStructure </tag>
-         
-        <tag>BinarryTree </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="http://windtrack.xyz/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/post/8ecc0390/</loc>
+    
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/773d27b5/</loc>
-    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>「一周算法实践」Task3 模型调优</title>
-        <pubTime>2018-12-15T07:43:33.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Data Mining </tag>
-         
-        <tag>Practice </tag>
-         
-        <tag>Model Evaluation </tag>
-         
-        <tag>Grid Search </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Mining" url="http://windtrack.xyz/categories/Data-Mining/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/ee916ad3/</loc>
+    
     <lastmod>2019-05-28T03:33:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>不仅仅是寻梦，也蕴含着亲情和温情的故事 -- 《寻梦环游记》影评</title>
-        <pubTime>2017-12-29T11:57:46.000Z</pubTime>
-        
-        <tag>Movie </tag>
-         
-        <tag>Comments </tag>
-         
-         
-           
-             
-              <breadCrumb title="Movie" url="http://windtrack.xyz/categories/Movie/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/about/index.html</loc>
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
     
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/categories/index.html</loc>
     
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/tags/index.html</loc>
+    
+    <lastmod>2019-05-28T03:33:10.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/d88c701/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>Git使用杂记</title>
-        <pubTime>2017-05-24T06:25:07.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/47b88860/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo渲染LaTex数学公式的方法</title>
-        <pubTime>2018-12-23T18:01:45.000Z</pubTime>
-        
-        <tag>Hexo </tag>
-         
-        <tag>LaTex </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://windtrack.xyz/post/8f115754/</loc>
     <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>LeetCode 33.Search in Rotated Sorted</title>
-        <pubTime>2018-12-08T11:25:03.000Z</pubTime>
-        
-        <tag>Algorithm </tag>
-         
-        <tag>LeetCode </tag>
-         
-        <tag>BinarySearch </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="http://windtrack.xyz/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/bb306368/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>LeetCode 207. Course Schedule</title>
-        <pubTime>2018-12-12T15:20:07.000Z</pubTime>
-        
-        <tag>Algorithm </tag>
-         
-        <tag>LeetCode </tag>
-         
-        <tag>BinarySearch </tag>
-         
-        <tag>TopologicalSort </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="http://windtrack.xyz/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/post/8f115754/</loc>
+    
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/40db9361/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>MongoDB配置与使用</title>
-        <pubTime>2017-03-24T06:42:42.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Linux" url="http://windtrack.xyz/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/f5548b11/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL一些基础知识及存储引擎比较</title>
-        <pubTime>2018-01-09T10:38:13.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Database </tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://windtrack.xyz/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/27067a2b/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL无法获取最新数据的解决方法</title>
-        <pubTime>2017-09-30T03:16:29.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/c6fcb9da/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>PAT-甲级 1001.A+B Format</title>
-        <pubTime>2017-12-28T05:52:22.000Z</pubTime>
-        
-        <tag>Algorithm </tag>
-         
-        <tag>PAT </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="http://windtrack.xyz/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/8dd1c645/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>Preface</title>
-        <pubTime>2017-03-22T18:48:11.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Others" url="http://windtrack.xyz/categories/Others/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/33a81233/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>PAT-甲级 1002. A+B for Polynomials</title>
-        <pubTime>2017-12-28T13:43:56.000Z</pubTime>
-        
-        <tag>Algorithm </tag>
-         
-        <tag>PAT </tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="http://windtrack.xyz/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/942a5d5c/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python项目环境的搭建</title>
-        <pubTime>2017-03-23T16:48:21.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Python" url="http://windtrack.xyz/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/997527c4/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>jQuery DataTables的增删改方案</title>
-        <pubTime>2017-06-13T02:01:10.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/38935867/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>journalctl的使用</title>
-        <pubTime>2017-06-19T03:29:37.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/8826628/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu 16.04下搜狗输入法崩溃的解决方案</title>
-        <pubTime>2017-03-24T17:31:16.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Linux" url="http://windtrack.xyz/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/e3636282/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day4 表联结</title>
-        <pubTime>2019-03-02T10:38:30.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/d4341d72/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python中的yield关键字</title>
-        <pubTime>2017-12-30T08:39:38.000Z</pubTime>
-        
-        <tag>Python </tag>
-         
-        <tag>Translations </tag>
-         
-        <tag>StackOverflow </tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://windtrack.xyz/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/d8f7f8a6/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day5 MySQL 实战</title>
-        <pubTime>2019-03-03T13:28:51.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://windtrack.xyz/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://windtrack.xyz/post/e19625d/</loc>
     <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day6 复杂项目</title>
-        <pubTime>2019-03-04T13:47:52.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-             
-              <breadCrumb title="MySQL" url="http://windtrack.xyz/categories/MySQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/16234f07/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「一周算法实践」Task1.1 模型构建</title>
-        <pubTime>2018-12-08T16:42:46.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Data Mining </tag>
-         
-        <tag>LogisticRegression </tag>
-         
-        <tag>SVM </tag>
-         
-        <tag>DecisionTree </tag>
-         
-        <tag>Practice </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Mining" url="http://windtrack.xyz/categories/Data-Mining/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
-    <loc>http://windtrack.xyz/post/a0e056d3/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「一周算法实践」Task2 模型评估</title>
-        <pubTime>2018-12-13T08:39:17.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Data Mining </tag>
-         
-        <tag>Practice </tag>
-         
-        <tag>Model Evaluation </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Mining" url="http://windtrack.xyz/categories/Data-Mining/"/>
-          
-        </display>
-    </data>
-    </url>
-
+    <loc>http://windtrack.xyz/post/e19625d/</loc>
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/f9c4ceea/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「一周算法实践」Task1.2 模型构建之集成模型</title>
-        <pubTime>2018-12-09T17:12:05.000Z</pubTime>
-        
-        <tag>AI </tag>
-         
-        <tag>Data Mining </tag>
-         
-        <tag>Practice </tag>
-         
-        <tag>RandomForest </tag>
-         
-        <tag>GBDT </tag>
-         
-        <tag>XGBoost </tag>
-         
-        <tag>LightGBM </tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Mining" url="http://windtrack.xyz/categories/Data-Mining/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://windtrack.xyz/post/a0e056d3/</loc>
+    
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/12ceb6de/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>《Effective Python》读书笔记</title>
-        <pubTime>2017-06-20T06:00:09.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/1015fd1e/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day1 软件安装与数据库基础</title>
-        <pubTime>2019-02-25T20:36:17.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/3c0cec8/</loc>
-    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day3 表操作</title>
-        <pubTime>2019-03-01T08:21:10.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
+    <lastmod>2019-05-28T03:33:09.000Z</lastmod>
+    
+  </url>
+  
   <url>
     <loc>http://windtrack.xyz/post/e692717b/</loc>
+    
     <lastmod>2019-05-28T03:33:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>「MySQL基础」Day2 查询语句</title>
-        <pubTime>2019-02-27T18:28:09.000Z</pubTime>
-        
-        <tag>MySQL </tag>
-         
-        <tag>Datawhale </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
+    
+  </url>
+  
 </urlset>
