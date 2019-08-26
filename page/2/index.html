@@ -210,6 +210,80 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-「统计学学习」Day2-中心极限定理与置信区间" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/65492eb6/">「统计学学习」Day2 中心极限定理与置信区间</a>
+    </h1>
+  
+
+        
+        <a href="/post/65492eb6/" class="archive-article-date">
+  	<time datetime="2019-01-05T13:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="中心极限定理">1. 中心极限定理</h1>
+<p>大数定律说明平均值与期望值之间的偏差小于任意给定正的常数的概率趋于1，如果有方差有限的条件，会有更精确的结果</p>
+<h2 id="林德博格-勒维lindeberg-levy">1.1 林德博格-勒维Lindeberg-Levy</h2>
+<p>中心极限定理：设<span class="math inline">\({x_n}\)</span>是独立同分布的随机变量序列，若期望<span class="math inline">\(E(X_1) = \mu\)</span>，方差<span class="math inline">\(Var(X_1) = \sigma^2\)</span>，则对每一个固定的y有</p>
+<p><span class="math display">\[\lim\limits_{n \to \infty}{P(\frac{X_1 + X_2 + … + X_n - n\mu}{\sigma\sqrt{n}} \leq y)} = \Phi(y) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{y}e^{-\frac{t^2}{2}}\mathrm{d}\boldsymbol(t)\]</span></p>
+<p>实际上，对于独立同分布的随机变量序列<span class="math inline">\({X_n}\)</span>，则</p>
+<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(E(X_1 + X_2 + … + X_n), Var(X_1 + X_2 + … + X_n))\]</span></p>
+<p><span class="math display">\[E(X_1 + X_2 + … + X_n) = n\mu, Var(X_1 + X_2 + … + X_n) = n \sigma^2\]</span></p>
+<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(n\mu, n\sigma^2)\]</span></p>
+<p>标准化得：<span class="math inline">\(\frac{X_1 + X_2 + … + X_n - n\mu}{\sqrt{n}\sigma} \sim N(0,1)\)</span></p>
+        
+          <a class="article-more-a" href="/post/65492eb6/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/65492eb6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-「统计学学习」Day1-基本知识与大数定律" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -432,11 +506,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
         		</li>
       		
 		</ul>
@@ -1144,112 +1218,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-真二叉重构（Proper-Rebuild）" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/a9dc50af/">真二叉重构（Proper Rebuild）</a>
-    </h1>
-  
-
-        
-        <a href="/post/a9dc50af/" class="archive-article-date">
-  	<time datetime="2018-12-05T11:25:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="真二叉树重构proper-rebuild">真二叉树重构(Proper Rebuild)</h1>
-<h2 id="description">Description</h2>
-<p>In general, given the preorder traversal sequence and postorder traversal sequence of a binary tree, we cannot determine the binary tree.</p>
-<div data-align="center">
-<img src="/post/a9dc50af/img_ex1.png">
-</div>
-<p>Figure 1</p>
-<p>In Figure 1 for example, although they are two different binary tree, their preorder traversal sequence and postorder traversal sequence are both of the same.</p>
-<p>But for one proper binary tree, in which each internal node has two sons, we can uniquely determine it through its given preorder traversal sequence and postorder traversal sequence.</p>
-<p>Label n nodes in one binary tree using the integers in [1, n], we would like to output the inorder traversal sequence of a binary tree through its preorder and postorder traversal sequence.</p>
-<h2 id="input">Input</h2>
-<p>The 1st line is an integer n, i.e., the number of nodes in one given binary tree,</p>
-        
-          <a class="article-more-a" href="/post/a9dc50af/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DataStructure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BinarryTree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/a9dc50af/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1404,11 +1372,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+                <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Computer Vision</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Comments</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1452,6 +1440,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -1468,19 +1460,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Movie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Comments</a>
               </li>
             
             <div class="clearfix"></div>
