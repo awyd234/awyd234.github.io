@@ -210,6 +210,168 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《Effective-Python》读书笔记" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/12ceb6de/">《Effective Python》读书笔记</a>
+    </h1>
+  
+
+        
+        <a href="/post/12ceb6de/" class="archive-article-date">
+  	<time datetime="2017-06-20T06:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用pythonic的方式来思考">1. 用Pythonic的方式来思考</h1>
+<h2 id="前言">0. 前言</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The Zen of Python, by Tim Peters</p>
+<p>Beautiful is better than ugly.</p>
+<p>Explicit is better than implicit.</p>
+<p>Simple is better than complex.</p>
+<p>Complex is better than complicated.</p>
+<p>Flat is better than nested.</p>
+<p>Sparse is better than dense.</p>
+<p>Readability counts.</p>
+<p>Special cases aren't special enough to break the rules.</p>
+<p>Although practicality beats purity.</p>
+<p>Errors should never pass silently.</p>
+<p>Unless explicitly silenced.</p>
+<p>In the face of ambiguity, refuse the temptation to guess.</p>
+<p>There should be one-- and preferably only one --obvious way to do it.</p>
+<p>Although that way may not be obvious at first unless you're Dutch.</p>
+<p>Now is better than never.</p>
+<p>Although never is often better than <em>right</em> now.</p>
+<p>If the implementation is hard to explain, it's a bad idea.</p>
+<p>If the implementation is easy to explain, it may be a good idea.</p>
+</blockquote>
+<h2 id="确认自己所用的python版本">1. 确认自己所用的Python版本</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 --version</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print(sys.version_info)</span><br><span class="line">print(sys.version)</span><br></pre></td></tr></table></figure>
+<p>Python社区已将开发重点放在了Python 3上，因此后续开发项目时，应优先考虑使用Python 3</p>
+<h2 id="遵循pep-8-风格指南">2. 遵循PEP 8 风格指南</h2>
+        
+          <a class="article-more-a" href="/post/12ceb6de/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/12ceb6de/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-journalctl的使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/38935867/">journalctl的使用</a>
+    </h1>
+  
+
+        
+        <a href="/post/38935867/" class="archive-article-date">
+  	<time datetime="2017-06-19T03:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用背景与安装">1、使用背景与安装</h1>
+<h2 id="使用背景">1.1 使用背景</h2>
+<p>系统中疑似存在丢syslog的情况，比如/var/log/auth.log一直找不到，网上找了很多解决方法一直未能解决，而我又需要知道每个人员针对服务器的操作，以及检测ssh是否有外人破解进来</p>
+<h2 id="安装">1.2 安装</h2>
+<p>部分linux系统中可能会报错 journalctl command not found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install systemd</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/38935867/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jQuery-DataTables的增删改方案" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -758,7 +920,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Qian Hu
+    		&copy; 2020 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -898,6 +1060,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
               </li>
              
@@ -914,15 +1084,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -950,26 +1112,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -983,6 +1125,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
               </li>
              
               <li class="article-tag-list-item">
