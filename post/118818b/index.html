@@ -9,17 +9,20 @@
   <title>「论文笔记」ImageNet Classification with Deep Convolutional Neural Networks | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Basic Info Link: ImageNet Classification with Deep Convolutional Neural Networks - NIPS Author:  Alex Krizhevsky, University of Toronto Ilya Sutskever, University of Toronto Geoffrey E. Hinton, Univer">
-<meta name="keywords" content="AI,Deep Learning,Computer Vision,Object Detection,Paper,Notes,Comments">
+<meta name="keywords" content="AI,Notes,Deep Learning,Computer Vision,Object Detection,Paper,Comments">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「论文笔记」ImageNet Classification with Deep Convolutional Neural Networks">
 <meta property="og:url" content="http://windtrack.xyz/post/118818b/index.html">
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="Basic Info Link: ImageNet Classification with Deep Convolutional Neural Networks - NIPS Author:  Alex Krizhevsky, University of Toronto Ilya Sutskever, University of Toronto Geoffrey E. Hinton, Univer">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-28T14:32:13.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/118818b/AlexNet%20Architecture.png">
+<meta property="og:image" content="http://windtrack.xyz/post/118818b/AlexNet%20Architecture%20Simplified.png">
+<meta property="og:updated_time" content="2020-03-28T14:56:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「论文笔记」ImageNet Classification with Deep Convolutional Neural Networks">
 <meta name="twitter:description" content="Basic Info Link: ImageNet Classification with Deep Convolutional Neural Networks - NIPS Author:  Alex Krizhevsky, University of Toronto Ilya Sutskever, University of Toronto Geoffrey E. Hinton, Univer">
+<meta name="twitter:image" content="http://windtrack.xyz/post/118818b/AlexNet%20Architecture.png">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -269,6 +272,19 @@ var _hmt = _hmt || [];
 <p>Sigmoid，反向传播时梯度消失</p>
 <p><span class="math display">\[f(x) = \frac{1}{1 + e^{-x}}\]</span></p>
 <p><span class="math display">\[f(x)&#39;=\frac{1}{(1+e^{-x})^2} * (e^{-x})=\frac{1}{1+e^{-x}}*\frac{e^{-x}}{1+e^{-x}}=f(x)*(1-f(x))\]</span></p>
+<h4 id="network-architecture">3.2 Network Architecture</h4>
+<div data-align="center">
+<img src="/post/118818b/AlexNet%20Architecture.png">
+</div>
+<p>虽然AlexNet网络都用上图的结构来表示，但是其实输入图像的尺寸不是224<em>224</em>3，而是227<em>227</em>3，如果用224的尺寸，会发现边界填充的结果是小数，显然不对，简化后</p>
+<div data-align="center">
+<img src="/post/118818b/AlexNet%20Architecture%20Simplified.png">
+</div>
+<p>参数计算</p>
+<h2 id="personal-referrence">Personal Referrence</h2>
+<ul>
+<li><a href="https://blog.csdn.net/chaipp0607/article/details/72847422" target="_blank" rel="noopener">从AlexNet理解卷积神经网络的一般结构</a></li>
+</ul>
 
       
 
@@ -307,6 +323,10 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deep Learning</a>
         		</li>
       		 
@@ -320,10 +340,6 @@ var _hmt = _hmt || [];
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -437,7 +453,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-info"><span class="toc-number">1.</span> <span class="toc-text">Basic Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">3.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">4.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">5.</span> <span class="toc-text">Method(s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">6.</span> <span class="toc-text">Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">8.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top-5-error"><span class="toc-number">8.1.</span> <span class="toc-text">1. top-5 error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataset"><span class="toc-number">8.2.</span> <span class="toc-text">2. Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecutre"><span class="toc-number">8.3.</span> <span class="toc-text">3. Architecutre</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#relu-nonlinearity"><span class="toc-number">8.3.1.</span> <span class="toc-text">3.1 Relu Nonlinearity</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-info"><span class="toc-number">1.</span> <span class="toc-text">Basic Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">3.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">4.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">5.</span> <span class="toc-text">Method(s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">6.</span> <span class="toc-text">Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">8.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top-5-error"><span class="toc-number">8.1.</span> <span class="toc-text">1. top-5 error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataset"><span class="toc-number">8.2.</span> <span class="toc-text">2. Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecutre"><span class="toc-number">8.3.</span> <span class="toc-text">3. Architecutre</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#relu-nonlinearity"><span class="toc-number">8.3.1.</span> <span class="toc-text">3.1 Relu Nonlinearity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#network-architecture"><span class="toc-number">8.3.2.</span> <span class="toc-text">3.2 Network Architecture</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#personal-referrence"><span class="toc-number">9.</span> <span class="toc-text">Personal Referrence</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -630,6 +646,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
               </li>
              
@@ -646,15 +670,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,6 +714,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -711,10 +731,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
