@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/118818b/AlexNet%20Architecture.png">
 <meta property="og:image" content="http://windtrack.xyz/post/118818b/AlexNet%20Architecture%20Simplified.png">
-<meta property="og:updated_time" content="2020-03-28T14:56:23.000Z">
+<meta property="og:updated_time" content="2020-04-16T22:32:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「论文笔记」ImageNet Classification with Deep Convolutional Neural Networks">
 <meta name="twitter:description" content="Basic Info Link: ImageNet Classification with Deep Convolutional Neural Networks - NIPS Author:  Alex Krizhevsky, University of Toronto Ilya Sutskever, University of Toronto Geoffrey E. Hinton, Univer">
@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-「论文笔记」ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-「论文笔记」ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -272,7 +272,14 @@ var _hmt = _hmt || [];
 <p>Sigmoid，反向传播时梯度消失</p>
 <p><span class="math display">\[f(x) = \frac{1}{1 + e^{-x}}\]</span></p>
 <p><span class="math display">\[f(x)&#39;=\frac{1}{(1+e^{-x})^2} * (e^{-x})=\frac{1}{1+e^{-x}}*\frac{e^{-x}}{1+e^{-x}}=f(x)*(1-f(x))\]</span></p>
-<h4 id="network-architecture">3.2 Network Architecture</h4>
+<h4 id="参数计算公式">3.2 参数计算公式</h4>
+<p>卷积特征图计算公式，<span class="math inline">\(F_o = \lfloor \frac{F_{in} + 2p - k}{s} \rfloor + 1\)</span></p>
+<p>卷积方式为VALID时，<span class="math inline">\(F_o = \lceil \frac{F_{in} - k + 1}{s} \rceil\)</span></p>
+<p>卷积方式为SAME，<span class="math inline">\(F_o = \lceil \frac{F_{in}}{s} \rceil\)</span></p>
+<p>连接数量计算公式</p>
+<p><span class="math display">\[F_o^2 \times (K^2 \times K_c + 1) \times F_{oc}\]</span></p>
+<p><span class="math display">\[输出特征尺寸 \times (卷积核大小 \times 卷积核通道数 + 1) \times 输出特征图通道数\]</span></p>
+<h4 id="network-architecture">3.3 Network Architecture</h4>
 <div data-align="center">
 <img src="/post/118818b/AlexNet%20Architecture.png">
 </div>
@@ -281,6 +288,111 @@ var _hmt = _hmt || [];
 <img src="/post/118818b/AlexNet%20Architecture%20Simplified.png">
 </div>
 <p>参数计算</p>
+<table>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 34%">
+<col style="width: 22%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>网络层</th>
+<th>kernal_size</th>
+<th>deepth</th>
+<th>stride</th>
+<th>padding</th>
+<th>input_size</th>
+<th>output_size</th>
+<th>parameters</th>
+<th>connections</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>conv1</td>
+<td>[11, 11]</td>
+<td>96</td>
+<td>4</td>
+<td>VALID</td>
+<td>[227, 227, 3]</td>
+<td><span class="math inline">\(\lceil \frac{227 - 11 + 1}{4} \rceil = 55\)</span>, [55, 55, 96]</td>
+<td><span class="math inline">\((11\times 11 \times 3 + 1)\times 96\)</span></td>
+<td>(55x55)x parameters</td>
+</tr>
+<tr class="even">
+<td>pool1</td>
+<td>[3, 3]</td>
+<td>96</td>
+<td>2</td>
+<td>VALID</td>
+<td>[55, 55, 96]</td>
+<td>[27, 27, 96]</td>
+<td>--</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>conv2_1</td>
+<td>[5, 5]</td>
+<td>128</td>
+<td>1</td>
+<td>SAME</td>
+<td>[27, 27, 96]</td>
+<td>[27, 27, ]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="personal-referrence">Personal Referrence</h2>
 <ul>
 <li><a href="https://blog.csdn.net/chaipp0607/article/details/72847422" target="_blank" rel="noopener">从AlexNet理解卷积神经网络的一般结构</a></li>
@@ -424,6 +536,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/post/6d2e787e/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          VC Dimension of Neural Networks
+        
+      </div>
+    </a>
+  
   
     <a href="/post/bfc6ccc4/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">IOS学习笔记</div>
@@ -453,7 +574,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-info"><span class="toc-number">1.</span> <span class="toc-text">Basic Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">3.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">4.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">5.</span> <span class="toc-text">Method(s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">6.</span> <span class="toc-text">Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">8.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top-5-error"><span class="toc-number">8.1.</span> <span class="toc-text">1. top-5 error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataset"><span class="toc-number">8.2.</span> <span class="toc-text">2. Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecutre"><span class="toc-number">8.3.</span> <span class="toc-text">3. Architecutre</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#relu-nonlinearity"><span class="toc-number">8.3.1.</span> <span class="toc-text">3.1 Relu Nonlinearity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#network-architecture"><span class="toc-number">8.3.2.</span> <span class="toc-text">3.2 Network Architecture</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#personal-referrence"><span class="toc-number">9.</span> <span class="toc-text">Personal Referrence</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-info"><span class="toc-number">1.</span> <span class="toc-text">Basic Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">2.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">3.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">4.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">5.</span> <span class="toc-text">Method(s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">6.</span> <span class="toc-text">Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">8.</span> <span class="toc-text">Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top-5-error"><span class="toc-number">8.1.</span> <span class="toc-text">1. top-5 error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataset"><span class="toc-number">8.2.</span> <span class="toc-text">2. Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecutre"><span class="toc-number">8.3.</span> <span class="toc-text">3. Architecutre</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#relu-nonlinearity"><span class="toc-number">8.3.1.</span> <span class="toc-text">3.1 Relu Nonlinearity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数计算公式"><span class="toc-number">8.3.2.</span> <span class="toc-text">3.2 参数计算公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#network-architecture"><span class="toc-number">8.3.3.</span> <span class="toc-text">3.3 Network Architecture</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#personal-referrence"><span class="toc-number">9.</span> <span class="toc-text">Personal Referrence</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -698,26 +819,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -734,6 +835,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
@@ -746,7 +867,7 @@ MathJax.Hub.Queue(function() {
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
