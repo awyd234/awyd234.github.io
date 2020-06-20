@@ -232,7 +232,7 @@ var _hmt = _hmt || [];
       
         <h2 id="problems">1. Problems</h2>
 <p>We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as</p>
-<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\]</span>,</p>
+<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\]</span></p>
 <p>where <span class="math inline">\(v\)</span> is the d dimensional input feature of the data, while <span class="math inline">\(W_1\)</span>, <span class="math inline">\(w_2\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> are the parameters of the neural network model. <span class="math inline">\(W_1\)</span> is a <span class="math inline">\(n × d\)</span> matrix, <span class="math inline">\(w_2\)</span> is a n dimensional vector, and <span class="math inline">\(b_1\)</span> is a n dimensional bias vector while <span class="math inline">\(b_2\)</span> is the bias. When <span class="math inline">\(o &gt; 0\)</span> we classify the datum as label 1, while when <span class="math inline">\(o ≤ 0\)</span> we classify it as label -1. This forms a neural network, or multi-layer-perceptron, with one hidden layer containing n neurons. In this problem, we focus on the pre-training case with frozen parameters that <span class="math inline">\(W_1\)</span> and <span class="math inline">\(b_1\)</span> must be decided when seeing all <span class="math inline">\(v\)</span> without labels <span class="math inline">\((l_1, ...l_i)\)</span>, while <span class="math inline">\(w_2\)</span> and <span class="math inline">\(b_2\)</span> can be decided after seeing all labels of examples <span class="math inline">\((l_1, ...l_i)\)</span></p>
 <h3 id="problem1">1.1 Problem1</h3>
 <p>Given <span class="math inline">\(n, d\)</span>, calculate the VC dimension of the neural network for the linear activation case, i.e. <span class="math inline">\(\sigma(x) = x\)</span>. Prove your result.</p>
@@ -1505,22 +1505,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -1534,6 +1518,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
               </li>
              
               <li class="article-tag-list-item">

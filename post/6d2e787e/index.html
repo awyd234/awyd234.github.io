@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>VC Dimension of Neural Networks | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\],">
+  <meta name="description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
 <meta name="keywords" content="Homework,Machine Learning,VC Dimension">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VC Dimension of Neural Networks">
 <meta property="og:url" content="http://windtrack.xyz/post/6d2e787e/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\],">
+<meta property="og:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-19T12:11:04.000Z">
+<meta property="og:updated_time" content="2020-06-20T02:49:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VC Dimension of Neural Networks">
-<meta name="twitter:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\],">
+<meta name="twitter:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -232,7 +232,7 @@ var _hmt = _hmt || [];
       
         <h2 id="problems">1. Problems</h2>
 <p>We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as</p>
-<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\]</span>,</p>
+<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\]</span></p>
 <p>where <span class="math inline">\(v\)</span> is the d dimensional input feature of the data, while <span class="math inline">\(W_1\)</span>, <span class="math inline">\(w_2\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> are the parameters of the neural network model. <span class="math inline">\(W_1\)</span> is a <span class="math inline">\(n × d\)</span> matrix, <span class="math inline">\(w_2\)</span> is a n dimensional vector, and <span class="math inline">\(b_1\)</span> is a n dimensional bias vector while <span class="math inline">\(b_2\)</span> is the bias. When <span class="math inline">\(o &gt; 0\)</span> we classify the datum as label 1, while when <span class="math inline">\(o ≤ 0\)</span> we classify it as label -1. This forms a neural network, or multi-layer-perceptron, with one hidden layer containing n neurons. In this problem, we focus on the pre-training case with frozen parameters that <span class="math inline">\(W_1\)</span> and <span class="math inline">\(b_1\)</span> must be decided when seeing all <span class="math inline">\(v\)</span> without labels <span class="math inline">\((l_1, ...l_i)\)</span>, while <span class="math inline">\(w_2\)</span> and <span class="math inline">\(b_2\)</span> can be decided after seeing all labels of examples <span class="math inline">\((l_1, ...l_i)\)</span></p>
 <h3 id="problem1">1.1 Problem1</h3>
 <p>Given <span class="math inline">\(n, d\)</span>, calculate the VC dimension of the neural network for the linear activation case, i.e. <span class="math inline">\(\sigma(x) = x\)</span>. Prove your result.</p>
@@ -246,7 +246,13 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="solutions">2. Solutions</h2>
 <h3 id="problem1-1">2.1 Problem1</h3>
+<h4 id="result">2.1.1 Result</h4>
+<p><span class="math display">\[VC(\mathcal{H}) = d + 1\]</span></p>
+<h4 id="prove">2.1.2 Prove</h4>
+<p><span class="math display">\[\sigma(x) = x \tag{1.1}\]</span></p>
+<p><span class="math display">\[o = w^T_2 σ(W_1v + b_1) + b_2 = w^T_2(W_1v + b_1) + b_2 = w^T_2W_1v + w^T_2b_1 + b_2 \tag{1.2}\]</span></p>
 <h3 id="problem2-1">2.2 Problem2</h3>
+<p><span class="math display">\[VC(\mathcal{H}) = n + 1\]</span></p>
 <h2 id="references">3. References</h2>
 
       
@@ -400,7 +406,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">1.</span> <span class="toc-text">1. Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Problem1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Problem2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hints"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Hints</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solutions"><span class="toc-number">2.</span> <span class="toc-text">2. Solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1-1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Problem1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Problem2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">3.</span> <span class="toc-text">3. References</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">1.</span> <span class="toc-text">1. Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Problem1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Problem2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hints"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Hints</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solutions"><span class="toc-number">2.</span> <span class="toc-text">2. Solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1-1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Problem1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#result"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 Result</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prove"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 Prove</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Problem2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">3.</span> <span class="toc-text">3. References</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -653,22 +659,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -682,6 +672,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
               </li>
              
               <li class="article-tag-list-item">
