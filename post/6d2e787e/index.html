@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-20T02:49:03.000Z">
+<meta property="og:updated_time" content="2020-06-20T03:19:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VC Dimension of Neural Networks">
 <meta name="twitter:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
@@ -246,13 +246,22 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="solutions">2. Solutions</h2>
 <h3 id="problem1-1">2.1 Problem1</h3>
+<p>Given a hyphothesis set <span class="math inline">\(\mathcal{H}\)</span></p>
 <h4 id="result">2.1.1 Result</h4>
 <p><span class="math display">\[VC(\mathcal{H}) = d + 1\]</span></p>
 <h4 id="prove">2.1.2 Prove</h4>
 <p><span class="math display">\[\sigma(x) = x \tag{1.1}\]</span></p>
-<p><span class="math display">\[o = w^T_2 σ(W_1v + b_1) + b_2 = w^T_2(W_1v + b_1) + b_2 = w^T_2W_1v + w^T_2b_1 + b_2 \tag{1.2}\]</span></p>
+<p><span class="math display">\[\begin{align}
+
+o &amp;= w^T_2 σ(W_1v + b_1) + b_2\\  &amp;= w^T_2(W_1v + b_1) + b_2\\  &amp;= w^T_2W_1v + (w^T_2b_1 + b_2) \tag{1.2}
+
+\end{align}\]</span></p>
+<p>It can be considered as linear regression</p>
 <h3 id="problem2-1">2.2 Problem2</h3>
+<p>Given a hyphothesis set <span class="math inline">\(\mathcal{H}\)</span></p>
+<h4 id="result-1">2.2.1 Result</h4>
 <p><span class="math display">\[VC(\mathcal{H}) = n + 1\]</span></p>
+<h4 id="prove-1">2.2.2 Prove</h4>
 <h2 id="references">3. References</h2>
 
       
@@ -406,7 +415,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">1.</span> <span class="toc-text">1. Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Problem1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Problem2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hints"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Hints</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solutions"><span class="toc-number">2.</span> <span class="toc-text">2. Solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1-1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Problem1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#result"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 Result</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prove"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 Prove</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Problem2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">3.</span> <span class="toc-text">3. References</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">1.</span> <span class="toc-text">1. Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Problem1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Problem2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hints"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Hints</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solutions"><span class="toc-number">2.</span> <span class="toc-text">2. Solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#problem1-1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Problem1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#result"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 Result</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prove"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 Prove</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#problem2-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Problem2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#result-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 Result</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prove-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 Prove</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">3.</span> <span class="toc-text">3. References</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -659,6 +668,22 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -672,22 +697,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
               </li>
              
               <li class="article-tag-list-item">
