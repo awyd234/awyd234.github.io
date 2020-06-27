@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-20T13:11:07.000Z">
+<meta property="og:updated_time" content="2020-06-27T19:51:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VC Dimension of Neural Networks">
 <meta name="twitter:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
@@ -257,6 +257,56 @@ o &amp;= w^T_2 σ(W_1v + b_1) + b_2\\  &amp;= w^T_2(W_1v + b_1) + b_2\\  &amp;= 
 
 \end{align}\]</span></p>
 <p>It can be considered as linear classifier</p>
+<p>We consider it as <span class="math display">\[
+o = W_3X
+\]</span></p>
+<p><span class="math display">\[
+W_3  = \left[
+ \begin{matrix}
+  w_3 &amp; 1
+  \end{matrix} 
+\right]
+\]</span></p>
+<p><span class="math display">\[
+X  = \left[
+ \begin{matrix}
+   x_3\\
+   1 \\
+  \end{matrix} 
+\right]
+\]</span></p>
+<p><span class="math display">\[
+w_3 = w^T_2W_1​
+\]</span></p>
+<p><span class="math display">\[
+b_3 = w^T_2b_1 + b_2
+\]</span></p>
+<p>while <span class="math inline">\(w_3\)</span> is a <span class="math inline">\(n × d\)</span> matrix, and <span class="math inline">\(b_3\)</span> is the bias, <span class="math inline">\(W_3\)</span> is a <span class="math inline">\(n × (d + 1)\)</span> matrix</p>
+<ul>
+<li><p>First, we need to prove <strong><span class="math display">\[VC(\mathcal{H}) \geq d + 1\]</span></strong>,</p>
+<p>We need to prove that <span class="math inline">\(\mathcal H\)</span> can shatter at least <span class="math inline">\(d + 1\)</span> points. That is, it suffices to show that there exists a set of <span class="math inline">\(d + 1\)</span> points such that <span class="math inline">\(\mathcal H\)</span> can produce any pre-sepecified {-1, +1} assignment <span class="math inline">\(y = (y_1, ..., y_{d+1})\)</span>, Let <span class="math display">\[\begin{align}
+X &amp;= \left[
+ \begin{matrix}
+   x_1^T\\
+   \vdots\\
+   x_{d+1}^T \\
+  \end{matrix} 
+\right] \\
+&amp;= \left[
+ \begin{matrix}
+   1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0\\
+
+   1 &amp; 1 &amp; 0 &amp; \cdots &amp; 0\\
+   1 &amp; 0 &amp; 1 &amp; \cdots &amp; 0\\
+
+   \vdots  &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+
+  1 &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\
+
+  \end{matrix} 
+\right]\end{align}\]</span></p></li>
+<li><p>Next, we need to prove <strong><span class="math display">\[VC(\mathcal{H}) \leq d + 1\]</span></strong>,</p></li>
+</ul>
 <h3 id="problem2-1">2.2 Problem2</h3>
 <p>Given a hyphothesis set <span class="math inline">\(\mathcal{H}\)</span></p>
 <h4 id="result-1">2.2.1 Result</h4>
@@ -591,14 +641,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PAT</a>
               </li>
              
@@ -612,6 +654,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">VC Dimension</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,39 +717,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Data Mining</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,11 +737,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Movie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
             
             <div class="clearfix"></div>
