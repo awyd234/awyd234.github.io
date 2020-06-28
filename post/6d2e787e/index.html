@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-27T19:51:50.000Z">
+<meta property="og:updated_time" content="2020-06-28T06:13:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VC Dimension of Neural Networks">
 <meta name="twitter:description" content="1. Problems We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as \[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\] w">
@@ -263,14 +263,14 @@ o = W_3X
 <p><span class="math display">\[
 W_3  = \left[
  \begin{matrix}
-  w_3 &amp; 1
+  w_3 &amp; b_3
   \end{matrix} 
 \right]
 \]</span></p>
 <p><span class="math display">\[
 X  = \left[
  \begin{matrix}
-   x_3\\
+   v \\
    1 \\
   \end{matrix} 
 \right]
@@ -304,7 +304,9 @@ X &amp;= \left[
   1 &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\
 
   \end{matrix} 
-\right]\end{align}\]</span></p></li>
+\right] \in \mathbb{R}^{(d +1) \times (d + 1)}
+
+\end{align}\]</span></p></li>
 <li><p>Next, we need to prove <strong><span class="math display">\[VC(\mathcal{H}) \leq d + 1\]</span></strong>,</p></li>
 </ul>
 <h3 id="problem2-1">2.2 Problem2</h3>
@@ -641,6 +643,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PAT</a>
               </li>
              
@@ -654,26 +664,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">VC Dimension</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,7 +707,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Data Mining</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,31 +755,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
             
             <div class="clearfix"></div>
