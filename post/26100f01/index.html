@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>几个特殊的极限存在问题 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 1.1 Proof \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +">
+  <meta name="description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +  \frac{1}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几个特殊的极限存在问题">
 <meta property="og:url" content="http://windtrack.xyz/post/26100f01/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 1.1 Proof \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +">
+<meta property="og:description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +  \frac{1}">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-09T01:17:38.000Z">
+<meta property="og:updated_time" content="2020-07-09T01:44:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几个特殊的极限存在问题">
-<meta name="twitter:description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 1.1 Proof \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +">
+<meta name="twitter:description" content="1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散 \[\begin{align}  a_n &amp;amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\   &amp;amp;= 1 + \frac{1}{2} + ... +  \frac{1}">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -230,7 +230,6 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="a_n-sumlimits_i1nfrac1i-1-frac12-frac1n数列a_n发散">1. <span class="math inline">\(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
-<h3 id="proof">1.1 Proof</h3>
 <p><span class="math display">\[\begin{align}
 
 a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\ 
@@ -249,6 +248,26 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
 <p>其中<span class="math inline">\(m\)</span>是<span class="math inline">\(\frac{1}{2}\)</span>的个数，随着n的增大而增大</p>
 <p>所以，</p>
 <p><span class="math display">\[\lim\limits_{n\rightarrow\infty}a_n = \infty\]</span></p>
+<h2 id="a_np---a_n-le-fracpn-forall-n-p-in-n数列a_n发散">2. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
+<p>举反例，如数列<span class="math inline">\(\{1 + \frac{1}{2} + ... + \frac{1}{n}\}\)</span>满足<span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)</span>，但是其发散</p>
+<h2 id="a_np---a_n-le-fracpn2-forall-n-p-in-n数列a_n收敛">3. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n^2}, \forall n, p \in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>收敛</h2>
+<p><span class="math display">\[\forall n, p \in N^{*}\]</span></p>
+<p><span class="math display">\[\begin{align}
+
+|a_{n+p} - a_{n}| &amp;\le |a_{n+p} - a_{n+p+1}| + |a_{n+p-1} - a_{n+p-2}| + ... + |a_{n+1} - a_{n}| \\ 
+
+&amp;\le \frac{1}{(n+p-1)^2} + ... + \frac{1}{n^2} \\ 
+
+&amp;\le \frac{1}{(n + p - 1)(n + p - 2)} + ... + \frac{1}{n(n - 1)} \\ 
+
+&amp;= \frac{1}{n-1} - \frac{1}{n+p-1} \\ 
+
+&amp;&lt; \frac{1}{n-1}
+
+\end{align}\]</span></p>
+<p>于是</p>
+<p><span class="math display">\[\forall p, n \in N^{*}: |a_{n+p} - a_{n}| &lt; \frac{1}{n - 1} (n&gt;1)\]</span> 因此 <span class="math display">\[\forall \epsilon &gt; 0, \exists N = \lfloor\frac{1}{\epsilon}\rfloor + 2, \forall n &gt; N, \forall p \in N^{*}: |a_{n+p} - a_{n}| &lt; \epsilon\]</span></p>
+<p>所以数列收敛</p>
 
       
 
@@ -371,7 +390,7 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#a_n-sumlimits_i1nfrac1i-1-frac12-frac1n数列a_n发散"><span class="toc-number">1.</span> <span class="toc-text">1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#proof"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Proof</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#a_n-sumlimits_i1nfrac1i-1-frac12-frac1n数列a_n发散"><span class="toc-number">1.</span> <span class="toc-text">1. \(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + \frac{1}{n}\)，数列\(\{a_n\}\)发散</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a_np---a_n-le-fracpn-forall-n-p-in-n数列a_n发散"><span class="toc-number">2.</span> <span class="toc-text">2. \(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)，数列\(\{a_n\}\)发散</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a_np---a_n-le-fracpn2-forall-n-p-in-n数列a_n收敛"><span class="toc-number">3.</span> <span class="toc-text">3. \(|a_{n+p} - a_{n}| \le \frac{p}{n^2}, \forall n, p \in N^{*}\)，数列\(\{a_n\}\)收敛</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -576,10 +595,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
               </li>
              
@@ -593,6 +608,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,11 +679,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
             
             <div class="clearfix"></div>
