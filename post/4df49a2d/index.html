@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>Kernel Functions for Support Vector Machines | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. Question Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can b">
+  <meta name="description" content="1. Background Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can">
 <meta name="keywords" content="Homework,Machine Learning,Kernel Function,SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kernel Functions for Support Vector Machines">
 <meta property="og:url" content="http://windtrack.xyz/post/4df49a2d/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="1. Question Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can b">
+<meta property="og:description" content="1. Background Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-11T12:41:05.000Z">
+<meta property="og:updated_time" content="2020-07-11T17:51:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kernel Functions for Support Vector Machines">
-<meta name="twitter:description" content="1. Question Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can b">
+<meta name="twitter:description" content="1. Background Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -230,7 +230,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="question">1. Question</h2>
+        <h2 id="background">1. Background</h2>
 <p>Given input dimension <span class="math inline">\(d\)</span>, input data <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> can be expressed as <span class="math inline">\(\vec{x} = (x_1, ... , x_d)\)</span>, <span class="math inline">\(\vec{y} = (y_1, ..., y_d)\)</span>, an SVM kernel function <span class="math inline">\(k(\vec{x}, \vec{y})\)</span> can be expressed as the dot product of the transformation of <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> by a transformation function <span class="math inline">\(\gamma\)</span>, that is to say</p>
 <p><span class="math display">\[k(\vec{x}, \vec{y}) = \gamma(\vec{x}) \cdot \gamma(\vec{y})\]</span></p>
 <h2 id="problems">2. Problems</h2>
@@ -241,6 +241,26 @@ var _hmt = _hmt || [];
 <li><span class="math inline">\(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></li>
 </ul>
 <h2 id="kvecx-vecy-vecx-cdot-vecyn">3. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></h2>
+<p>根据多项式展开公式</p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n = (x_1y_1 + x_2y_2 + \cdots + x_dy_d) ^ n = \sum{\frac{n!}{n_1!n_2!\cdots n_d!}{(x_1y_1)}^{n_1}{(x_2y_2)}^{n_2} \cdots {(x_dy_d)}^{n_d}}\]</span></p>
+<p>所以</p>
+<p><span class="math display">\[\gamma(\vec{x}) = [\sqrt{\frac{n!}{n_1!n_2!\cdots n_d!}}{x_1}^{n_1}{x_2}^{n_2} \cdots {x_d}^{n_d}, n_1+n_2+\cdots + n_d = n]\]</span></p>
+<p>容易验证</p>
+<p><span class="math display">\[\gamma(\vec{x}) \cdot \gamma(\vec{y}) = k(\vec{x}, \vec{y})\]</span></p>
+<p>因此，映射到的维数是和多项式的项数相关的，项数为<span class="math inline">\(m=\tbinom{n+d-1}{d}\)</span>，即<span class="math inline">\(\mathcal{H} \in \mathbb{R}^{m}\)</span></p>
+<p>该超平面的VC维为<span class="math inline">\(\tbinom{n+d-1}{d} + 1\)</span></p>
+<h2 id="kvecx-vecy-vecx-cdot-vecy-1n">4. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y} + 1)^n\)</span></h2>
+<p>此处相当于扩展</p>
+<p><span class="math display">\[\vec{x&#39;} = [\vec{x}, 1]\]</span></p>
+<p><span class="math display">\[\vec{y&#39;} = [\vec{y}, 1]\]</span></p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x}\cdot \vec{y} + 1)^n = (\vec{x&#39;}\cdot \vec{y&#39;})^n\]</span></p>
+<p>其中，</p>
+<p><span class="math display">\[\vec{x&#39;} \in \mathbb{R}^{d+1}, \vec{y&#39;} \in \mathbb{R}^{d+1}\]</span></p>
+<p>根据3中的结论，</p>
+<p><span class="math display">\[\gamma(\vec{x&#39;}) = [\sqrt{\frac{n!}{n_1!n_2!\cdots n_d!n_{d+1}!}}{x_1}^{n_1}{x_2}^{n_2} \cdots {x_d}^{n_d} {x_{d+1}}^{n_{d+1}}, n_1+n_2+\cdots + n_d + n_{d+1}= n]\]</span></p>
+<p>其中<span class="math inline">\(x_{d+1} = 1\)</span></p>
+<p>该超平面的VC维为<span class="math inline">\(\tbinom{n+d}{d+1} + 1\)</span></p>
+<h2 id="kvecx-vecy-e-sigmavecx2-vecy2n">5. <span class="math inline">\(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></h2>
 
       
 
@@ -397,7 +417,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#question"><span class="toc-number">1.</span> <span class="toc-text">1. Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">2.</span> <span class="toc-text">2. Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kvecx-vecy-vecx-cdot-vecyn"><span class="toc-number">3.</span> <span class="toc-text">3. \(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#background"><span class="toc-number">1.</span> <span class="toc-text">1. Background</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problems"><span class="toc-number">2.</span> <span class="toc-text">2. Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kvecx-vecy-vecx-cdot-vecyn"><span class="toc-number">3.</span> <span class="toc-text">3. \(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kvecx-vecy-vecx-cdot-vecy-1n"><span class="toc-number">4.</span> <span class="toc-text">4. \(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y} + 1)^n\)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kvecx-vecy-e-sigmavecx2-vecy2n"><span class="toc-number">5.</span> <span class="toc-text">5. \(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -230,7 +230,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="question">1. Question</h2>
+        <h2 id="background">1. Background</h2>
 <p>Given input dimension <span class="math inline">\(d\)</span>, input data <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> can be expressed as <span class="math inline">\(\vec{x} = (x_1, ... , x_d)\)</span>, <span class="math inline">\(\vec{y} = (y_1, ..., y_d)\)</span>, an SVM kernel function <span class="math inline">\(k(\vec{x}, \vec{y})\)</span> can be expressed as the dot product of the transformation of <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> by a transformation function <span class="math inline">\(\gamma\)</span>, that is to say</p>
 <p><span class="math display">\[k(\vec{x}, \vec{y}) = \gamma(\vec{x}) \cdot \gamma(\vec{y})\]</span></p>
 <h2 id="problems">2. Problems</h2>
@@ -241,7 +241,9 @@ var _hmt = _hmt || [];
 <li><span class="math inline">\(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></li>
 </ul>
 <h2 id="kvecx-vecy-vecx-cdot-vecyn">3. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></h2>
-
+<p>根据多项式展开公式</p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n = (x_1y_1 + x_2y_2 + \cdots + x_dy_d) ^ n = \sum{\frac{n!}{n_1!n_2!\cdots n_d!}{(x_1y_1)}^{n_1}{(x_2y_2)}^{n_2} \cdots {(x_dy_d)}^{n_d}}\]</span></p>
+<p>所以</p>
         
           <a class="article-more-a" href="/post/4df49a2d/#more">more >></a>
         
