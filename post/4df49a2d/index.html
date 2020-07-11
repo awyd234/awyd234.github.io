@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. Background Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-11T17:51:57.000Z">
+<meta property="og:updated_time" content="2020-07-11T18:16:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kernel Functions for Support Vector Machines">
 <meta name="twitter:description" content="1. Background Given input dimension \(d\), input data \(x\), \(y\) can be expressed as \(\vec{x} = (x_1, ... , x_d)\), \(\vec{y} = (y_1, ..., y_d)\), an SVM kernel function \(k(\vec{x}, \vec{y})\) can">
@@ -261,6 +261,9 @@ var _hmt = _hmt || [];
 <p>其中<span class="math inline">\(x_{d+1} = 1\)</span></p>
 <p>该超平面的VC维为<span class="math inline">\(\tbinom{n+d}{d+1} + 1\)</span></p>
 <h2 id="kvecx-vecy-e-sigmavecx2-vecy2n">5. <span class="math inline">\(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></h2>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n} = e^{-\sigma(\sum\limits_{i=1}^{d}{(x_i^2+y_i^2)})^n}=e^{-\sigma((x_1^2+y_1^2)+\cdots(x_d^2+y_d^2))^n}\]</span></p>
+<p><span class="math display">\[h(\vec{x}, \vec{y}) = ((x_1^2+y_1^2)+\cdots + (x_d^2+y_d^2))^n=\sum{\frac{n!}{n_1!n_2!\cdots n_{2d}!}{x_1}^{n_1}{x_2}^{n_2} \cdots {x_d}^{n_d}{y_1}^{n_{d+1}}{y_2}^{n_{d+2}} \cdots {y_d}^{n_{2d}}}\]</span></p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = e^{-\sigma h(\vec{x},\vec{y})}\]</span></p>
 
       
 
@@ -654,6 +657,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DataStructure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BinarryTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
               </li>
              
@@ -671,14 +682,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DataStructure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BinarryTree</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,6 +713,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -723,10 +730,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
