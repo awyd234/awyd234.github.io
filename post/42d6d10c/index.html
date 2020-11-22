@@ -6,28 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>「一周算法实践」Task2 模型评估 | Wind Track</title>
+  <title>CUDA升级，从9.2到11.0 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景介绍 由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程 GitHub Link GitHub - Datawhale Datamining Practice - awyd234 任务描述 【任务2 - 模型评估】记录7个模型（在Task1的基础上）关于accuracy、precision，recall和F1-score、auc值的评分">
-<meta name="keywords" content="AI,Data Mining,Practice,Model Evaluation">
-<meta property="og:type" content="article">
-<meta property="og:title" content="「一周算法实践」Task2 模型评估">
-<meta property="og:url" content="http://windtrack.xyz/post/a0e056d3/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="CUDA升级，从9.2到11.0">
+<meta property="og:url" content="http://windtrack.xyz/post/42d6d10c/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="背景介绍 由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程 GitHub Link GitHub - Datawhale Datamining Practice - awyd234 任务描述 【任务2 - 模型评估】记录7个模型（在Task1的基础上）关于accuracy、precision，recall和F1-score、auc值的评分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/lr_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/svm_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/dt_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/rf_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/gbdt_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/xgboost_roc_curve.png">
-<meta property="og:image" content="http://windtrack.xyz/post/a0e056d3/lightgbm_roc_curve.png">
-<meta property="og:updated_time" content="2019-05-28T03:33:09.000Z">
+<meta property="og:updated_time" content="2020-09-26T21:09:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「一周算法实践」Task2 模型评估">
-<meta name="twitter:description" content="背景介绍 由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程 GitHub Link GitHub - Datawhale Datamining Practice - awyd234 任务描述 【任务2 - 模型评估】记录7个模型（在Task1的基础上）关于accuracy、precision，recall和F1-score、auc值的评分">
-<meta name="twitter:image" content="http://windtrack.xyz/post/a0e056d3/lr_roc_curve.png">
+<meta name="twitter:title" content="CUDA升级，从9.2到11.0">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -218,360 +206,27 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-「一周算法实践」Task2-模型评估" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CUDA升级，从9-2到11-0" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      「一周算法实践」Task2 模型评估
+      CUDA升级，从9.2到11.0
     </h1>
   
 
         
-        <a href="/post/a0e056d3/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+        <a href="/post/42d6d10c/" class="archive-article-date">
+  	<time datetime="2020-09-26T21:09:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景介绍">背景介绍</h2>
-<p>由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程</p>
-<h2 id="github-link">GitHub Link</h2>
-<p><a href="https://github.com/awyd234/ai_related_learning/tree/master/datawhale_dm_practice" target="_blank" rel="noopener">GitHub - Datawhale Datamining Practice - awyd234</a></p>
-<h2 id="任务描述">任务描述</h2>
-<p><strong>【任务2 - 模型评估】</strong>记录7个模型（在Task1的基础上）关于accuracy、precision，recall和F1-score、auc值的评分表格，并画出Roc曲线。</p>
-<h2 id="评价指标">评价指标</h2>
-<p>对二分类问题常用的评估指标是精度(precision)、召回率(recall)、F1值(F1-score)，通常以关注的类为正类，其他类为负类</p>
-<h2 id="实践过程">实践过程</h2>
-<p>画ROC曲线需要用到matplotlib</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i install -i https://pypi.doubanio.com/simple/ matplotlib</span><br></pre></td></tr></table></figure>
-<p>参考<a href="https://blog.csdn.net/zhihua_oba/article/details/78677469" target="_blank" rel="noopener">004-Sm1les同学博客</a>的写法，将训练过程和评价方法单独定义了一个函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit_and_evaluate_model</span><span class="params">(model, x_train_standard, y_train, x_test_standard, y_test, model_name)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    train model and evaluate it</span></span><br><span class="line"><span class="string">    :param model: </span></span><br><span class="line"><span class="string">    :param x_train_standard: </span></span><br><span class="line"><span class="string">    :param y_train: </span></span><br><span class="line"><span class="string">    :param x_test_standard: </span></span><br><span class="line"><span class="string">    :param y_test: </span></span><br><span class="line"><span class="string">    :param model_name: </span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    clf.fit(x_train_standard, y_train)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模型对训练集的预测值</span></span><br><span class="line">    y_train_prediction_value = clf.predict(x_train_standard)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模型对测试集的预测值</span></span><br><span class="line">    y_test_prediction_value = clf.predict(x_test_standard)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模型对训练集的各类预测概率</span></span><br><span class="line">    y_train_prediction_prob = clf.predict_proba(x_train_standard)</span><br><span class="line">    <span class="comment"># 模型对测试集的各类预测概率</span></span><br><span class="line">    y_test_prediction_prob = clf.predict_proba(x_test_standard)</span><br><span class="line"></span><br><span class="line">    train_accuracy_score = metrics.accuracy_score(y_train, y_train_prediction_value)</span><br><span class="line">    test_accuracy_score = metrics.accuracy_score(y_test, y_test_prediction_value)</span><br><span class="line"></span><br><span class="line">    train_precision_score = metrics.precision_score(y_train, y_train_prediction_value)</span><br><span class="line">    test_precision_score = metrics.precision_score(y_test, y_test_prediction_value)</span><br><span class="line"></span><br><span class="line">    train_recall = metrics.recall_score(y_train, y_train_prediction_value)</span><br><span class="line">    test_recall = metrics.recall_score(y_test, y_test_prediction_value)</span><br><span class="line"></span><br><span class="line">    train_f1_score = metrics.f1_score(y_train, y_train_prediction_value)</span><br><span class="line">    test_f1_score = metrics.f1_score(y_test, y_test_prediction_value)</span><br><span class="line"></span><br><span class="line">    train_auc_score = metrics.roc_auc_score(y_train, y_train_prediction_prob[:, <span class="number">1</span>])</span><br><span class="line">    test_auc_score = metrics.roc_auc_score(y_test, y_test_prediction_prob[:, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"------------------------&#123;model_name&#125;------------------------"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Train Set:"</span>)</span><br><span class="line">    print(<span class="string">"Accuracy: &#123;train_accuracy_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Precision: &#123;train_precision_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"F1_score: &#123;train_f1_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Recall: &#123;train_recall&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Auc: &#123;train_auc_score&#125;"</span>.format(**locals()))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"Test Set:"</span>)</span><br><span class="line">    print(<span class="string">"Accuracy: &#123;test_accuracy_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Precision: &#123;test_precision_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"F1_score: &#123;test_f1_score&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Recall: &#123;test_recall&#125;"</span>.format(**locals()))</span><br><span class="line">    print(<span class="string">"Auc: &#123;test_auc_score&#125;"</span>.format(**locals()))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ROC曲线绘制</span></span><br><span class="line">    train_fprs, train_tprs, train_thresholds = metrics.roc_curve(y_train, y_train_prediction_prob[:, <span class="number">1</span>])</span><br><span class="line">    test_fprs, test_tprs, test_thresholds = metrics.roc_curve(y_test, y_test_prediction_prob[:, <span class="number">1</span>])</span><br><span class="line">    plt.plot(train_fprs, train_tprs)</span><br><span class="line">    plt.plot(test_fprs, test_tprs)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">"--"</span>)</span><br><span class="line">    plt.title(<span class="string">"&#123;model_name&#125; ROC curve"</span>.format(**locals()))</span><br><span class="line">    plt.xlabel(<span class="string">"FPR"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"TPR"</span>)</span><br><span class="line">    plt.legend(</span><br><span class="line">        labels=[<span class="string">"Train Set AUC:"</span> + str(round(train_accuracy_score, <span class="number">5</span>)), <span class="string">"Test Set AUC:"</span> + str(round(test_accuracy_score, <span class="number">5</span>))],</span><br><span class="line">        loc=<span class="string">"lower right"</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"-----------------------------------------------------------"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="生成结果">生成结果</h2>
-<h3 id="逻辑回归">1. 逻辑回归</h3>
-<h4 id="代码实现">1.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lr = LogisticRegression(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(lr, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'LogisticRegression'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果">1.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.8049293657950105</td>
-<td>0.7876664330763841</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>0.7069351230425056</td>
-<td>0.6609195402298851</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.4933645589383294</td>
-<td>0.4315196998123827</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.37889688249400477</td>
-<td>0.3203342618384401</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.8198240444948494</td>
-<td>0.7657454644090431</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线">1.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/lr_roc_curve.png">
-</div>
-<h3 id="svm">2. SVM</h3>
-<h4 id="代码实现-1">2.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svm_clf = SVC(random_state=<span class="number">2018</span>, probability=<span class="keyword">True</span>)</span><br><span class="line">fit_and_evaluate_model(svm_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'SVM'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-1">2.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.8428013225127743</td>
-<td>0.7806587245970568</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>0.9146666666666666</td>
-<td>0.7017543859649122</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.5674110835401158</td>
-<td>0.3382663847780127</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.41127098321342925</td>
-<td>0.22284122562674094</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.9217853154299663</td>
-<td>0.7531297924947575</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-1">2.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/svm_roc_curve.png">
-</div>
-<h2 id="decisiontree">3. DecisionTree</h2>
-<h4 id="代码实现-2">3.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dt_clf = tree.DecisionTreeClassifier(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(dt_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'DecisionTree'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-2">3.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>1.0</td>
-<td>0.6860546601261388</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>1.0</td>
-<td>0.3850129198966408</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>1.0</td>
-<td>0.39946380697050937</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>1.0</td>
-<td>0.415041782729805</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>1.0</td>
-<td>0.5960976703911197</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-2">3.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/dt_roc_curve.png">
-</div>
-<h2 id="randomforest">4. RandomForest</h2>
-<h4 id="代码实现-3">4.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">random_forest_clf = RandomForestClassifier(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(random_forest_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'RandomForest'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-3">4.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.9849714457469192</td>
-<td>0.7680448493342676</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>1.0</td>
-<td>0.5875</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.9690976514215082</td>
-<td>0.3622350674373796</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.9400479616306955</td>
-<td>0.2618384401114206</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.9995264919231882</td>
-<td>0.7194427926095167</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-3">4.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/rf_roc_curve.png">
-</div>
-<h2 id="gbdt">5. GBDT</h2>
-<h4 id="代码实现-4">5.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gbdt_clf = GradientBoostingClassifier(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(gbdt_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'GBDT'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-4">5.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.8623384430417794</td>
-<td>0.7806587245970568</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>0.8836734693877552</td>
-<td>0.6116504854368932</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.6540785498489425</td>
-<td>0.44601769911504424</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.5191846522781774</td>
-<td>0.35097493036211697</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.9207464353427005</td>
-<td>0.7632677120173599</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-4">5.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/gbdt_roc_curve.png">
-</div>
-<h2 id="xgboost">6. XGBoost</h2>
-<h4 id="代码实现-5">6.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xgbt_clf = XGBClassifier(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(xgbt_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'XGBoost'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-5">6.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.8539224526600541</td>
-<td>0.7841625788367204</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>0.875</td>
-<td>0.624390243902439</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.6255778120184899</td>
-<td>0.45390070921985815</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.486810551558753</td>
-<td>0.3565459610027855</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.9174710772897927</td>
-<td>0.7708522424963224</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-5">6.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/xgboost_roc_curve.png">
-</div>
-<h2 id="lightgbm">7. LightGBM</h2>
-<h4 id="代码实现-6">7.1 代码实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light_gbm_clf = LGBMClassifier(random_state=<span class="number">2018</span>)</span><br><span class="line">fit_and_evaluate_model(light_gbm_clf, x_train_standard, y_train, x_test_standard, y_test, <span class="string">'LightGBM'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="评价指标结果-6">7.2 评价指标结果</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Evaluation</th>
-<th>Train Set</th>
-<th>Test Set</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Accuracy</td>
-<td>0.9957920048091373</td>
-<td>0.7701471618780659</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>1.0</td>
-<td>0.5688888888888889</td>
-</tr>
-<tr class="odd">
-<td>F1-score</td>
-<td>0.9915356711003627</td>
-<td>0.4383561643835616</td>
-</tr>
-<tr class="even">
-<td>Recall</td>
-<td>0.9832134292565947</td>
-<td>0.3565459610027855</td>
-</tr>
-<tr class="odd">
-<td>Auc</td>
-<td>0.9999826853318788</td>
-<td>0.7535210165566023</td>
-</tr>
-</tbody>
-</table>
-<h4 id="roc曲线-6">7.3 ROC曲线</h4>
-<div data-align="center">
-<img src="/post/a0e056d3/lightgbm_roc_curve.png">
-</div>
-<h2 id="遇到的问题">遇到的问题</h2>
-<h3 id="matplot的import问题">1. matplot的import问题</h3>
-<p>当尝试引入matplotlib时</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
-<p>出现了以下错误</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/Users/windtrack/Interests/ai_related_learning/datawhale_dm_practice/main.py"</span>, line <span class="number">14</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">  File <span class="string">"/Users/windtrack/Interests/ai_related_learning/datawhale_dm_practice/.env/lib/python3.6/site-packages/matplotlib/pyplot.py"</span>, line <span class="number">2374</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    switch_backend(rcParams[<span class="string">"backend"</span>])</span><br><span class="line">  File <span class="string">"/Users/windtrack/Interests/ai_related_learning/datawhale_dm_practice/.env/lib/python3.6/site-packages/matplotlib/pyplot.py"</span>, line <span class="number">207</span>, <span class="keyword">in</span> switch_backend</span><br><span class="line">    backend_mod = importlib.import_module(backend_name)</span><br><span class="line">  File <span class="string">"/Users/windtrack/Interests/ai_related_learning/datawhale_dm_practice/.env/lib/python3.6/importlib/__init__.py"</span>, line <span class="number">126</span>, <span class="keyword">in</span> import_module</span><br><span class="line">    <span class="keyword">return</span> _bootstrap._gcd_import(name[level:], package, level)</span><br><span class="line">  File <span class="string">"/Users/windtrack/Interests/ai_related_learning/datawhale_dm_practice/.env/lib/python3.6/site-packages/matplotlib/backends/backend_macosx.py"</span>, line <span class="number">14</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> matplotlib.backends <span class="keyword">import</span> _macosx</span><br><span class="line">ImportError: Python <span class="keyword">is</span> <span class="keyword">not</span> installed <span class="keyword">as</span> a framework. The Mac OS X backend will <span class="keyword">not</span> be able to function correctly <span class="keyword">if</span> Python <span class="keyword">is</span> <span class="keyword">not</span> installed <span class="keyword">as</span> a framework. See the Python documentation <span class="keyword">for</span> more information on installing Python <span class="keyword">as</span> a framework on Mac OS X. Please either reinstall Python <span class="keyword">as</span> a framework, <span class="keyword">or</span> <span class="keyword">try</span> one of the other backends. If you are using (Ana)Conda please install python.app <span class="keyword">and</span> replace the use of <span class="string">'python'</span> <span class="keyword">with</span> <span class="string">'pythonw'</span>. See <span class="string">'Working with Matplotlib on OSX'</span> <span class="keyword">in</span> the Matplotlib FAQ <span class="keyword">for</span> more information.</span><br></pre></td></tr></table></figure>
-<p>于是在网上搜到了一种<a href="https://www.cnblogs.com/harelion/p/5637767.html" target="_blank" rel="noopener">解决方案</a>，在自己的工作目录的.matplotlib目录里，新建了文件matplotlibrc并写入值backend: TkAgg</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 'backend: TkAgg' &gt; ~/.matplotlib/matplotlibrc</span><br></pre></td></tr></table></figure>
-<p>此时再次执行则可以正常进行</p>
-<h3 id="逻辑回归和svm中部分评价结果为0">2. 逻辑回归和SVM中部分评价结果为0</h3>
-<p>据说，与数据未调参有关，导致两个分母都为0有关，可以暂时加上数据归一化</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">scaler = StandardScaler()</span><br><span class="line">scaler.fit(x_train)</span><br><span class="line">x_train_standard = scaler.transform(x_train)</span><br><span class="line">x_test_standard = scaler.transform(x_test)</span><br></pre></td></tr></table></figure>
+        
 
       
 
@@ -601,41 +256,7 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Practice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Model Evaluation</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Data-Mining//" class="article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -685,7 +306,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/a0e056d3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/42d6d10c/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -699,18 +320,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/post/773d27b5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          「一周算法实践」Task3 模型调优
-        
-      </div>
-    </a>
   
-  
-    <a href="/post/bb306368/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode 207. Course Schedule</div>
+    <a href="/post/2ce48a21/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">印象笔记存储导致的tensorflow serving的坑 Error parsing text-format tensorflow.serving.ModelServerConfig</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -737,7 +349,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github-link"><span class="toc-number">2.</span> <span class="toc-text">GitHub Link</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任务描述"><span class="toc-number">3.</span> <span class="toc-text">任务描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评价指标"><span class="toc-number">4.</span> <span class="toc-text">评价指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践过程"><span class="toc-number">5.</span> <span class="toc-text">实践过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成结果"><span class="toc-number">6.</span> <span class="toc-text">生成结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑回归"><span class="toc-number">6.1.</span> <span class="toc-text">1. 逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-number">6.1.1.</span> <span class="toc-text">1.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果"><span class="toc-number">6.1.2.</span> <span class="toc-text">1.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线"><span class="toc-number">6.1.3.</span> <span class="toc-text">1.3 ROC曲线</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#svm"><span class="toc-number">6.2.</span> <span class="toc-text">2. SVM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-1"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-1"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-1"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#decisiontree"><span class="toc-number">7.</span> <span class="toc-text">3. DecisionTree</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-2"><span class="toc-number">7.0.1.</span> <span class="toc-text">3.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-2"><span class="toc-number">7.0.2.</span> <span class="toc-text">3.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-2"><span class="toc-number">7.0.3.</span> <span class="toc-text">3.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#randomforest"><span class="toc-number">8.</span> <span class="toc-text">4. RandomForest</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-3"><span class="toc-number">8.0.1.</span> <span class="toc-text">4.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-3"><span class="toc-number">8.0.2.</span> <span class="toc-text">4.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-3"><span class="toc-number">8.0.3.</span> <span class="toc-text">4.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gbdt"><span class="toc-number">9.</span> <span class="toc-text">5. GBDT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-4"><span class="toc-number">9.0.1.</span> <span class="toc-text">5.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-4"><span class="toc-number">9.0.2.</span> <span class="toc-text">5.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-4"><span class="toc-number">9.0.3.</span> <span class="toc-text">5.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xgboost"><span class="toc-number">10.</span> <span class="toc-text">6. XGBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-5"><span class="toc-number">10.0.1.</span> <span class="toc-text">6.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-5"><span class="toc-number">10.0.2.</span> <span class="toc-text">6.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-5"><span class="toc-number">10.0.3.</span> <span class="toc-text">6.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lightgbm"><span class="toc-number">11.</span> <span class="toc-text">7. LightGBM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-6"><span class="toc-number">11.0.1.</span> <span class="toc-text">7.1 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价指标结果-6"><span class="toc-number">11.0.2.</span> <span class="toc-text">7.2 评价指标结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roc曲线-6"><span class="toc-number">11.0.3.</span> <span class="toc-text">7.3 ROC曲线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">12.</span> <span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#matplot的import问题"><span class="toc-number">12.1.</span> <span class="toc-text">1. matplot的import问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑回归和svm中部分评价结果为0"><span class="toc-number">12.2.</span> <span class="toc-text">2. 逻辑回归和SVM中部分评价结果为0</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
