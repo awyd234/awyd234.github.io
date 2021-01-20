@@ -223,15 +223,28 @@ var _hmt = _hmt || [];
 
         
         <a href="/post/42d6d10c/" class="archive-article-date">
-  	<time datetime="2020-09-26T21:09:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
+  	<time datetime="2021-01-20T07:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-
+        <h1 id="故事背景">故事背景</h1>
+<h2 id="系统配置">系统配置</h2>
+<h3 id="操作系统">操作系统</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/version</span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
+<h3 id="算法模型-backbone">算法模型 Backbone</h3>
+<ul>
+<li>ResNet V2</li>
+<li>ResNet 101</li>
+<li>ResNet 50</li>
+<li>Mask RCNN</li>
+</ul>
+<h2 id="故事描述">故事描述</h2>
+<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
+<h1 id="故事经过">故事经过</h1>
+<h2 id="安装cuda驱动">安装CUDA驱动</h2>
         
           <a class="article-more-a" href="/post/42d6d10c/#more">more >></a>
         
@@ -1329,7 +1342,7 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Qian Hu
+    		&copy; 2021 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1505,14 +1518,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
@@ -1522,6 +1527,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Social Network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
               </li>
              
               <li class="article-tag-list-item">

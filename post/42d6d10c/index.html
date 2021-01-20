@@ -8,14 +8,20 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>CUDA升级，从9.2到11.0 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="故事背景 系统配置 操作系统 12$ cat /proc/versionLinux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164- 算法模型 Backbone  ResNet V2 ResNet 101 Re">
+<meta property="og:type" content="article">
 <meta property="og:title" content="CUDA升级，从9.2到11.0">
 <meta property="og:url" content="http://windtrack.xyz/post/42d6d10c/index.html">
 <meta property="og:site_name" content="Wind Track">
+<meta property="og:description" content="故事背景 系统配置 操作系统 12$ cat /proc/versionLinux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164- 算法模型 Backbone  ResNet V2 ResNet 101 Re">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-26T21:09:49.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/42d6d10c/cuda_driver_download.png">
+<meta property="og:image" content="http://windtrack.xyz/post/42d6d10c/nvidia-smi_show1.png">
+<meta property="og:updated_time" content="2021-01-20T07:37:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA升级，从9.2到11.0">
+<meta name="twitter:description" content="故事背景 系统配置 操作系统 12$ cat /proc/versionLinux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164- 算法模型 Backbone  ResNet V2 ResNet 101 Re">
+<meta name="twitter:image" content="http://windtrack.xyz/post/42d6d10c/cuda_driver_download.png">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -219,14 +225,72 @@ var _hmt = _hmt || [];
 
         
         <a href="/post/42d6d10c/" class="archive-article-date">
-  	<time datetime="2020-09-26T21:09:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
+  	<time datetime="2021-01-20T07:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="故事背景">故事背景</h1>
+<h2 id="系统配置">系统配置</h2>
+<h3 id="操作系统">操作系统</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/version</span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
+<h3 id="算法模型-backbone">算法模型 Backbone</h3>
+<ul>
+<li>ResNet V2</li>
+<li>ResNet 101</li>
+<li>ResNet 50</li>
+<li>Mask RCNN</li>
+</ul>
+<h2 id="故事描述">故事描述</h2>
+<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
+<h1 id="故事经过">故事经过</h1>
+<h2 id="安装cuda驱动">安装CUDA驱动</h2>
+<div data-align="center">
+<img src="/post/42d6d10c/cuda_driver_download.png">
+</div>
+<p>先在NVIDIA官网找到对应版本的cuda，执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run</span><br><span class="line">sudo sh cuda_11.0.2_450.51.05_linux.run</span><br></pre></td></tr></table></figure>
+<p>安装过程中全选，收到报错提示，查看cuda安装log <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/cuda-installer.log</span><br></pre></td></tr></table></figure></p>
+<p>提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[INFO]: Driver installation detected by command: apt list --installed | grep -e nvidia-driver-[0-9][0-9][0-9] -e nvidia-[0-9][0-9][0-9]</span><br><span class="line">[INFO]: Cleaning up window</span><br><span class="line">[INFO]: Complete</span><br><span class="line">[INFO]: Checking compiler version...</span><br><span class="line">[INFO]: gcc location: /usr/bin/gcc</span><br><span class="line">[INFO]: gcc version: gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)</span><br><span class="line">[INFO]: Initializing menu</span><br><span class="line">[INFO]: Setup complete</span><br><span class="line">[INFO]: Components to install:</span><br><span class="line">[INFO]: Driver</span><br><span class="line">[INFO]: 450.51.05</span><br><span class="line">[INFO]: Executing NVIDIA-Linux-x86_64-450.51.05.run --ui=none --no-questions --accept-license --disable-nouveau --no-cc-version-check --install-libglvnd  2&gt;&amp;1</span><br><span class="line">[INFO]: Finished with code: 256</span><br><span class="line">[ERROR]: Install of driver component failed.</span><br><span class="line">[ERROR]: Install of 450.51.05 failed, quitting</span><br><span class="line">huqian@aly-hb3-retail-resident-gpu05:~$ cat /var/log/nvidia-installer.log</span><br><span class="line">nvidia-installer log file &apos;/var/log/nvidia-installer.log&apos;</span><br><span class="line">creation time: Sun Sep 27 00:48:09 2020</span><br><span class="line">installer version: 450.51.05</span><br><span class="line">PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br><span class="line">nvidia-installer command line:</span><br><span class="line">    ./nvidia-installer</span><br><span class="line">    --ui=none</span><br><span class="line">    --no-questions</span><br><span class="line">    --accept-license</span><br><span class="line">    --disable-nouveau</span><br><span class="line">    --no-cc-version-check</span><br><span class="line">    --install-libglvnd</span><br><span class="line">Using built-in stream user interface</span><br><span class="line">-&gt; Detected 8 CPUs online; setting concurrency level to 8.</span><br><span class="line">-&gt; The file &apos;/tmp/.X0-lock&apos; exists and appears to contain the process ID &apos;1165&apos; of a runnning X server.</span><br><span class="line">ERROR: You appear to be running an X server; please exit X before installing.  For further details, please see the section INSTALLING THE NVIDIA DRIVER in the README available on the Linux driver download page at www.nvidia.com.</span><br><span class="line">ERROR: Installation has failed.  Please see the file &apos;/var/log/nvidia-installer.log&apos; for details.  You may find suggestions on fixing installation problems in the README available on the Linux driver download page at www.nvidia.com.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /tmp/.X0-lock</span><br></pre></td></tr></table></figure>
+<p>并再次尝试安装，再次报错，查看log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">nvidia-installer log file &apos;/var/log/nvidia-installer.log&apos;</span><br><span class="line">creation time: Sun Sep 27 00:51:35 2020</span><br><span class="line">installer version: 450.51.05</span><br><span class="line">PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br><span class="line">nvidia-installer command line:</span><br><span class="line">    ./nvidia-installer</span><br><span class="line">    --ui=none</span><br><span class="line">    --no-questions</span><br><span class="line">    --accept-license</span><br><span class="line">    --disable-nouveau</span><br><span class="line">    --no-cc-version-check</span><br><span class="line">    --install-libglvnd</span><br><span class="line">Using built-in stream user interface</span><br><span class="line">-&gt; Detected 8 CPUs online; setting concurrency level to 8.</span><br><span class="line">ERROR: An NVIDIA kernel module &apos;nvidia-uvm&apos; appears to already be loaded in your kernel.  This may be because it is in use (for example,by an X server, a CUDA program, or the NVIDIA Persistence Daemon), but this may also happen if your kernel was configured without support for module unloading.  Please be sure to exit any programs that may be using the GPU(s) before attempting to upgrade your driver.  If no GPU-based programs are running, you know that your kernel supports module unloading, and you still receive this message, then an error may have occured that has corrupted an NVIDIA kernel module&apos;s usage count, for which the simplest remedy is to reboot your computer.</span><br><span class="line">ERROR: Installation has failed.  Please see the file &apos;/var/log/nvidia-installer.log&apos; for details.  You may find suggestions on fixing installation problems in the README available on the Linux driver download page at www.nvidia.com.</span><br></pre></td></tr></table></figure>
+<p>从网上查阅解决方案后，执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm stop</span><br><span class="line">sudo stop nvidia-digits-server # 使用报错</span><br><span class="line">sudo service docker stop # 未使用</span><br><span class="line">sudo rmmod nvidia-uvm # 提示不存在</span><br></pre></td></tr></table></figure>
+<p>此时发现TensorFlow Serving进程还有，于是kill后再次尝试安装，</p>
+<p>继续报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">nvidia-installer log file &apos;/var/log/nvidia-installer.log&apos;</span><br><span class="line">creation time: Sun Sep 27 01:11:14 2020</span><br><span class="line">installer version: 450.51.05</span><br><span class="line">PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br><span class="line">nvidia-installer command line:</span><br><span class="line">    ./nvidia-installer</span><br><span class="line">    --ui=none</span><br><span class="line">    --no-questions</span><br><span class="line">    --accept-license</span><br><span class="line">    --disable-nouveau</span><br><span class="line">    --no-cc-version-check</span><br><span class="line">    --install-libglvnd</span><br><span class="line">Using built-in stream user interface</span><br><span class="line">-&gt; Detected 8 CPUs online; setting concurrency level to 8.</span><br><span class="line">-&gt; Installing NVIDIA driver version 450.51.05.</span><br><span class="line">-&gt; The NVIDIA driver appears to have been installed previously using a different installer. To prevent potential conflicts, it is recommended either to update the existing installation using the same mechanism by which it was originally installed, or to uninstall the existing installation before installing this driver.</span><br><span class="line">Please review the message provided by the maintainer of this alternate installation method and decide how to proceed:</span><br><span class="line">The package that is already installed is named nvidia-410.</span><br><span class="line">You can upgrade the driver by running:</span><br><span class="line">`apt-get install nvidia-410 nvidia-modprobe nvidia-settings`</span><br><span class="line">You can remove nvidia-410, and all related packages, by running:</span><br><span class="line">`apt-get remove --purge nvidia-410 nvidia-modprobe nvidia-settings`</span><br><span class="line">This package is maintained by NVIDIA (cudatools@nvidia.com).</span><br><span class="line">(Answer: Abort installation)</span><br><span class="line">ERROR: The installation was canceled due to the availability or presence of an alternate driver installation. Please see /var/log/nvidia-installer.log for more details.</span><br></pre></td></tr></table></figure>
+<p>依据提示方法，进行了尝试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge nvidia-410 nvidia-modprobe nvidia-settings</span><br></pre></td></tr></table></figure>
+<p>结果发现此时变成了nivdia 440，继续执行cuda安装，报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">nvidia-installer log file &apos;/var/log/nvidia-installer.log&apos;</span><br><span class="line">creation time: Sun Sep 27 01:22:16 2020</span><br><span class="line">installer version: 450.51.05</span><br><span class="line">PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br><span class="line">nvidia-installer command line:</span><br><span class="line">    ./nvidia-installer</span><br><span class="line">    --ui=none</span><br><span class="line">    --no-questions</span><br><span class="line">    --accept-license</span><br><span class="line">    --disable-nouveau</span><br><span class="line">    --no-cc-version-check</span><br><span class="line">    --install-libglvnd</span><br><span class="line">Using built-in stream user interface</span><br><span class="line">-&gt; Detected 8 CPUs online; setting concurrency level to 8.</span><br><span class="line">-&gt; Installing NVIDIA driver version 450.51.05.</span><br><span class="line">-&gt; The NVIDIA driver appears to have been installed previously using a different installer. To prevent potential conflicts, it is recommended either to update the existing installation using the same mechanism by which it was originally installed, or to uninstall the existing installation before installing this driver.</span><br><span class="line">Please review the message provided by the maintainer of this alternate installation method and decide how to proceed:</span><br><span class="line">The package that is already installed is named nvidia-440.</span><br><span class="line">You can upgrade the driver by running:</span><br><span class="line">`apt-get install nvidia-440 nvidia-modprobe nvidia-settings`</span><br><span class="line">You can remove nvidia-440, and all related packages, by running:</span><br><span class="line">`apt-get remove --purge nvidia-440 nvidia-modprobe nvidia-settings`</span><br><span class="line">This package is maintained by NVIDIA (cudatools@nvidia.com).</span><br><span class="line">(Answer: Abort installation)</span><br><span class="line">ERROR: The installation was canceled due to the availability or presence of an alternate driver installation. Please see /var/log/nvidia-installer.log for more details.</span><br></pre></td></tr></table></figure>
+<p>参照其指示，卸载440</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge nvidia-440 nvidia-modprobe nvidia-settings</span><br></pre></td></tr></table></figure>
+<p>再次安装，提醒是否更新cuda软链接，选择yes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">===========</span><br><span class="line">= Summary =</span><br><span class="line">===========</span><br><span class="line">Driver:   Installed</span><br><span class="line">Toolkit:  Installed in /usr/local/cuda-11.0/</span><br><span class="line">Samples:  Installed in /home/huqian/</span><br><span class="line">Please make sure that</span><br><span class="line"> -   PATH includes /usr/local/cuda-11.0/bin</span><br><span class="line"> -   LD_LIBRARY_PATH includes /usr/local/cuda-11.0/lib64, or, add /usr/local/cuda-11.0/lib64 to /etc/ld.so.conf and run ldconfig as root</span><br><span class="line">To uninstall the CUDA Toolkit, run cuda-uninstaller in /usr/local/cuda-11.0/bin</span><br><span class="line">To uninstall the NVIDIA Driver, run nvidia-uninstall</span><br><span class="line">Please see CUDA_Installation_Guide_Linux.pdf in /usr/local/cuda-11.0/doc/pdf for detailed information on setting up CUDA.</span><br><span class="line">Logfile is /var/log/cuda-installer.log</span><br></pre></td></tr></table></figure>
+<p>此时安装过程似乎顺利完成，查看状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<div data-align="center">
+<img src="/post/42d6d10c/nvidia-smi_show1.png">
+</div>
+<p>尝试启动TensorFlow Serving试试，报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2020-09-27 01:33:45.682888: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_dnn.cc:329] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR</span><br><span class="line">2020-09-27 01:33:45.688000: E external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_dnn.cc:329] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR</span><br></pre></td></tr></table></figure>
+<h2 id="安装cudnn">安装cudnn</h2>
+<p>从NVIDIA官网下载版本匹配的CUDNN安装文件，并执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i libcudnn8_8.0.3.33-1+cuda11.0_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(Reading database ... 168907 files and directories currently installed.)</span><br><span class="line">Preparing to unpack libcudnn8_8.0.3.33-1+cuda11.0_amd64.deb ...</span><br><span class="line">Unpacking libcudnn8 (8.0.3.33-1+cuda11.0) over (8.0.3.33-1+cuda11.0) ...</span><br><span class="line">Setting up libcudnn8 (8.0.3.33-1+cuda11.0) ...</span><br><span class="line">Processing triggers for libc-bin (2.23-0ubuntu11.2) ...</span><br></pre></td></tr></table></figure>
+<p>进入其中并make</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd NVIDIA_CUDA-11.0_Samples/</span><br><span class="line">sudo make</span><br></pre></td></tr></table></figure>
+<p>经历了好久，终于装好了，不重启TensorFlow Serving仍然是同样错误，重启TensorFlow Serving后正常</p>
+<h1 id="故事结果">故事结果</h1>
+<h2 id="测试效果">测试效果</h2>
+<p>使用原有基准图片进行测试，算法模型见配置信息，使用未优化前的P100机器，推理时间在2.7s，优化后则缩短到了0.6s</p>
+<h2 id="故事探究">故事探究</h2>
+<p>从安装新版CUDA过程中，发现其输出log里包含很多模型相关名字，例如ResNet等，猜测是新版CUDA对模型做了额外优化，具体原因还待探究</p>
 
       
 
@@ -349,7 +413,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#故事背景"><span class="toc-number">1.</span> <span class="toc-text">故事背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统配置"><span class="toc-number">1.1.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统"><span class="toc-number">1.1.1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法模型-backbone"><span class="toc-number">1.1.2.</span> <span class="toc-text">算法模型 Backbone</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#故事描述"><span class="toc-number">1.2.</span> <span class="toc-text">故事描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事经过"><span class="toc-number">2.</span> <span class="toc-text">故事经过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装cuda驱动"><span class="toc-number">2.1.</span> <span class="toc-text">安装CUDA驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装cudnn"><span class="toc-number">2.2.</span> <span class="toc-text">安装cudnn</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事结果"><span class="toc-number">3.</span> <span class="toc-text">故事结果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试效果"><span class="toc-number">3.1.</span> <span class="toc-text">测试效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#故事探究"><span class="toc-number">3.2.</span> <span class="toc-text">故事探究</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -402,7 +466,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Qian Hu
+    		&copy; 2021 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -578,14 +642,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
@@ -595,6 +651,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Social Network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
               </li>
              
               <li class="article-tag-list-item">
