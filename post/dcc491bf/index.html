@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="故事背景 故事描述 最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下 系统配置 操作系统 1cat /proc/version  Linux version">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-25T03:38:28.000Z">
+<meta property="og:updated_time" content="2021-01-25T03:41:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下的文件批量重命名">
 <meta name="twitter:description" content="故事背景 故事描述 最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下 系统配置 操作系统 1cat /proc/version  Linux version">
@@ -240,13 +240,11 @@ var _hmt = _hmt || [];
 <p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP Wed May 30 11:</p>
 </blockquote>
 <h1 id="故事经过">故事经过</h1>
-<p>##综述</p>
+<h2 id="综述">综述</h2>
 <p>针对这个问题，根据以往经验，以及网上搜索相关信息，和自己试验，大概可以通过Linux命令、shell脚本、Python脚本来解决</p>
 <p>首先，在本地touch了几个以不同后缀名结尾的文件，现在希望将.png格式全部替换为.jpg</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>total 8 drwxrwxr-x 2 huqian huqian 4096 Jan 25 10:56 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">total 8</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 10:56 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br></pre></td></tr></table></figure>
 <h2 id="linux命令">Linux命令</h2>
 <p>通过搜索，使用rename命令可以实现单一命令批量重命名</p>
 <p>先看一下rename命令的文档</p>
@@ -294,16 +292,12 @@ var _hmt = _hmt || [];
 <p>根据需求，可以通过正则表达式 <em>s/.png/.jpg/</em> 实现</p>
 <p>先用-n命令打印下重命名的范围</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename -n 's/.png/.jpg/' *.png</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rename(a1.png, a1.jpg) rename(a2.png, a2.jpg) rename(a3.png, a3.jpg) rename(a4.png, a4.jpg)</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rename(a1.png, a1.jpg)</span><br><span class="line">rename(a2.png, a2.jpg)</span><br><span class="line">rename(a3.png, a3.jpg)</span><br><span class="line">rename(a4.png, a4.jpg)</span><br></pre></td></tr></table></figure>
 <p>可以看到，能够完美地满足我们的需求，于是去掉-n命令，再次执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename 's/.png/.jpg/' *.png</span><br></pre></td></tr></table></figure>
 <p>再次查看当前目录下文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>total 8 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:13 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">total 8</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:13 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br></pre></td></tr></table></figure>
 <p>可以看到需求完全满足，搞定</p>
 <h2 id="shell脚本">Shell脚本</h2>
 <p>提到重命名单个文件，最先想到的就是 <em>mv</em> 命令，于是试验下能否直接通过mv命令批量重命名文件</p>
@@ -316,9 +310,7 @@ var _hmt = _hmt || [];
 <p>这个命令比较简单，循环遍历所有.jpg文件，执行mv指令，将文件mv成以.png结尾的文件</p>
 <p>执行脚本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh rename_file.sh</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>total 12 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:19 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif -rw-rw-r-- 1 huqian huqian 74 Jan 25 11:18 rename_file.sh</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:19 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br><span class="line">-rw-rw-r-- 1 huqian huqian   74 Jan 25 11:18 rename_file.sh</span><br></pre></td></tr></table></figure>
 <p>可以看到，所有的*.jpg文件都被替换为了.png文件</p>
 <p>抱着好奇的心态，此时我再次尝试执行此脚本，结果报错了</p>
 <blockquote>
@@ -330,9 +322,7 @@ var _hmt = _hmt || [];
 <p>将shell脚本替换为</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls | grep '.jpg'`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p>此时执行后，</p>
-<blockquote>
-<p>total 12 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:24 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif -rw-rw-r-- 1 huqian huqian 82 Jan 25 11:24 rename_file.sh</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:24 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br><span class="line">-rw-rw-r-- 1 huqian huqian   82 Jan 25 11:24 rename_file.sh</span><br></pre></td></tr></table></figure>
 <p>可以看到，批量重命名文件的需求时达到了的，再次执行此脚本，没有任何报错信息，搞定</p>
 <h2 id="python脚本">Python脚本</h2>
 <p>说起Python，首先也是先遍历当前目录，os.listdir()即可满足此需求，之后通过检查源字符串是否存在文件名中，将其使用replace命令替换成新的文件名，至于文件重命名，用shutil.move即可，此功能类似mv命令</p>
@@ -495,7 +485,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#故事背景"><span class="toc-number">1.</span> <span class="toc-text">故事背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#故事描述"><span class="toc-number">1.1.</span> <span class="toc-text">故事描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统配置"><span class="toc-number">1.2.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事经过"><span class="toc-number">2.</span> <span class="toc-text">故事经过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux命令"><span class="toc-number">2.1.</span> <span class="toc-text">Linux命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell脚本"><span class="toc-number">2.2.</span> <span class="toc-text">Shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python脚本"><span class="toc-number">2.3.</span> <span class="toc-text">Python脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事结尾"><span class="toc-number">3.</span> <span class="toc-text">故事结尾</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#故事背景"><span class="toc-number">1.</span> <span class="toc-text">故事背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#故事描述"><span class="toc-number">1.1.</span> <span class="toc-text">故事描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统配置"><span class="toc-number">1.2.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事经过"><span class="toc-number">2.</span> <span class="toc-text">故事经过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#综述"><span class="toc-number">2.1.</span> <span class="toc-text">综述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux命令"><span class="toc-number">2.2.</span> <span class="toc-text">Linux命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell脚本"><span class="toc-number">2.3.</span> <span class="toc-text">Shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python脚本"><span class="toc-number">2.4.</span> <span class="toc-text">Python脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事结尾"><span class="toc-number">3.</span> <span class="toc-text">故事结尾</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -724,10 +714,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
               </li>
              
@@ -737,6 +723,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
