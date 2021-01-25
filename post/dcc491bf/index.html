@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Tag: Model Evaluation | Wind Track</title>
+  <title>Linux下的文件批量重命名 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/tags/Model-Evaluation/index.html">
+  <meta name="description" content="故事背景 故事描述 最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下 系统配置 操作系统 1cat /proc/version  Linux version">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下的文件批量重命名">
+<meta property="og:url" content="http://windtrack.xyz/post/dcc491bf/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="故事背景 故事描述 最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下 系统配置 操作系统 1cat /proc/version  Linux version">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-25T03:36:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wind Track">
-<meta name="twitter:description" content="Keep curious to the world, and do cool things that matter.">
+<meta name="twitter:title" content="Linux下的文件批量重命名">
+<meta name="twitter:description" content="故事背景 故事描述 最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下 系统配置 操作系统 1cat /proc/version  Linux version">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -208,148 +209,301 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Linux下的文件批量重命名" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/773d27b5/" class="archive-article-date">
-  	<time datetime="2018-12-15T07:43:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/773d27b5/">「一周算法实践」Task3 模型调优</a>
+    <h1 class="article-title" itemprop="name">
+      Linux下的文件批量重命名
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Practice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Model Evaluation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Grid Search</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Data-Mining//" class="article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/a0e056d3/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+        
+        <a href="/post/dcc491bf/" class="archive-article-date">
+  	<time datetime="2021-01-22T10:00:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-22</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="故事背景">故事背景</h1>
+<h2 id="故事描述">故事描述</h2>
+<p>最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，绝对写这篇文章整理下</p>
+<h2 id="系统配置">系统配置</h2>
+<h3 id="操作系统">操作系统</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP Wed May 30 11:</p>
+</blockquote>
+<h1 id="故事经过">故事经过</h1>
+<p>##综述</p>
+<p>针对这个问题，根据以往经验，以及网上搜索相关信息，和自己试验，大概可以通过Linux命令、shell脚本、Python脚本来解决</p>
+<p>首先，在本地touch了几个以不同后缀名结尾的文件，现在希望将.png格式全部替换为.jpg</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>total 8 drwxrwxr-x 2 huqian huqian 4096 Jan 25 10:56 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif</p>
+</blockquote>
+<h2 id="linux命令">Linux命令</h2>
+<p>通过搜索，使用rename命令可以实现单一命令批量重命名</p>
+<p>先看一下rename命令的文档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man rename</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>RENAME(1p) User Contributed Perl Documentation RENAME(1p)</p>
+<p>NAME rename - renames multiple files</p>
+<p>SYNOPSIS rename [ -h|-m|-V ] [ -v ] [ -n ] [ -f ] [ -e|-E perlexpr]*|perlexpr [ files ]</p>
+<p>DESCRIPTION "rename" renames the filenames supplied according to the rule specified as the first argument. The perlexpr argument is a Perl expression which is expected to modify the $_ string in Perl for at least some of the filenames specified. If a given filename is not modified by the expression, it will not be renamed. If no filenames are given on the command line, filenames will be read via standard input.</p>
+<pre><code>   For example, to rename all files matching &quot;*.bak&quot; to strip the extension, you might say
+
+           rename &#39;s/\e.bak$//&#39; *.bak
+
+   To translate uppercase names to lower, you&#39;d use
+
+           rename &#39;y/A-Z/a-z/&#39; *</code></pre>
+<p>OPTIONS -v, -verbose Verbose: print names of files successfully renamed.</p>
+<pre><code>   -n, -nono
+           No action: print names of files to be renamed, but don&#39;t rename.
+
+   -f, -force
+           Over write: allow existing files to be over-written.
+
+   -h, -help
+           Help: print SYNOPSIS and OPTIONS.
+
+   -m, -man
+           Manual: print manual page.
+
+   -V, -version
+           Version: show version number.
+
+   -e      Expression: code to act on files name.
+
+           May be repeated to build up code (like &quot;perl -e&quot;).  If no -e, the first argument is used as code.
+
+   -E      Statement: code to act on files name, as -e but terminated by &#39;;&#39;.</code></pre>
+<p>ENVIRONMENT No environment variables are used.</p>
+<p>AUTHOR Larry Wall</p>
+<p>SEE ALSO mv(1), perl(1)</p>
+<p>DIAGNOSTICS If you give an invalid Perl expression you'll get a syntax error.</p>
+<p>BUGS The original "rename" did not check for the existence of target filenames, so had to be used with care. I hope I've fixed that (Robin Barker).</p>
+<p>perl v5.20.2 2015-06-05</p>
+</blockquote>
+<p>根据需求，可以通过正则表达式 <em>s/.png/.jpg/</em> 实现</p>
+<p>先用-n命令打印下重命名的范围</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename -n 's/.png/.jpg/' *.png</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>rename(a1.png, a1.jpg) rename(a2.png, a2.jpg) rename(a3.png, a3.jpg) rename(a4.png, a4.jpg)</p>
+</blockquote>
+<p>可以看到，能够完美地满足我们的需求，于是去掉-n命令，再次执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename 's/.png/.jpg/' *.png</span><br></pre></td></tr></table></figure>
+<p>再次查看当前目录下文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>total 8 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:13 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.jpg -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif</p>
+</blockquote>
+<p>可以看到需求完全满足，搞定</p>
+<h2 id="shell脚本">Shell脚本</h2>
+<p>提到重命名单个文件，最先想到的就是 <em>mv</em> 命令，于是试验下能否直接通过mv命令批量重命名文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv *.jpg *.png</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>mv: target '*.png' is not a directory</p>
+</blockquote>
+<p>运行报错了，看来不支持这么玩，于是写个shell脚本来循环遍历吧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls *.jpg`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>这个命令比较简单，循环遍历所有.jpg文件，执行mv指令，将文件mv成以.png结尾的文件</p>
+<p>执行脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh rename_file.sh</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>total 12 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:19 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif -rw-rw-r-- 1 huqian huqian 74 Jan 25 11:18 rename_file.sh</p>
+</blockquote>
+<p>可以看到，所有的*.jpg文件都被替换为了.png文件</p>
+<p>抱着好奇的心态，此时我再次尝试执行此脚本，结果报错了</p>
+<blockquote>
+<p>ls: cannot access '*.jpg': No such file or directory</p>
+</blockquote>
+<p>可以看到，ls中因为没找到.jpg文件所以报错了，由于我有点强迫症，于是我想试着修改下，避免这种报错</p>
+<p>方便起见，我先利用此前的rename命令将文件还原为.jpg结尾的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename 's/.png/.jpg/' *.png</span><br></pre></td></tr></table></figure>
+<p>将shell脚本替换为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls | grep '.jpg'`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>此时执行后，</p>
+<blockquote>
+<p>total 12 drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:24 . drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 .. -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a1.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a2.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a3.png -rw-rw-r-- 1 huqian huqian 0 Jan 22 17:40 a4.png -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a5.webp -rw-rw-r-- 1 huqian huqian 0 Jan 25 10:55 a6.gif -rw-rw-r-- 1 huqian huqian 82 Jan 25 11:24 rename_file.sh</p>
+</blockquote>
+<p>可以看到，批量重命名文件的需求时达到了的，再次执行此脚本，没有任何报错信息，搞定</p>
+<h2 id="python脚本">Python脚本</h2>
+<p>说起Python，首先也是先遍历当前目录，os.listdir()即可满足此需求，之后通过检查源字符串是否存在文件名中，将其使用replace命令替换成新的文件名，至于文件重命名，用shutil.move即可，此功能类似mv命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    source = <span class="string">'.png'</span></span><br><span class="line">    target = <span class="string">'.jpg'</span></span><br><span class="line">    files_list = os.listdir()</span><br><span class="line">    <span class="keyword">for</span> each_file <span class="keyword">in</span> files_list:</span><br><span class="line">        <span class="keyword">if</span> source <span class="keyword">not</span> <span class="keyword">in</span> each_file:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        new_file = each_file.replace(source, target)</span><br><span class="line">        shutil.move(each_file, new_file)</span><br></pre></td></tr></table></figure>
+<h1 id="故事结尾">故事结尾</h1>
+<p>经过一系列的查资料和试验，原以为的Python虽然理解起来和写起来都很轻松，但是这种事还是交给专业做这个的Linux命令和Shell脚本比较好，Linux中文件操作问题尽量还是用原生方法更好</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/a0e056d3/">「一周算法实践」Task2 模型评估</a>
-    </h1>
-  
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Practice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Model Evaluation</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Data-Mining//" class="article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/dcc491bf/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/post/42d6d10c/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CUDA升级，从9.2到11.0</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#故事背景"><span class="toc-number">1.</span> <span class="toc-text">故事背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#故事描述"><span class="toc-number">1.1.</span> <span class="toc-text">故事描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统配置"><span class="toc-number">1.2.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事经过"><span class="toc-number">2.</span> <span class="toc-text">故事经过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux命令"><span class="toc-number">2.1.</span> <span class="toc-text">Linux命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell脚本"><span class="toc-number">2.2.</span> <span class="toc-text">Shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python脚本"><span class="toc-number">2.3.</span> <span class="toc-text">Python脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#故事结尾"><span class="toc-number">3.</span> <span class="toc-text">故事结尾</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px 30px auto 30px;background:white;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "imK0RcP7ddqUYlG7rwQ0oA1q-gzGzoHsz",
+            app_key: "bBmMsz6VMYBUvyKIwRaqjOfl",
+            placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+            avatar:"undefined"
+        });
+    }
+</script>
+
+    </section>
+  
 
 
           </div>
@@ -372,9 +526,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
