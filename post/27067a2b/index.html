@@ -9,13 +9,14 @@
   <title>MySQL无法获取最新数据的解决方法 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="背景 最近有两处用到，一个是做简易的消息推送，Flask + Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变； 另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据 解决方案 从CSDN论坛中">
+<meta name="keywords" content="MySQL,Database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL无法获取最新数据的解决方法">
 <meta property="og:url" content="http://windtrack.xyz/post/27067a2b/index.html">
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="背景 最近有两处用到，一个是做简易的消息推送，Flask + Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变； 另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据 解决方案 从CSDN论坛中">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-28T03:33:09.000Z">
+<meta property="og:updated_time" content="2021-01-31T05:38:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL无法获取最新数据的解决方法">
 <meta name="twitter:description" content="背景 最近有两处用到，一个是做简易的消息推送，Flask + Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变； 另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据 解决方案 从CSDN论坛中">
@@ -270,7 +271,33 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -621,15 +648,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CogQA</a>
+                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,11 +664,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
+                <a href="javascript:void(0)" class="js-tag color1">CogQA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,6 +677,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,6 +760,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -746,26 +793,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
