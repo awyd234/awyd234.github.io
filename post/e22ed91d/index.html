@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="事务 事务就是一组原子性的SQL查询，或者说一个独立的工作单元 事务的ACID A Atomicity 原子性 一个事务必须被视为一个不可分割的最小工作单位，整个事务中所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中一部分 C Consistency 一致性 事务总是从一个一致性状态转移到另一个一致性状态 例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-31T05:51:16.000Z">
+<meta property="og:updated_time" content="2021-01-31T16:06:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL下的事务隔离级别及可能出现的问题">
 <meta name="twitter:description" content="事务 事务就是一组原子性的SQL查询，或者说一个独立的工作单元 事务的ACID A Atomicity 原子性 一个事务必须被视为一个不可分割的最小工作单位，整个事务中所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中一部分 C Consistency 一致性 事务总是从一个一致性状态转移到另一个一致性状态 例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不">
@@ -250,6 +250,9 @@ var _hmt = _hmt || [];
 <p>事务A多次读同一个数据时，在这个事务未结束前，事务B也读了该数据，如果事务B对数据进行了修改，就会导致事务A两次读到的数据不一致</p>
 <h3 id="幻读">幻读</h3>
 <p>事务A读取了几行数据，事务B插入了一些数据，随后的查询中，事务A发现多了一些原本不存在的数据，就像产生了幻觉一样</p>
+<p>幻读指的是一个事务在前后两次查询同一个范围的时候，后一次查询看到了前一次查询没有看到的行</p>
+<p>在可重复读隔离级别下，普通的查询是快照读，是不会看到别的事务插入的数据的，因此，幻读在“当前读”下才会出现</p>
+<p>即使把所有的记录都加上锁，还是阻止不了新插入的记录，这也是为什么“幻读”会被单独拿出来解决的原因。</p>
 <h1 id="事务隔离机制">事务隔离机制</h1>
 <h2 id="事务的隔离级别">事务的隔离级别</h2>
 <h3 id="level-1-read-uncommited读未提交">Level 1 Read Uncommited（读未提交）</h3>
@@ -623,22 +626,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Homework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kernel Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
@@ -655,6 +642,30 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kernel Function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -668,14 +679,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">File Processing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,11 +718,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
+                <a href="javascript:void(0)" class="js-tag color1">CogQA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,7 +738,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CogQA</a>
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,14 +755,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,26 +830,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -860,6 +843,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
