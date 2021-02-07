@@ -16,7 +16,8 @@
 <meta property="og:description" content="综述 最近在面试过程中，连着被问了几次反转链表相关的问题，发现自己虽然知道大体原理，但还是在写到具体细节时会乱掉，加上面试的紧张氛围下，更容易手足无措导致无法正确写出结果，而反转链表是一个非常基础的问题，写不出来会是一个很大的减分 链表节点定义 1234class ListNode(object):    def __init__(self, val=0):        self.val = v">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/cb7efc19/普通单链表的交换步骤.png">
-<meta property="og:updated_time" content="2021-02-07T13:41:40.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/cb7efc19/普通单链表的误区.png">
+<meta property="og:updated_time" content="2021-02-07T14:22:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode反转链表相关题整理">
 <meta name="twitter:description" content="综述 最近在面试过程中，连着被问了几次反转链表相关的问题，发现自己虽然知道大体原理，但还是在写到具体细节时会乱掉，加上面试的紧张氛围下，更容易手足无措导致无法正确写出结果，而反转链表是一个非常基础的问题，写不出来会是一个很大的减分 链表节点定义 1234class ListNode(object):    def __init__(self, val=0):        self.val = v">
@@ -266,7 +267,31 @@ var _hmt = _hmt || [];
 <p>由于只用到了3个变量，且与数据规模无关，因此是原地算法，也就是O(1)</p>
 <h2 id="误区分析">误区分析</h2>
 <p>在某公司二面中，我写出了如下代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(l, k)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    tail = l.next</span><br><span class="line">    head = l</span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> tail:</span><br><span class="line">        tmp = tail.next</span><br><span class="line">        tail.next.next = head.next</span><br><span class="line">        head.next = tail.next</span><br><span class="line">        tail.next = tmp.next</span><br><span class="line">        tail = tail.next</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(head)</span>:</span></span><br><span class="line">    tail = head.next</span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> tail:</span><br><span class="line">        tmp = tail.next</span><br><span class="line">        tail.next.next = head.next</span><br><span class="line">        head.next = tail.next</span><br><span class="line">        tail.next = tmp.next</span><br><span class="line">        tail = tail.next</span><br></pre></td></tr></table></figure>
+<div data-align="center">
+<img src="/post/cb7efc19/普通单链表的误区.png">
+</div>
+<ol type="1">
+<li>可以看到，在执行第1步以后，已经丢失了到D的指向</li>
+<li>在第2步之后，可以看到此时tmp.next实际是指到了B，而不是我所想的D</li>
+<li>此时若让tail.next去指向tmp.next，实际是A指向了B</li>
+<li>这样就成了一个head-&gt;C-&gt;B，A-&gt;B，以及C-&gt;D-&gt;E</li>
+</ol>
+<h1 id="每k个节点进行反转">每k个节点进行反转</h1>
+<h2 id="url-1">url</h2>
+<p>暂未在LeetCode中找到原题</p>
+<h2 id="题目-1">题目</h2>
+<p>面试中给的变形，给定一个链表，以及数k，每k个节点进行一次反转，不足k个节点的不反转</p>
+<h3 id="示例1">示例1:</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, 4</span><br><span class="line">输出: 4-&gt;3-&gt;2-&gt;1-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
+<h3 id="示例2">示例2:</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;NULL, 3</span><br><span class="line">输出: 3-&gt;2-&gt;1-&gt;6-&gt;5-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
+<h2 id="题目思考-1">题目思考</h2>
+<p>假设节点有n个，索引从0, 1, 2, ..., n - 1</p>
+<p>对于k，也就是[0, 1, 2, ..., k - 1], [k, k + 1, k + 2, ..., 2k - 1]需要反转，每对k个节点反转后，需要将tail和head指向下一组需要反转的节点，而<span class="math inline">\(\lfloor \frac{count}{k}\rfloor * k\)</span>开始的所有节点都不需要再做额外处理</p>
+<h2 id="代码实现">代码实现</h2>
+<p>代码中的l带有伪head节点，tail最初指向的A为索引0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(l, k)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    p = l</span><br><span class="line">    <span class="keyword">while</span> p:</span><br><span class="line">        p = p.next</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">    tail = l.next</span><br><span class="line">    head = l</span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> tail.next:</span><br><span class="line">        <span class="keyword">if</span> index == count // k * k:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> (index + <span class="number">1</span>) % k == <span class="number">0</span>:</span><br><span class="line">            head = tail</span><br><span class="line">            tail = tail.next</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tmp = tail.next</span><br><span class="line">            tail.next = tail.next.next</span><br><span class="line">            tmp.next = head.next</span><br><span class="line">            head.next = tmp</span><br><span class="line">        index += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
 
       
 
@@ -389,7 +414,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#综述"><span class="toc-number">1.</span> <span class="toc-text">综述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表节点定义"><span class="toc-number">1.1.</span> <span class="toc-text">链表节点定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通反转链表"><span class="toc-number">2.</span> <span class="toc-text">普通反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#url"><span class="toc-number">2.1.</span> <span class="toc-text">url</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#难度"><span class="toc-number">2.2.</span> <span class="toc-text">难度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目思考"><span class="toc-number">2.4.</span> <span class="toc-text">题目思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.5.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析"><span class="toc-number">2.6.</span> <span class="toc-text">算法分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#误区分析"><span class="toc-number">2.7.</span> <span class="toc-text">误区分析</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#综述"><span class="toc-number">1.</span> <span class="toc-text">综述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表节点定义"><span class="toc-number">1.1.</span> <span class="toc-text">链表节点定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通反转链表"><span class="toc-number">2.</span> <span class="toc-text">普通反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#url"><span class="toc-number">2.1.</span> <span class="toc-text">url</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#难度"><span class="toc-number">2.2.</span> <span class="toc-text">难度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.3.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目思考"><span class="toc-number">2.4.</span> <span class="toc-text">题目思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.5.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析"><span class="toc-number">2.6.</span> <span class="toc-text">算法分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#误区分析"><span class="toc-number">2.7.</span> <span class="toc-text">误区分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#每k个节点进行反转"><span class="toc-number">3.</span> <span class="toc-text">每k个节点进行反转</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#url-1"><span class="toc-number">3.1.</span> <span class="toc-text">url</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-1"><span class="toc-number">3.2.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例1"><span class="toc-number">3.2.1.</span> <span class="toc-text">示例1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例2"><span class="toc-number">3.2.2.</span> <span class="toc-text">示例2:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目思考-1"><span class="toc-number">3.3.</span> <span class="toc-text">题目思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.4.</span> <span class="toc-text">代码实现</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -590,6 +615,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -603,14 +636,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">File Processing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,10 +667,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
               </li>
              
@@ -655,6 +676,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,6 +775,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Data Mining</a>
               </li>
              
@@ -791,14 +824,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Movie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Translations</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">StackOverflow</a>
               </li>
             
             <div class="clearfix"></div>
