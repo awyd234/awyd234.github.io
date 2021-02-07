@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Tag: Hexo | Wind Track</title>
+  <title>Flask框架的基本原理 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/tags/Hexo/index.html">
+  <meta name="description" content="综述 此文目的 Flask是Python下非常流行的一种Web开发框架，但是作为Web框架，Flask又是如何接收来自远程的请求并作出响应的呢，通过查资料、看源码和进行简单的实验，我想弄清楚这样的一个实现过程 WSGI协议 Web Server Gateway Interface，以下来自Wikipedia  The Web Server Gateway Interface (WSGI, pron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask框架的基本原理">
+<meta property="og:url" content="http://windtrack.xyz/post/84a261e5/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="综述 此文目的 Flask是Python下非常流行的一种Web开发框架，但是作为Web框架，Flask又是如何接收来自远程的请求并作出响应的呢，通过查资料、看源码和进行简单的实验，我想弄清楚这样的一个实现过程 WSGI协议 Web Server Gateway Interface，以下来自Wikipedia  The Web Server Gateway Interface (WSGI, pron">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-02-07T12:40:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wind Track">
-<meta name="twitter:description" content="Keep curious to the world, and do cool things that matter.">
+<meta name="twitter:title" content="Flask框架的基本原理">
+<meta name="twitter:description" content="综述 此文目的 Flask是Python下非常流行的一种Web开发框架，但是作为Web框架，Flask又是如何接收来自远程的请求并作出响应的呢，通过查资料、看源码和进行简单的实验，我想弄清楚这样的一个实现过程 WSGI协议 Web Server Gateway Interface，以下来自Wikipedia  The Web Server Gateway Interface (WSGI, pron">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -208,64 +209,213 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Flask框架的基本原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/47b88860/" class="archive-article-date">
-  	<time datetime="2018-12-23T18:01:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/47b88860/">Hexo渲染LaTex数学公式的方法</a>
+    <h1 class="article-title" itemprop="name">
+      Flask框架的基本原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LaTex</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/post/84a261e5/" class="archive-article-date">
+  	<time datetime="2021-02-05T18:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="综述">综述</h1>
+<h2 id="此文目的">此文目的</h2>
+<p>Flask是Python下非常流行的一种Web开发框架，但是作为Web框架，Flask又是如何接收来自远程的请求并作出响应的呢，通过查资料、看源码和进行简单的实验，我想弄清楚这样的一个实现过程</p>
+<h1 id="wsgi协议">WSGI协议</h1>
+<p>Web Server Gateway Interface，以下来自Wikipedia</p>
+<blockquote>
+<p>The <strong>Web Server Gateway Interface</strong> (<strong>WSGI</strong>, pronounced <em>whiskey</em>[<a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-1" target="_blank" rel="noopener">1]</a>[<a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-2" target="_blank" rel="noopener">2]</a> or <a href="https://en.wikipedia.org/wiki/Help:Pronunciation_respelling_key" target="_blank" rel="noopener"><em>WIZ-ghee</em></a>[<a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-3" target="_blank" rel="noopener">3]</a>) is a simple <a href="https://en.wikipedia.org/wiki/Calling_convention" target="_blank" rel="noopener">calling convention</a> for <a href="https://en.wikipedia.org/wiki/Web_server" target="_blank" rel="noopener">web servers</a> to forward requests to <a href="https://en.wikipedia.org/wiki/Web_application" target="_blank" rel="noopener">web applications</a> or <a href="https://en.wikipedia.org/wiki/Web_framework" target="_blank" rel="noopener">frameworks</a> written in the <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener">Python programming language</a>. The current version of WSGI, version 1.0.1, is specified in <a href="https://en.wikipedia.org/wiki/Python_Enhancement_Proposal" target="_blank" rel="noopener">Python Enhancement Proposal</a> (PEP) 3333.[<a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-:0-4" target="_blank" rel="noopener">4]</a></p>
+<p>WSGI was originally specified as PEP-333 in 2003.[<a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-5" target="_blank" rel="noopener">5]</a> PEP-3333, published in 2010, updates the specification for <a href="https://en.wikipedia.org/wiki/Python_3" target="_blank" rel="noopener">Python 3</a>.</p>
+</blockquote>
+<p>WSGI是用来在web服务器向用Python写的Web应用/框架传递请求的调用约定，在PEP-333/PEP-3333提出，是为了解决各Python程序和web server交互的乱象</p>
+<h2 id="一个简单的web接口">一个简单的Web接口</h2>
+<p>在Python中，我们可以使用wsgiref来实现一个简单的web接口</p>
 
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/84a261e5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/post/cb7efc19/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LeetCode反转链表相关题整理
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/post/a54b0171/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode - 146.LRU Cache</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#综述"><span class="toc-number">1.</span> <span class="toc-text">综述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#此文目的"><span class="toc-number">1.1.</span> <span class="toc-text">此文目的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wsgi协议"><span class="toc-number">2.</span> <span class="toc-text">WSGI协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个简单的web接口"><span class="toc-number">2.1.</span> <span class="toc-text">一个简单的Web接口</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px 30px auto 30px;background:white;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "imK0RcP7ddqUYlG7rwQ0oA1q-gzGzoHsz",
+            app_key: "bBmMsz6VMYBUvyKIwRaqjOfl",
+            placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+            avatar:"undefined"
+        });
+    }
+</script>
+
+    </section>
+  
 
 
           </div>
@@ -288,9 +438,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
