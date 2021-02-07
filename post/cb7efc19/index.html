@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/cb7efc19/普通单链表的交换步骤.png">
 <meta property="og:image" content="http://windtrack.xyz/post/cb7efc19/普通单链表的误区.png">
-<meta property="og:updated_time" content="2021-02-07T14:26:40.000Z">
+<meta property="og:updated_time" content="2021-02-07T14:32:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode反转链表相关题整理">
 <meta name="twitter:description" content="综述 最近在面试过程中，连着被问了几次反转链表相关的问题，发现自己虽然知道大体原理，但还是在写到具体细节时会乱掉，加上面试的紧张氛围下，更容易手足无措导致无法正确写出结果，而反转链表是一个非常基础的问题，写不出来会是一个很大的减分 链表节点定义 1234class ListNode(object):    def __init__(self, val=0):        self.val = v">
@@ -276,7 +276,7 @@ var _hmt = _hmt || [];
 <li>可以看到，在执行第1步以后，已经丢失了到D的指向</li>
 <li>在第2步之后，可以看到此时tmp.next实际是指到了B，而不是我所想的D</li>
 <li>此时若让tail.next去指向tmp.next，实际是A指向了B</li>
-<li>这样就成了一个head-&gt;C-&gt;B，A-&gt;B，以及C-&gt;D-&gt;E</li>
+<li>这样就成了一个head-&gt;C-&gt;B，A-&gt;B，以及D-&gt;E</li>
 </ol>
 <h1 id="每k个节点进行反转">每k个节点进行反转</h1>
 <h2 id="url-1">url</h2>
