@@ -17,7 +17,8 @@
 <meta property="og:description" content="背景介绍 极客大学业务架构实战营课程作业 作业1 画出微信的业务架构图 作业内容 画出微信的业务架构图 结果展示    作业2 “学生管理系统”毕设架构设计 作业内容 假设今年学校毕业设计要求提升，要求做真正可运行的学生管理系统，学院对毕设的具体要求如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/微信业务架构图20210407.jpg">
-<meta property="og:updated_time" content="2021-04-07T06:11:18.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/学生管理系统方案1.jpg">
+<meta property="og:updated_time" content="2021-04-10T03:55:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业一 微信业务架构图 &amp; 毕设版学生管理系统架构设计">
 <meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业1 画出微信的业务架构图 作业内容 画出微信的业务架构图 结果展示    作业2 “学生管理系统”毕设架构设计 作业内容 假设今年学校毕业设计要求提升，要求做真正可运行的学生管理系统，学院对毕设的具体要求如下：">
@@ -261,6 +262,18 @@ var _hmt = _hmt || [];
 <li>使用 PPT 来画出你的备选架构方案，并说明方案的优缺点。</li>
 <li>给出你选择的最终方案以及选择理由。</li>
 </ol>
+<h2 id="方案一">方案一</h2>
+<h3 id="架构图">架构图</h3>
+<div data-align="center">
+<img src="/post/d261e2d4/学生管理系统方案1.jpg">
+</div>
+<h3 id="方案说明">方案说明</h3>
+<ul>
+<li>基于阿里云进行部署，可以通过学生优惠购买服务器</li>
+<li>用阿里云的LVS作为负载均衡，并购买公网域名指向LVS</li>
+<li>使用两台ECS服务器作为业务服务器</li>
+<li>使用阿里云的RDS作为MySQL存储，并设置主从节点</li>
+</ul>
 
       
 
@@ -417,7 +430,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案一"><span class="toc-number">3.2.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">3.2.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明"><span class="toc-number">3.2.2.</span> <span class="toc-text">方案说明</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -598,22 +611,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BinarySearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TopologicalSort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Homework</a>
               </li>
              
@@ -630,6 +627,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Interview</a>
               </li>
              
@@ -639,6 +644,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Double Linked List</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BinarySearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TopologicalSort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,6 +747,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Architecture</a>
               </li>
              
@@ -743,14 +764,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Study Record</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,18 +819,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Evernote</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">system code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
               </li>
              
@@ -835,6 +836,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Evernote</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">system code</a>
               </li>
              
               <li class="article-tag-list-item">
