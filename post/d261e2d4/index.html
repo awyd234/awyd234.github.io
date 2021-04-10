@@ -18,7 +18,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/微信业务架构图20210407.jpg">
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/学生管理系统方案1.jpg">
-<meta property="og:updated_time" content="2021-04-10T03:55:15.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/学生管理系统方案2.jpg">
+<meta property="og:updated_time" content="2021-04-10T04:30:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业一 微信业务架构图 &amp; 毕设版学生管理系统架构设计">
 <meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业1 画出微信的业务架构图 作业内容 画出微信的业务架构图 结果展示    作业2 “学生管理系统”毕设架构设计 作业内容 假设今年学校毕业设计要求提升，要求做真正可运行的学生管理系统，学院对毕设的具体要求如下：">
@@ -262,6 +263,25 @@ var _hmt = _hmt || [];
 <li>使用 PPT 来画出你的备选架构方案，并说明方案的优缺点。</li>
 <li>给出你选择的最终方案以及选择理由。</li>
 </ol>
+<h2 id="复杂度判断">复杂度判断</h2>
+<h3 id="高性能">高性能</h3>
+<ul>
+<li>1000学生，不需要过于考虑，用户量级太小</li>
+<li>学生同时抢课存在压力，可能需要考虑课程系统的技术实现难度</li>
+</ul>
+<h3 id="高可用">高可用</h3>
+<ul>
+<li>考虑到学生成本有限，以及学生用户数，加之作为学校系统，可以接受一定程度的不可用</li>
+</ul>
+<h3 id="可扩展">可扩展</h3>
+<ul>
+<li>需要多人协作，后续需求增加需要可维护</li>
+</ul>
+<h3 id="成本安全">成本、安全</h3>
+<ul>
+<li>避免数据丢失，不容易被攻击</li>
+<li>都是学生，尽量发挥学生优势，降低服务器资源成本</li>
+</ul>
 <h2 id="方案一">方案一</h2>
 <h3 id="架构图">架构图</h3>
 <div data-align="center">
@@ -270,10 +290,88 @@ var _hmt = _hmt || [];
 <h3 id="方案说明">方案说明</h3>
 <ul>
 <li>基于阿里云进行部署，可以通过学生优惠购买服务器</li>
-<li>用阿里云的LVS作为负载均衡，并购买公网域名指向LVS</li>
+<li>用阿里云的LVS作为负载均衡，并购买公网域名DNS指向LVS</li>
 <li>使用两台ECS服务器作为业务服务器</li>
 <li>使用阿里云的RDS作为MySQL存储，并设置主从节点</li>
+<li>大家统一使用Java开发</li>
 </ul>
+<h3 id="方案分析">方案分析</h3>
+<ul>
+<li>将服务多机器部署，每台机器都具有完整的业务系统，避免单机器故障</li>
+<li>统一使用Java作为开发语言，降低沟通成本和后续可维护成本</li>
+<li>使用主从MySQL作为数据存储服务，保证数据可用性</li>
+</ul>
+<h2 id="方案二">方案二</h2>
+<h3 id="架构图-1">架构图</h3>
+<div data-align="center">
+<img src="/post/d261e2d4/学生管理系统方案2.jpg">
+</div>
+<h3 id="方案说明-1">方案说明</h3>
+<ul>
+<li>购买公网域名DNS指向Nginx服务器</li>
+<li>使用Nginx作为服务转发</li>
+<li>使用三台服务器分别作为课程子系统、权限子系统、学生子系统</li>
+<li>其中最复杂的课程子系统由PHP高手开发，权限子系统和学生子系统由另两位同学用Java负责开发</li>
+<li>除DNS公网域名解析，其它服务使用校内可用资源或自建</li>
+</ul>
+<h3 id="方案分析-1">方案分析</h3>
+<ul>
+<li>课程子系统日常压力最大，将这部分由PHP高手进行开发，充分发挥其技术优势，降低整体工作完成复杂度</li>
+<li>将多业务分别于多机器部署，避免子系统相互影响</li>
+<li>使用主从MySQL作为数据存储服务，保证数据可用性</li>
+</ul>
+<h2 id="方案取舍">方案取舍</h2>
+<h3 id="团队技术水平">团队技术水平</h3>
+<ul>
+<li>方案一
+<ul>
+<li>大家的技术水平类似，同时使用Java作为开发语言，方便大家协作开发，课程子系统可以按模块拆分协作开发</li>
+</ul></li>
+<li>方案二
+<ul>
+<li>充分利用了PHP高手的技术优势，降低技术要求最高的课程子系统的开发时间和提升性能</li>
+</ul></li>
+</ul>
+<h3 id="方案成本">方案成本</h3>
+<ul>
+<li>方案一
+<ul>
+<li>基于阿里云开发，但可以使用学生优惠，机器不用购买太好</li>
+</ul></li>
+<li>方案二
+<ul>
+<li>除了公网DNS解析需要购买外部服务，nginx和其它服务器可以考虑使用学校内部资源，成本相对较低</li>
+</ul></li>
+</ul>
+<h3 id="开发周期">开发周期</h3>
+<ul>
+<li>方案一
+<ul>
+<li>整体基于阿里云服务进行开发，组件维护开发和维护成本低</li>
+<li>所有业务在同一台机器部署，多机使用同样的配置部署同样流程，支持快速扩展</li>
+</ul></li>
+<li>方案二
+<ul>
+<li>开发时间瓶颈的课程子系统的开发压力降低</li>
+<li>基础设施需要自己维护，MySQL需要自己做配置，组件的维护需要时间</li>
+</ul></li>
+</ul>
+<h3 id="对方认可度">对方认可度</h3>
+<ul>
+<li>方案一
+<ul>
+<li>基于阿里云已有基础组件资源开发，大厂有质量保证</li>
+<li>使用双机器，并支持负载均衡，稳定性更好</li>
+<li>使用阿里云数据库，有基本的数据安全保障</li>
+</ul></li>
+<li>方案二
+<ul>
+<li>课程子系统的性能压力大部分被PHP高手解决，降低了一定的服务资源成本</li>
+<li>多子系统分开部署，方便分子系统模块维护</li>
+</ul></li>
+</ul>
+<h3 id="综合决定">综合决定</h3>
+<p>选择方案一</p>
 
       
 
@@ -430,7 +528,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案一"><span class="toc-number">3.2.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">3.2.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明"><span class="toc-number">3.2.2.</span> <span class="toc-text">方案说明</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度判断"><span class="toc-number">3.2.</span> <span class="toc-text">复杂度判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能"><span class="toc-number">3.2.1.</span> <span class="toc-text">高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用"><span class="toc-number">3.2.2.</span> <span class="toc-text">高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可扩展"><span class="toc-number">3.2.3.</span> <span class="toc-text">可扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成本安全"><span class="toc-number">3.2.4.</span> <span class="toc-text">成本、安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案一"><span class="toc-number">3.3.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">3.3.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明"><span class="toc-number">3.3.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析"><span class="toc-number">3.3.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案二"><span class="toc-number">3.4.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明-1"><span class="toc-number">3.4.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析-1"><span class="toc-number">3.4.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案取舍"><span class="toc-number">3.5.</span> <span class="toc-text">方案取舍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#团队技术水平"><span class="toc-number">3.5.1.</span> <span class="toc-text">团队技术水平</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案成本"><span class="toc-number">3.5.2.</span> <span class="toc-text">方案成本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发周期"><span class="toc-number">3.5.3.</span> <span class="toc-text">开发周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对方认可度"><span class="toc-number">3.5.4.</span> <span class="toc-text">对方认可度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综合决定"><span class="toc-number">3.5.5.</span> <span class="toc-text">综合决定</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
