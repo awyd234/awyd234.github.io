@@ -18,7 +18,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/196185fc/洞察调研机构PHD发布了的微信用户洞察报告.jpeg">
 <meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
-<meta property="og:updated_time" content="2021-04-18T17:13:44.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度应对思路.jpg">
+<meta property="og:updated_time" content="2021-04-18T17:32:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业二 微信朋友圈高性能复杂度分析">
 <meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  微信朋友圈高性能业务指标 新闻信息搜集 微信朋友圈数据 微信最">
@@ -291,6 +292,11 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
 </div>
+<h2 id="朋友圈高性能复杂度应对思路">朋友圈高性能复杂度应对思路</h2>
+<div data-align="center">
+<img src="/post/196185fc/朋友圈高性能复杂度应对思路.jpg">
+</div>
+<h2 id="朋友圈高性能方案---浏览朋友圈">朋友圈高性能方案 - 浏览朋友圈</h2>
 
       
 
@@ -451,7 +457,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业-分析一下微信朋友圈的高性能复杂度"><span class="toc-number">2.</span> <span class="toc-text">作业 分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业要求"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信朋友圈高性能业务指标"><span class="toc-number">2.2.</span> <span class="toc-text">微信朋友圈高性能业务指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新闻信息搜集"><span class="toc-number">2.2.1.</span> <span class="toc-text">新闻信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#微信朋友圈数据"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">微信朋友圈数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微信用户活跃数据"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">微信用户活跃数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键数据"><span class="toc-number">2.2.2.</span> <span class="toc-text">关键数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据估算"><span class="toc-number">2.2.3.</span> <span class="toc-text">数据估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能复杂度分析"><span class="toc-number">2.2.4.</span> <span class="toc-text">高性能复杂度分析</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业-分析一下微信朋友圈的高性能复杂度"><span class="toc-number">2.</span> <span class="toc-text">作业 分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业要求"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信朋友圈高性能业务指标"><span class="toc-number">2.2.</span> <span class="toc-text">微信朋友圈高性能业务指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新闻信息搜集"><span class="toc-number">2.2.1.</span> <span class="toc-text">新闻信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#微信朋友圈数据"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">微信朋友圈数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微信用户活跃数据"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">微信用户活跃数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键数据"><span class="toc-number">2.2.2.</span> <span class="toc-text">关键数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据估算"><span class="toc-number">2.2.3.</span> <span class="toc-text">数据估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能复杂度分析"><span class="toc-number">2.2.4.</span> <span class="toc-text">高性能复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#朋友圈高性能复杂度应对思路"><span class="toc-number">2.3.</span> <span class="toc-text">朋友圈高性能复杂度应对思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#朋友圈高性能方案---浏览朋友圈"><span class="toc-number">2.4.</span> <span class="toc-text">朋友圈高性能方案 - 浏览朋友圈</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -752,6 +758,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -765,10 +775,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
