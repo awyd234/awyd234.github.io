@@ -9,7 +9,7 @@
   <title>「架构实战营」作业一 微信业务架构图 &amp; 毕设版学生管理系统架构设计 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="背景介绍 极客大学业务架构实战营课程作业 作业1 画出微信的业务架构图 作业内容 画出微信的业务架构图 结果展示    作业2 “学生管理系统”毕设架构设计 作业内容 假设今年学校毕业设计要求提升，要求做真正可运行的学生管理系统，学院对毕设的具体要求如下：">
-<meta name="keywords" content="Homework,Software Architecture,GeekTime,Study Record">
+<meta name="keywords" content="Homework,Software Architecture,GeekTime,Study Record,Wechat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「架构实战营」作业一 微信业务架构图 &amp; 毕设版学生管理系统架构设计">
 <meta property="og:url" content="http://windtrack.xyz/post/d261e2d4/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/微信业务架构图20210407.jpg">
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/学生管理系统方案1.jpg">
 <meta property="og:image" content="http://windtrack.xyz/post/d261e2d4/学生管理系统方案2.jpg">
-<meta property="og:updated_time" content="2021-04-10T04:30:11.000Z">
+<meta property="og:updated_time" content="2021-04-18T15:20:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业一 微信业务架构图 &amp; 毕设版学生管理系统架构设计">
 <meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业1 画出微信的业务架构图 作业内容 画出微信的业务架构图 结果展示    作业2 “学生管理系统”毕设架构设计 作业内容 假设今年学校毕业设计要求提升，要求做真正可运行的学生管理系统，学院对毕设的具体要求如下：">
@@ -372,6 +372,11 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="综合决定">综合决定</h3>
 <p>选择方案一</p>
+<h1 id="助教评语">助教评语</h1>
+<h2 id="作业1">作业1</h2>
+<p>“发现业务”这样的描述直接沿用了APP中的文案，在业务架构图中有点意义不明。</p>
+<h2 id="作业2">作业2</h2>
+<p>给出了两个方案，经过分析与取舍选择了方案一。考虑到了数据可用性（主备）、服务可用性（负载均衡）、成本、安全、技术栈的统一，并且分析复杂度时，细分到了模块级别，考虑得非常周全。</p>
 
       
 
@@ -419,6 +424,10 @@ var _hmt = _hmt || [];
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Wechat</a>
         		</li>
       		
 		</ul>
@@ -499,6 +508,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/post/196185fc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          「架构实战营」作业二 微信朋友圈高性能复杂度分析
+        
+      </div>
+    </a>
+  
   
     <a href="/post/4a2c996f/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Python中的float小数位数保留处理</div>
@@ -528,7 +546,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度判断"><span class="toc-number">3.2.</span> <span class="toc-text">复杂度判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能"><span class="toc-number">3.2.1.</span> <span class="toc-text">高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用"><span class="toc-number">3.2.2.</span> <span class="toc-text">高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可扩展"><span class="toc-number">3.2.3.</span> <span class="toc-text">可扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成本安全"><span class="toc-number">3.2.4.</span> <span class="toc-text">成本、安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案一"><span class="toc-number">3.3.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">3.3.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明"><span class="toc-number">3.3.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析"><span class="toc-number">3.3.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案二"><span class="toc-number">3.4.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明-1"><span class="toc-number">3.4.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析-1"><span class="toc-number">3.4.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案取舍"><span class="toc-number">3.5.</span> <span class="toc-text">方案取舍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#团队技术水平"><span class="toc-number">3.5.1.</span> <span class="toc-text">团队技术水平</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案成本"><span class="toc-number">3.5.2.</span> <span class="toc-text">方案成本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发周期"><span class="toc-number">3.5.3.</span> <span class="toc-text">开发周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对方认可度"><span class="toc-number">3.5.4.</span> <span class="toc-text">对方认可度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综合决定"><span class="toc-number">3.5.5.</span> <span class="toc-text">综合决定</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业1-画出微信的业务架构图"><span class="toc-number">2.</span> <span class="toc-text">作业1 画出微信的业务架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">2.2.</span> <span class="toc-text">结果展示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业2-学生管理系统毕设架构设计"><span class="toc-number">3.</span> <span class="toc-text">作业2 “学生管理系统”毕设架构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业内容-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度判断"><span class="toc-number">3.2.</span> <span class="toc-text">复杂度判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能"><span class="toc-number">3.2.1.</span> <span class="toc-text">高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用"><span class="toc-number">3.2.2.</span> <span class="toc-text">高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可扩展"><span class="toc-number">3.2.3.</span> <span class="toc-text">可扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成本安全"><span class="toc-number">3.2.4.</span> <span class="toc-text">成本、安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案一"><span class="toc-number">3.3.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图"><span class="toc-number">3.3.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明"><span class="toc-number">3.3.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析"><span class="toc-number">3.3.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案二"><span class="toc-number">3.4.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#架构图-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案说明-1"><span class="toc-number">3.4.2.</span> <span class="toc-text">方案说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案分析-1"><span class="toc-number">3.4.3.</span> <span class="toc-text">方案分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案取舍"><span class="toc-number">3.5.</span> <span class="toc-text">方案取舍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#团队技术水平"><span class="toc-number">3.5.1.</span> <span class="toc-text">团队技术水平</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案成本"><span class="toc-number">3.5.2.</span> <span class="toc-text">方案成本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发周期"><span class="toc-number">3.5.3.</span> <span class="toc-text">开发周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对方认可度"><span class="toc-number">3.5.4.</span> <span class="toc-text">对方认可度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综合决定"><span class="toc-number">3.5.5.</span> <span class="toc-text">综合决定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#助教评语"><span class="toc-number">4.</span> <span class="toc-text">助教评语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业1"><span class="toc-number">4.1.</span> <span class="toc-text">作业1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作业2"><span class="toc-number">4.2.</span> <span class="toc-text">作业2</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -865,6 +883,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Wechat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
@@ -913,10 +935,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
               </li>
              
@@ -934,6 +952,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
              
               <li class="article-tag-list-item">

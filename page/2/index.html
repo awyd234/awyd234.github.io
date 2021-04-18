@@ -210,6 +210,127 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CUDA升级，从9-2到11-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/42d6d10c/">CUDA升级，从9.2到11.0</a>
+    </h1>
+  
+
+        
+        <a href="/post/42d6d10c/" class="archive-article-date">
+  	<time datetime="2021-01-20T07:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="故事背景">故事背景</h1>
+<h2 id="系统配置">系统配置</h2>
+<h3 id="操作系统">操作系统</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/version</span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
+<h3 id="算法模型-backbone">算法模型 Backbone</h3>
+<ul>
+<li>ResNet V2</li>
+<li>ResNet 101</li>
+<li>ResNet 50</li>
+<li>Mask RCNN</li>
+</ul>
+<h2 id="故事描述">故事描述</h2>
+<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
+<h1 id="故事经过">故事经过</h1>
+<h2 id="安装cuda驱动">安装CUDA驱动</h2>
+        
+          <a class="article-more-a" href="/post/42d6d10c/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Tensorflow Serving</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Nvidia</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CUDA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CUDNN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Inference Speed</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/42d6d10c/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-印象笔记存储导致的tensorflow-serving的坑-Error-parsing-text-format-tensorflow-serving-ModelServerConfig" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1249,126 +1370,6 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
 
 
   
-    <article id="post-「论文笔记」Rich feature hierarchies for accurate object detection and semantic segmentation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/e0a070c0/">「论文笔记」Rich feature hierarchies for accurate object detection and semantic segmentation</a>
-    </h1>
-  
-
-        
-        <a href="/post/e0a070c0/" class="archive-article-date">
-  	<time datetime="2019-08-01T03:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="basic-info">Basic Info</h2>
-<p>Link: <a href="https://arxiv.org/abs/1311.2524" target="_blank" rel="noopener">arXiv:1311.2524</a></p>
-<p>Author: <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Girshick%2C+R" target="_blank" rel="noopener">Ross Girshick</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Donahue%2C+J" target="_blank" rel="noopener">Jeff Donahue</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Darrell%2C+T" target="_blank" rel="noopener">Trevor Darrell</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Malik%2C+J" target="_blank" rel="noopener">Jitendra Malik</a></p>
-<h2 id="summary">Summary</h2>
-<h2 id="research-objective">Research Objective</h2>
-<p>作者的研究目标。</p>
-<h2 id="problem-statement">Problem Statement</h2>
-<p>问题陈述，要解决什么问题？</p>
-<h2 id="methods">Method(s)</h2>
-<p>解决问题的方法/算法是什么？</p>
-        
-          <a class="article-more-a" href="/post/e0a070c0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Computer Vision</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Object Detection</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comments</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Paper-Notes//" class="article-tag-list-link color2">Paper Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/e0a070c0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1667,6 +1668,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Wechat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
               </li>
              
@@ -1715,10 +1720,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
               </li>
              
@@ -1736,6 +1737,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
              
               <li class="article-tag-list-item">
