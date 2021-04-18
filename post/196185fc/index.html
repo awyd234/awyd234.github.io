@@ -18,9 +18,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://windtrack.xyz/post/196185fc/总体复杂度分析图.png">
 <meta property="og:image" content="http://windtrack.xyz/post/196185fc/洞察调研机构PHD发布了的微信用户洞察报告.jpeg">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
+<meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度分析.jpg">
 <meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度应对思路.jpg">
-<meta property="og:updated_time" content="2021-04-18T17:57:10.000Z">
+<meta property="og:updated_time" content="2021-04-18T18:05:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业二 微信朋友圈高性能复杂度分析">
 <meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  朋友圈复杂度总体分析    微信朋友圈属于高质量复杂度，低业务">
@@ -289,14 +289,14 @@ var _hmt = _hmt || [];
 <p><span class="math display">\[\frac{1 * 1}{9 * 0.5 + 4 * 1 + 5 * 0.3 + 6 * 0.1} = 0.09434\]</span></p>
 <p>朋友圈一般不会出现激增情况，于是我们假设峰值是普通高峰时期的3倍请求量，那么可以粗略估算</p>
 <ul>
-<li><p>假设每个人一天平均进入3次朋友圈，巅峰时1s有 7.8 * 3 * 3 * 10 ^ 8 * 0.09434 / 3600 = 183963人进入朋友圈，折合20万 QPS计算</p></li>
-<li><p>巅峰时1s有1.2 * 10 ^ 8 * 0.09434 / 3600= 3145人发朋友圈，按4000 TPS计算</p></li>
-<li><p>巅峰时1s有1 * 10 ^ 8 * 0.09434 / 3600 = 2620条视频内容产生，先不做考虑</p></li>
-<li><p>假设每条朋友圈评论点赞10条，巅峰时1s有 1.2 * 10 ^ 8 * 10 * 0.09434 / 3600 = 31450 条评论/点赞产生，按4万TPS计算</p></li>
+<li><p>假设每个人一天平均进入3次朋友圈，巅峰时1s有 7.8 * 10 ^ 8 * 3 * 3 * 0.09434 / 3600 = 183963 人进入朋友圈，折合20万 QPS计算</p></li>
+<li><p>巅峰时1s有 1.2 * 10 ^ 8 * 3 * 0.09434 / 3600 = 9434 人发朋友圈，按1万 TPS计算</p></li>
+<li><p>巅峰时1s有 1 * 10 ^ 8 * 3 * 0.09434 / 3600 = 7862 条视频内容产生，先不做考虑</p></li>
+<li><p>假设每条朋友圈评论点赞10条，巅峰时1s有 1.2 * 10 ^ 8 * 3 * 10 * 0.09434 / 3600 = 94340 条评论/点赞产生，按10万TPS计算</p></li>
 </ul>
 <h3 id="高性能复杂度分析">高性能复杂度分析</h3>
 <div data-align="center">
-<img src="/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
+<img src="/post/196185fc/朋友圈高性能复杂度分析.jpg">
 </div>
 <h2 id="朋友圈高性能复杂度应对思路">朋友圈高性能复杂度应对思路</h2>
 <div data-align="center">
@@ -790,18 +790,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
               </li>
              
@@ -818,11 +806,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
               </li>
              
               <li class="article-tag-list-item">
