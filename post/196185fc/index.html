@@ -8,18 +8,21 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>「架构实战营」作业二 微信朋友圈高性能复杂度分析 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。">
+  <meta name="description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  微信朋友圈高性能业务指标 新闻信息搜集 微信朋友圈数据 微信最">
 <meta name="keywords" content="Homework,Software Architecture,GeekTime,Study Record,Wechat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「架构实战营」作业二 微信朋友圈高性能复杂度分析">
 <meta property="og:url" content="http://windtrack.xyz/post/196185fc/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。">
+<meta property="og:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  微信朋友圈高性能业务指标 新闻信息搜集 微信朋友圈数据 微信最">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-18T15:22:59.000Z">
+<meta property="og:image" content="http://windtrack.xyz/post/196185fc/洞察调研机构PHD发布了的微信用户洞察报告.jpeg">
+<meta property="og:image" content="http://windtrack.xyz/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
+<meta property="og:updated_time" content="2021-04-18T17:13:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「架构实战营」作业二 微信朋友圈高性能复杂度分析">
-<meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。">
+<meta name="twitter:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  微信朋友圈高性能业务指标 新闻信息搜集 微信朋友圈数据 微信最">
+<meta name="twitter:image" content="http://windtrack.xyz/post/196185fc/洞察调研机构PHD发布了的微信用户洞察报告.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -240,6 +243,54 @@ var _hmt = _hmt || [];
 <li><p>给出你的架构方案中关键的设计理由。</p></li>
 <li><p>3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。</p></li>
 </ul>
+<h2 id="微信朋友圈高性能业务指标">微信朋友圈高性能业务指标</h2>
+<h3 id="新闻信息搜集">新闻信息搜集</h3>
+<h4 id="微信朋友圈数据">微信朋友圈数据</h4>
+<p><a href="https://www.sohu.com/a/445530372_114760" target="_blank" rel="noopener">微信最新数据：每天有10.9亿人打开微信，7.8亿人进入朋友圈</a></p>
+<p>在微信公开课 Pro 直播演讲中，微信创始人张小龙披露微信最新数据：每天有 10.9 亿人打开微信，3.3 亿人进行视频通话，7.8 亿人进入朋友圈，1.2 亿人发朋友圈，朋友圈每天有 1 亿条视频内容，3.6 亿公众号，4 亿用户使用小程序。朋友圈每天有 1 亿条视频内容。每天有 3.6 亿人进入公众号，4 亿用户使用小程序。</p>
+<p>腾讯最新财报显示，微信月活跃用户突破 12 亿（合并 WeChat），成为中国互联网历史上第一款月活用户突破 10 亿的产品。</p>
+<h4 id="微信用户活跃数据">微信用户活跃数据</h4>
+<p><strong>近日，用户洞察调研机构PHD发布了一份微信用户洞察报告。报告显示，晚7点至晚9点，是微信用户最活跃的两小时，被称为“黄金两小时”。</strong></p>
+<p>10多亿微信用户每天都会在哪些时间段使用微信呢？调查发现：</p>
+<ul>
+<li><strong>早上9点—晚上6点</strong>，是微信使用的小高峰时段，并且随着时间的推移会一直呈现小幅度的增长；</li>
+<li><strong>晚上6点——晚上10点</strong>，是微信使用的大高峰时段，这也是用户最活跃的黄金时间段，并且会在晚上8点达到一天中的使用顶峰；</li>
+<li><strong>晚上10点—凌晨3点</strong>，微信使用开始迎来大幅下降，并在凌晨3点达到一天中最低值，但晚上10点—凌晨12点微信使用的活跃度依然不低。</li>
+<li><strong>而从早上6点开始</strong>，大部分用户从睡梦中悠然醒来，微信开始新的一天的使用爬坡，一直到早上9点微信使用都处于增速较快的状态中，随后达到一天中的第一个长时段的小高峰期，增幅也随之趋于平缓。</li>
+</ul>
+<p>此外，微信小程序的使用情况与微信使用的时间分布曲线非常相似，不过小程序的使用高峰是下午5点，随后开始缓慢下降，并从晚上10点开始迎来断崖式下跌。</p>
+<div data-align="center">
+<img src="/post/196185fc/洞察调研机构PHD发布了的微信用户洞察报告.jpeg">
+</div>
+<p>作者：德外5号 链接：https://www.zhihu.com/question/34008837/answer/772118646 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="关键数据">关键数据</h3>
+<ul>
+<li>每天有7.8亿人进入朋友圈</li>
+<li>1.2 亿人发朋友圈</li>
+<li>朋友圈每天有 1 亿条视频内容</li>
+</ul>
+<h3 id="数据估算">数据估算</h3>
+<p>根据微信活跃用户信息</p>
+<p>粗略估计，我们设</p>
+<ul>
+<li>早上9点到晚上6点，共9h，权重为0.5/h</li>
+<li>晚上6点到晚上10点，共4h，权重为1/h</li>
+<li>晚上10点—凌晨3点，共5h，权重为0.3/h</li>
+<li>凌晨3点到早上9点，共6h，权重为0.1/h</li>
+</ul>
+<p>那么，在高峰期的晚上6点到晚上10点，平均每小时权重占比占当天的比例为</p>
+<p><span class="math display">\[\frac{1 * 1}{9 * 0.5 + 4 * 1 + 5 * 0.3 + 6 * 0.1} = 0.09434\]</span></p>
+<p>朋友圈一般不会出现激增情况，于是我们假设峰值是普通高峰时期的3倍请求量，那么可以粗略估算</p>
+<ul>
+<li><p>假设每个人一天平均进入3次朋友圈，巅峰时1s有 7.8 * 3 * 3 * 10 ^ 8 * 0.09434 / 3600 = 183963人进入朋友圈，折合20万 QPS计算</p></li>
+<li><p>巅峰时1s有1.2 * 10 ^ 8 * 0.09434 / 3600= 3145人发朋友圈，按4000 TPS计算</p></li>
+<li><p>巅峰时1s有1 * 10 ^ 8 * 0.09434 / 3600 = 2620条视频内容产生，先不做考虑</p></li>
+<li><p>假设每条朋友圈评论点赞10条，巅峰时1s有 1.2 * 10 ^ 8 * 10 * 0.09434 / 3600 = 31450 条评论/点赞产生，按4万TPS计算</p></li>
+</ul>
+<h3 id="高性能复杂度分析">高性能复杂度分析</h3>
+<div data-align="center">
+<img src="/post/196185fc/朋友圈高性能复杂度分析-8766002.jpg">
+</div>
 
       
 
@@ -400,7 +451,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业-分析一下微信朋友圈的高性能复杂度"><span class="toc-number">2.</span> <span class="toc-text">作业 分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业要求"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作业-分析一下微信朋友圈的高性能复杂度"><span class="toc-number">2.</span> <span class="toc-text">作业 分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业要求"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信朋友圈高性能业务指标"><span class="toc-number">2.2.</span> <span class="toc-text">微信朋友圈高性能业务指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新闻信息搜集"><span class="toc-number">2.2.1.</span> <span class="toc-text">新闻信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#微信朋友圈数据"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">微信朋友圈数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微信用户活跃数据"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">微信用户活跃数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键数据"><span class="toc-number">2.2.2.</span> <span class="toc-text">关键数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据估算"><span class="toc-number">2.2.3.</span> <span class="toc-text">数据估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能复杂度分析"><span class="toc-number">2.2.4.</span> <span class="toc-text">高性能复杂度分析</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -789,6 +840,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
               </li>
              
@@ -806,10 +861,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
              
               <li class="article-tag-list-item">
