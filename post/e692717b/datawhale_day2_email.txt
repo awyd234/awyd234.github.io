@@ -1,0 +1,10 @@
+-- 创建表
+CREATE TABLE IF NOT EXISTS `email` (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+email VARCHAR(255) NOT NULL DEFAULT ''
+) Engine=InnoDB DEFAULT CHARSET utf8mb4;
+
+-- 插入数据
+INSERT INTO email VALUES('1','a@b.com');
+INSERT INTO email VALUES('2','c@d.com');
+INSERT INTO email VALUES('3','a@b.com');
