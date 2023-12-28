@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -217,25 +217,28 @@ var _hmt = _hmt || [];
 <p>virtualenv是一个用来创建独立的Python环境的包</p>
 <h2 id="安装virtualenv">1.1 安装virtualenv</h2>
 <p>首先使用pip3安装virtualenv</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
 <h2 id="创建与使用环境">1.2 创建与使用环境</h2>
 <p>创建env环境，比如我们创建名为env_test的虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .env <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> .env/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .<span class="built_in">env</span> <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> .<span class="built_in">env</span>/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="生成与使用requirements.txt">1.3 生成与使用requirements.txt</h2>
 <p>通过pip3 list可以列出当前安装的python3第三方包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 list</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 list</span></span><br></pre></td></tr></table></figure>
 <p>将环境中安装的python第三方包名称及版本写入requirements.txt文件中</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 freeze &gt; requirements.txt</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 freeze &gt; requirements.txt</span></span><br></pre></td></tr></table></figure>
 <p>这样，其他人就可以通过install命令根据requirements.txt内容安装所需要的第三方包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
 <h1 id="gunicorn">2. Gunicorn</h1>
-<p>guincorn是支持wsgi协议的http server，gevent只是它支持的模式之一 ，是为了解决django、flask这些web框架自带wsgi server性能低下的问题。 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29150630">(1)</a></p>
+<p>guincorn是支持wsgi协议的http server，gevent只是它支持的模式之一
+，是为了解决django、flask这些web框架自带wsgi server性能低下的问题。 <a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/29150630">(1)</a></p>
 <h2 id="gunicorn的安装">2.1 Gunicorn的安装</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 install gunicorn</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install gunicorn</span></span><br></pre></td></tr></table></figure>
 <h1 id="supervisor">3. Supervisor</h1>
-<p>Linux的后台进程运行有好几种方法，例如nohup，screen等，但是，如果是一个服务程序，要可靠地在后台运行，我们就需要把它做成daemon，最好还能监控进程状态，在意外结束时能自动重启。supervisor就是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/article/0013738926914703df5e93589a14c19807f0e285194fe84000">(2)</a></p>
+<p>Linux的后台进程运行有好几种方法，例如nohup，screen等，但是，如果是一个服务程序，要可靠地在后台运行，我们就需要把它做成daemon，最好还能监控进程状态，在意外结束时能自动重启。supervisor就是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。<a
+target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/article/0013738926914703df5e93589a14c19807f0e285194fe84000">(2)</a></p>
 <h2 id="supervisor的安装">3.1 supervisor的安装</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> apt-get install supervisor</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">apt-get install supervisor</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -407,7 +410,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

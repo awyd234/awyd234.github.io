@@ -61,7 +61,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -137,7 +137,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -240,13 +240,17 @@ var _hmt = _hmt || [];
 <p>即使把所有的记录都加上锁，还是阻止不了新插入的记录，这也是为什么“幻读”会被单独拿出来解决的原因。</p>
 <h1 id="事务隔离机制">事务隔离机制</h1>
 <h2 id="事务的隔离级别">事务的隔离级别</h2>
-<h3 id="level-1-read-uncommited读未提交">Level 1 Read Uncommited（读未提交）</h3>
+<h3 id="level-1-read-uncommited读未提交">Level 1 Read
+Uncommited（读未提交）</h3>
 <p>事务A修改了数据，但未提交前，事务B可以读取到事务A修改的数据</p>
-<h3 id="level-2-read-commited读提交">Level 2 Read Commited（读提交）</h3>
+<h3 id="level-2-read-commited读提交">Level 2 Read
+Commited（读提交）</h3>
 <p>事务A修改了数据，但未提交前，事务B不可以读取到事务A修改的数据，只有在事务A提交后，事务B才可以读取到修改的数据</p>
-<h3 id="level-3-repeatable-read-rr可重复读取">Level 3 Repeatable Read / RR（可重复读取）</h3>
+<h3 id="level-3-repeatable-read-rr可重复读取">Level 3 Repeatable Read /
+RR（可重复读取）</h3>
 <p>事务A修改了数据，无论是否已经提交，事务B整个过程中都无法读取到事务A修改的数据，只有重新开一个事务才可以读取到，事务B可以读取到自己修改的数据</p>
-<h3 id="level-4-serializable可串行化">Level 4 Serializable（可串行化）</h3>
+<h3 id="level-4-serializable可串行化">Level 4
+Serializable（可串行化）</h3>
 <p>要求事务串行执行，这样事务之间就完全不能产生干扰</p>
 <h2 id="事务的隔离级别的问题">事务的隔离级别的问题</h2>
 <table>
@@ -288,7 +292,10 @@ var _hmt = _hmt || [];
 <h1 id="业务场景问题">业务场景问题</h1>
 <h2 id="case1">Case1</h2>
 <h3 id="问题回顾">问题回顾</h3>
-<p>在此前<a href="https://windtrack.xyz/post/27067a2b/">MySQL无法获取最新数据的解决方法</a>文章中，我们利用Flask + Websocket的长连接做了一个消息推送服务，同时数据库会不断更新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变</p>
+<p>在此前<a
+href="https://windtrack.xyz/post/27067a2b/">MySQL无法获取最新数据的解决方法</a>文章中，我们利用Flask
++
+Websocket的长连接做了一个消息推送服务，同时数据库会不断更新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变</p>
 <p>然而无论我手动登录MySQL，或者另外写个程序去读取MySQL，数据是可以看到更新的</p>
 <h3 id="问题排查">问题排查</h3>
 <p>之前参考了CSDN上的解决方法，通过查找事务隔离级别</p>
@@ -463,7 +470,11 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84acid"><span class="toc-number">1.1.</span> <span class="toc-text">事务的ACID</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-atomicity-%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text">A Atomicity 原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-consistency-%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">C Consistency 一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i-isolation-%E9%9A%94%E7%A6%BB%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">I Isolation 隔离性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-durability-%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-number">1.1.4.</span> <span class="toc-text">D Durability 持久性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%8F%AF%E8%83%BD%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">并发事务可能带来的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A2%E5%A4%B1%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">丢失修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">不可重复读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB"><span class="toc-number">1.2.4.</span> <span class="toc-text">幻读</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">事务隔离机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#level-1-read-uncommited%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">Level 1 Read Uncommited（读未提交）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-2-read-commited%E8%AF%BB%E6%8F%90%E4%BA%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">Level 2 Read Commited（读提交）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-3-repeatable-read-rr%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E5%8F%96"><span class="toc-number">2.1.3.</span> <span class="toc-text">Level 3 Repeatable Read &#x2F; RR（可重复读取）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-4-serializable%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96"><span class="toc-number">2.1.4.</span> <span class="toc-text">Level 4 Serializable（可串行化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">事务的隔离级别的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">业务场景问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#case1"><span class="toc-number">3.1.</span> <span class="toc-text">Case1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9E%E9%A1%BE"><span class="toc-number">3.1.1.</span> <span class="toc-text">问题回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text">问题排查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="toc-number">3.1.3.</span> <span class="toc-text">问题处理</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84acid"><span class="toc-number">1.1.</span> <span class="toc-text">事务的ACID</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-atomicity-%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text">A Atomicity 原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-consistency-%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">C Consistency 一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i-isolation-%E9%9A%94%E7%A6%BB%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">I Isolation 隔离性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-durability-%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-number">1.1.4.</span> <span class="toc-text">D Durability 持久性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%8F%AF%E8%83%BD%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">并发事务可能带来的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A2%E5%A4%B1%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">丢失修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">不可重复读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB"><span class="toc-number">1.2.4.</span> <span class="toc-text">幻读</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">事务隔离机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#level-1-read-uncommited%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4"><span class="toc-number">2.1.1.</span> <span class="toc-text">Level 1 Read
+Uncommited（读未提交）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-2-read-commited%E8%AF%BB%E6%8F%90%E4%BA%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">Level 2 Read
+Commited（读提交）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-3-repeatable-read-rr%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E5%8F%96"><span class="toc-number">2.1.3.</span> <span class="toc-text">Level 3 Repeatable Read &#x2F;
+RR（可重复读取）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-4-serializable%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96"><span class="toc-number">2.1.4.</span> <span class="toc-text">Level 4
+Serializable（可串行化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">事务的隔离级别的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">业务场景问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#case1"><span class="toc-number">3.1.</span> <span class="toc-text">Case1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9E%E9%A1%BE"><span class="toc-number">3.1.1.</span> <span class="toc-text">问题回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text">问题排查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="toc-number">3.1.3.</span> <span class="toc-text">问题处理</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -492,7 +503,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

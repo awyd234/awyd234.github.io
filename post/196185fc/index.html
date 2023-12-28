@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -146,7 +146,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -226,10 +226,12 @@ var _hmt = _hmt || [];
       
         <h1 id="背景介绍">背景介绍</h1>
 <p>极客大学业务架构实战营课程作业</p>
-<h1 id="作业-分析一下微信朋友圈的高性能复杂度">作业 分析一下微信朋友圈的高性能复杂度</h1>
+<h1 id="作业-分析一下微信朋友圈的高性能复杂度">作业
+分析一下微信朋友圈的高性能复杂度</h1>
 <h2 id="作业要求">作业要求</h2>
 <ul>
-<li><p>对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度；</p></li>
+<li><p>对照模块 2
+讲述的复杂度分析方法，分析微信朋友圈的复杂度；</p></li>
 <li><p>针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）；</p></li>
 <li><p>给出你的架构方案中关键的设计理由。</p></li>
 <li><p>3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。</p></li>
@@ -242,9 +244,15 @@ var _hmt = _hmt || [];
 <h2 id="微信朋友圈高性能业务指标">微信朋友圈高性能业务指标</h2>
 <h3 id="新闻信息搜集">新闻信息搜集</h3>
 <h4 id="微信朋友圈数据">微信朋友圈数据</h4>
-<p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/445530372_114760">微信最新数据：每天有10.9亿人打开微信，7.8亿人进入朋友圈</a></p>
-<p>在微信公开课 Pro 直播演讲中，微信创始人张小龙披露微信最新数据：每天有 10.9 亿人打开微信，3.3 亿人进行视频通话，7.8 亿人进入朋友圈，1.2 亿人发朋友圈，朋友圈每天有 1 亿条视频内容，3.6 亿公众号，4 亿用户使用小程序。朋友圈每天有 1 亿条视频内容。每天有 3.6 亿人进入公众号，4 亿用户使用小程序。</p>
-<p>腾讯最新财报显示，微信月活跃用户突破 12 亿（合并 WeChat），成为中国互联网历史上第一款月活用户突破 10 亿的产品。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.sohu.com/a/445530372_114760">微信最新数据：每天有10.9亿人打开微信，7.8亿人进入朋友圈</a></p>
+<p>在微信公开课 Pro 直播演讲中，微信创始人张小龙披露微信最新数据：每天有
+10.9 亿人打开微信，3.3 亿人进行视频通话，7.8 亿人进入朋友圈，1.2
+亿人发朋友圈，朋友圈每天有 1 亿条视频内容，3.6 亿公众号，4
+亿用户使用小程序。朋友圈每天有 1 亿条视频内容。每天有 3.6
+亿人进入公众号，4 亿用户使用小程序。</p>
+<p>腾讯最新财报显示，微信月活跃用户突破 12 亿（合并
+WeChat），成为中国互联网历史上第一款月活用户突破 10 亿的产品。</p>
 <h4 id="微信用户活跃数据">微信用户活跃数据</h4>
 <p><strong>近日，用户洞察调研机构PHD发布了一份微信用户洞察报告。报告显示，晚7点至晚9点，是微信用户最活跃的两小时，被称为“黄金两小时”。</strong></p>
 <p>10多亿微信用户每天都会在哪些时间段使用微信呢？调查发现：</p>
@@ -258,7 +266,10 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/196185fc/%E6%B4%9E%E5%AF%9F%E8%B0%83%E7%A0%94%E6%9C%BA%E6%9E%84PHD%E5%8F%91%E5%B8%83%E4%BA%86%E7%9A%84%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A.jpeg" class="">
 </div>
-<p>作者：德外5号 链接：https://www.zhihu.com/question/34008837/answer/772118646 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>作者：德外5号
+链接：https://www.zhihu.com/question/34008837/answer/772118646
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h3 id="关键数据">关键数据</h3>
 <ul>
 <li>每天有7.8亿人进入朋友圈</li>
@@ -275,13 +286,18 @@ var _hmt = _hmt || [];
 <li>凌晨3点到早上9点，共6h，权重为0.1/h</li>
 </ul>
 <p>那么，在高峰期的晚上6点到晚上10点，平均每小时权重占比占当天的比例为</p>
-<p><span class="math display">\[\frac{1 * 1}{9 * 0.5 + 4 * 1 + 5 * 0.3 + 6 * 0.1} = 0.09434\]</span></p>
+<p><span class="math display">\[\frac{1 * 1}{9 * 0.5 + 4 * 1 + 5 * 0.3 +
+6 * 0.1} = 0.09434\]</span></p>
 <p>朋友圈一般不会出现激增情况，于是我们假设峰值是普通高峰时期的3倍请求量，那么可以粗略估算</p>
 <ul>
-<li><p>假设每个人一天平均进入3次朋友圈，巅峰时1s有 7.8 * 10 ^ 8 * 3 * 3 * 0.09434 / 3600 = 183963 人进入朋友圈，折合20万 QPS计算</p></li>
-<li>巅峰时1s有 1.2 * 10 ^ 8 * 3 * 0.09434 / 3600 = 9434 人发朋友圈，按1万 TPS计算</li>
-<li><p>巅峰时1s有 1 * 10 ^ 8 * 3 * 0.09434 / 3600 = 7862 条视频内容产生，先不做考虑</p></li>
-<li><p>假设每条朋友圈评论点赞10条，巅峰时1s有 1.2 * 10 ^ 8 * 3 * 10 * 0.09434 / 3600 = 94340 条评论/点赞产生，按10万TPS计算</p></li>
+<li><p>假设每个人一天平均进入3次朋友圈，巅峰时1s有 7.8 * 10 ^ 8 * 3 * 3
+* 0.09434 / 3600 = 183963 人进入朋友圈，折合20万 QPS计算</p></li>
+<li><p>巅峰时1s有 1.2 * 10 ^ 8 * 3 * 0.09434 / 3600 = 9434
+人发朋友圈，按1万 TPS计算</p></li>
+<li><p>巅峰时1s有 1 * 10 ^ 8 * 3 * 0.09434 / 3600 = 7862
+条视频内容产生，先不做考虑</p></li>
+<li><p>假设每条朋友圈评论点赞10条，巅峰时1s有 1.2 * 10 ^ 8 * 3 * 10 *
+0.09434 / 3600 = 94340 条评论/点赞产生，按10万TPS计算</p></li>
 </ul>
 <h3 id="高性能复杂度分析">高性能复杂度分析</h3>
 <div data-align="center">
@@ -291,7 +307,8 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%BA%94%E5%AF%B9%E6%80%9D%E8%B7%AF.jpg" class="">
 </div>
-<h2 id="朋友圈高性能方案---发布朋友圈">朋友圈高性能方案 - 发布朋友圈</h2>
+<h2 id="朋友圈高性能方案---发布朋友圈">朋友圈高性能方案 -
+发布朋友圈</h2>
 <h3 id="单机">单机</h3>
 <h4 id="计算高性能">计算高性能</h4>
 <ul>
@@ -332,11 +349,13 @@ var _hmt = _hmt || [];
 <li>sharding策略按user_id进行范围分片</li>
 </ul></li>
 </ul>
-<h2 id="朋友圈高性能方案---发布朋友圈架构图">朋友圈高性能方案 - 发布朋友圈架构图</h2>
+<h2 id="朋友圈高性能方案---发布朋友圈架构图">朋友圈高性能方案 -
+发布朋友圈架构图</h2>
 <div data-align="center">
 <img src="/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" class="">
 </div>
-<h2 id="朋友圈高性能方案---浏览朋友圈">朋友圈高性能方案 - 浏览朋友圈</h2>
+<h2 id="朋友圈高性能方案---浏览朋友圈">朋友圈高性能方案 -
+浏览朋友圈</h2>
 
       
 
@@ -497,7 +516,11 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A-%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%8B%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">作业 分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">朋友圈复杂度总体分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E4%B8%9A%E5%8A%A1%E6%8C%87%E6%A0%87"><span class="toc-number">2.3.</span> <span class="toc-text">微信朋友圈高性能业务指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E9%97%BB%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.3.1.</span> <span class="toc-text">新闻信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">微信朋友圈数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">微信用户活跃数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.2.</span> <span class="toc-text">关键数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%B0%E7%AE%97"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">2.3.4.</span> <span class="toc-text">高性能复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%BA%94%E5%AF%B9%E6%80%9D%E8%B7%AF"><span class="toc-number">2.4.</span> <span class="toc-text">朋友圈高性能复杂度应对思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88"><span class="toc-number">2.5.</span> <span class="toc-text">朋友圈高性能方案 - 发布朋友圈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA"><span class="toc-number">2.5.1.</span> <span class="toc-text">单机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-number">2.5.1.1.</span> <span class="toc-text">计算高性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-number">2.5.1.2.</span> <span class="toc-text">存储高性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4"><span class="toc-number">2.5.2.</span> <span class="toc-text">集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E9%AB%98%E6%80%A7%E8%83%BD-1"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">计算高性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E9%AB%98%E6%80%A7%E8%83%BD-1"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">存储高性能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">2.6.</span> <span class="toc-text">朋友圈高性能方案 - 发布朋友圈架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E6%B5%8F%E8%A7%88%E6%9C%8B%E5%8F%8B%E5%9C%88"><span class="toc-number">2.7.</span> <span class="toc-text">朋友圈高性能方案 - 浏览朋友圈</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A-%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%8B%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">作业
+分析一下微信朋友圈的高性能复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text">作业要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">朋友圈复杂度总体分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E4%B8%9A%E5%8A%A1%E6%8C%87%E6%A0%87"><span class="toc-number">2.3.</span> <span class="toc-text">微信朋友圈高性能业务指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E9%97%BB%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.3.1.</span> <span class="toc-text">新闻信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">微信朋友圈数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">微信用户活跃数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.2.</span> <span class="toc-text">关键数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%B0%E7%AE%97"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">2.3.4.</span> <span class="toc-text">高性能复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%BA%94%E5%AF%B9%E6%80%9D%E8%B7%AF"><span class="toc-number">2.4.</span> <span class="toc-text">朋友圈高性能复杂度应对思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88"><span class="toc-number">2.5.</span> <span class="toc-text">朋友圈高性能方案 -
+发布朋友圈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA"><span class="toc-number">2.5.1.</span> <span class="toc-text">单机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-number">2.5.1.1.</span> <span class="toc-text">计算高性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-number">2.5.1.2.</span> <span class="toc-text">存储高性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4"><span class="toc-number">2.5.2.</span> <span class="toc-text">集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E9%AB%98%E6%80%A7%E8%83%BD-1"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">计算高性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E9%AB%98%E6%80%A7%E8%83%BD-1"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">存储高性能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">2.6.</span> <span class="toc-text">朋友圈高性能方案 -
+发布朋友圈架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E6%96%B9%E6%A1%88---%E6%B5%8F%E8%A7%88%E6%9C%8B%E5%8F%8B%E5%9C%88"><span class="toc-number">2.7.</span> <span class="toc-text">朋友圈高性能方案 -
+浏览朋友圈</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -526,7 +549,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

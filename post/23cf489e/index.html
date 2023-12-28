@@ -69,7 +69,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -145,7 +145,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -225,7 +225,9 @@ var _hmt = _hmt || [];
       
         <h1 id="basic-info">Basic Info</h1>
 <h2 id="link">Link</h2>
-<p><a target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/kdd18_jiezhong-DeepInf.pdf">DeepInf: Social Influence Prediction with Deep Learning</a></p>
+<p><a
+target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/kdd18_jiezhong-DeepInf.pdf">DeepInf:
+Social Influence Prediction with Deep Learning</a></p>
 <h2 id="author">Author</h2>
 <ul>
 <li>Jiezhong Qiu</li>
@@ -240,7 +242,15 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/23cf489e/deep_inf_architecture.png" class="">
 </div>
-<p>(a): Raw input which consists of a mini-batch of B instances; Each instance is a sub-network comprised <em>n</em> users who are sampled from the whole network. (b): An embedding layer which maps each user to a D-dimensional representation. (c): An Instance Normalization Layer which normalizes user’s embedding. (d): The formal input layer which concatenates together network embedding and other features. (e) A GCN and GAT Layer. (f) and (g) Compare model output and ground truth, we get the negative log likelihood loss. In this example, ego user v was finally activated (marked as black)</p>
+<p>(a): Raw input which consists of a mini-batch of B instances; Each
+instance is a sub-network comprised <em>n</em> users who are sampled
+from the whole network. (b): An embedding layer which maps each user to
+a D-dimensional representation. (c): An Instance Normalization Layer
+which normalizes user’s embedding. (d): The formal input layer which
+concatenates together network embedding and other features. (e) A GCN
+and GAT Layer. (f) and (g) Compare model output and ground truth, we get
+the negative log likelihood loss. In this example, ego user v was
+finally activated (marked as black)</p>
 <h1 id="reproduce">Reproduce</h1>
 <h2 id="代码仓库">代码仓库</h2>
 <h2 id="数据导入">数据导入</h2>
@@ -249,9 +259,10 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">data_np = np.load(data_path)</span><br></pre></td></tr></table></figure>
 <h3 id="对于emb_64的数据">对于emb_64的数据</h3>
 <p>这个我不了解格式，参考了baseline中的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_w2v_feature</span>(<span class="params">file, max_idx=<span class="number">0</span></span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        nu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">            content = line.strip().split()</span><br><span class="line">            nu += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nu == <span class="number">1</span>:</span><br><span class="line">                n, d = <span class="built_in">int</span>(content[<span class="number">0</span>]), <span class="built_in">int</span>(content[<span class="number">1</span>])</span><br><span class="line">                feature = [[<span class="number">0.</span>] * d <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">max</span>(n, max_idx + <span class="number">1</span>))]</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            index = <span class="built_in">int</span>(content[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(feature) &lt;= index:</span><br><span class="line">                feature.append([<span class="number">0.</span>] * d)</span><br><span class="line">            <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(content[<span class="number">1</span>:]):</span><br><span class="line">                feature[index][i] = <span class="built_in">float</span>(x)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> feature:</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">len</span>(item) == d</span><br><span class="line">    <span class="keyword">return</span> np.array(feature, dtype=np.float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">load_w2v_feature</span>(<span class="params">file, max_idx=<span class="number">0</span></span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        nu = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">            content = line.strip().split()</span><br><span class="line">            nu += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nu == <span class="number">1</span>:</span><br><span class="line">                n, d = <span class="built_in">int</span>(content[<span class="number">0</span>]), <span class="built_in">int</span>(content[<span class="number">1</span>])</span><br><span class="line">                feature = [[<span class="number">0.</span>] * d <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">max</span>(n, max_idx + <span class="number">1</span>))]</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            index = <span class="built_in">int</span>(content[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(feature) &lt;= index:</span><br><span class="line">                feature.append([<span class="number">0.</span>] * d)</span><br><span class="line">            <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(content[<span class="number">1</span>:]):</span><br><span class="line">                feature[index][i] = <span class="built_in">float</span>(x)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> feature:</span><br><span class="line">        <span class="keyword">assert</span> <span class="built_in">len</span>(item) == d</span><br><span class="line">    <span class="keyword">return</span> np.array(feature, dtype=np.float32)</span><br></pre></td></tr></table></figure>
 <h3 id="邻接矩阵">邻接矩阵</h3>
-<p>针对邻接矩阵，自身到自己的距离可以设为1，因此可以用单位矩阵加上数据中的adjacency matrix</p>
+<p>针对邻接矩阵，自身到自己的距离可以设为1，因此可以用单位矩阵加上数据中的adjacency
+matrix</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adjacency_matrix_filename = <span class="string">&#x27;adjacency_matrix.npy&#x27;</span></span><br><span class="line">adjacency_matrix_filepath = os.path.join(dir_path, adjacency_matrix_filename)</span><br><span class="line">self.graphs = adjacency_matrix_np.astype(adjacency_matrix_filepath)</span><br><span class="line">        </span><br><span class="line">identity = np.identity(self.graphs.shape[<span class="number">1</span>])</span><br><span class="line">self.graphs += identity</span><br></pre></td></tr></table></figure>
 
       
@@ -463,7 +474,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

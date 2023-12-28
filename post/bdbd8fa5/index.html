@@ -62,7 +62,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -217,35 +217,91 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="基本形式">1. 基本形式</h2>
-<p>给定由<span class="math inline">\(d\)</span>个属性描述的示例<span class="math inline">\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)</span>，其中<span class="math inline">\(x_i\)</span>是<span class="math inline">\(\boldsymbol{x}\)</span>在第<span class="math inline">\(i\)</span>个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即</p>
-<p><span class="math display">\[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b \tag{3.1}\]</span></p>
+<p>给定由<span class="math inline">\(d\)</span>个属性描述的示例<span
+class="math inline">\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)</span>，其中<span
+class="math inline">\(x_i\)</span>是<span
+class="math inline">\(\boldsymbol{x}\)</span>在第<span
+class="math inline">\(i\)</span>个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即</p>
+<p><span
+class="math display">\[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b
+\tag{3.1}\]</span></p>
 <p>一般用向量形式写成</p>
-<p><span class="math display">\[f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b \tag{3.2}\]</span></p>
-<p>其中<span class="math inline">\(\boldsymbol{w}=(w_1;w_2;…;w_d)\)</span>。<span class="math inline">\(\boldsymbol{w}\)</span>和<span class="math inline">\(b\)</span>学得之后，模型就得以确定</p>
+<p><span
+class="math display">\[f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b
+\tag{3.2}\]</span></p>
+<p>其中<span
+class="math inline">\(\boldsymbol{w}=(w_1;w_2;…;w_d)\)</span>。<span
+class="math inline">\(\boldsymbol{w}\)</span>和<span
+class="math inline">\(b\)</span>学得之后，模型就得以确定</p>
 <h2 id="线性回归">2. 线性回归</h2>
-<p>给定数据集<span class="math inline">\(D={(\boldsymbol{x}_1,y_1), (\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}\)</span>，其中<span class="math inline">\(\boldsymbol{x}_i=(x_{i1}, x_{i2},…,x_{id}), y_i\in\mathbb{R}\)</span>，"线性回归"(linear regression)试图学得一个线性模型以尽可能准确地预测实值输出标记。</p>
-<p>我们先考虑一种最简单的情形：输入属性的数目只有一个。为便于讨论，此时我们忽略关于属性的下标，即<span class="math inline">\(D=\{(x_i,y_i)\}_{i=1}^m\)</span>，其中<span class="math inline">\(x_i\in\mathbb{R}\)</span>，对于离散属性，若属性值之间存在"序"(order)的关系，可通过连续化将其转化为连续值；若属性值间不存在序关系，假定有<span class="math inline">\(k\)</span>个属性值，则通常转化为<span class="math inline">\(k\)</span>维向量。</p>
+<p>给定数据集<span class="math inline">\(D={(\boldsymbol{x}_1,y_1),
+(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}\)</span>，其中<span
+class="math inline">\(\boldsymbol{x}_i=(x_{i1}, x_{i2},…,x_{id}),
+y_i\in\mathbb{R}\)</span>，"线性回归"(linear
+regression)试图学得一个线性模型以尽可能准确地预测实值输出标记。</p>
+<p>我们先考虑一种最简单的情形：输入属性的数目只有一个。为便于讨论，此时我们忽略关于属性的下标，即<span
+class="math inline">\(D=\{(x_i,y_i)\}_{i=1}^m\)</span>，其中<span
+class="math inline">\(x_i\in\mathbb{R}\)</span>，对于离散属性，若属性值之间存在"序"(order)的关系，可通过连续化将其转化为连续值；若属性值间不存在序关系，假定有<span
+class="math inline">\(k\)</span>个属性值，则通常转化为<span
+class="math inline">\(k\)</span>维向量。</p>
 <p>线性回归试图学得</p>
-<p><span class="math display">\[f(x_i)=wx_i+b，使得f(x_i)\simeq{y_i} \tag{3.3}\]</span></p>
+<p><span class="math display">\[f(x_i)=wx_i+b，使得f(x_i)\simeq{y_i}
+\tag{3.3}\]</span></p>
 <p>均方误差是回归任务中最常用的性能度量，因此我们可以试图让均方误差最小化，即</p>
 <p><span class="math display">\[\begin{align}
 
-(w^*,b^*) &amp;= \mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(f(x_i)-y_i)^2\\ &amp;= \mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(y_i-wx_i-b)^2 \tag{3.4}
+(w^*,b^*) &amp;=
+\mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(f(x_i)-y_i)^2\\ &amp;=
+\mathop{\arg\min}_{(w,b)}\sum\limits_{i=1}^m(y_i-wx_i-b)^2 \tag{3.4}
 
 \end{align}\]</span></p>
-<p>均方误差有非常好的几何意义，它对应了常用的欧几里得距离或简称"欧氏距离"(Euclidean distance)，基于均方误差最小化来进行模型求解的方法称为"最小二乘法"(least square method)。在线性回归中，最小二乘法就是试图找到一条直线，使所有样本到直线的欧氏距离之和最小。</p>
-<p>求解<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>使<span class="math inline">\(E_{(w,b)}=\sum_{i=1}^m(y_i-wx_i-b)^2\)</span>最小化的过程，称为线性回归模型的最小二乘"参数估计"(parameter estimation)。我们可将<span class="math inline">\(E_{(w,b)}\)</span>分别对<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>求导，得到</p>
-<p><span class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{w}}=2\Bigg(w\sum\limits_{i=1}^nx_i^2-\sum\limits_{i=1}^m(y_i-b)x_i\Bigg) \tag{3.5}\]</span></p>
-<p><span class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{b}}=2\Bigg(mb-\sum\limits_{i=1}^m(y_i-wx_i)\Bigg) \tag{3.6}\]</span></p>
-<p>然后令式<span class="math inline">\((3.5)\)</span>和<span class="math inline">\((3.6)\)</span>为0，得到<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>的最优解的闭式(closed-form)解</p>
-<p><span class="math display">\[w=\frac{\sum\limits_{i=1}^my_i(x_i-\bar{x})}{\sum\limits_{i=1}^mx_i^2-\frac{1}{m}(\sum\limits_{i=1}^mx_i)^2} \tag{3.7}\]</span></p>
-<p><span class="math display">\[b=\frac{1}{m}\sum\limits_{i=1}^m(y_i-wx_i) \tag{3.8}\]</span></p>
-<p>其中<span class="math inline">\(\bar{x}=\frac{1}{m}\sum\limits_{i=1}^mx_i\)</span>为<span class="math inline">\(x\)</span>的均值。</p>
-<p>更一般的情形是数据集<span class="math inline">\(D\)</span>由<span class="math inline">\(d\)</span>个属性描述，此时我们试图学得</p>
-<p><span class="math display">\[f(\boldsymbol{x}_i)=\boldsymbol{w}^T\boldsymbol{x}_i+b，使得f(\boldsymbol{x}_i)\simeq{y}_i\]</span></p>
+<p>均方误差有非常好的几何意义，它对应了常用的欧几里得距离或简称"欧氏距离"(Euclidean
+distance)，基于均方误差最小化来进行模型求解的方法称为"最小二乘法"(least
+square
+method)。在线性回归中，最小二乘法就是试图找到一条直线，使所有样本到直线的欧氏距离之和最小。</p>
+<p>求解<span class="math inline">\(w\)</span>和<span
+class="math inline">\(b\)</span>使<span
+class="math inline">\(E_{(w,b)}=\sum_{i=1}^m(y_i-wx_i-b)^2\)</span>最小化的过程，称为线性回归模型的最小二乘"参数估计"(parameter
+estimation)。我们可将<span
+class="math inline">\(E_{(w,b)}\)</span>分别对<span
+class="math inline">\(w\)</span>和<span
+class="math inline">\(b\)</span>求导，得到</p>
+<p><span
+class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{w}}=2\Bigg(w\sum\limits_{i=1}^nx_i^2-\sum\limits_{i=1}^m(y_i-b)x_i\Bigg)
+\tag{3.5}\]</span></p>
+<p><span
+class="math display">\[\frac{\partial{E_{(w,b)}}}{\partial{b}}=2\Bigg(mb-\sum\limits_{i=1}^m(y_i-wx_i)\Bigg)
+\tag{3.6}\]</span></p>
+<p>然后令式<span class="math inline">\((3.5)\)</span>和<span
+class="math inline">\((3.6)\)</span>为0，得到<span
+class="math inline">\(w\)</span>和<span
+class="math inline">\(b\)</span>的最优解的闭式(closed-form)解</p>
+<p><span
+class="math display">\[w=\frac{\sum\limits_{i=1}^my_i(x_i-\bar{x})}{\sum\limits_{i=1}^mx_i^2-\frac{1}{m}(\sum\limits_{i=1}^mx_i)^2}
+\tag{3.7}\]</span></p>
+<p><span
+class="math display">\[b=\frac{1}{m}\sum\limits_{i=1}^m(y_i-wx_i)
+\tag{3.8}\]</span></p>
+<p>其中<span
+class="math inline">\(\bar{x}=\frac{1}{m}\sum\limits_{i=1}^mx_i\)</span>为<span
+class="math inline">\(x\)</span>的均值。</p>
+<p>更一般的情形是数据集<span class="math inline">\(D\)</span>由<span
+class="math inline">\(d\)</span>个属性描述，此时我们试图学得</p>
+<p><span
+class="math display">\[f(\boldsymbol{x}_i)=\boldsymbol{w}^T\boldsymbol{x}_i+b，使得f(\boldsymbol{x}_i)\simeq{y}_i\]</span></p>
 <p>这称为"多元线性回归"(multivariate linear regression)</p>
-<p>类似的可以用最小二乘法对<span class="math inline">\(\boldsymbol{w}\)</span>和<span class="math inline">\(b\)</span>进行估计，为便于讨论，我们把<span class="math inline">\(w\)</span>和<span class="math inline">\(b\)</span>吸收入向量形式<span class="math inline">\(\hat{\boldsymbol{w}}=(\boldsymbol{w};b)\)</span>，相应的，把数据集<span class="math inline">\(D\)</span>表示为一个<span class="math inline">\(m\times(d+1)\)</span>大小的矩阵<span class="math inline">\(\boldsymbol{X}\)</span>，其中每行对应一个示例，该行前<span class="math inline">\(d\)</span>个元素对应于示例的<span class="math inline">\(d\)</span>个属性值，最后一个元素恒置为1，即</p>
-<p><span class="math display">\[\begin{equation} 
+<p>类似的可以用最小二乘法对<span
+class="math inline">\(\boldsymbol{w}\)</span>和<span
+class="math inline">\(b\)</span>进行估计，为便于讨论，我们把<span
+class="math inline">\(w\)</span>和<span
+class="math inline">\(b\)</span>吸收入向量形式<span
+class="math inline">\(\hat{\boldsymbol{w}}=(\boldsymbol{w};b)\)</span>，相应的，把数据集<span
+class="math inline">\(D\)</span>表示为一个<span
+class="math inline">\(m\times(d+1)\)</span>大小的矩阵<span
+class="math inline">\(\boldsymbol{X}\)</span>，其中每行对应一个示例，该行前<span
+class="math inline">\(d\)</span>个元素对应于示例的<span
+class="math inline">\(d\)</span>个属性值，最后一个元素恒置为1，即</p>
+<p><span class="math display">\[\begin{equation}
 
 ​   \boldsymbol{X}
 
@@ -274,18 +330,34 @@ var _hmt = _hmt || [];
 ​   \end{pmatrix}
 
 \end{equation}\]</span></p>
-<p>再把标记也写成向量形式<span class="math inline">\(y=(y_1;y_2;…;y_m)\)</span>，类似式<span class="math inline">\((3.4)\)</span>，有</p>
-<p><span class="math display">\[\hat{\boldsymbol{w}}^*=\mathop{\arg\min}_{\hat{\boldsymbol{w}}}(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})^T(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}}) \tag{3.9}\]</span></p>
-<p>令<span class="math inline">\(E_{\hat{\boldsymbol{w}}}=(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})^T(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})\)</span>，展开</p>
-<p><span class="math display">\[E_{\hat{\boldsymbol{w}}}=(\boldsymbol{y}^T-\hat{\boldsymbol{w}}^T\boldsymbol{X}^T)(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})=\boldsymbol{y}^T\boldsymbol{y}-\hat{\boldsymbol{w}}^T\boldsymbol{X}^T\boldsymbol{y}-\boldsymbol{y}^T\boldsymbol{X}\hat{\boldsymbol{w}}+\hat{\boldsymbol{w}}^T\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}}\]</span></p>
+<p>再把标记也写成向量形式<span
+class="math inline">\(y=(y_1;y_2;…;y_m)\)</span>，类似式<span
+class="math inline">\((3.4)\)</span>，有</p>
+<p><span
+class="math display">\[\hat{\boldsymbol{w}}^*=\mathop{\arg\min}_{\hat{\boldsymbol{w}}}(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})^T(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})
+\tag{3.9}\]</span></p>
+<p>令<span
+class="math inline">\(E_{\hat{\boldsymbol{w}}}=(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})^T(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})\)</span>，展开</p>
+<p><span
+class="math display">\[E_{\hat{\boldsymbol{w}}}=(\boldsymbol{y}^T-\hat{\boldsymbol{w}}^T\boldsymbol{X}^T)(\boldsymbol{y}-\boldsymbol{X}\hat{\boldsymbol{w}})=\boldsymbol{y}^T\boldsymbol{y}-\hat{\boldsymbol{w}}^T\boldsymbol{X}^T\boldsymbol{y}-\boldsymbol{y}^T\boldsymbol{X}\hat{\boldsymbol{w}}+\hat{\boldsymbol{w}}^T\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}}\]</span></p>
 <p>由于</p>
-<p><span class="math display">\[\frac{\partial{\boldsymbol{x}^Ta}}{\partial\boldsymbol{x}} = a \tag{3.9.1}\]</span></p>
-<p><span class="math display">\[\frac{\partial{\boldsymbol{u}^T}\boldsymbol{v}}{\partial{\boldsymbol{x}}}=\frac{\partial{\boldsymbol{u}}}{\partial{\boldsymbol{x}}}\boldsymbol{v}+\frac{\partial{\boldsymbol{v}}}{\partial{\boldsymbol{x}}}\boldsymbol{u} \tag{3.9.2}\]</span></p>
-<p>对<span class="math inline">\(\hat{\boldsymbol{w}}\)</span>求导得到</p>
-<p><span class="math display">\[\frac{\partial{E_{\hat{\boldsymbol{w}}}}}{\partial\hat{\boldsymbol{w}}}=0-\boldsymbol{X}^T\boldsymbol{y}-\boldsymbol{X}^T\boldsymbol{y}+(\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}}+\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}})=2\boldsymbol{X}^T(\boldsymbol{X}\hat{\boldsymbol{w}}-\boldsymbol{y}) \tag{3.10}\]</span></p>
-<p>令上式为0可得<span class="math inline">\(\hat{\boldsymbol{w}}\)</span>最优解的闭式解</p>
+<p><span
+class="math display">\[\frac{\partial{\boldsymbol{x}^Ta}}{\partial\boldsymbol{x}}
+= a \tag{3.9.1}\]</span></p>
+<p><span
+class="math display">\[\frac{\partial{\boldsymbol{u}^T}\boldsymbol{v}}{\partial{\boldsymbol{x}}}=\frac{\partial{\boldsymbol{u}}}{\partial{\boldsymbol{x}}}\boldsymbol{v}+\frac{\partial{\boldsymbol{v}}}{\partial{\boldsymbol{x}}}\boldsymbol{u}
+\tag{3.9.2}\]</span></p>
+<p>对<span
+class="math inline">\(\hat{\boldsymbol{w}}\)</span>求导得到</p>
+<p><span
+class="math display">\[\frac{\partial{E_{\hat{\boldsymbol{w}}}}}{\partial\hat{\boldsymbol{w}}}=0-\boldsymbol{X}^T\boldsymbol{y}-\boldsymbol{X}^T\boldsymbol{y}+(\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}}+\boldsymbol{X}^T\boldsymbol{X}\hat{\boldsymbol{w}})=2\boldsymbol{X}^T(\boldsymbol{X}\hat{\boldsymbol{w}}-\boldsymbol{y})
+\tag{3.10}\]</span></p>
+<p>令上式为0可得<span
+class="math inline">\(\hat{\boldsymbol{w}}\)</span>最优解的闭式解</p>
 <p>当</p>
-<p>此处<span class="math inline">\((\boldsymbol{X}^T\boldsymbol{X})^{-1}\)</span>是矩阵<span class="math inline">\((\boldsymbol{X}^T\boldsymbol{X})\)</span>的逆矩阵。</p>
+<p>此处<span
+class="math inline">\((\boldsymbol{X}^T\boldsymbol{X})^{-1}\)</span>是矩阵<span
+class="math inline">\((\boldsymbol{X}^T\boldsymbol{X})\)</span>的逆矩阵。</p>
 
       
 
@@ -465,7 +537,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

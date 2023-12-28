@@ -62,7 +62,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -220,7 +220,8 @@ var _hmt = _hmt || [];
 <h3 id="误差error">1.1 误差(Error)</h3>
 <p>学习器的实际预测输出与样本的真实输出之间的差异</p>
 <ul>
-<li>训练误差(Training Error) / 经验误差(Empirical Error)：学习器在训练集上的误差</li>
+<li>训练误差(Training Error) / 经验误差(Empirical
+Error)：学习器在训练集上的误差</li>
 <li>泛化误差(Generalization Error)：在新样本上的误差</li>
 </ul>
 <h3 id="过拟合overfitting">1.2 过拟合(Overfitting)</h3>
@@ -233,17 +234,27 @@ var _hmt = _hmt || [];
 <li>神经网络学习中增加训练轮数</li>
 </ul>
 <h2 id="评估方法">2. 评估方法</h2>
-<p>使用训练集(Testing Set)来测试学习器对新样本的判别能力，然后以测试集上的“测试误差”(Testing Error)作为泛化误差的近似，通常假设测试样本也是从样本真实分布中独立同分布采样而得，<strong>测试集应该尽可能与训练集互斥</strong>。</p>
+<p>使用训练集(Testing
+Set)来测试学习器对新样本的判别能力，然后以测试集上的“测试误差”(Testing
+Error)作为泛化误差的近似，通常假设测试样本也是从样本真实分布中独立同分布采样而得，<strong>测试集应该尽可能与训练集互斥</strong>。</p>
 <h3 id="留出法hold-out">2.1 留出法(Hold-out)</h3>
 <p>直接将数据集D划分为两个互斥的集合，训练集S与测试集T，</p>
-<p><span class="math display">\[ D = S \bigcup T，S \bigcap T = \phi \]</span></p>
+<p><span class="math display">\[ D = S \bigcup T，S \bigcap T = \phi
+\]</span></p>
 <p>在S上训练出模型后，用T来评估其测试误差，作为对泛化误差的预计，需要注意的是，训练/测试集的划分要尽可能保持数据分布的一致性</p>
-<p>如果从采样(Sampling)的角度来看待数据集的划分过程，则保留类别比例的采样方式通常称为“分层采样”(Stratified Sampling)</p>
+<p>如果从采样(Sampling)的角度来看待数据集的划分过程，则保留类别比例的采样方式通常称为“分层采样”(Stratified
+Sampling)</p>
 <p>单次使用留出法得到的估计结果往往不够稳定可靠，在使用留出法时，一般要采用若干次随机划分、重复进行实验评估后取平均值作为留出法的评估结果</p>
-<h3 id="交叉验证法cross-validation">2.2 交叉验证法(Cross Validation)</h3>
+<h3 id="交叉验证法cross-validation">2.2 交叉验证法(Cross
+Validation)</h3>
 <p>先将数据集D划分为k各大小相似的互斥子集，即</p>
-<p><span class="math display">\[ D = D_1 \bigcup D_2 \bigcup … \bigcup D_k,  D_i \bigcap D_j = \phi (i \neq j) \]</span></p>
-<p>每个子集<span class="math inline">\(D_i\)</span>都尽可能保持数据分布的一致性，即从D中通过分层采样得到，然后每次用k - 1个子集的并集作为训练集，余下的那个子集作为测试集，这样就可获得k组训练/测试集，从而可进行k次训练和测试，最终返回的是这个k个测试结果的均值，通常把交叉验证法称为"k折交叉验证"(k-fold Cross Validation)，最常用的k的取值是10，此时称为10折交叉验证</p>
+<p><span class="math display">\[ D = D_1 \bigcup D_2 \bigcup … \bigcup
+D_k,  D_i \bigcap D_j = \phi (i \neq j) \]</span></p>
+<p>每个子集<span
+class="math inline">\(D_i\)</span>都尽可能保持数据分布的一致性，即从D中通过分层采样得到，然后每次用k
+-
+1个子集的并集作为训练集，余下的那个子集作为测试集，这样就可获得k组训练/测试集，从而可进行k次训练和测试，最终返回的是这个k个测试结果的均值，通常把交叉验证法称为"k折交叉验证"(k-fold
+Cross Validation)，最常用的k的取值是10，此时称为10折交叉验证</p>
 <p>与留出法类似，将数据集D划分为k个子集同样存在多种划分方式，为减小因样本划分不同而引入的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果就是这p次k折交叉验证结果的均值，例如常见的“10次10折交叉验证”</p>
 <ul>
 <li>留一法(Leave-One-Out, LOO)
@@ -256,38 +267,66 @@ var _hmt = _hmt || [];
 </ul></li>
 </ul>
 <h3 id="自助法bootstrapping">2.3 自助法(Bootstrapping)</h3>
-<p>以自助采样(Bootstrap Sampling)为基础，给定包含m个样本数据集D，对其进行采样产生数据集D'：每次随机从D中挑选一个样本，将其拷贝到D'，然后将该样本放回初始数据集D中，使得该样本在下次采样时仍然有可能被才到，重复执行这个过程m次，就得到了包含m个样本的数据集D'</p>
-<p>样本在m次采样中始终不被才到的概率为<span class="math inline">\((1 - \frac 1 m)^m\)</span>，取极限得到</p>
-<p><span class="math display">\[ \lim\limits_{m \to \infty} (1 - \frac 1 m)^m = \lim\limits_{m \to \infty}(1 - \frac 1 m)^{-m \times (-1)} = \frac 1 e \approx 0.368，\tag{2.1} \]</span></p>
-<p>通过自助采样，初始数据集D中约有36.8%的样本未出现在采样数据D'中，于是可将D’用作训练集，<span class="math inline">\(D \setminus D&#39;\)</span>用作测试集，这样的测试结果，亦称”包外估计“(Out-of-bag Estimate)</p>
+<p>以自助采样(Bootstrap
+Sampling)为基础，给定包含m个样本数据集D，对其进行采样产生数据集D'：每次随机从D中挑选一个样本，将其拷贝到D'，然后将该样本放回初始数据集D中，使得该样本在下次采样时仍然有可能被才到，重复执行这个过程m次，就得到了包含m个样本的数据集D'</p>
+<p>样本在m次采样中始终不被才到的概率为<span class="math inline">\((1 -
+\frac 1 m)^m\)</span>，取极限得到</p>
+<p><span class="math display">\[ \lim\limits_{m \to \infty} (1 - \frac 1
+m)^m = \lim\limits_{m \to \infty}(1 - \frac 1 m)^{-m \times (-1)} =
+\frac 1 e \approx 0.368，\tag{2.1} \]</span></p>
+<p>通过自助采样，初始数据集D中约有36.8%的样本未出现在采样数据D'中，于是可将D’用作训练集，<span
+class="math inline">\(D \setminus
+D&#39;\)</span>用作测试集，这样的测试结果，亦称”包外估计“(Out-of-bag
+Estimate)</p>
 <p>自助法在<strong>数据集较小、难以有效划分训练/测试集</strong>时很有用，此外，自助法能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大的好处，但同时，自助法产生的数据集改变了初始数据集的分布，会引入估计偏差，因此，<strong>在初始数据量足够时，留出法和交叉验证更常用一些</strong></p>
-<h3 id="调参parameter-tuning与最终模型">2.4 调参(Parameter Tuning)与最终模型</h3>
-<p>我们通常把学得模型在实际使用中遇到的数据称为测试数据，为了加以区分，模型评估与选择中用于评估测试的数据常称为”验证集“(Validation Set)，在研究对比不同算法的泛化性能时，我们用测试集上的判别效果来估计模型在实际使用时的泛化能力，而把训练数据另外划分为训练集和验证集，基于验证集上的性能来进行模型选择和调参</p>
-<h2 id="性能度量performance-measure">3. 性能度量(Performance Measure)</h2>
+<h3 id="调参parameter-tuning与最终模型">2.4 调参(Parameter
+Tuning)与最终模型</h3>
+<p>我们通常把学得模型在实际使用中遇到的数据称为测试数据，为了加以区分，模型评估与选择中用于评估测试的数据常称为”验证集“(Validation
+Set)，在研究对比不同算法的泛化性能时，我们用测试集上的判别效果来估计模型在实际使用时的泛化能力，而把训练数据另外划分为训练集和验证集，基于验证集上的性能来进行模型选择和调参</p>
+<h2 id="性能度量performance-measure">3. 性能度量(Performance
+Measure)</h2>
 <p>用于衡量模型泛化能力的评价标准，性能度量反映了任务需求</p>
-<p>预测任务中，给定样例集<span class="math inline">\(D=\{ (x_1, y_1), (x_2, y_2), … , (x_m, y_m) \}\)</span> ，其中<span class="math inline">\(y_i\)</span>是示例<span class="math inline">\(x_i\)</span>的真实标记，要评估学习器f的性能，就要把学习器预测效果f(x)与真实标记y进行比较</p>
+<p>预测任务中，给定样例集<span class="math inline">\(D=\{ (x_1, y_1),
+(x_2, y_2), … , (x_m, y_m) \}\)</span> ，其中<span
+class="math inline">\(y_i\)</span>是示例<span
+class="math inline">\(x_i\)</span>的真实标记，要评估学习器f的性能，就要把学习器预测效果f(x)与真实标记y进行比较</p>
 <p>回归任务中最常用的性能度量是”均方误差“(Mean Squared Error)</p>
-<p><span class="math display">\[ E(f; D) = \frac 1 m \sum\limits_{i=1}^m (f(x_i) - y_i)^2 \tag{2.2}\]</span></p>
-<p>更一般的，对于数据分布<span class="math inline">\(\mathcal{D}\)</span>和概率密度函数<span class="math inline">\(p(·)\)</span>，均方误差可描述为</p>
-<p><span class="math display">\[E(f;\mathcal{D}) = \int_{x\sim\mathcal{D}}(f(x)-y)^2p(x)\mathrm{d}\boldsymbol(x)\tag{2.3}\]</span></p>
+<p><span class="math display">\[ E(f; D) = \frac 1 m \sum\limits_{i=1}^m
+(f(x_i) - y_i)^2 \tag{2.2}\]</span></p>
+<p>更一般的，对于数据分布<span
+class="math inline">\(\mathcal{D}\)</span>和概率密度函数<span
+class="math inline">\(p(·)\)</span>，均方误差可描述为</p>
+<p><span class="math display">\[E(f;\mathcal{D}) =
+\int_{x\sim\mathcal{D}}(f(x)-y)^2p(x)\mathrm{d}\boldsymbol(x)\tag{2.3}\]</span></p>
 <h3 id="错误率与精度">3.1 错误率与精度</h3>
 <p>错误率是分类错误的样本数占样本总数的比例，精度则是分类正确的样本数占样本总数的比例，既适用于二分类任务，也适用于多分类任务，对样本集<em>D</em>，分类错误率定义为</p>
-<p><span class="math display">\[E(f;D) = \frac 1 m \sum\limits_{i=1}^mII(f((x_i) \ne y_i))\tag{2.4}\]</span></p>
+<p><span class="math display">\[E(f;D) = \frac 1 m
+\sum\limits_{i=1}^mII(f((x_i) \ne y_i))\tag{2.4}\]</span></p>
 <p>精度则定义为</p>
 <p><span class="math display">\[\begin{align}
 
-E(f;D) &amp;= \frac 1 m \sum\limits_{i=1}^mII(f(x_i) \ne y_i)\tag{2.5}\\ &amp;= 1 - E(f;D)
+E(f;D) &amp;= \frac 1 m \sum\limits_{i=1}^mII(f(x_i) \ne y_i)\tag{2.5}\\
+&amp;= 1 - E(f;D)
 
 \end{align}\]</span></p>
-<p>更一般的，对于数据分布<span class="math inline">\(\mathcal{D}\)</span>和概率密度函数<span class="math inline">\(p(·)\)</span>，错误率与精度可以分别描述为</p>
-<p><span class="math display">\[E(f;D) = \int_{x\sim\mathcal{D}}II(f(x_i) \ne y_i)p(x)\mathrm{d}\boldsymbol(x)\tag{2.6}\]</span></p>
+<p>更一般的，对于数据分布<span
+class="math inline">\(\mathcal{D}\)</span>和概率密度函数<span
+class="math inline">\(p(·)\)</span>，错误率与精度可以分别描述为</p>
+<p><span class="math display">\[E(f;D) =
+\int_{x\sim\mathcal{D}}II(f(x_i) \ne
+y_i)p(x)\mathrm{d}\boldsymbol(x)\tag{2.6}\]</span></p>
 <p><span class="math display">\[\begin{align}
 
-acc(f;D) &amp;= \int_{x\sim\mathcal{D}}II(f(x) = y)p(s)\mathrm{d}\boldsymbol{x}\tag{2.7}\\ &amp;= 1 - E(f;D)
+acc(f;D) &amp;= \int_{x\sim\mathcal{D}}II(f(x) =
+y)p(s)\mathrm{d}\boldsymbol{x}\tag{2.7}\\ &amp;= 1 - E(f;D)
 
 \end{align}\]</span></p>
 <h3 id="查准率查全率与f1">3.2 查准率、查全率与F1</h3>
-<p>对于二分类问题，可将样例根据真实类别与学习器预测类别的组合划分为真正例(True Positive, TP)、假正例(False Positive, FP)、真反例(True Negative, TN)、假反例(False Negative, FN)四种情形，显然<span class="math inline">\(TP + FP + TN + FN = 样例总数\)</span>，分类结果的混淆矩阵如表所示</p>
+<p>对于二分类问题，可将样例根据真实类别与学习器预测类别的组合划分为真正例(True
+Positive, TP)、假正例(False Positive, FP)、真反例(True Negative,
+TN)、假反例(False Negative, FN)四种情形，显然<span
+class="math inline">\(TP + FP + TN + FN =
+样例总数\)</span>，分类结果的混淆矩阵如表所示</p>
 <table style="text-align:center; board: 1px solid;">
 ​
 <tr>
@@ -347,38 +386,99 @@ TN（真反例）
 </tr>
 </table>
 <p>查准率P与查全率R分别定义为</p>
-<p><span class="math display">\[P = \frac{TP}{TP + FP} \tag{2.8}\]</span></p>
-<p><span class="math display">\[R = \frac{TP}{TP + FN} \tag{2.9}\]</span></p>
+<p><span class="math display">\[P = \frac{TP}{TP + FP}
+\tag{2.8}\]</span></p>
+<p><span class="math display">\[R = \frac{TP}{TP + FN}
+\tag{2.9}\]</span></p>
 <p>查准率和查全率是一对矛盾的度量。一般来说，查准率高时，查全率往往偏低，而查全率高时，查准率往往偏低。</p>
 <p>以查准率为纵轴，查全率为横轴作图，就得到查准率-查全率曲线，简称"P-R曲线"，显示该曲线的图称为"P-R图"。在进行比较时，若一个学习器的P-R曲线被另一个学习器的曲线完全"包住"，则可以断言后者的性能优于前者。</p>
-<p>"平衡点"(Break-Event Point，简称BEP)就是这样一个度量，它是"查准率=查全率"时的取值，但还是太简化了些，更常用的是F1度量，F1是基于查准率和查全率的调和平均（harmonic mean）定义的</p>
-<p><span class="math display">\[F1 = \frac{1}{\frac{1}{2}(\frac{1}{P}+\frac{1}{R})} = \frac{2 \times P \times R } {P + R} = \frac{2 \times TP}{样例总数 + TP - TN} \tag{2.10}\]</span></p>
-<p>F1度量的一般形式-<span class="math inline">\(F_\beta\)</span>能让我们表达出对查准率/查全率的不同偏好，是加权调和平均</p>
-<p><span class="math display">\[F_\beta = \frac{1}{\frac{1}{1+\beta^2}(\frac{1}{P} + \frac{\beta^2}{R})} = \frac{(1 + \beta^2)\times P\times R}{(\beta^2\times{P})+R} \tag{2.11}\]</span></p>
-<p>其中<span class="math inline">\(\beta&gt;0\)</span>度量了查全率对查准率的相对重要性，<span class="math inline">\(\beta=1\)</span>时退化为标准的F1，<span class="math inline">\(\beta &gt;1\)</span>时查全率有更大影响，<span class="math inline">\(\beta&lt;1\)</span>时查准率有更大影响</p>
-<p>有时我们希望在n个二分类混淆矩阵上综合考虑查准率和查全率，一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率，记为<span class="math inline">\((P_1, R_1),(P_2, R_2),…,(P_n, R_n)\)</span>，再计算平均值，这样就得到"宏查准率"(macro-P)，"宏查全率"(macro-R)，以及对应的"宏F1"(macro-F1)：</p>
-<p><span class="math display">\[macro\text{-}P = \frac{1}{n}\sum\limits_{i=1}^nP_i \tag{2.12}\]</span></p>
-<p><span class="math display">\[macro\text{-}R = \frac{1}{n}\sum\limits_{i=1}^nR_i \tag{2.13}\]</span></p>
-<p><span class="math display">\[macro\text{-}F1 = \frac{2\times{macro\text{-}P}\times{macro\text{-}R}}{macro\text{-}P+macro\text{-}R} \tag{2.14}\]</span></p>
-<p>还可以将各混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为<span class="math inline">\(\bar{TP}、\bar{FP}、\bar{TN}、\bar{FN}\)</span>，再基于这些平均值计算出"微查准率"(micro-P)、"微查全率"(micro-R)和"微F1"(micro-F1)：</p>
-<p><span class="math display">\[micro\text{-}P = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.15}\]</span></p>
-<p><span class="math display">\[micro\text{-}R = \frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.16}\]</span></p>
-<p><span class="math display">\[micro\text{-}F1 = \frac{2\times{micro\text{-}P}\times{micro\text{-}R}}{micro\text{-}P+micro\text{-}R} \tag{2.17}\]</span></p>
+<p>"平衡点"(Break-Event
+Point，简称BEP)就是这样一个度量，它是"查准率=查全率"时的取值，但还是太简化了些，更常用的是F1度量，F1是基于查准率和查全率的调和平均（harmonic
+mean）定义的</p>
+<p><span class="math display">\[F1 =
+\frac{1}{\frac{1}{2}(\frac{1}{P}+\frac{1}{R})} = \frac{2 \times P \times
+R } {P + R} = \frac{2 \times TP}{样例总数 + TP - TN}
+\tag{2.10}\]</span></p>
+<p>F1度量的一般形式-<span
+class="math inline">\(F_\beta\)</span>能让我们表达出对查准率/查全率的不同偏好，是加权调和平均</p>
+<p><span class="math display">\[F_\beta =
+\frac{1}{\frac{1}{1+\beta^2}(\frac{1}{P} + \frac{\beta^2}{R})} =
+\frac{(1 + \beta^2)\times P\times R}{(\beta^2\times{P})+R}
+\tag{2.11}\]</span></p>
+<p>其中<span
+class="math inline">\(\beta&gt;0\)</span>度量了查全率对查准率的相对重要性，<span
+class="math inline">\(\beta=1\)</span>时退化为标准的F1，<span
+class="math inline">\(\beta &gt;1\)</span>时查全率有更大影响，<span
+class="math inline">\(\beta&lt;1\)</span>时查准率有更大影响</p>
+<p>有时我们希望在n个二分类混淆矩阵上综合考虑查准率和查全率，一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率，记为<span
+class="math inline">\((P_1, R_1),(P_2, R_2),…,(P_n,
+R_n)\)</span>，再计算平均值，这样就得到"宏查准率"(macro-P)，"宏查全率"(macro-R)，以及对应的"宏F1"(macro-F1)：</p>
+<p><span class="math display">\[macro\text{-}P =
+\frac{1}{n}\sum\limits_{i=1}^nP_i \tag{2.12}\]</span></p>
+<p><span class="math display">\[macro\text{-}R =
+\frac{1}{n}\sum\limits_{i=1}^nR_i \tag{2.13}\]</span></p>
+<p><span class="math display">\[macro\text{-}F1 =
+\frac{2\times{macro\text{-}P}\times{macro\text{-}R}}{macro\text{-}P+macro\text{-}R}
+\tag{2.14}\]</span></p>
+<p>还可以将各混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为<span
+class="math inline">\(\bar{TP}、\bar{FP}、\bar{TN}、\bar{FN}\)</span>，再基于这些平均值计算出"微查准率"(micro-P)、"微查全率"(micro-R)和"微F1"(micro-F1)：</p>
+<p><span class="math display">\[micro\text{-}P =
+\frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.15}\]</span></p>
+<p><span class="math display">\[micro\text{-}R =
+\frac{\bar{TP}}{\bar{TP} + \bar{FP}} \tag{2.16}\]</span></p>
+<p><span class="math display">\[micro\text{-}F1 =
+\frac{2\times{micro\text{-}P}\times{micro\text{-}R}}{micro\text{-}P+micro\text{-}R}
+\tag{2.17}\]</span></p>
 <h3 id="roc与auc">3.3 ROC与AUC</h3>
-<p>ROC全称是"受试者工作特征"(Receiver Operating Characteristic)曲线，与P-R曲线相似，我们根据学习器的预测结果对样例进行排序，按此顺序逐个把样本作为正例进行预测，每次计算出两个重要量的值，分别以它们为横、纵坐标作图，就得到了"ROC"曲线，ROC曲线的纵轴是"真正例率"(True Positive Rate，简称TPR)，横轴是"假正例率"(False Positive Rate，简称FPR)，两者可以分别定义为</p>
-<p><span class="math display">\[TPR = \frac{TP}{TP + FN} \tag{2.18}\]</span></p>
-<p><span class="math display">\[FPR = \frac{FP}{TN + FP} \tag{2.19}\]</span></p>
-<p>现实任务通常是利用有限个测试样例来绘制ROC图，此时仅能获得有限个(真正例率，假正例率)坐标对，无法产生光滑的ROC曲线，绘图过程很简单：给定<span class="math inline">\(m^+\)</span>个正例和<span class="math inline">\(m^-\)</span>个反例，根据学习器预测结果对样例进行排序，然后把分类阈值设置为最大，即把所有样例均预测为反例，此时真正例率和假正例率均为0，在坐标(0,0)处标记一个点，然后，将分类阈值一次设置为每个样例的预测值，即依次将每个样例划分为正例，设前一个标记点坐标为<span class="math inline">\((x,y)\)</span>，当前若为真正例，则对应标记点的坐标为<span class="math inline">\((x,y+\frac{1}{m^+})\)</span>；若当前为假正例，则对应标记点的坐标为<span class="math inline">\((x+\frac{1}{m^-},y)\)</span>，然后用线段连接相邻点即可。</p>
-<p>进行学习器的比较时，与P-R图类似，若一个学习器的ROC曲线被另一个学习器的ROC曲线完全"包住"，则可断言后者的性能优于前者；若两个学习器的ROC曲线发生交叉，则难以一般性地断言两者孰优孰劣，此时如果一定要进行比较，则较为合理的判据是比较ROC曲线下的面积，即AUC(Area Under ROC Curve)</p>
-<p>AUC可通过对ROC曲线下各部分的面积求和而得，假定ROC曲线是由坐标{<span class="math inline">\((x_1, y_1), (x_2, y_2),…,(x_m,y_m)\)</span>}的点按序连接而成<span class="math inline">\((x_1=0, x_m=1)\)</span>，则AUC可估算为</p>
-<p><span class="math display">\[AUC = \frac{1}{2}\sum\limits_{i=1}^{m-1}(x_{i+1}-x_i)·(y_i+y_{i+1}) \tag{2.20}\]</span></p>
-<p>形式化地看，AUC考虑的是样本预测的排序质量，因此它与排序误差有紧密联系，给定<span class="math inline">\(m^+\)</span>个正例和<span class="math inline">\(m^-\)</span>个反例，令<span class="math inline">\(D^+\)</span>和<span class="math inline">\(D^-\)</span>分别表示正、反例集合，则排序"损失"(loss)定义为</p>
-<p><span class="math display">\[\ell_{rank} = \frac{1}{m^+m^-}\sum\limits_{x^+\sim\mathcal{D^+}}\sum\limits_{x^-\sim\mathcal{D^-}}\Bigg (II(f(x^+)&lt;f(x^-))+\frac{1}{2}II(f(x^+)=f(x^-))\Bigg ) \tag{2.21}\]</span></p>
-<p>即考虑每一对正、反例，若正例的预测值小于反例，则记一个"罚分"，若相等，则记0.5个"罚分"，容易看出，<span class="math inline">\(\ell_{rank}\)</span>对应的是ROC曲线之上的面积，若一个正例在ROC曲线上对应标记点的坐标为<span class="math inline">\((x,y)\)</span>，则<span class="math inline">\(x\)</span>恰是排序在其之前的反例所占的比例，即假正例率，因此有</p>
-<p><span class="math display">\[AUC = 1 - \ell_{rank} \tag{2.22}\]</span></p>
+<p>ROC全称是"受试者工作特征"(Receiver Operating
+Characteristic)曲线，与P-R曲线相似，我们根据学习器的预测结果对样例进行排序，按此顺序逐个把样本作为正例进行预测，每次计算出两个重要量的值，分别以它们为横、纵坐标作图，就得到了"ROC"曲线，ROC曲线的纵轴是"真正例率"(True
+Positive Rate，简称TPR)，横轴是"假正例率"(False Positive
+Rate，简称FPR)，两者可以分别定义为</p>
+<p><span class="math display">\[TPR = \frac{TP}{TP + FN}
+\tag{2.18}\]</span></p>
+<p><span class="math display">\[FPR = \frac{FP}{TN + FP}
+\tag{2.19}\]</span></p>
+<p>现实任务通常是利用有限个测试样例来绘制ROC图，此时仅能获得有限个(真正例率，假正例率)坐标对，无法产生光滑的ROC曲线，绘图过程很简单：给定<span
+class="math inline">\(m^+\)</span>个正例和<span
+class="math inline">\(m^-\)</span>个反例，根据学习器预测结果对样例进行排序，然后把分类阈值设置为最大，即把所有样例均预测为反例，此时真正例率和假正例率均为0，在坐标(0,0)处标记一个点，然后，将分类阈值一次设置为每个样例的预测值，即依次将每个样例划分为正例，设前一个标记点坐标为<span
+class="math inline">\((x,y)\)</span>，当前若为真正例，则对应标记点的坐标为<span
+class="math inline">\((x,y+\frac{1}{m^+})\)</span>；若当前为假正例，则对应标记点的坐标为<span
+class="math inline">\((x+\frac{1}{m^-},y)\)</span>，然后用线段连接相邻点即可。</p>
+<p>进行学习器的比较时，与P-R图类似，若一个学习器的ROC曲线被另一个学习器的ROC曲线完全"包住"，则可断言后者的性能优于前者；若两个学习器的ROC曲线发生交叉，则难以一般性地断言两者孰优孰劣，此时如果一定要进行比较，则较为合理的判据是比较ROC曲线下的面积，即AUC(Area
+Under ROC Curve)</p>
+<p>AUC可通过对ROC曲线下各部分的面积求和而得，假定ROC曲线是由坐标{<span
+class="math inline">\((x_1, y_1), (x_2,
+y_2),…,(x_m,y_m)\)</span>}的点按序连接而成<span
+class="math inline">\((x_1=0, x_m=1)\)</span>，则AUC可估算为</p>
+<p><span class="math display">\[AUC =
+\frac{1}{2}\sum\limits_{i=1}^{m-1}(x_{i+1}-x_i)·(y_i+y_{i+1})
+\tag{2.20}\]</span></p>
+<p>形式化地看，AUC考虑的是样本预测的排序质量，因此它与排序误差有紧密联系，给定<span
+class="math inline">\(m^+\)</span>个正例和<span
+class="math inline">\(m^-\)</span>个反例，令<span
+class="math inline">\(D^+\)</span>和<span
+class="math inline">\(D^-\)</span>分别表示正、反例集合，则排序"损失"(loss)定义为</p>
+<p><span class="math display">\[\ell_{rank} =
+\frac{1}{m^+m^-}\sum\limits_{x^+\sim\mathcal{D^+}}\sum\limits_{x^-\sim\mathcal{D^-}}\Bigg
+(II(f(x^+)&lt;f(x^-))+\frac{1}{2}II(f(x^+)=f(x^-))\Bigg )
+\tag{2.21}\]</span></p>
+<p>即考虑每一对正、反例，若正例的预测值小于反例，则记一个"罚分"，若相等，则记0.5个"罚分"，容易看出，<span
+class="math inline">\(\ell_{rank}\)</span>对应的是ROC曲线之上的面积，若一个正例在ROC曲线上对应标记点的坐标为<span
+class="math inline">\((x,y)\)</span>，则<span
+class="math inline">\(x\)</span>恰是排序在其之前的反例所占的比例，即假正例率，因此有</p>
+<p><span class="math display">\[AUC = 1 - \ell_{rank}
+\tag{2.22}\]</span></p>
 <h3 id="代价敏感错误率与代价曲线">3.4 代价敏感错误率与代价曲线</h3>
-<p>为权衡不同类型错误所造成的不同损失，可为错误赋予"非均等代价"(unequal cost)</p>
-<p>以二分类任务为例，我们可以根据任务的领域知识设定一个"代价矩阵"(cost matrix)，其中<span class="math inline">\(cost_{ij}\)</span>表示将第<span class="math inline">\(i\)</span>类样本预测为第<span class="math inline">\(j\)</span>类样本的代价，一般来说，<span class="math inline">\(cost_{ii}=0\)</span>；若将第0类判别为第1类所造成的损失更大，则<span class="math inline">\(cost_{01}&gt;cost_{10}\)</span>；损失程度相差越大，<span class="math inline">\(cost_{01}\)</span>与<span class="math inline">\(cost_{10}\)</span>值的差别越大。</p>
+<p>为权衡不同类型错误所造成的不同损失，可为错误赋予"非均等代价"(unequal
+cost)</p>
+<p>以二分类任务为例，我们可以根据任务的领域知识设定一个"代价矩阵"(cost
+matrix)，其中<span class="math inline">\(cost_{ij}\)</span>表示将第<span
+class="math inline">\(i\)</span>类样本预测为第<span
+class="math inline">\(j\)</span>类样本的代价，一般来说，<span
+class="math inline">\(cost_{ii}=0\)</span>；若将第0类判别为第1类所造成的损失更大，则<span
+class="math inline">\(cost_{01}&gt;cost_{10}\)</span>；损失程度相差越大，<span
+class="math inline">\(cost_{01}\)</span>与<span
+class="math inline">\(cost_{10}\)</span>值的差别越大。</p>
 <center>
 <strong>表2.2 </strong>二分类代价矩阵
 </center>
@@ -440,14 +540,35 @@ TN（真反例）
 ​
 </tr>
 </table>
-<p>在非均等代价下，我们所希望的不再是简单地最小化错误次数，而是希望最小化"总体代价"(total cost)，若将表2.2中的第0类作为正类，第1类作为反类，令<span class="math inline">\(D^+\)</span>和<span class="math inline">\(D^-\)</span>分别表示样例集<span class="math inline">\(D\)</span>的正例子集和反例子集，则"代价敏感"(cost-sensitive)错误率为</p>
-<p><span class="math display">\[E(f;D;cost)=\frac{1}{m}\Bigg(\sum\limits_{x_i\sim\mathcal{D^+}}II(f(x_i)\ne y_i)\times cost_{01}+\sum\limits_{x_i\sim\mathcal{D^-}}II(f(x_i)\ne y_i)\times cost_{10}\Bigg) \tag{2.23}\]</span></p>
-<p>类似地，可给出基于分布定义的代价敏感错误率，以及其他一些性能度量如精度的代价敏感版本，令<span class="math inline">\(cost_{ij}\)</span>中的<span class="math inline">\(i、j\)</span>取值不限于0、1，则可定义出多任务分类的代价敏感性能度量。</p>
-<p>在非均等代价下，ROC曲线不能直接反映出学习器的期望总体代价，而"代价曲线"(cost curve则可达到该目的，代价曲线图的横轴是取值为[0,1]的正例概率代价</p>
-<p><span class="math display">\[P(+)cost=\frac{p\times cost_{01}}{p\times cost_{01} + (1-p)\times cost_{10}} \tag{2.24}\]</span></p>
-<p>其中<span class="math inline">\(p\)</span>是样例为正例的概率；纵轴是取值为[0,1]的归一化代价</p>
-<p><span class="math display">\[cost_{norm}=\frac{FNR\times{p}\times{cost_{01}}+FPR\times{(1-p)}\times{cost_{10}}}{p\times{cost_{01}}+(1-p)\times{cost_{10}}} \tag{2.25}\]</span></p>
-<p>其中<span class="math inline">\(FPR\)</span>是式<span class="math inline">\((2.19)\)</span>定义的假正例率，<span class="math inline">\(FNR=1-TPR\)</span>是假反例率，代价曲线绘制很简单：ROC曲线上每一点对应了代价平面上的一条线段，设ROC曲线上的点的坐标为<span class="math inline">\((FPR, TPR)\)</span>，则可相应计算出<span class="math inline">\(FNR\)</span>，然后在代价平面上绘制一条从<span class="math inline">\((0,FPR)\)</span>到<span class="math inline">\((TPR,0)\)</span>的线段，线段下的面积即表示了该条件下的期望总体代价；如此将ROC曲线上的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价</p>
+<p>在非均等代价下，我们所希望的不再是简单地最小化错误次数，而是希望最小化"总体代价"(total
+cost)，若将表2.2中的第0类作为正类，第1类作为反类，令<span
+class="math inline">\(D^+\)</span>和<span
+class="math inline">\(D^-\)</span>分别表示样例集<span
+class="math inline">\(D\)</span>的正例子集和反例子集，则"代价敏感"(cost-sensitive)错误率为</p>
+<p><span
+class="math display">\[E(f;D;cost)=\frac{1}{m}\Bigg(\sum\limits_{x_i\sim\mathcal{D^+}}II(f(x_i)\ne
+y_i)\times cost_{01}+\sum\limits_{x_i\sim\mathcal{D^-}}II(f(x_i)\ne
+y_i)\times cost_{10}\Bigg) \tag{2.23}\]</span></p>
+<p>类似地，可给出基于分布定义的代价敏感错误率，以及其他一些性能度量如精度的代价敏感版本，令<span
+class="math inline">\(cost_{ij}\)</span>中的<span
+class="math inline">\(i、j\)</span>取值不限于0、1，则可定义出多任务分类的代价敏感性能度量。</p>
+<p>在非均等代价下，ROC曲线不能直接反映出学习器的期望总体代价，而"代价曲线"(cost
+curve则可达到该目的，代价曲线图的横轴是取值为[0,1]的正例概率代价</p>
+<p><span class="math display">\[P(+)cost=\frac{p\times
+cost_{01}}{p\times cost_{01} + (1-p)\times cost_{10}}
+\tag{2.24}\]</span></p>
+<p>其中<span
+class="math inline">\(p\)</span>是样例为正例的概率；纵轴是取值为[0,1]的归一化代价</p>
+<p><span
+class="math display">\[cost_{norm}=\frac{FNR\times{p}\times{cost_{01}}+FPR\times{(1-p)}\times{cost_{10}}}{p\times{cost_{01}}+(1-p)\times{cost_{10}}}
+\tag{2.25}\]</span></p>
+<p>其中<span class="math inline">\(FPR\)</span>是式<span
+class="math inline">\((2.19)\)</span>定义的假正例率，<span
+class="math inline">\(FNR=1-TPR\)</span>是假反例率，代价曲线绘制很简单：ROC曲线上每一点对应了代价平面上的一条线段，设ROC曲线上的点的坐标为<span
+class="math inline">\((FPR, TPR)\)</span>，则可相应计算出<span
+class="math inline">\(FNR\)</span>，然后在代价平面上绘制一条从<span
+class="math inline">\((0,FPR)\)</span>到<span
+class="math inline">\((TPR,0)\)</span>的线段，线段下的面积即表示了该条件下的期望总体代价；如此将ROC曲线上的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价</p>
 <h2 id="比较检验">4. 比较检验</h2>
 <p>实际上，机器学习中性能比较这件事比大家想象的复杂得多，这里面涉及几个重要因素：</p>
 <ul>
@@ -455,32 +576,135 @@ TN（真反例）
 <li>测试集上的性能与测试集本身的选择有很大关系，且不论使用不同大小的测试集会得到不同的结果，即使用相同大小的测试集，若包含的测试样例不同，测试结果也会有不同</li>
 <li>很多机器学习算法本身有一定的随机性，即便用相同的参数设置在同一个测试集上多次运行，其结果也会不同</li>
 </ul>
-<p>统计假设检验(hypothesis test)为我们进行学习器性能比较提供了重要依据，基于假设检验结果我们可以推断出，若在测试集上观察到学习器A比B好，则A的泛化性能是否在统计意义上优于B，以及这个结论的把握有多大。</p>
+<p>统计假设检验(hypothesis
+test)为我们进行学习器性能比较提供了重要依据，基于假设检验结果我们可以推断出，若在测试集上观察到学习器A比B好，则A的泛化性能是否在统计意义上优于B，以及这个结论的把握有多大。</p>
 <h3 id="假设检验">4.1 假设检验</h3>
-<p>假设检验中的"假设"是对学习器泛化错误率分布的某种判断或者猜想，例如"<span class="math inline">\(\epsilon=\epsilon_0\)</span>"。现实任务中我们并不知道学习器的泛化错误率，只能获知其测试错误率<span class="math inline">\(\hat\epsilon\)</span>。泛化错误率与测试错误率未必相同，但直观上，二者接近的可能性应比较大，相差很远的可能性比较小，因此可以根据测试错误率估推出泛化错误率的分布。</p>
-<p>泛化错误率<span class="math inline">\(\epsilon\)</span>的学习器在一个样本上犯错的概率为<span class="math inline">\(\epsilon\)</span>；测试错误率<span class="math inline">\(\hat\epsilon\)</span>意味着在<span class="math inline">\(m\)</span>个测试样本中恰有<span class="math inline">\(\hat\epsilon\times m\)</span>个被误分类，假定测试样本是从样本总体分布中独立采样而得，那么泛化错误率为<span class="math inline">\(\epsilon\)</span>的学习器将<span class="math inline">\(m&#39;\)</span>个样本误分类、其余样本全都分类正确的概率为<span class="math inline">\(\binom{m}{m&#39;}\epsilon^{m&#39;}(1-\epsilon)^{m-m&#39;}\)</span>；由此可以估算出其恰将<span class="math inline">\(\hat\epsilon\times m\)</span>个样本误分类的概率如下式所示，这也表达了在<span class="math inline">\(m\)</span>个样本的测试集上，泛化错误率为<span class="math inline">\(\epsilon\)</span>的学习器被测得测试错误率为<span class="math inline">\(\hat\epsilon\)</span>的概率</p>
-<p><span class="math display">\[P(\hat\epsilon;\epsilon) = \binom{m}{\hat\epsilon\times m}\epsilon^{\hat\epsilon\times m}(1-\epsilon)^{m-\hat\epsilon\times m} \tag{2.26}\]</span></p>
-<p>给定测试错误率，则解<span class="math inline">\(\partial{P}(\hat\epsilon;\epsilon)/\partial\epsilon=0\)</span>可知，<span class="math inline">\(P(\hat\epsilon;\epsilon)\)</span>在<span class="math inline">\(\epsilon=\hat\epsilon\)</span>时最大，<span class="math inline">\(|\epsilon-\hat\epsilon|\)</span>增大时<span class="math inline">\(P(\hat\epsilon;\epsilon)\)</span>减小，这符合二项(binomial)分布</p>
-<p>我们可使用"二项检验"(binomial test)来对"<span class="math inline">\(\epsilon\le0.3\)</span>"(即"泛化错误率是否不大于0.3")这样的假设进行检验，更一般地，考虑假设"<span class="math inline">\(\epsilon\le\epsilon_0\)</span>"，则在<span class="math inline">\(1-\alpha\)</span>的概率内对所能观测到的到的最大错误率如下式计算，这里<span class="math inline">\(1-\alpha\)</span>反映了结论的"置信度"(confidence)</p>
-<p><span class="math display">\[\bar{\epsilon} = max\epsilon s.t. \sum\limits_{i=\epsilon_0\times m + 1}^{m}\binom{m}{i}\epsilon^i(1-\epsilon)^{m-i} &lt; \alpha \tag{2.27}\]</span></p>
-<p>此时若测试错误率<span class="math inline">\(\hat\epsilon\)</span>小于临界值<span class="math inline">\(\bar\epsilon\)</span>，则根据二项检验可得出结论：在<span class="math inline">\(\alpha\)</span>的显著度下，假设"<span class="math inline">\(\epsilon\le\epsilon_0\)</span>"不能被拒绝，即能以<span class="math inline">\(1-\alpha\)</span>的置信度认为，学习器的泛化错误率不大于<span class="math inline">\(\epsilon_0\)</span>；否则该假设可被拒绝，即在<span class="math inline">\(\alpha\)</span>的显著度下可认为学习器的泛化错误率大于<span class="math inline">\(\epsilon_0\)</span>。</p>
-<p>在很多时候我们并非仅做一次留出法估计，而是通过多次重复留出法或是交叉验证法等进行多次训练/测试，这样会得到多个测试错误率，此时可以使用"t校验"(t-test)，假定我们得到了k个测试错误率，<span class="math inline">\(\hat\epsilon_1,\hat\epsilon_2,…,\hat\epsilon_k\)</span>，则平均测试错误率<span class="math inline">\(\mu\)</span>和方差<span class="math inline">\(\sigma^2\)</span>为</p>
-<p><span class="math display">\[\mu = \frac{1}{k}\sum\limits_{i=1}^{k}\hat\epsilon_i \tag{2.28}\]</span></p>
-<p><span class="math display">\[\sigma^2 = \frac{1}{k - 1}\sum\limits_{i=1}^{k}(\hat\epsilon_i-\mu)^2 \tag{2.29}\]</span></p>
-<p>考虑到这<span class="math inline">\(k\)</span>个测试错误率可看作泛化错误率<span class="math inline">\(\epsilon_0\)</span>的独立采样，则变量</p>
-<p><span class="math display">\[\tau_t=\frac{\sqrt{k}(\mu-\epsilon_0)}{\sigma} \tag{2.30}\]</span></p>
-<p>服从自由度为<span class="math inline">\(k-1\)</span>的<span class="math inline">\(t\)</span>分布</p>
-<p>对假设"<span class="math inline">\(\mu=\epsilon_0\)</span>"和显著度<span class="math inline">\(\alpha\)</span>，我们可计算出当测试错误率均值为<span class="math inline">\(\epsilon_0\)</span>时，在<span class="math inline">\(1-\alpha\)</span>概率内能观测的最大错误率，即临界值。这里考虑双边(two-tailed)假设，两边阴影面积各有<span class="math inline">\(\frac{\alpha}{2}\)</span>的面积，假定阴影部分范围分别为<span class="math inline">\((-\infty, t_{-\frac{\alpha}{2}}]\)</span>和<span class="math inline">\([t_{\frac{\alpha}{2}},\infty)\)</span>，若平均错误率<span class="math inline">\(\mu\)</span>与<span class="math inline">\(\epsilon_0\)</span>之差<span class="math inline">\(|\mu-\epsilon_0|\)</span>位于临界值范围<span class="math inline">\([t_{-\frac{\alpha}{2}}, t_{\frac{\alpha}{2}}]\)</span>内，则不能拒绝假设"<span class="math inline">\(\mu=\epsilon_0\)</span>"，即可认为泛化错误率为<span class="math inline">\(\epsilon_0\)</span>，置信度为<span class="math inline">\(1-\alpha\)</span>；否则可拒绝该假设，即在该显著度下可认为泛化错误率与<span class="math inline">\(\epsilon_0\)</span>有显著不同，<span class="math inline">\(\alpha\)</span>的常用取值有0.05和0.1</p>
+<p>假设检验中的"假设"是对学习器泛化错误率分布的某种判断或者猜想，例如"<span
+class="math inline">\(\epsilon=\epsilon_0\)</span>"。现实任务中我们并不知道学习器的泛化错误率，只能获知其测试错误率<span
+class="math inline">\(\hat\epsilon\)</span>。泛化错误率与测试错误率未必相同，但直观上，二者接近的可能性应比较大，相差很远的可能性比较小，因此可以根据测试错误率估推出泛化错误率的分布。</p>
+<p>泛化错误率<span
+class="math inline">\(\epsilon\)</span>的学习器在一个样本上犯错的概率为<span
+class="math inline">\(\epsilon\)</span>；测试错误率<span
+class="math inline">\(\hat\epsilon\)</span>意味着在<span
+class="math inline">\(m\)</span>个测试样本中恰有<span
+class="math inline">\(\hat\epsilon\times
+m\)</span>个被误分类，假定测试样本是从样本总体分布中独立采样而得，那么泛化错误率为<span
+class="math inline">\(\epsilon\)</span>的学习器将<span
+class="math inline">\(m&#39;\)</span>个样本误分类、其余样本全都分类正确的概率为<span
+class="math inline">\(\binom{m}{m&#39;}\epsilon^{m&#39;}(1-\epsilon)^{m-m&#39;}\)</span>；由此可以估算出其恰将<span
+class="math inline">\(\hat\epsilon\times
+m\)</span>个样本误分类的概率如下式所示，这也表达了在<span
+class="math inline">\(m\)</span>个样本的测试集上，泛化错误率为<span
+class="math inline">\(\epsilon\)</span>的学习器被测得测试错误率为<span
+class="math inline">\(\hat\epsilon\)</span>的概率</p>
+<p><span class="math display">\[P(\hat\epsilon;\epsilon) =
+\binom{m}{\hat\epsilon\times m}\epsilon^{\hat\epsilon\times
+m}(1-\epsilon)^{m-\hat\epsilon\times m} \tag{2.26}\]</span></p>
+<p>给定测试错误率，则解<span
+class="math inline">\(\partial{P}(\hat\epsilon;\epsilon)/\partial\epsilon=0\)</span>可知，<span
+class="math inline">\(P(\hat\epsilon;\epsilon)\)</span>在<span
+class="math inline">\(\epsilon=\hat\epsilon\)</span>时最大，<span
+class="math inline">\(|\epsilon-\hat\epsilon|\)</span>增大时<span
+class="math inline">\(P(\hat\epsilon;\epsilon)\)</span>减小，这符合二项(binomial)分布</p>
+<p>我们可使用"二项检验"(binomial test)来对"<span
+class="math inline">\(\epsilon\le0.3\)</span>"(即"泛化错误率是否不大于0.3")这样的假设进行检验，更一般地，考虑假设"<span
+class="math inline">\(\epsilon\le\epsilon_0\)</span>"，则在<span
+class="math inline">\(1-\alpha\)</span>的概率内对所能观测到的到的最大错误率如下式计算，这里<span
+class="math inline">\(1-\alpha\)</span>反映了结论的"置信度"(confidence)</p>
+<p><span class="math display">\[\bar{\epsilon} = max\epsilon s.t.
+\sum\limits_{i=\epsilon_0\times m +
+1}^{m}\binom{m}{i}\epsilon^i(1-\epsilon)^{m-i} &lt; \alpha
+\tag{2.27}\]</span></p>
+<p>此时若测试错误率<span
+class="math inline">\(\hat\epsilon\)</span>小于临界值<span
+class="math inline">\(\bar\epsilon\)</span>，则根据二项检验可得出结论：在<span
+class="math inline">\(\alpha\)</span>的显著度下，假设"<span
+class="math inline">\(\epsilon\le\epsilon_0\)</span>"不能被拒绝，即能以<span
+class="math inline">\(1-\alpha\)</span>的置信度认为，学习器的泛化错误率不大于<span
+class="math inline">\(\epsilon_0\)</span>；否则该假设可被拒绝，即在<span
+class="math inline">\(\alpha\)</span>的显著度下可认为学习器的泛化错误率大于<span
+class="math inline">\(\epsilon_0\)</span>。</p>
+<p>在很多时候我们并非仅做一次留出法估计，而是通过多次重复留出法或是交叉验证法等进行多次训练/测试，这样会得到多个测试错误率，此时可以使用"t校验"(t-test)，假定我们得到了k个测试错误率，<span
+class="math inline">\(\hat\epsilon_1,\hat\epsilon_2,…,\hat\epsilon_k\)</span>，则平均测试错误率<span
+class="math inline">\(\mu\)</span>和方差<span
+class="math inline">\(\sigma^2\)</span>为</p>
+<p><span class="math display">\[\mu =
+\frac{1}{k}\sum\limits_{i=1}^{k}\hat\epsilon_i \tag{2.28}\]</span></p>
+<p><span class="math display">\[\sigma^2 = \frac{1}{k -
+1}\sum\limits_{i=1}^{k}(\hat\epsilon_i-\mu)^2 \tag{2.29}\]</span></p>
+<p>考虑到这<span
+class="math inline">\(k\)</span>个测试错误率可看作泛化错误率<span
+class="math inline">\(\epsilon_0\)</span>的独立采样，则变量</p>
+<p><span
+class="math display">\[\tau_t=\frac{\sqrt{k}(\mu-\epsilon_0)}{\sigma}
+\tag{2.30}\]</span></p>
+<p>服从自由度为<span class="math inline">\(k-1\)</span>的<span
+class="math inline">\(t\)</span>分布</p>
+<p>对假设"<span
+class="math inline">\(\mu=\epsilon_0\)</span>"和显著度<span
+class="math inline">\(\alpha\)</span>，我们可计算出当测试错误率均值为<span
+class="math inline">\(\epsilon_0\)</span>时，在<span
+class="math inline">\(1-\alpha\)</span>概率内能观测的最大错误率，即临界值。这里考虑双边(two-tailed)假设，两边阴影面积各有<span
+class="math inline">\(\frac{\alpha}{2}\)</span>的面积，假定阴影部分范围分别为<span
+class="math inline">\((-\infty, t_{-\frac{\alpha}{2}}]\)</span>和<span
+class="math inline">\([t_{\frac{\alpha}{2}},\infty)\)</span>，若平均错误率<span
+class="math inline">\(\mu\)</span>与<span
+class="math inline">\(\epsilon_0\)</span>之差<span
+class="math inline">\(|\mu-\epsilon_0|\)</span>位于临界值范围<span
+class="math inline">\([t_{-\frac{\alpha}{2}},
+t_{\frac{\alpha}{2}}]\)</span>内，则不能拒绝假设"<span
+class="math inline">\(\mu=\epsilon_0\)</span>"，即可认为泛化错误率为<span
+class="math inline">\(\epsilon_0\)</span>，置信度为<span
+class="math inline">\(1-\alpha\)</span>；否则可拒绝该假设，即在该显著度下可认为泛化错误率与<span
+class="math inline">\(\epsilon_0\)</span>有显著不同，<span
+class="math inline">\(\alpha\)</span>的常用取值有0.05和0.1</p>
 <p>以上介绍的两种方法都是对单个学习器泛化性能的假设进行检验</p>
-<h3 id="交叉验证t检验">4.2 交叉验证<span class="math inline">\(t\)</span>检验</h3>
-<p>对两个学习器A和B，若我们使用<span class="math inline">\(k\)</span>折交叉验证法得到的测试错误率分别为<span class="math inline">\(\epsilon_1^A,\epsilon_2^A,…\epsilon_k^A\)</span>和<span class="math inline">\(\epsilon_1^B,\epsilon_2^B,…\epsilon_k^B\)</span>，其中<span class="math inline">\(\epsilon_i^A\)</span>和<span class="math inline">\(\epsilon_i^B\)</span>是在相同的第<span class="math inline">\(i\)</span>折训练/测试集上得到的结果，则可用<span class="math inline">\(k\)</span>折交叉验证"成对t检验"(paired t-tests)来进行比较检验。这里的基本思想是若两个学习器的性能相同，则它们使用相同的训练/测试集得到的测试错误率应相同，即<span class="math inline">\(\epsilon_i^A=\epsilon_i^B\)</span></p>
-<p>具体来说，对<span class="math inline">\(k\)</span>折交叉验证产生的<span class="math inline">\(k\)</span>对测试错误率：先对每对结果求差，<span class="math inline">\(\Delta_i=\epsilon_i^A-\epsilon_i^B\)</span>；若两个学习器性能相同，这差值均值应为0，因此，可以根据差值<span class="math inline">\(\Delta_1,\Delta_2,…,\Delta_k\)</span>来对"学习器A与B性能相同"这个假设做<span class="math inline">\(t\)</span>检验，计算出差值的均值<span class="math inline">\(\mu\)</span>和方差<span class="math inline">\(\sigma^2\)</span>，在显著度<span class="math inline">\(\alpha\)</span>下，若变量</p>
-<p><span class="math display">\[\tau_t = |\frac{\sqrt{k}\mu}{\sigma}| \tag{2.31}\]</span></p>
-<p>小于临界值<span class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>，则假设不能被拒绝，即认为两个学习器的性能没有显著差别；否则可以认为两个学习器的性能有显著差别，且平均错误率较小的那个学习器性能较优，这里<span class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>是自由度为<span class="math inline">\(k-1\)</span>的<span class="math inline">\(t\)</span>分布上尾部累积分布为<span class="math inline">\(\frac{\alpha}{2}\)</span>的临界值</p>
-<p>欲进行有效的假设检验，一个重要的前提是测试错误率均为泛化错误率的独立采样，然而通常情况下由于样本有限，在使用交叉验证等实验估计方法时，不同轮次的训练集会有一定程度的重叠，这就使得测试错误率实际上并不独立，会导致过高估计假设成立的概率，为缓解这一问题，可采用"<span class="math inline">\(5\times 2\)</span>交叉验证"法</p>
-<p><span class="math inline">\(5\times 2\)</span>交叉验证是做5次2折交叉验证，在每次2折交叉验证之前随机将数据打乱，使得5次交叉验证中的数据划分均不重复，对两个学习器A和B，第<span class="math inline">\(i\)</span>次2折交叉验证将产生两对测试错误率，我们对它们分别求差，得到第1折上的差值<span class="math inline">\(\Delta_i^1\)</span>和第2折上的差值<span class="math inline">\(\Delta_i^2\)</span>，为缓解测试错误率的非独立性，我们仅计算第1次2折交叉验证的两个结果的平均值<span class="math inline">\(\mu=0.5(\Delta_1^1+\Delta_1^2)\)</span>，但对每次2折实验的结果都计算出其方差<span class="math inline">\(\sigma^2=(\Delta_i^1-\frac{\Delta_i^1+\Delta_i^2}{2})^2+(\Delta_i^2-\frac{\Delta_i^1+\Delta_i^2}{2})^2\)</span>，变量</p>
-<p><span class="math display">\[\tau_t=\frac{\mu}{\sqrt{0.2\sum\limits_{i=1}^5\sigma_i^2}} \tag{2.32}\]</span></p>
-<p>服从自由度为5的<span class="math inline">\(t\)</span>分布，其双边检验的临界值<span class="math inline">\(t_{\frac{\alpha}{2,5}}\)</span>，当<span class="math inline">\(\alpha=0.05\)</span>时为2.5706，<span class="math inline">\(\alpha=0.1\)</span>时为2.0150</p>
+<h3 id="交叉验证t检验">4.2 交叉验证<span
+class="math inline">\(t\)</span>检验</h3>
+<p>对两个学习器A和B，若我们使用<span
+class="math inline">\(k\)</span>折交叉验证法得到的测试错误率分别为<span
+class="math inline">\(\epsilon_1^A,\epsilon_2^A,…\epsilon_k^A\)</span>和<span
+class="math inline">\(\epsilon_1^B,\epsilon_2^B,…\epsilon_k^B\)</span>，其中<span
+class="math inline">\(\epsilon_i^A\)</span>和<span
+class="math inline">\(\epsilon_i^B\)</span>是在相同的第<span
+class="math inline">\(i\)</span>折训练/测试集上得到的结果，则可用<span
+class="math inline">\(k\)</span>折交叉验证"成对t检验"(paired
+t-tests)来进行比较检验。这里的基本思想是若两个学习器的性能相同，则它们使用相同的训练/测试集得到的测试错误率应相同，即<span
+class="math inline">\(\epsilon_i^A=\epsilon_i^B\)</span></p>
+<p>具体来说，对<span
+class="math inline">\(k\)</span>折交叉验证产生的<span
+class="math inline">\(k\)</span>对测试错误率：先对每对结果求差，<span
+class="math inline">\(\Delta_i=\epsilon_i^A-\epsilon_i^B\)</span>；若两个学习器性能相同，这差值均值应为0，因此，可以根据差值<span
+class="math inline">\(\Delta_1,\Delta_2,…,\Delta_k\)</span>来对"学习器A与B性能相同"这个假设做<span
+class="math inline">\(t\)</span>检验，计算出差值的均值<span
+class="math inline">\(\mu\)</span>和方差<span
+class="math inline">\(\sigma^2\)</span>，在显著度<span
+class="math inline">\(\alpha\)</span>下，若变量</p>
+<p><span class="math display">\[\tau_t = |\frac{\sqrt{k}\mu}{\sigma}|
+\tag{2.31}\]</span></p>
+<p>小于临界值<span
+class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>，则假设不能被拒绝，即认为两个学习器的性能没有显著差别；否则可以认为两个学习器的性能有显著差别，且平均错误率较小的那个学习器性能较优，这里<span
+class="math inline">\(t_{\frac{\alpha}{2},k-1}\)</span>是自由度为<span
+class="math inline">\(k-1\)</span>的<span
+class="math inline">\(t\)</span>分布上尾部累积分布为<span
+class="math inline">\(\frac{\alpha}{2}\)</span>的临界值</p>
+<p>欲进行有效的假设检验，一个重要的前提是测试错误率均为泛化错误率的独立采样，然而通常情况下由于样本有限，在使用交叉验证等实验估计方法时，不同轮次的训练集会有一定程度的重叠，这就使得测试错误率实际上并不独立，会导致过高估计假设成立的概率，为缓解这一问题，可采用"<span
+class="math inline">\(5\times 2\)</span>交叉验证"法</p>
+<p><span class="math inline">\(5\times
+2\)</span>交叉验证是做5次2折交叉验证，在每次2折交叉验证之前随机将数据打乱，使得5次交叉验证中的数据划分均不重复，对两个学习器A和B，第<span
+class="math inline">\(i\)</span>次2折交叉验证将产生两对测试错误率，我们对它们分别求差，得到第1折上的差值<span
+class="math inline">\(\Delta_i^1\)</span>和第2折上的差值<span
+class="math inline">\(\Delta_i^2\)</span>，为缓解测试错误率的非独立性，我们仅计算第1次2折交叉验证的两个结果的平均值<span
+class="math inline">\(\mu=0.5(\Delta_1^1+\Delta_1^2)\)</span>，但对每次2折实验的结果都计算出其方差<span
+class="math inline">\(\sigma^2=(\Delta_i^1-\frac{\Delta_i^1+\Delta_i^2}{2})^2+(\Delta_i^2-\frac{\Delta_i^1+\Delta_i^2}{2})^2\)</span>，变量</p>
+<p><span
+class="math display">\[\tau_t=\frac{\mu}{\sqrt{0.2\sum\limits_{i=1}^5\sigma_i^2}}
+\tag{2.32}\]</span></p>
+<p>服从自由度为5的<span
+class="math inline">\(t\)</span>分布，其双边检验的临界值<span
+class="math inline">\(t_{\frac{\alpha}{2,5}}\)</span>，当<span
+class="math inline">\(\alpha=0.05\)</span>时为2.5706，<span
+class="math inline">\(\alpha=0.1\)</span>时为2.0150</p>
 <h3 id="mcnemar检验">4.3 McNemar检验</h3>
 <center>
 <strong>表2.4</strong> 两学习器分类差别列联表(contingency table)
@@ -543,52 +767,107 @@ TN（真反例）
 ​
 </tr>
 </table>
-<p>若我们做的假设是两学习器性能相同，则应用<span class="math inline">\(e_{01}=e_{10}\)</span>，那么变量<span class="math inline">\(|e_{01}-e_{10}|\)</span>应服从正态分布，McNemar检验考虑变量</p>
-<p><span class="math display">\[\tau_{\chi^2}=\frac{(|e_{01}-e_{10}|-1)^2}{e_{01}+e_{10}} \tag{2.33}\]</span></p>
-<p>服从自由度为1的<span class="math inline">\(\chi^2\)</span>分布，即标准正态分布变量的平方。给定显著度<span class="math inline">\(\alpha\)</span>，当以上变量值小于临界值<span class="math inline">\(\chi_\alpha^2\)</span>时，不能拒绝假设，即认为两学习器的性能没有显著差别；否则拒绝假设，即认为两者性能有显著差别，且平均错误率较小的那个学习器性能较优，自由度为1的<span class="math inline">\(\chi^2\)</span>检验的临界值当<span class="math inline">\(\alpha=0.05\)</span>时为3.8415，<span class="math inline">\(\alpha=0.1\)</span>时为2.7055</p>
-<h3 id="friedman检验与nemenyi后续检验">4.4 Friedman检验与Nemenyi后续检验</h3>
-<p>在一组数据集上对多个算法进行比较，使用的基于算法排序的Friedman检验，使用Friedman检验来判断这些算法是否性能都相同，若相同，则它们的平均序值应当相同。假定我们在N个数据集上比较<span class="math inline">\(k\)</span>个算法，令<span class="math inline">\(r_i\)</span>表示第<span class="math inline">\(i\)</span>个算法的平均序值，为简化讨论，暂不考虑平分序值的情况，则<span class="math inline">\(r_i\)</span>的均值和方差分别为<span class="math inline">\((k+1)/2\)</span>和<span class="math inline">\((k^2-1)/12N\)</span>，变量</p>
+<p>若我们做的假设是两学习器性能相同，则应用<span
+class="math inline">\(e_{01}=e_{10}\)</span>，那么变量<span
+class="math inline">\(|e_{01}-e_{10}|\)</span>应服从正态分布，McNemar检验考虑变量</p>
+<p><span
+class="math display">\[\tau_{\chi^2}=\frac{(|e_{01}-e_{10}|-1)^2}{e_{01}+e_{10}}
+\tag{2.33}\]</span></p>
+<p>服从自由度为1的<span
+class="math inline">\(\chi^2\)</span>分布，即标准正态分布变量的平方。给定显著度<span
+class="math inline">\(\alpha\)</span>，当以上变量值小于临界值<span
+class="math inline">\(\chi_\alpha^2\)</span>时，不能拒绝假设，即认为两学习器的性能没有显著差别；否则拒绝假设，即认为两者性能有显著差别，且平均错误率较小的那个学习器性能较优，自由度为1的<span
+class="math inline">\(\chi^2\)</span>检验的临界值当<span
+class="math inline">\(\alpha=0.05\)</span>时为3.8415，<span
+class="math inline">\(\alpha=0.1\)</span>时为2.7055</p>
+<h3 id="friedman检验与nemenyi后续检验">4.4
+Friedman检验与Nemenyi后续检验</h3>
+<p>在一组数据集上对多个算法进行比较，使用的基于算法排序的Friedman检验，使用Friedman检验来判断这些算法是否性能都相同，若相同，则它们的平均序值应当相同。假定我们在N个数据集上比较<span
+class="math inline">\(k\)</span>个算法，令<span
+class="math inline">\(r_i\)</span>表示第<span
+class="math inline">\(i\)</span>个算法的平均序值，为简化讨论，暂不考虑平分序值的情况，则<span
+class="math inline">\(r_i\)</span>的均值和方差分别为<span
+class="math inline">\((k+1)/2\)</span>和<span
+class="math inline">\((k^2-1)/12N\)</span>，变量</p>
 <p><span class="math display">\[\begin{align}
 
-\tau_{\chi^2} &amp;= \frac{k-1}{k}·\frac{12N}{k^2-1}\sum\limits_{i=1}^k(r_i-\frac{k+1}{2})^2 \tag{2.34}\\ &amp;= \frac{12N}{k(k+1)}(\sum\limits_{i=1}^k{r_i^2}-\frac{k(k+1)^2}{4}) 
+\tau_{\chi^2} &amp;=
+\frac{k-1}{k}·\frac{12N}{k^2-1}\sum\limits_{i=1}^k(r_i-\frac{k+1}{2})^2
+\tag{2.34}\\ &amp;=
+\frac{12N}{k(k+1)}(\sum\limits_{i=1}^k{r_i^2}-\frac{k(k+1)^2}{4})
 
 \end{align}\]</span></p>
-<p>在<span class="math inline">\(k\)</span>和N都较大时，服从自由度为<span class="math inline">\(k-1\)</span>的<span class="math inline">\(\chi^2\)</span>分布</p>
+<p>在<span
+class="math inline">\(k\)</span>和N都较大时，服从自由度为<span
+class="math inline">\(k-1\)</span>的<span
+class="math inline">\(\chi^2\)</span>分布</p>
 <p>然而，上述这样的"原始Friedman检验"过于保守，现在通常使用变量</p>
-<p><span class="math display">\[\tau_F=\frac{(N-1)\tau_\chi^2}{N(k-1)-\tau_\chi^2} \tag{2.35}\]</span></p>
-<p>其中<span class="math inline">\(\tau_\chi^2\)</span>由式(2.34)得到，<span class="math inline">\(\tau_F\)</span>服从自由度为<span class="math inline">\(k-1\)</span>和<span class="math inline">\((k-1)(N-1)\)</span>的F分布</p>
-<p>若"所有算法的性能相同"这个假设被拒绝，则说明算法的性能显著不同，这时需进行"后续检验"(post-hoc test)来进一步区分各算法，常用的有Nemenyi后续检验</p>
+<p><span
+class="math display">\[\tau_F=\frac{(N-1)\tau_\chi^2}{N(k-1)-\tau_\chi^2}
+\tag{2.35}\]</span></p>
+<p>其中<span
+class="math inline">\(\tau_\chi^2\)</span>由式(2.34)得到，<span
+class="math inline">\(\tau_F\)</span>服从自由度为<span
+class="math inline">\(k-1\)</span>和<span
+class="math inline">\((k-1)(N-1)\)</span>的F分布</p>
+<p>若"所有算法的性能相同"这个假设被拒绝，则说明算法的性能显著不同，这时需进行"后续检验"(post-hoc
+test)来进一步区分各算法，常用的有Nemenyi后续检验</p>
 <p>Nemenyi检验计算出平均序值差别的临界值域</p>
-<p><span class="math display">\[CD = q_\alpha\sqrt{\frac{k(k+1)}{6N}} \tag{2.36}\]</span></p>
+<p><span class="math display">\[CD = q_\alpha\sqrt{\frac{k(k+1)}{6N}}
+\tag{2.36}\]</span></p>
 <p>若两个算法的平均序值之差超出了临界值域CD，则以相同的置信度拒绝"两个算法性能相同"这一假设</p>
 <h2 id="偏差与方差">5. 偏差与方差</h2>
-<p>"偏差-方差分解"(bias-variance decomposition)是解释学习算法泛化性能的一种重要工具</p>
-<p>偏差-方差分解试图对学习算法的期望泛化错误率进行拆解，我们知道，算法在不同训练集上学得的结果很可能不同，即便这些训练集是来自同一个分布，对测试样本<span class="math inline">\(x\)</span>，另<span class="math inline">\(y_D\)</span>为<span class="math inline">\(x\)</span>在数据集中的标记，<span class="math inline">\(y\)</span>为<span class="math inline">\(x\)</span>的真实标记，<span class="math inline">\(f(x;D)\)</span>为训练集<span class="math inline">\(D\)</span>上学得模型<span class="math inline">\(f\)</span>在<span class="math inline">\(x\)</span>上的预测输出。以回归任务为例，学习算法的期望预测为</p>
-<p><span class="math display">\[\bar{f}(x)=\mathbb{E}_D[f(x;D)] \tag{2.37}\]</span>，</p>
+<p>"偏差-方差分解"(bias-variance
+decomposition)是解释学习算法泛化性能的一种重要工具</p>
+<p>偏差-方差分解试图对学习算法的期望泛化错误率进行拆解，我们知道，算法在不同训练集上学得的结果很可能不同，即便这些训练集是来自同一个分布，对测试样本<span
+class="math inline">\(x\)</span>，另<span
+class="math inline">\(y_D\)</span>为<span
+class="math inline">\(x\)</span>在数据集中的标记，<span
+class="math inline">\(y\)</span>为<span
+class="math inline">\(x\)</span>的真实标记，<span
+class="math inline">\(f(x;D)\)</span>为训练集<span
+class="math inline">\(D\)</span>上学得模型<span
+class="math inline">\(f\)</span>在<span
+class="math inline">\(x\)</span>上的预测输出。以回归任务为例，学习算法的期望预测为</p>
+<p><span class="math display">\[\bar{f}(x)=\mathbb{E}_D[f(x;D)]
+\tag{2.37}\]</span>，</p>
 <p>使用样本数相同的不同训练集产生的方差为</p>
-<p><span class="math display">\[var(x)=\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] \tag{2.38}\]</span></p>
+<p><span
+class="math display">\[var(x)=\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]
+\tag{2.38}\]</span></p>
 <p>噪声为</p>
-<p><span class="math display">\[\mathcal{E}^2=\mathbb{E}_D[(y_D-y)^2] \tag{2.39}\]</span></p>
+<p><span class="math display">\[\mathcal{E}^2=\mathbb{E}_D[(y_D-y)^2]
+\tag{2.39}\]</span></p>
 <p>期望输出与真实标记的差别称为偏差(bias)，即</p>
-<p><span class="math display">\[bias^2(x)=(\bar{f}(x)-y)^2 \tag{2.40}\]</span></p>
-<p>为便于讨论，假定噪声期望为0，即<span class="math inline">\(\mathbb{E}_D[y_D-y]=0\)</span>。通过简单的多项式展开合并，可对算法的期望泛化误差进行分解：</p>
+<p><span class="math display">\[bias^2(x)=(\bar{f}(x)-y)^2
+\tag{2.40}\]</span></p>
+<p>为便于讨论，假定噪声期望为0，即<span
+class="math inline">\(\mathbb{E}_D[y_D-y]=0\)</span>。通过简单的多项式展开合并，可对算法的期望泛化误差进行分解：</p>
 <p><span class="math display">\[\begin{align}
 
-E(f;D) &amp;= \mathbb{E}_D[(f(x;D)-y_D)^2]\\ &amp;= \mathbb{E}_D[(f(x;D)-\bar{f}(x)+\bar{f}(x)-y_D)^2] \\ &amp;= 
+E(f;D) &amp;= \mathbb{E}_D[(f(x;D)-y_D)^2]\\ &amp;=
+\mathbb{E}_D[(f(x;D)-\bar{f}(x)+\bar{f}(x)-y_D)^2] \\ &amp;=
 
-\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] + \mathbb{E}[(\bar{f}(x)-y_D)^2]+\mathbb{E}_D[2(f(x;D)-\bar{f}(x))(\bar{f}(x)-y_D)]\\ &amp;= 
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] +
+\mathbb{E}[(\bar{f}(x)-y_D)^2]+\mathbb{E}_D[2(f(x;D)-\bar{f}(x))(\bar{f}(x)-y_D)]\\
+&amp;=
 
-\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y_D)]\\ &amp;= 
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y_D)]\\
+&amp;=
 
-\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] + \mathbb{E}_D[(\bar{f}(x)-y+y-y_D)^2]\\ &amp;= 
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2] +
+\mathbb{E}_D[(\bar{f}(x)-y+y-y_D)^2]\\ &amp;=
 
-\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y)^2]+\mathbb{E}_D[(y-y_D)^2]+2\mathbb{E}_D[(\bar{f}(x)-y)(y-y_D)]\\ &amp;=  
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+\mathbb{E}_D[(\bar{f}(x)-y)^2]+\mathbb{E}_D[(y-y_D)^2]+2\mathbb{E}_D[(\bar{f}(x)-y)(y-y_D)]\\
+&amp;=  
 
-\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+(\bar{f}(x)-y)^2+\mathbb{E}_D[(y_D-y)^2] \tag{2.41}
+\mathbb{E}_D[(f(x;D)-\bar{f}(x))^2]+(\bar{f}(x)-y)^2+\mathbb{E}_D[(y_D-y)^2]
+\tag{2.41}
 
 \end{align}\]</span></p>
 <p>于是，</p>
-<p><span class="math display">\[E(f;D) = bias^2(x)+var(x)+\mathcal{E}^2 \tag{2.42}\]</span></p>
+<p><span class="math display">\[E(f;D) = bias^2(x)+var(x)+\mathcal{E}^2
+\tag{2.42}\]</span></p>
 <p>也就是说，泛化误差可以分解为偏差，方差与噪声之和。</p>
 <p>偏差-方差分解说明，泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的，给定学习任务，为了取得更好的泛化性能，则需使偏差较小，即能够充分拟合数据，并且使方差较小，即使得数据扰动产生的影响小。</p>
 
@@ -741,7 +1020,11 @@ E(f;D) &amp;= \mathbb{E}_D[(f(x;D)-y_D)^2]\\ &amp;= \mathbb{E}_D[(f(x;D)-\bar{f}
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E8%AF%AF%E5%B7%AE%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AEerror"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%99%E5%87%BA%E6%B3%95hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E6%B3%95cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A9%E6%B3%95bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%8F%82parameter-tuning%E4%B8%8E%E6%9C%80%E7%BB%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8Fperformance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E7%B2%BE%E5%BA%A6"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E5%87%86%E7%8E%87%E6%9F%A5%E5%85%A8%E7%8E%87%E4%B8%8Ef1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc%E4%B8%8Eauc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E6%95%8F%E6%84%9F%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%A3%80%E9%AA%8C"><span class="toc-number">4.</span> <span class="toc-text">4. 比较检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81t%E6%A3%80%E9%AA%8C"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 交叉验证\(t\)检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mcnemar%E6%A3%80%E9%AA%8C"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 McNemar检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friedman%E6%A3%80%E9%AA%8C%E4%B8%8Enemenyi%E5%90%8E%E7%BB%AD%E6%A3%80%E9%AA%8C"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 Friedman检验与Nemenyi后续检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="toc-number">5.</span> <span class="toc-text">5. 偏差与方差</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E8%AF%AF%E5%B7%AE%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">1. 经验误差与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AEerror"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 误差(Error)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88overfitting"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过拟合(Overfitting)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88underfitting"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 欠拟合(Underfitting)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2. 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%99%E5%87%BA%E6%B3%95hold-out"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 留出法(Hold-out)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E6%B3%95cross-validation"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 交叉验证法(Cross
+Validation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A9%E6%B3%95bootstrapping"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 自助法(Bootstrapping)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%8F%82parameter-tuning%E4%B8%8E%E6%9C%80%E7%BB%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 调参(Parameter
+Tuning)与最终模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8Fperformance-measure"><span class="toc-number">3.</span> <span class="toc-text">3. 性能度量(Performance
+Measure)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E7%B2%BE%E5%BA%A6"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 错误率与精度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E5%87%86%E7%8E%87%E6%9F%A5%E5%85%A8%E7%8E%87%E4%B8%8Ef1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查准率、查全率与F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#roc%E4%B8%8Eauc"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 ROC与AUC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E6%95%8F%E6%84%9F%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E6%A3%80%E9%AA%8C"><span class="toc-number">4.</span> <span class="toc-text">4. 比较检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81t%E6%A3%80%E9%AA%8C"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 交叉验证\(t\)检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mcnemar%E6%A3%80%E9%AA%8C"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 McNemar检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#friedman%E6%A3%80%E9%AA%8C%E4%B8%8Enemenyi%E5%90%8E%E7%BB%AD%E6%A3%80%E9%AA%8C"><span class="toc-number">4.4.</span> <span class="toc-text">4.4
+Friedman检验与Nemenyi后续检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="toc-number">5.</span> <span class="toc-text">5. 偏差与方差</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -770,7 +1053,7 @@ E(f;D) &amp;= \mathbb{E}_D[(f(x;D)-y_D)^2]\\ &amp;= \mathbb{E}_D[(f(x;D)-\bar{f}
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

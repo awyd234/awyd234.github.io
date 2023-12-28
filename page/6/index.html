@@ -57,7 +57,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -289,7 +289,8 @@ var _hmt = _hmt || [];
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">this_path=&quot;/mnt/.trash/&quot;$USER</span><br><span class="line">if [ ! -d $this_path ]; then</span><br><span class="line">	mkdir $&#123;this_path&#125;</span><br><span class="line">fi  </span><br><span class="line"></span><br><span class="line">alias rm=trash</span><br><span class="line">alias ur=undelfile</span><br><span class="line">alias rl=&#x27;ls /mnt/.trash/$USER/&#x27;</span><br><span class="line"></span><br><span class="line">trash()</span><br><span class="line">&#123;</span><br><span class="line">	mv $@ $this_path/$(date +%Y%m%d%H%M%S)_$@ </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">undelfile()</span><br><span class="line">&#123;</span><br><span class="line">	mv -i $this_path/$@ ./ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在/mnt下建立目录.trash作为伪回收站，用户打开shell时，检测.trash目录下是否已有用户所属目录，若无则建立一个，该用户所有的rm操作会mv到此目录下。并对rm的文件或目录加上时间戳以作区分，ur命令可用于将回收站的数据恢复到本地（时间戳暂时需要自己删除），rl命令可以用于查看回收站现有数据</p>
 <h1 id="todo">3. Todo</h1>
-<h2 id="针对sudo操作时的生效暂时未找到好办法">3.1 针对sudo操作时的生效，暂时未找到好办法</h2>
+<h2 id="针对sudo操作时的生效暂时未找到好办法">3.1
+针对sudo操作时的生效，暂时未找到好办法</h2>
 <h2 id="回收站的定期清理功能">3.2 回收站的定期清理功能</h2>
 
         
@@ -360,11 +361,12 @@ var _hmt = _hmt || [];
 <h2 id="windows7安装的git支持中文">1.1 windows7安装的git支持中文</h2>
 <p>git config –-global core.quotepath false</p>
 <h1 id="git日常命令">2.Git日常命令</h1>
-<h2 id="修改origin指向例如git迁移后使用">2.1 修改origin指向（例如git迁移后使用）</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote -v    <span class="comment"># 查看远程分支情况</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote rm origin   <span class="comment"># 删除对应远程对应中的origin</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin &lt;git repository address&gt; <span class="comment"># 添加远程对应的origin</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="修改origin指向例如git迁移后使用">2.1
+修改origin指向（例如git迁移后使用）</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote -v    <span class="comment"># 查看远程分支情况</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote <span class="built_in">rm</span> origin   <span class="comment"># 删除对应远程对应中的origin</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote add origin &lt;git repository address&gt; <span class="comment"># 添加远程对应的origin</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="fetch-与-pull-操作">2.2 fetch 与 pull 操作</h2>
 <p>FETCH_HEAD指的是，某个branch在服务器上的最新状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git fetch origin master:tmp</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git diff tmp</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git merge tmp</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git fetch origin master:tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git diff tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git merge tmp</span></span><br></pre></td></tr></table></figure>
 <p>操作即先将远程origin的master主分支下载最新版本到本地origin/tmp分支上，然后将本地master分支与tmp分支diff，最后进行merge</p>
         
           <a class="article-more-a" href="/post/d88c701/#more">more >></a>
@@ -430,14 +432,15 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu 16.04，问题是否仅仅出现在这个版本，尚待测试</p>
+        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu
+16.04，问题是否仅仅出现在这个版本，尚待测试</p>
 <h1 id="搜狗输入法无法显示候选词">1. 搜狗输入法无法显示候选词</h1>
 <p>最近在使用搜狗输入法时，用着用着就搜狗候选词就没了，导致无法输入中文</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
 <p>这个程序猜测就是搜狗输入法的启动程序，通过将这个程序启动，发现程序出现报错</p>
 <img src="/post/8826628/bug_show.png" class title="This is the error~">
 <p>通过搜索解决方案，找到了一种比较靠谱的<a target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/SogouPY.users</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY.<span class="built_in">users</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
 <p>然后重启sogou-qimpanel，可以发现搜狗输入法的候选词已经有了，但之前的皮肤设置已经丢失</p>
 <blockquote>
 <p>额外想到的，我的pycharm也经常会出现主界面无法显示的问题，也是通过删除home下配置文件解决，具体原因待继续探究</p>
@@ -598,10 +601,10 @@ var _hmt = _hmt || [];
 <p>virtualenv是一个用来创建独立的Python环境的包</p>
 <h2 id="安装virtualenv">1.1 安装virtualenv</h2>
 <p>首先使用pip3安装virtualenv</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
 <h2 id="创建与使用环境">1.2 创建与使用环境</h2>
 <p>创建env环境，比如我们创建名为env_test的虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .env <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> .env/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .<span class="built_in">env</span> <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> .<span class="built_in">env</span>/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="生成与使用requirements.txt">1.3 生成与使用requirements.txt</h2>
 <p>通过pip3 list可以列出当前安装的python3第三方包</p>
         
@@ -680,7 +683,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言">前言</h1>
-<p>现从事Python Web开发，以前在公司的时候关注多在业务和小trick，经过最近面试被一次次打击，才发现自己对技术背后的原理的理解太浅了，决定弄个blog做点总结，顺便没事扯扯淡，满足下自己文艺的心理。</p>
+<p>现从事Python
+Web开发，以前在公司的时候关注多在业务和小trick，经过最近面试被一次次打击，才发现自己对技术背后的原理的理解太浅了，决定弄个blog做点总结，顺便没事扯扯淡，满足下自己文艺的心理。</p>
 <p>之前用过CSDN一类，感觉太麻烦写了一半没写了。原本打算自己用Django搭个blog出来的，顺便加深对Django的学习。</p>
 <p>对于前端一直没有好的灵感，学习了<a target="_blank" rel="noopener" href="http://paine1690.github.io/">朋友的blog</a>，才发现原来blog还可以这样，不用自己去写后台管理，主题很好看，也有不错的域名，于是研究了下<a target="_blank" rel="noopener" href="https://hexo.io/docs/">官方docs</a>，先弄个临时blog吧，后续会迁移到自己写的blog上去。</p>
 
@@ -753,7 +757,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

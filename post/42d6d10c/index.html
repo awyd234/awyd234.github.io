@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -144,7 +144,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
         <h1 id="故事背景">故事背景</h1>
 <h2 id="系统配置">系统配置</h2>
 <h3 id="操作系统">操作系统</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
 <h3 id="算法模型-backbone">算法模型 Backbone</h3>
 <ul>
 <li>ResNet V2</li>
@@ -234,7 +234,8 @@ var _hmt = _hmt || [];
 <li>Mask RCNN</li>
 </ul>
 <h2 id="故事描述">故事描述</h2>
-<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
+<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow
+Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
 <h1 id="故事经过">故事经过</h1>
 <h2 id="安装cuda驱动">安装CUDA驱动</h2>
 <div data-align="center">
@@ -275,7 +276,8 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(Reading database ... 168907 files and directories currently installed.)</span><br><span class="line">Preparing to unpack libcudnn8_8.0.3.33-1+cuda11.0_amd64.deb ...</span><br><span class="line">Unpacking libcudnn8 (8.0.3.33-1+cuda11.0) over (8.0.3.33-1+cuda11.0) ...</span><br><span class="line">Setting up libcudnn8 (8.0.3.33-1+cuda11.0) ...</span><br><span class="line">Processing triggers for libc-bin (2.23-0ubuntu11.2) ...</span><br></pre></td></tr></table></figure>
 <p>进入其中并make</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd NVIDIA_CUDA-11.0_Samples/</span><br><span class="line">sudo make</span><br></pre></td></tr></table></figure>
-<p>经历了好久，终于装好了，不重启TensorFlow Serving仍然是同样错误，重启TensorFlow Serving后正常</p>
+<p>经历了好久，终于装好了，不重启TensorFlow
+Serving仍然是同样错误，重启TensorFlow Serving后正常</p>
 <h1 id="故事结果">故事结果</h1>
 <h2 id="测试效果">测试效果</h2>
 <p>使用原有基准图片进行测试，算法模型见配置信息，使用未优化前的P100机器，推理时间在2.7s，优化后则缩短到了0.6s</p>
@@ -483,7 +485,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

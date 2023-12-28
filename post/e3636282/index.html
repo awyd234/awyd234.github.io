@@ -63,7 +63,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -139,7 +139,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -239,24 +239,34 @@ var _hmt = _hmt || [];
 </ul>
 <p>别名直接用AS关键字即可，既可使用于表名，也可以使用于列名</p>
 <h2 id="几种表联结的方式">3. 几种表联结的方式</h2>
-<p>SQL最强大的功能之一就是能在数据查询的执行中联结（join）表。联结是利用 SQL的 SELECT能执行的最重要的操作，很好地理解联结及其语法是学习 SQL的极为重要的部分。</p>
-<p>联结是一种机制，用来在一条 SELECT语句中关联表，因此称为联结。使用特殊的语法，可以联结多个表返回一组输出，联结在运行时关联表中正确的行。</p>
+<p>SQL最强大的功能之一就是能在数据查询的执行中联结（join）表。联结是利用
+SQL的 SELECT能执行的最重要的操作，很好地理解联结及其语法是学习
+SQL的极为重要的部分。</p>
+<p>联结是一种机制，用来在一条
+SELECT语句中关联表，因此称为联结。使用特殊的语法，可以联结多个表返回一组输出，联结在运行时关联表中正确的行。</p>
 <p>JOIN 语法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">table_references:</span><br><span class="line">    escaped_table_reference [, escaped_table_reference] ...</span><br><span class="line"></span><br><span class="line">escaped_table_reference:</span><br><span class="line">    table_reference</span><br><span class="line">  | &#123; OJ table_reference &#125;</span><br><span class="line"></span><br><span class="line">table_reference:</span><br><span class="line">    table_factor</span><br><span class="line">  | joined_table</span><br><span class="line"></span><br><span class="line">table_factor:</span><br><span class="line">    tbl_name [PARTITION (partition_names)]</span><br><span class="line">        [[AS] alias] [index_hint_list]</span><br><span class="line">  | table_subquery [AS] alias</span><br><span class="line">  | ( table_references )</span><br><span class="line"></span><br><span class="line">joined_table:</span><br><span class="line">    table_reference [INNER | CROSS] JOIN table_factor [join_specification]</span><br><span class="line">  | table_reference STRAIGHT_JOIN table_factor</span><br><span class="line">  | table_reference STRAIGHT_JOIN table_factor ON search_condition</span><br><span class="line">  | table_reference &#123;LEFT|RIGHT&#125; [OUTER] JOIN table_reference join_specification</span><br><span class="line">  | table_reference NATURAL [&#123;LEFT|RIGHT&#125; [OUTER]] JOIN table_factor</span><br><span class="line"></span><br><span class="line">join_specification:</span><br><span class="line">    ON search_condition</span><br><span class="line">  | USING (join_column_list)</span><br><span class="line"></span><br><span class="line">join_column_list:</span><br><span class="line">    column_name [, column_name] ...</span><br><span class="line"></span><br><span class="line">index_hint_list:</span><br><span class="line">    index_hint [, index_hint] ...</span><br><span class="line"></span><br><span class="line">index_hint:</span><br><span class="line">    USE &#123;INDEX|KEY&#125;</span><br><span class="line">      [FOR &#123;JOIN|ORDER BY|GROUP BY&#125;] ([index_list])</span><br><span class="line">  | &#123;IGNORE|FORCE&#125; &#123;INDEX|KEY&#125;</span><br><span class="line">      [FOR &#123;JOIN|ORDER BY|GROUP BY&#125;] (index_list)</span><br><span class="line"></span><br><span class="line">index_list:</span><br><span class="line">    index_name [, index_name] ...</span><br></pre></td></tr></table></figure>
 <h3 id="关键字-on">3.1 关键字 on</h3>
 <p>数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。</p>
-<p>在使用 left jion 时，<strong>on</strong> 和 <strong>where</strong> 条件的区别如下：</p>
+<p>在使用 left jion 时，<strong>on</strong> 和 <strong>where</strong>
+条件的区别如下：</p>
 <ul>
-<li><strong>on</strong> 条件是在生成临时表时使用的条件，它不管 <strong>on</strong> 中的条件是否为真，都会返回左边表中的记录。</li>
-<li><strong>where</strong> 条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有 left join 的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</li>
+<li><strong>on</strong> 条件是在生成临时表时使用的条件，它不管
+<strong>on</strong> 中的条件是否为真，都会返回左边表中的记录。</li>
+<li><strong>where</strong>
+条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有 left join
+的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</li>
 </ul>
 <h3 id="inner-join">3.2 INNER JOIN</h3>
-<p>目前为止使用的联结称为等值联结（ equijoin），它基于两个表之间的相等测试。这种联结也称为内联结（inner join）</p>
+<p>目前为止使用的联结称为等值联结（
+equijoin），它基于两个表之间的相等测试。这种联结也称为内联结（inner
+join）</p>
 <p>INNER JOIN 关键字在表中存在至少一个匹配时返回行，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s)</span><br><span class="line">FROM table1</span><br><span class="line">INNER JOIN table2</span><br><span class="line">ON table1.column_name=table2.column_name;</span><br></pre></td></tr></table></figure>
 <p>INNER JOIN 与 JOIN 是相同的</p>
 <h3 id="left-join">3.3 LEFT JOIN</h3>
-<p>LEFT JOIN 关键字会从左表 (table_name1) 那里返回所有的行，即使在右表 (table_name2) 中没有匹配的行。</p>
+<p>LEFT JOIN 关键字会从左表 (table_name1) 那里返回所有的行，即使在右表
+(table_name2) 中没有匹配的行。</p>
 <p>例如有表格</p>
 <p>"Persons" 表：</p>
 <table>
@@ -369,7 +379,8 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <h3 id="right-join">3.4 RIGHT JOIN</h3>
-<p>RIGHT JOIN 关键字会右表 (table_name2) 那里返回所有的行，即使在左表 (table_name1) 中没有匹配的行。</p>
+<p>RIGHT JOIN 关键字会右表 (table_name2) 那里返回所有的行，即使在左表
+(table_name1) 中没有匹配的行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo</span><br><span class="line">FROM Persons</span><br><span class="line">RIGHT JOIN Orders</span><br><span class="line">ON Persons.Id_P=Orders.Id_P</span><br><span class="line">ORDER BY Persons.LastName</span><br></pre></td></tr></table></figure>
 <p>结果集：</p>
 <table>
@@ -409,33 +420,42 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <h3 id="cross-join">3.5 CROSS JOIN</h3>
-<h4 id="笛卡儿积cartesian-product">3.5.1 笛卡儿积（cartesian product）</h4>
+<h4 id="笛卡儿积cartesian-product">3.5.1 笛卡儿积（cartesian
+product）</h4>
 <p>由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数。</p>
 <h3 id="自连接">3.6 自连接</h3>
 <h3 id="union">3.7 UNION</h3>
 <p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集。</p>
-<p>请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。</p>
+<p>请注意，UNION 内部的 SELECT
+语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT
+语句中的列的顺序必须相同。</p>
 <p>SQL UNION 语法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</p>
+<p>注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用
+UNION ALL。</p>
 <p>SQL UNION ALL 语法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s) FROM table_name1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table_name2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>另外，UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名。</p>
+<p>另外，UNION 结果集中的列名总是等于 UNION 中第一个 SELECT
+语句中的列名。</p>
 <h3 id="比较">3.8 比较</h3>
 <div data-align="center">
 <img src="/post/e3636282/join_compare_20190302.jpg" class="">
 </div>
 <h2 id="作业">4. 作业</h2>
-<h3 id="作业1-组合两张表-难度简单">4.1 作业1 组合两张表 （难度：简单）</h3>
+<h3 id="作业1-组合两张表-难度简单">4.1 作业1 组合两张表
+（难度：简单）</h3>
 <h4 id="作业内容">4.1.1 作业内容</h4>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">在数据库中创建表1和表2，并各插入三行数据（自己造）</span><br><span class="line">表1: Person</span><br><span class="line">+-------------+---------+</span><br><span class="line">| 列名         | 类型     |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| FirstName   | varchar |</span><br><span class="line">| LastName    | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">PersonId 是上表主键</span><br><span class="line"></span><br><span class="line">表2: Address</span><br><span class="line">+-------------+---------+</span><br><span class="line">| 列名         | 类型    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| AddressId   | int     |</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| City        | varchar |</span><br><span class="line">| State       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">AddressId 是上表主键</span><br><span class="line"></span><br><span class="line">编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：FirstName, LastName, City, State</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="作业2-删除重复的邮箱难度简单">4.1 作业2 删除重复的邮箱（难度：简单）</h3>
+<h3 id="作业2-删除重复的邮箱难度简单">4.1 作业2
+删除重复的邮箱（难度：简单）</h3>
 <h4 id="作业内容-1">4.1.1 作业内容</h4>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">编写一个 SQL 查询，来删除 email 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。</span><br><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br><span class="line">Id 是这个表的主键。</span><br><span class="line">例如，在运行你的查询语句之后，上面的 Email表应返回以下几行:</span><br><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com  |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
 <h2 id="参考资料">5. 参考资料</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/sql/sql_join_left.asp">SQL LEFT JOIN 关键字 - W3SCHOOL</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/sql/sql_join_left.asp">SQL RIGHT JOIN 关键字 - W3SCHOOL</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/sql/sql_join_left.asp">SQL LEFT
+JOIN 关键字 - W3SCHOOL</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/sql/sql_join_left.asp">SQL RIGHT
+JOIN 关键字 - W3SCHOOL</a></li>
 </ul>
 
       
@@ -583,7 +603,10 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 任务背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 任务内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E5%88%AB%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">2. MySQL别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E8%A1%A8%E8%81%94%E7%BB%93%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">3. 几种表联结的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-on"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 关键字 on</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inner-join"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 INNER JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#left-join"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 LEFT JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#right-join"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 RIGHT JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cross-join"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 CROSS JOIN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AFcartesian-product"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.5.1 笛卡儿积（cartesian product）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 自连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#union"><span class="toc-number">3.7.</span> <span class="toc-text">3.7 UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">4. 作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A1-%E7%BB%84%E5%90%88%E4%B8%A4%E5%BC%A0%E8%A1%A8-%E9%9A%BE%E5%BA%A6%E7%AE%80%E5%8D%95"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 作业1 组合两张表 （难度：简单）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1 作业内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A2-%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E9%82%AE%E7%AE%B1%E9%9A%BE%E5%BA%A6%E7%AE%80%E5%8D%95"><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作业2 删除重复的邮箱（难度：简单）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.1.1 作业内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">5.</span> <span class="toc-text">5. 参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 任务背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 任务内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E5%88%AB%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">2. MySQL别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E8%A1%A8%E8%81%94%E7%BB%93%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">3. 几种表联结的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-on"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 关键字 on</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inner-join"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 INNER JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#left-join"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 LEFT JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#right-join"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 RIGHT JOIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cross-join"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 CROSS JOIN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AFcartesian-product"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.5.1 笛卡儿积（cartesian
+product）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 自连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#union"><span class="toc-number">3.7.</span> <span class="toc-text">3.7 UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">4. 作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A1-%E7%BB%84%E5%90%88%E4%B8%A4%E5%BC%A0%E8%A1%A8-%E9%9A%BE%E5%BA%A6%E7%AE%80%E5%8D%95"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 作业1 组合两张表
+（难度：简单）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1 作业内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A2-%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E9%82%AE%E7%AE%B1%E9%9A%BE%E5%BA%A6%E7%AE%80%E5%8D%95"><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作业2
+删除重复的邮箱（难度：简单）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.1.1 作业内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">5.</span> <span class="toc-text">5. 参考资料</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -612,7 +635,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

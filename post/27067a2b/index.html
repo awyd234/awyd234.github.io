@@ -61,7 +61,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -137,7 +137,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -216,17 +216,20 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="背景">背景</h1>
-<p>最近有两处用到，一个是做简易的消息推送，Flask + Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变；</p>
+<p>最近有两处用到，一个是做简易的消息推送，Flask +
+Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变；</p>
 <p>另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据</p>
 <h1 id="解决方案">解决方案</h1>
-<h2 id="从csdn论坛中找到的一种方式">从<a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/390350359">CSDN论坛</a>中找到的一种方式</h2>
+<h2 id="从csdn论坛中找到的一种方式">从<a
+target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/390350359">CSDN论坛</a>中找到的一种方式</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>           <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> REPEATABLE<span class="operator">-</span>READ <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <p>如果是以上情况，则可以执行语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">set</span> <span class="keyword">global</span> TRANSACTION ISOLATION LEVEL READ COMMITTED ;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="keyword">rows</span> affected (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <p>此时再去查找</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>           <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> REPEATABLE<span class="operator">-</span>READ <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line">  </span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>          <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> READ<span class="operator">-</span>COMMITTED <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <p>这时就可以取到最新数据了</p>
-<h2 id="其他解决方案及原因正在继续探索中">其他解决方案及原因正在继续探索中</h2>
+<h2
+id="其他解决方案及原因正在继续探索中">其他解决方案及原因正在继续探索中</h2>
 
       
 
@@ -413,7 +416,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

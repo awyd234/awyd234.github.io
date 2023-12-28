@@ -69,7 +69,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -145,7 +145,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -224,12 +224,17 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="basic-info">Basic Info</h2>
-<p>Link: <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet Classification with Deep Convolutional Neural Networks - NIPS</a></p>
+<p>Link: <a
+target="_blank" rel="noopener" href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet
+Classification with Deep Convolutional Neural Networks - NIPS</a></p>
 <p>Author:</p>
 <ul>
-<li><a href="kriz@cs.utoronto.ca">Alex Krizhevsky, University of Toronto</a></li>
-<li><a href="ilya@cs.utoronto.ca">Ilya Sutskever, University of Toronto</a></li>
-<li><a href="hinton@cs.utoronto.ca">Geoffrey E. Hinton, University of Toronto</a></li>
+<li><a href="kriz@cs.utoronto.ca">Alex Krizhevsky, University of
+Toronto</a></li>
+<li><a href="ilya@cs.utoronto.ca">Ilya Sutskever, University of
+Toronto</a></li>
+<li><a href="hinton@cs.utoronto.ca">Geoffrey E. Hinton, University of
+Toronto</a></li>
 </ul>
 <h2 id="summary">Summary</h2>
 <h2 id="research-objective">Research Objective</h2>
@@ -244,15 +249,25 @@ var _hmt = _hmt || [];
 <p>作者给了哪些strong conclusion, 又给了哪些weak conclusion?</p>
 <h2 id="notes">Notes</h2>
 <h3 id="top-5-error">1. top-5 error</h3>
-<p>The fraction of test images for which the correct label is not among the five labels considered most probable by the model.</p>
+<p>The fraction of test images for which the correct label is not among
+the five labels considered most probable by the model.</p>
 <h3 id="dataset">2. Dataset</h3>
-<p>First rescaled the image such that the shorter side was of length 256, and then cropped out the central 256*256 patch from the resulting image.</p>
-<p>did not pre-process the images in any other way, except for subtracting the mean activity over the training set from each pixel.</p>
+<p>First rescaled the image such that the shorter side was of length
+256, and then cropped out the central 256*256 patch from the resulting
+image.</p>
+<p>did not pre-process the images in any other way, except for
+subtracting the mean activity over the training set from each pixel.</p>
 <h3 id="architecutre">3. Architecutre</h3>
 <p>five convolutional and three fully-connected</p>
 <h4 id="relu-nonlinearity">3.1 Relu Nonlinearity</h4>
-<p>standard way to model a neuron's output <span class="math inline">\(f\)</span> as a function of its input <span class="math inline">\(x\)</span> is with <span class="math inline">\(f(x) = tanh(x)\)</span> or <span class="math inline">\(f(x) = (1 + e^{-x})^{-1}\)</span></p>
-<p>much slower than the non-saturating nonlinearity <span class="math inline">\(f(x) = max(0, x)\)</span>, refer as Rectified Linear Units (ReLUs)</p>
+<p>standard way to model a neuron's output <span
+class="math inline">\(f\)</span> as a function of its input <span
+class="math inline">\(x\)</span> is with <span
+class="math inline">\(f(x) = tanh(x)\)</span> or <span
+class="math inline">\(f(x) = (1 + e^{-x})^{-1}\)</span></p>
+<p>much slower than the non-saturating nonlinearity <span
+class="math inline">\(f(x) = max(0, x)\)</span>, refer as Rectified
+Linear Units (ReLUs)</p>
 <ul>
 <li>网络训练更快</li>
 <li>增加网络非线性</li>
@@ -261,14 +276,20 @@ var _hmt = _hmt || [];
 </ul>
 <p>Sigmoid，反向传播时梯度消失</p>
 <p><span class="math display">\[f(x) = \frac{1}{1 + e^{-x}}\]</span></p>
-<p><span class="math display">\[f(x)&#39;=\frac{1}{(1+e^{-x})^2} * (e^{-x})=\frac{1}{1+e^{-x}}*\frac{e^{-x}}{1+e^{-x}}=f(x)*(1-f(x))\]</span></p>
+<p><span class="math display">\[f(x)&#39;=\frac{1}{(1+e^{-x})^2} *
+(e^{-x})=\frac{1}{1+e^{-x}}*\frac{e^{-x}}{1+e^{-x}}=f(x)*(1-f(x))\]</span></p>
 <h4 id="参数计算公式">3.2 参数计算公式</h4>
-<p>卷积特征图计算公式，<span class="math inline">\(F_o = \lfloor \frac{F_{in} + 2p - k}{s} \rfloor + 1\)</span></p>
-<p>卷积方式为VALID时，<span class="math inline">\(F_o = \lceil \frac{F_{in} - k + 1}{s} \rceil\)</span></p>
-<p>卷积方式为SAME，<span class="math inline">\(F_o = \lceil \frac{F_{in}}{s} \rceil\)</span></p>
+<p>卷积特征图计算公式，<span class="math inline">\(F_o = \lfloor
+\frac{F_{in} + 2p - k}{s} \rfloor + 1\)</span></p>
+<p>卷积方式为VALID时，<span class="math inline">\(F_o = \lceil
+\frac{F_{in} - k + 1}{s} \rceil\)</span></p>
+<p>卷积方式为SAME，<span class="math inline">\(F_o = \lceil
+\frac{F_{in}}{s} \rceil\)</span></p>
 <p>连接数量计算公式</p>
-<p><span class="math display">\[F_o^2 \times (K^2 \times K_c + 1) \times F_{oc}\]</span></p>
-<p><span class="math display">\[输出特征尺寸 \times (卷积核大小 \times 卷积核通道数 + 1) \times 输出特征图通道数\]</span></p>
+<p><span class="math display">\[F_o^2 \times (K^2 \times K_c + 1) \times
+F_{oc}\]</span></p>
+<p><span class="math display">\[输出特征尺寸 \times (卷积核大小 \times
+卷积核通道数 + 1) \times 输出特征图通道数\]</span></p>
 <h4 id="network-architecture">3.3 Network Architecture</h4>
 <div data-align="center">
 <img src="/post/118818b/AlexNet%20Architecture.png" class="">
@@ -311,8 +332,10 @@ var _hmt = _hmt || [];
 <td>4</td>
 <td>VALID</td>
 <td>[227, 227, 3]</td>
-<td><span class="math inline">\(\lceil \frac{227 - 11 + 1}{4} \rceil = 55\)</span>, [55, 55, 96]</td>
-<td><span class="math inline">\((11\times 11 \times 3 + 1)\times 96\)</span></td>
+<td><span class="math inline">\(\lceil \frac{227 - 11 + 1}{4} \rceil =
+55\)</span>, [55, 55, 96]</td>
+<td><span class="math inline">\((11\times 11 \times 3 + 1)\times
+96\)</span></td>
 <td>(55x55)x parameters</td>
 </tr>
 <tr class="even">
@@ -385,7 +408,8 @@ var _hmt = _hmt || [];
 </table>
 <h2 id="personal-referrence">Personal Referrence</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/chaipp0607/article/details/72847422">从AlexNet理解卷积神经网络的一般结构</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/chaipp0607/article/details/72847422">从AlexNet理解卷积神经网络的一般结构</a></li>
 </ul>
 
       
@@ -593,7 +617,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

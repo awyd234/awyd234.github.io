@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -215,40 +215,92 @@ var _hmt = _hmt || [];
       
         <h1 id="中心极限定理">1. 中心极限定理</h1>
 <p>大数定律说明平均值与期望值之间的偏差小于任意给定正的常数的概率趋于1，如果有方差有限的条件，会有更精确的结果</p>
-<h2 id="林德博格-勒维lindeberg-levy">1.1 林德博格-勒维Lindeberg-Levy</h2>
-<p>中心极限定理：设<span class="math inline">\({x_n}\)</span>是独立同分布的随机变量序列，若期望<span class="math inline">\(E(X_1) = \mu\)</span>，方差<span class="math inline">\(Var(X_1) = \sigma^2\)</span>，则对每一个固定的y有</p>
-<p><span class="math display">\[\lim\limits_{n \to \infty}{P(\frac{X_1 + X_2 + … + X_n - n\mu}{\sigma\sqrt{n}} \leq y)} = \Phi(y) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{y}e^{-\frac{t^2}{2}}\mathrm{d}\boldsymbol(t)\]</span></p>
-<p>实际上，对于独立同分布的随机变量序列<span class="math inline">\({X_n}\)</span>，则</p>
-<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(E(X_1 + X_2 + … + X_n), Var(X_1 + X_2 + … + X_n))\]</span></p>
-<p><span class="math display">\[E(X_1 + X_2 + … + X_n) = n\mu, Var(X_1 + X_2 + … + X_n) = n \sigma^2\]</span></p>
-<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(n\mu, n\sigma^2)\]</span></p>
-<p>标准化得：<span class="math inline">\(\frac{X_1 + X_2 + … + X_n - n\mu}{\sqrt{n}\sigma} \sim N(0,1)\)</span></p>
+<h2 id="林德博格-勒维lindeberg-levy">1.1
+林德博格-勒维Lindeberg-Levy</h2>
+<p>中心极限定理：设<span
+class="math inline">\({x_n}\)</span>是独立同分布的随机变量序列，若期望<span
+class="math inline">\(E(X_1) = \mu\)</span>，方差<span
+class="math inline">\(Var(X_1) =
+\sigma^2\)</span>，则对每一个固定的y有</p>
+<p><span class="math display">\[\lim\limits_{n \to \infty}{P(\frac{X_1 +
+X_2 + … + X_n - n\mu}{\sigma\sqrt{n}} \leq y)} = \Phi(y) =
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{y}e^{-\frac{t^2}{2}}\mathrm{d}\boldsymbol(t)\]</span></p>
+<p>实际上，对于独立同分布的随机变量序列<span
+class="math inline">\({X_n}\)</span>，则</p>
+<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(E(X_1 + X_2 +
+… + X_n), Var(X_1 + X_2 + … + X_n))\]</span></p>
+<p><span class="math display">\[E(X_1 + X_2 + … + X_n) = n\mu, Var(X_1 +
+X_2 + … + X_n) = n \sigma^2\]</span></p>
+<p><span class="math display">\[X_1 + X_2 + … + X_n \sim N(n\mu,
+n\sigma^2)\]</span></p>
+<p>标准化得：<span class="math inline">\(\frac{X_1 + X_2 + … + X_n -
+n\mu}{\sqrt{n}\sigma} \sim N(0,1)\)</span></p>
 <h2 id="棣莫弗---拉普拉斯定理">1.2 棣莫弗 - 拉普拉斯定理</h2>
-<p>若<span class="math inline">\(X \sim B(n, p)\)</span>，则对任何两个常数a和b，<span class="math inline">\(-\infty &lt; a &lt; b &lt; +\infty\)</span></p>
-<p><span class="math display">\[\lim\limits_{n \to \infty}{P(a &lt; \frac{X - np}{\sqrt{np(1-p)}} &lt; b)} =  \int_{a}^{b}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}\boldsymbol(x)\]</span></p>
-<p>即<span class="math inline">\(n\rightarrow\infty\)</span>时，<span class="math inline">\(X \sim N(np, np(1-p))\)</span>。</p>
-<p>考虑n个独立的0-1随机变量<span class="math inline">\(X_k \sim B(1,p), k = 1,…,n\)</span>，则<span class="math inline">\(X = X_1 + X2 + … + X_n\)</span></p>
-<p><span class="math inline">\(E(X_k) = p, Var(X_k) = p(1-p)\)</span>，所以<span class="math inline">\(X \sim N(np,np(1-p))\)</span></p>
-<h1 id="大数定律与中心极限定理的应用">2. 大数定律与中心极限定理的应用</h1>
+<p>若<span class="math inline">\(X \sim B(n,
+p)\)</span>，则对任何两个常数a和b，<span class="math inline">\(-\infty
+&lt; a &lt; b &lt; +\infty\)</span></p>
+<p><span class="math display">\[\lim\limits_{n \to \infty}{P(a &lt;
+\frac{X - np}{\sqrt{np(1-p)}} &lt; b)}
+=  \int_{a}^{b}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\mathrm{d}\boldsymbol(x)\]</span></p>
+<p>即<span class="math inline">\(n\rightarrow\infty\)</span>时，<span
+class="math inline">\(X \sim N(np, np(1-p))\)</span>。</p>
+<p>考虑n个独立的0-1随机变量<span class="math inline">\(X_k \sim B(1,p),
+k = 1,…,n\)</span>，则<span class="math inline">\(X = X_1 + X2 + … +
+X_n\)</span></p>
+<p><span class="math inline">\(E(X_k) = p, Var(X_k) =
+p(1-p)\)</span>，所以<span class="math inline">\(X \sim
+N(np,np(1-p))\)</span></p>
+<h1 id="大数定律与中心极限定理的应用">2.
+大数定律与中心极限定理的应用</h1>
 <h2 id="蒙特卡洛monte-carlo算法">2.1 蒙特卡洛（Monte Carlo）算法</h2>
 <p>计算机出现以后，利用概率模型近似计算的方法，其理论基础是大数定律</p>
 <h2 id="伪随机数和随机模拟">2.2 伪随机数和随机模拟</h2>
 <p>目前人们广泛采用的伪随机数生成算法大约是2000年左右提出的</p>
-<p>设随机变量U服从[0, 1]上的均匀分布，函数<span class="math inline">\(F\)</span>为定义在实数集合<span class="math inline">\(R\)</span>的连续单调递增函数，且对任何<span class="math inline">\(x \in R\)</span>有<span class="math inline">\(F(-\infty) = 0 \leq F(x) \leq 1 = F(+\infty)\)</span>。则随机变量<span class="math inline">\(X = F^{-1}(U)的概率分布为F(x)\)</span></p>
+<p>设随机变量U服从[0, 1]上的均匀分布，函数<span
+class="math inline">\(F\)</span>为定义在实数集合<span
+class="math inline">\(R\)</span>的连续单调递增函数，且对任何<span
+class="math inline">\(x \in R\)</span>有<span
+class="math inline">\(F(-\infty) = 0 \leq F(x) \leq 1 =
+F(+\infty)\)</span>。则随机变量<span class="math inline">\(X =
+F^{-1}(U)的概率分布为F(x)\)</span></p>
 <h1 id="参数的区间估计">3.参数的区间估计</h1>
 <h2 id="大样本置信区间">3.1 大样本置信区间</h2>
 <p>样本容量足够大时，根据中心极限定理可以利用渐近正态分布构造置信区间</p>
-<h3 id="贝伦斯-费舍尔behrens-fisher问题">3.1.1 贝伦斯-费舍尔（Behrens-Fisher）问题</h3>
-<p>样本<span class="math inline">\(X_1, … , X_m\)</span>来自正态总体<span class="math inline">\(N(\mu_1, \sigma_1^2)\)</span>，样本<span class="math inline">\(Y_1, …, Y_n\)</span>来自正态总体<span class="math inline">\(N(\mu_2, \sigma_2^2)\)</span>，<span class="math inline">\(\mu_1\)</span>、<span class="math inline">\(\mu_2\)</span>未知，<span class="math inline">\(\sigma_1^2\)</span>、<span class="math inline">\(\sigma_2^2\)</span>未知，且假设这两个样本相互独立，求<span class="math inline">\(\mu_1 - \mu_2\)</span>的<span class="math inline">\(1-\alpha\)</span>置信区间</p>
-<p><span class="math display">\[\bar{X} \sim N(\mu_1, \frac{\sigma_1^2}{m})\]</span></p>
-<p><span class="math display">\[\bar{Y} \sim N(\mu_2, \frac{\sigma_2^2}{n})\]</span></p>
-<p><span class="math display">\[\bar{X} - \bar{Y} \sim N(\mu_1 - \mu_2, \frac{\sigma_1^2}{m} + \frac{\sigma_2^2}{n})\]</span></p>
-<p><span class="math display">\[\frac{\bar{X} - \bar{Y} - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{m} + \frac{\sigma_2^2}{n}}} \sim N(0, 1)\]</span></p>
-<p>由于<span class="math inline">\(\sigma_1^2\)</span>和<span class="math inline">\(\sigma_2^2\)</span>未知，因此这个标准正态分布的构造不能直接用来做枢轴量</p>
-<p>当m和n较大时，<span class="math inline">\(S_x^2 \approx \sigma_1^2，S_y^2 \approx \sigma_2^2\)</span>，有如下近似</p>
-<p><span class="math display">\[\frac{\bar{X} - \bar{Y} - (\mu_1 - \mu_2)}{\sqrt{\frac{S_x^2}{m} + \frac{S_y^2}{n}}} \sim N(0, 1)\]</span></p>
-<p>以此作为枢轴量，可以得到<span class="math inline">\(\mu_2 - \mu_1\)</span>的<span class="math inline">\(1 - \alpha\)</span>置信水平的近似区间估计</p>
-<p><span class="math display">\[[\bar{X} - \bar{Y} - \mu_{1 - \frac{\alpha}{2}}\sqrt{\frac{S_x^2}{m} + \frac{S_y^2}{n}}, \bar{X} - \bar{Y} + \mu_{1 - \frac{\alpha}{2}}\sqrt{\frac{S_x^2}{m} + \frac{S_y^2}{n}}]\]</span></p>
+<h3 id="贝伦斯-费舍尔behrens-fisher问题">3.1.1
+贝伦斯-费舍尔（Behrens-Fisher）问题</h3>
+<p>样本<span class="math inline">\(X_1, … ,
+X_m\)</span>来自正态总体<span class="math inline">\(N(\mu_1,
+\sigma_1^2)\)</span>，样本<span class="math inline">\(Y_1, …,
+Y_n\)</span>来自正态总体<span class="math inline">\(N(\mu_2,
+\sigma_2^2)\)</span>，<span class="math inline">\(\mu_1\)</span>、<span
+class="math inline">\(\mu_2\)</span>未知，<span
+class="math inline">\(\sigma_1^2\)</span>、<span
+class="math inline">\(\sigma_2^2\)</span>未知，且假设这两个样本相互独立，求<span
+class="math inline">\(\mu_1 - \mu_2\)</span>的<span
+class="math inline">\(1-\alpha\)</span>置信区间</p>
+<p><span class="math display">\[\bar{X} \sim N(\mu_1,
+\frac{\sigma_1^2}{m})\]</span></p>
+<p><span class="math display">\[\bar{Y} \sim N(\mu_2,
+\frac{\sigma_2^2}{n})\]</span></p>
+<p><span class="math display">\[\bar{X} - \bar{Y} \sim N(\mu_1 - \mu_2,
+\frac{\sigma_1^2}{m} + \frac{\sigma_2^2}{n})\]</span></p>
+<p><span class="math display">\[\frac{\bar{X} - \bar{Y} - (\mu_1 -
+\mu_2)}{\sqrt{\frac{\sigma_1^2}{m} + \frac{\sigma_2^2}{n}}} \sim N(0,
+1)\]</span></p>
+<p>由于<span class="math inline">\(\sigma_1^2\)</span>和<span
+class="math inline">\(\sigma_2^2\)</span>未知，因此这个标准正态分布的构造不能直接用来做枢轴量</p>
+<p>当m和n较大时，<span class="math inline">\(S_x^2 \approx
+\sigma_1^2，S_y^2 \approx \sigma_2^2\)</span>，有如下近似</p>
+<p><span class="math display">\[\frac{\bar{X} - \bar{Y} - (\mu_1 -
+\mu_2)}{\sqrt{\frac{S_x^2}{m} + \frac{S_y^2}{n}}} \sim N(0,
+1)\]</span></p>
+<p>以此作为枢轴量，可以得到<span class="math inline">\(\mu_2 -
+\mu_1\)</span>的<span class="math inline">\(1 -
+\alpha\)</span>置信水平的近似区间估计</p>
+<p><span class="math display">\[[\bar{X} - \bar{Y} - \mu_{1 -
+\frac{\alpha}{2}}\sqrt{\frac{S_x^2}{m} + \frac{S_y^2}{n}}, \bar{X} -
+\bar{Y} + \mu_{1 - \frac{\alpha}{2}}\sqrt{\frac{S_x^2}{m} +
+\frac{S_y^2}{n}}]\]</span></p>
 
       
 
@@ -380,7 +432,10 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">1. 中心极限定理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%97%E5%BE%B7%E5%8D%9A%E6%A0%BC-%E5%8B%92%E7%BB%B4lindeberg-levy"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 林德博格-勒维Lindeberg-Levy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%A3%E8%8E%AB%E5%BC%97---%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%AE%9A%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 棣莫弗 - 拉普拉斯定理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%B8%8E%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">2. 大数定律与中心极限定理的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9Bmonte-carlo%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 蒙特卡洛（Monte Carlo）算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 伪随机数和随机模拟</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3.参数的区间估计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A0%B7%E6%9C%AC%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 大样本置信区间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E4%BC%A6%E6%96%AF-%E8%B4%B9%E8%88%8D%E5%B0%94behrens-fisher%E9%97%AE%E9%A2%98"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 贝伦斯-费舍尔（Behrens-Fisher）问题</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">1. 中心极限定理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%97%E5%BE%B7%E5%8D%9A%E6%A0%BC-%E5%8B%92%E7%BB%B4lindeberg-levy"><span class="toc-number">1.1.</span> <span class="toc-text">1.1
+林德博格-勒维Lindeberg-Levy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%A3%E8%8E%AB%E5%BC%97---%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%AE%9A%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 棣莫弗 - 拉普拉斯定理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%B8%8E%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">2.
+大数定律与中心极限定理的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9Bmonte-carlo%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 蒙特卡洛（Monte Carlo）算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A8%A1%E6%8B%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 伪随机数和随机模拟</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3.参数的区间估计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A0%B7%E6%9C%AC%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 大样本置信区间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E4%BC%A6%E6%96%AF-%E8%B4%B9%E8%88%8D%E5%B0%94behrens-fisher%E9%97%AE%E9%A2%98"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1
+贝伦斯-费舍尔（Behrens-Fisher）问题</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -409,7 +464,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

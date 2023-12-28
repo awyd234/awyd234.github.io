@@ -63,7 +63,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -139,7 +139,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -224,7 +224,9 @@ var _hmt = _hmt || [];
 <h3 id="操作系统">操作系统</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP Wed May 30 11:</p>
+<p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version
+5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP
+Wed May 30 11:</p>
 </blockquote>
 <h1 id="故事经过">故事经过</h1>
 <h2 id="综述">综述</h2>
@@ -239,8 +241,15 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>RENAME(1p) User Contributed Perl Documentation RENAME(1p)</p>
 <p>NAME rename - renames multiple files</p>
-<p>SYNOPSIS rename [ -h|-m|-V ] [ -v ] [ -n ] [ -f ] [ -e|-E perlexpr]*|perlexpr [ files ]</p>
-<p>DESCRIPTION "rename" renames the filenames supplied according to the rule specified as the first argument. The perlexpr argument is a Perl expression which is expected to modify the $_ string in Perl for at least some of the filenames specified. If a given filename is not modified by the expression, it will not be renamed. If no filenames are given on the command line, filenames will be read via standard input.</p>
+<p>SYNOPSIS rename [ -h|-m|-V ] [ -v ] [ -n ] [ -f ] [ -e|-E
+perlexpr]*|perlexpr [ files ]</p>
+<p>DESCRIPTION "rename" renames the filenames supplied according to the
+rule specified as the first argument. The perlexpr argument is a Perl
+expression which is expected to modify the $_ string in Perl for at
+least some of the filenames specified. If a given filename is not
+modified by the expression, it will not be renamed. If no filenames are
+given on the command line, filenames will be read via standard
+input.</p>
 <pre><code>   For example, to rename all files matching &quot;*.bak&quot; to strip the extension, you might say
 
            rename &#39;s/\e.bak$//&#39; *.bak
@@ -248,7 +257,8 @@ var _hmt = _hmt || [];
    To translate uppercase names to lower, you&#39;d use
 
            rename &#39;y/A-Z/a-z/&#39; *</code></pre>
-<p>OPTIONS -v, -verbose Verbose: print names of files successfully renamed.</p>
+<p>OPTIONS -v, -verbose Verbose: print names of files successfully
+renamed.</p>
 <pre><code>   -n, -nono
            No action: print names of files to be renamed, but don&#39;t rename.
 
@@ -272,8 +282,11 @@ var _hmt = _hmt || [];
 <p>ENVIRONMENT No environment variables are used.</p>
 <p>AUTHOR Larry Wall</p>
 <p>SEE ALSO mv(1), perl(1)</p>
-<p>DIAGNOSTICS If you give an invalid Perl expression you'll get a syntax error.</p>
-<p>BUGS The original "rename" did not check for the existence of target filenames, so had to be used with care. I hope I've fixed that (Robin Barker).</p>
+<p>DIAGNOSTICS If you give an invalid Perl expression you'll get a
+syntax error.</p>
+<p>BUGS The original "rename" did not check for the existence of target
+filenames, so had to be used with care. I hope I've fixed that (Robin
+Barker).</p>
 <p>perl v5.20.2 2015-06-05</p>
 </blockquote>
 <p>根据需求，可以通过正则表达式 <em>s/.png/.jpg/</em> 实现</p>
@@ -287,13 +300,14 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">total 8</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:13 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 10:56 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.jpg</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br></pre></td></tr></table></figure>
 <p>可以看到需求完全满足，搞定</p>
 <h2 id="shell脚本">Shell脚本</h2>
-<p>提到重命名单个文件，最先想到的就是 <em>mv</em> 命令，于是试验下能否直接通过mv命令批量重命名文件</p>
+<p>提到重命名单个文件，最先想到的就是 <em>mv</em>
+命令，于是试验下能否直接通过mv命令批量重命名文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv *.jpg *.png</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>mv: target '*.png' is not a directory</p>
 </blockquote>
 <p>运行报错了，看来不支持这么玩，于是写个shell脚本来循环遍历吧</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls *.jpg`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls *.jpg`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p>这个命令比较简单，循环遍历所有.jpg文件，执行mv指令，将文件mv成以.png结尾的文件</p>
 <p>执行脚本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh rename_file.sh</span><br></pre></td></tr></table></figure>
@@ -307,7 +321,7 @@ var _hmt = _hmt || [];
 <p>方便起见，我先利用此前的rename命令将文件还原为.jpg结尾的</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename &#x27;s/.png/.jpg/&#x27; *.png</span><br></pre></td></tr></table></figure>
 <p>将shell脚本替换为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls | grep &#x27;.jpg&#x27;`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for name in `ls | grep &#x27;.jpg&#x27;`</span><br><span class="line">do</span><br><span class="line">    mv $name $&#123;name%.jpg&#125;.png</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p>此时执行后，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 huqian huqian 4096 Jan 25 11:24 .</span><br><span class="line">drwxrwxr-x 4 huqian huqian 4096 Jan 25 11:17 ..</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a1.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a2.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a3.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 22 17:40 a4.png</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a5.webp</span><br><span class="line">-rw-rw-r-- 1 huqian huqian    0 Jan 25 10:55 a6.gif</span><br><span class="line">-rw-rw-r-- 1 huqian huqian   82 Jan 25 11:24 rename_file.sh</span><br></pre></td></tr></table></figure>
 <p>可以看到，批量重命名文件的需求时达到了的，再次执行此脚本，没有任何报错信息，搞定</p>
@@ -510,7 +524,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

@@ -73,7 +73,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -149,7 +149,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -235,12 +235,14 @@ var _hmt = _hmt || [];
 <h3 id="系统环境">2.1 系统环境</h3>
 <p>macOS High Sierra 10.13.3</p>
 <h3 id="软件安装">2.2 软件安装</h3>
-<p>需要先安装MySQL，我使用的是MySQL 5.7.21，由于已经安装过了，不再额外安装，大致流程如下</p>
+<p>需要先安装MySQL，我使用的是MySQL
+5.7.21，由于已经安装过了，不再额外安装，大致流程如下</p>
 <h4 id="安装mysql">2.2.1 安装MySQL</h4>
 <p>打开终端，输入命令，等待安装即可，可能会有查找不到安装源等问题，因不再复现此过程，暂不考虑</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
 <p>设置管理员密码</p>
-<h4 id="打开mysql命令行并创建数据库">2.2.2 打开MySQL命令行并创建数据库</h4>
+<h4 id="打开mysql命令行并创建数据库">2.2.2
+打开MySQL命令行并创建数据库</h4>
 <p>直接用sudo用户进去也可以</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql</span><br></pre></td></tr></table></figure>
 <p>执行</p>
@@ -274,9 +276,13 @@ var _hmt = _hmt || [];
 <h3 id="安装navicat">3.1 安装Navicat</h3>
 <p>先前已经安装过了Navicat，而且已经过期了，不再额外安装，整体安装过程很简单，官网下载程序安装试用即可</p>
 <h3 id="安装datagrip">3.2 安装DataGrip</h3>
-<p>DataGrip是JetBrains公司出的数据库管理软件，个人挺喜欢使用JetBrains家出的软件，包括Python开发使用的Pycharm，Java开发使用的IntelliJ IDEA，PHP开发使用的PhpStorm，前端开发使用的WebStorm，都很优秀，而且也有破解方法（很想支持正版，看到全家桶的价格暂时望而却步了）</p>
+<p>DataGrip是JetBrains公司出的数据库管理软件，个人挺喜欢使用JetBrains家出的软件，包括Python开发使用的Pycharm，Java开发使用的IntelliJ
+IDEA，PHP开发使用的PhpStorm，前端开发使用的WebStorm，都很优秀，而且也有破解方法（很想支持正版，看到全家桶的价格暂时望而却步了）</p>
 <h4 id="下载安装datagrip">3.2.1 下载安装DataGrip</h4>
-<p>在<a target="_blank" rel="noopener" href="https://www.jetbrains.com/datagrip/">DataGrip官网</a>下载2018.3.3版本，安装程序一共306MB，文件名为datagrip-2018.3.3.dmg，下载完后打开安装程序，将DataGrip.app拖拽到Applications即可，打开程序，本地电脑上没安装过这个，也没有配置文件，直接选Do not import settings，破解方式可以参考<a target="_blank" rel="noopener" href="http://idea.lanyus.com/">lanyus</a>，需要配置hosts</p>
+<p>在<a
+target="_blank" rel="noopener" href="https://www.jetbrains.com/datagrip/">DataGrip官网</a>下载2018.3.3版本，安装程序一共306MB，文件名为datagrip-2018.3.3.dmg，下载完后打开安装程序，将DataGrip.app拖拽到Applications即可，打开程序，本地电脑上没安装过这个，也没有配置文件，直接选Do
+not import settings，破解方式可以参考<a
+target="_blank" rel="noopener" href="http://idea.lanyus.com/">lanyus</a>，需要配置hosts</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure>
 <p>添加以下内容即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.0.0.0 account.jetbrains.com</span><br></pre></td></tr></table></figure>
@@ -286,7 +292,8 @@ var _hmt = _hmt || [];
 </div>
 <p>很惭愧，但暂时只能先这样了: (</p>
 <h4 id="添加数据源">3.2.2 添加数据源</h4>
-<p>不得不说，DataGrip做的还是很强大的，很多类型的数据库都支持，包括SQLite、PostgreSQL、Oracle、Microsoft SQL Server都支持，根据任务需要，直接选择MySQL即可</p>
+<p>不得不说，DataGrip做的还是很强大的，很多类型的数据库都支持，包括SQLite、PostgreSQL、Oracle、Microsoft
+SQL Server都支持，根据任务需要，直接选择MySQL即可</p>
 <div data-align="center">
 <img src="/post/1015fd1e/datagrip_datasource_add_20190226.png" class="">
 </div>
@@ -294,7 +301,8 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/1015fd1e/datagrip_datasource_add_missing_20190226.png" class="">
 </div>
-<p>上面的数据是乱填的，这时我们使用之前创建的用户和密码，并指定数据库名称，点击Test Connection</p>
+<p>上面的数据是乱填的，这时我们使用之前创建的用户和密码，并指定数据库名称，点击Test
+Connection</p>
 <div data-align="center">
 <img src="/post/1015fd1e/datagrip_datasource_test_connection_20190226.png" class="">
 </div>
@@ -320,13 +328,15 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+---------------------------+</span><br><span class="line">| Tables_in_datawhale_mysql |</span><br><span class="line">+---------------------------+</span><br><span class="line">| test_day_first_datagrip   |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW CREATE TABLE test_day_first_datagrip\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">       Table: test_day_first_datagrip</span><br><span class="line">Create Table: CREATE TABLE `test_day_first_datagrip` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(20) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
 <h2 id="数据库的基本知识">4. 数据库的基本知识</h2>
 <h3 id="数据库database定义">4.1 数据库（database）定义</h3>
-<p>根据《SQL必知必会（第4版）》，数据库是一个以某种有组织的方式存储的数据集合，是保存有组织的数据的容器（通常是一个文件或一组文件），数据库软件应称为数据库管理系统（DBMS），数据库是通过 DBMS创建和操纵的容器，而具体它究竟是什么，形式如何，各种数据库都不一样。</p>
+<p>根据《SQL必知必会（第4版）》，数据库是一个以某种有组织的方式存储的数据集合，是保存有组织的数据的容器（通常是一个文件或一组文件），数据库软件应称为数据库管理系统（DBMS），数据库是通过
+DBMS创建和操纵的容器，而具体它究竟是什么，形式如何，各种数据库都不一样。</p>
 <h3 id="关系型数据库">4.2 关系型数据库</h3>
 <h4 id="关系型数据库-1">4.2.1 关系型数据库</h4>
 <div data-align="center">
 <img src="/post/1015fd1e/cf_sql_20190226.png" class="">
 </div>
-<p>关系型数据库最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织 优点：</p>
+<p>关系型数据库最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织
+优点：</p>
 <ul>
 <li>易于维护：都是使用表结构，格式一致；</li>
 <li>使用方便：SQL语言通用，可用于复杂查询；</li>
@@ -341,7 +351,8 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/1015fd1e/cf_nosql_20190226.png" class="">
 </div>
-<p>非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合，可以是文档或者键值对等。 优点：</p>
+<p>非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合，可以是文档或者键值对等。
+优点：</p>
 <ul>
 <li>格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。</li>
 <li>速度快：nosql可以使用硬盘或者随机存储器作为载体，而关系型数据库只能使用硬盘；</li>
@@ -368,7 +379,8 @@ var _hmt = _hmt || [];
 <p>表中的数据是按行存储的，所保存的每个记录存储在自己的行内，是表中的一个记录。</p>
 <h3 id="列column">4.5 列（column）</h3>
 <p>表中的一个字段，所有表都是由一个或多个列组成的。</p>
-<p>数据库中每个列都有相应的数据类型（datatype），数据类型定义了列可以存储哪些数据种类，是所允许的数据的类型，每个表列都有相应的数据类型，它限制（或允许）该列中存储的数据。数据类型还帮助正确地分类数据，并在优化磁盘使用方面起重要的作用。数据类型及其名称是 SQL不兼容的一个主要原因。</p>
+<p>数据库中每个列都有相应的数据类型（datatype），数据类型定义了列可以存储哪些数据种类，是所允许的数据的类型，每个表列都有相应的数据类型，它限制（或允许）该列中存储的数据。数据类型还帮助正确地分类数据，并在优化磁盘使用方面起重要的作用。数据类型及其名称是
+SQL不兼容的一个主要原因。</p>
 <h3 id="主键primary-key">4.6 主键（primary key）</h3>
 <p>表中每一行都应该有一列（或几列）可以唯一标识自己。一列（或一组列），其值能够唯一标识表中每一行。唯一标识表中每行的这个列（或这几列）称为主键，主键用来表示一个特定的行。没有主键，更新或删除表中特定行就极为困难。</p>
 <p>表中的任何列都可以作为主键，只要它满足以下条件：</p>
@@ -386,10 +398,12 @@ var _hmt = _hmt || [];
 <li>浪费空间</li>
 <li>扩展性极差</li>
 </ul>
-<p>为了解决上述的问题，就需要用多张表来存放数据。表与表的记录之间存在着三种关系：一对多、多对多、一对一的关系。处理表之间关系问题就会利用到FOREIGN KEY</p>
+<p>为了解决上述的问题，就需要用多张表来存放数据。表与表的记录之间存在着三种关系：一对多、多对多、一对一的关系。处理表之间关系问题就会利用到FOREIGN
+KEY</p>
 <h2 id="mysql数据库管理系统">5. MySQL数据库管理系统</h2>
 <h3 id="数据库">5.1 数据库</h3>
-<p>数据库管理系统（DataBase-Management System, DBMS）由一个互相关联的数据的集合和一组用以访问这些数据的程序组成，这个数据集合通常称为数据库（database），DBMS的主要目标就是要提供一种可以方便、高效地存储数据库信息的途径</p>
+<p>数据库管理系统（DataBase-Management System,
+DBMS）由一个互相关联的数据的集合和一组用以访问这些数据的程序组成，这个数据集合通常称为数据库（database），DBMS的主要目标就是要提供一种可以方便、高效地存储数据库信息的途径</p>
 <h3 id="数据表">5.2 数据表</h3>
 <p>关系模型是基于记录的模型的一个实例，基于记录的模型，之所以有此称谓，是因为数据库的结构是几种固定形式的记录，每个表都包含一种特定类型的记录，每种记录类型定义固定数目的字段或属性，表的列对应记录类型的属性</p>
 <h3 id="数据视图">5.3 数据视图</h3>
@@ -397,19 +411,30 @@ var _hmt = _hmt || [];
 <h4 id="数据抽象">5.3.1 数据抽象</h4>
 <p>一个可以用的系统必须能高效地检索数据，系统开发人员通过几个层次上的抽象来对用户屏蔽复杂性，以简化用户与系统的交互，</p>
 <ul>
-<li>物理层（physical level），最低层次的抽象，描述数据实际上是怎样存储的，物理层详细描述复杂的底层数据结构</li>
-<li>逻辑层（logical level），比物理层层次稍高的抽象，描述数据库中存储什么数据以及这些数据之间存在什么关系，虽然逻辑层的简单结构可能涉及复杂的物理层结构，但逻辑层的用户不必知道这样的复杂性，这称作<strong>物理数据独立性（physical data independence）</strong>。数据库管理员使用抽象的逻辑层，他必须确定数据库中应该保存哪些信息</li>
-<li>视图层（view level），最高层次的抽象，只描述整个数据库的某个部分，数据库系统的很多用户并不需要关心所有的信息，而只需要访问数据库的一部分，视图层抽象的定义正式为了使这样的用户与系统的交互更简单，系统可以为同一数据库提供多个视图</li>
+<li>物理层（physical
+level），最低层次的抽象，描述数据实际上是怎样存储的，物理层详细描述复杂的底层数据结构</li>
+<li>逻辑层（logical
+level），比物理层层次稍高的抽象，描述数据库中存储什么数据以及这些数据之间存在什么关系，虽然逻辑层的简单结构可能涉及复杂的物理层结构，但逻辑层的用户不必知道这样的复杂性，这称作<strong>物理数据独立性（physical
+data
+independence）</strong>。数据库管理员使用抽象的逻辑层，他必须确定数据库中应该保存哪些信息</li>
+<li>视图层（view
+level），最高层次的抽象，只描述整个数据库的某个部分，数据库系统的很多用户并不需要关心所有的信息，而只需要访问数据库的一部分，视图层抽象的定义正式为了使这样的用户与系统的交互更简单，系统可以为同一数据库提供多个视图</li>
 </ul>
 <h4 id="实例和模型">5.3.2 实例和模型</h4>
 <p>特定时刻存储在数据库中的信息的集合称为数据库的一个实例（instance），而数据库的总体设计称为数据库模式（schema），数据库模式即使发生变化，也不频繁</p>
 <h4 id="数据模型">5.3.3 数据模型</h4>
-<p>数据库结构的基础是数据模型（data model），数据模型是一个描述数据、数据联系、数据语义以及一致性约束的概念工具的集合，数据模型提供了一种描述物理层、逻辑层以及视图层数据库设计的方式，数据模型可划分为四类</p>
+<p>数据库结构的基础是数据模型（data
+model），数据模型是一个描述数据、数据联系、数据语义以及一致性约束的概念工具的集合，数据模型提供了一种描述物理层、逻辑层以及视图层数据库设计的方式，数据模型可划分为四类</p>
 <ul>
-<li>关系模型（relational model），关系模型用表的集合来表示数据与数据之间的关系，每个表有多个列，没列有唯一的列名，关系模型是基于记录的模型的一种，基于记录的模型的名称的由来是因为数据库是由若干种固定格式的记录来构成的，每个表包含某种特定类型的记录，每个记录定义了固定数目的字段（或属性），表的列对应于记录类型的属性，关系数据模型是使用最广泛的数据模型，当今大量的数据库系统都是基于这种关系模型</li>
-<li>实体-联系模型（entity-relationship model），实体-联系（E-R）数据模型基于对现实世界的这样一种认识：现实世界是由一组称为实体的基本对象以及这些对象间的联系构成，实体是现实世界中可区别于其他对象的一件“事情”或者一个“物体”，实体-联系模型被广泛用于数据库设计</li>
-<li>基于对象的数据模型（object-based data model），面向对象的数据模型可以看成是E-R模型增加了封装、方法（函数）和对象标识等概念后的扩展，对象-关系数据模型结合了面向对象的数据模型和关系模型的特征</li>
-<li>半结构化数据模型（semistructured data model），半结构化数据模型允许那些相同类型的数据项含有不同的属性集的数据定义，可扩展标记语言（eXtensible Markup Language，XML）被广泛地用来表示半结构化数据</li>
+<li>关系模型（relational
+model），关系模型用表的集合来表示数据与数据之间的关系，每个表有多个列，没列有唯一的列名，关系模型是基于记录的模型的一种，基于记录的模型的名称的由来是因为数据库是由若干种固定格式的记录来构成的，每个表包含某种特定类型的记录，每个记录定义了固定数目的字段（或属性），表的列对应于记录类型的属性，关系数据模型是使用最广泛的数据模型，当今大量的数据库系统都是基于这种关系模型</li>
+<li>实体-联系模型（entity-relationship
+model），实体-联系（E-R）数据模型基于对现实世界的这样一种认识：现实世界是由一组称为实体的基本对象以及这些对象间的联系构成，实体是现实世界中可区别于其他对象的一件“事情”或者一个“物体”，实体-联系模型被广泛用于数据库设计</li>
+<li>基于对象的数据模型（object-based data
+model），面向对象的数据模型可以看成是E-R模型增加了封装、方法（函数）和对象标识等概念后的扩展，对象-关系数据模型结合了面向对象的数据模型和关系模型的特征</li>
+<li>半结构化数据模型（semistructured data
+model），半结构化数据模型允许那些相同类型的数据项含有不同的属性集的数据定义，可扩展标记语言（eXtensible
+Markup Language，XML）被广泛地用来表示半结构化数据</li>
 </ul>
 <h4 id="sql中的视图">5.3.4 SQL中的视图</h4>
 <p>视图是虚拟的表，与包含数据的表不一样，视图只包含使用时动态检索数据的查询</p>
@@ -422,7 +447,8 @@ var _hmt = _hmt || [];
 <p>视图的常见应用</p>
 <ul>
 <li>重用 SQL语句</li>
-<li>简化复杂的 SQL操作。在编写查询后，可以方便地重用它而不必知道其基本查询细节</li>
+<li>简化复杂的
+SQL操作。在编写查询后，可以方便地重用它而不必知道其基本查询细节</li>
 <li>使用表的一部分而不是整个表</li>
 <li>保护数据。可以授予用户访问表的特定部分的权限，而不是整个表的访问权限</li>
 <li>更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据</li>
@@ -433,33 +459,54 @@ var _hmt = _hmt || [];
 <li>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）</li>
 <li>对于可以创建的视图数目没有限制</li>
 <li>创建视图，必须具有足够的访问权限。这些权限通常由数据库管理人员授予</li>
-<li>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造视图。所允许的嵌套层数在不同的 DBMS中有所不同（嵌套视图可能会严重降低查询的性能，因此在产品环境中使用之前，应该对其进行全面测试）</li>
+<li>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造视图。所允许的嵌套层数在不同的
+DBMS中有所不同（嵌套视图可能会严重降低查询的性能，因此在产品环境中使用之前，应该对其进行全面测试）</li>
 <li>许多 DBMS禁止在视图查询中使用ORDER BY子句</li>
-<li>有些 DBMS要求对返回的所有列进行命名，如果列是计算字段，则需要使用别名</li>
+<li>有些
+DBMS要求对返回的所有列进行命名，如果列是计算字段，则需要使用别名</li>
 <li>视图不能索引，也不能有关联的触发器或默认值</li>
-<li>有些 DBMS把视图作为只读的查询，这表示可以从视图检索数据，但不能将数据写回底层表。详情请参阅具体的 DBMS文档</li>
-<li>有些 DBMS允许创建这样的视图，它不能进行导致行不再属于视图的插入或更新。例如有一个视图，只检索带有电子邮件地址的顾客。如果更新某个顾客，删除他的电子邮件地址，将使该顾客不再属于视图。这是默认行为，而且是允许的，但有的 DBMS可能会防止这种情况发生</li>
+<li>有些
+DBMS把视图作为只读的查询，这表示可以从视图检索数据，但不能将数据写回底层表。详情请参阅具体的
+DBMS文档</li>
+<li>有些
+DBMS允许创建这样的视图，它不能进行导致行不再属于视图的插入或更新。例如有一个视图，只检索带有电子邮件地址的顾客。如果更新某个顾客，删除他的电子邮件地址，将使该顾客不再属于视图。这是默认行为，而且是允许的，但有的
+DBMS可能会防止这种情况发生</li>
 </ul>
 <h3 id="存储过程">5.4 存储过程</h3>
-<p>存储过程就是为以后使用而保存的一条或多条 SQL语句。可将其视为批文件，虽然它们的作用不仅限于批处理</p>
+<p>存储过程就是为以后使用而保存的一条或多条
+SQL语句。可将其视为批文件，虽然它们的作用不仅限于批处理</p>
 <p>通过把处理封装在一个易用的单元中，可以简化复杂的操作（如前面例子所述）</p>
 <ul>
 <li>由于不要求反复建立一系列处理步骤，因而保证了数据的一致性。如果所有开发人员和应用程序都使用同一存储过程，则所使用的代码都是相同的，这一点的延伸就是防止错误。需要执行的步骤越多，出错的可能性就越大。防止错误保证了数据的一致性</li>
 <li>简化对变动的管理。如果表名、列名或业务逻辑（或别的内容）有变化，那么只需要更改存储过程的代码。使用它的人员甚至不需要知道这些变化。这一点的延伸就是安全性。通过存储过程限制对基础数据的访问，减少了数据讹误（无意识的或别的原因所导致的数据讹误）的机会</li>
-<li>因为存储过程通常以编译过的形式存储，所以 DBMS处理命令所需的工作量少，提高了性能</li>
-<li>存在一些只能用在单个请求中的 SQL元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码</li>
+<li>因为存储过程通常以编译过的形式存储，所以
+DBMS处理命令所需的工作量少，提高了性能</li>
+<li>存在一些只能用在单个请求中的
+SQL元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码</li>
 </ul>
 <p>缺陷</p>
 <ul>
-<li>不同 DBMS中的存储过程语法有所不同。事实上，编写真正的可移植存储过程几乎是不可能的。不过，存储过程的自我调用（名字以及数据如何传递）可以相对保持可移植。因此，如果需要移植到别的 DBMS，至少客户端应用代码不需要变动</li>
-<li>一般来说，编写存储过程比编写基本 SQL语句复杂，需要更高的技能，更丰富的经验。因此，许多数据库管理员把限制存储过程的创建作为安全措施（主要受上一条缺陷的影响）</li>
+<li>不同
+DBMS中的存储过程语法有所不同。事实上，编写真正的可移植存储过程几乎是不可能的。不过，存储过程的自我调用（名字以及数据如何传递）可以相对保持可移植。因此，如果需要移植到别的
+DBMS，至少客户端应用代码不需要变动</li>
+<li>一般来说，编写存储过程比编写基本
+SQL语句复杂，需要更高的技能，更丰富的经验。因此，许多数据库管理员把限制存储过程的创建作为安全措施（主要受上一条缺陷的影响）</li>
 </ul>
 <h2 id="参考资料">6. 参考资料</h2>
 <ul>
 <li>SQL必知必会（第4版），Ben Forta著，人民邮电出版社</li>
-<li>数据库系统概念（第6版），<a target="_blank" rel="noopener" href="https://book.douban.com/search/Abraham%20Silberschatz">(美）Abraham Silberschatz</a> / <a target="_blank" rel="noopener" href="https://book.douban.com/search/Henry%20F.Korth">（美）Henry F.Korth</a>/ <a target="_blank" rel="noopener" href="https://book.douban.com/search/S.Sudarshan">（美）S.Sudarshan</a>，机械工业出版社</li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/aaronthon/article/details/81714528">常见的关系型数据库和非关系型数据及其区别 - CSDN</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/miaoqinian/article/details/80252715">外键 - CSDN</a></li>
+<li>数据库系统概念（第6版），<a
+target="_blank" rel="noopener" href="https://book.douban.com/search/Abraham%20Silberschatz">(美）Abraham
+Silberschatz</a> / <a
+target="_blank" rel="noopener" href="https://book.douban.com/search/Henry%20F.Korth">（美）Henry
+F.Korth</a>/ <a
+target="_blank" rel="noopener" href="https://book.douban.com/search/S.Sudarshan">（美）S.Sudarshan</a>，机械工业出版社</li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/aaronthon/article/details/81714528">常见的关系型数据库和非关系型数据及其区别
+- CSDN</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/miaoqinian/article/details/80252715">外键 -
+CSDN</a></li>
 </ul>
 
       
@@ -607,7 +654,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 任务背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 任务内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2. 软件安装与服务器设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 系统环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 安装MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80mysql%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B9%B6%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 打开MySQL命令行并创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E8%B5%8B%E4%BA%88%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9D%83%E9%99%90"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 创建用户并赋予数据库权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%96%B0%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.2.4 用新用户登录数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E8%A7%86%E5%8C%96%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">3. 安装可视化环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85navicat"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 安装Navicat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85datagrip"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 安装DataGrip</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85datagrip"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 下载安装DataGrip</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 添加数据源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%9B%E5%BB%BAtable"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 可视化创建Table</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">4.</span> <span class="toc-text">4. 数据库的基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93database%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 数据库（database）定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 关系型数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 非关系型数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E8%A1%A8table"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 二维表（table）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8Crow"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 行（row）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97column"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 列（column）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AEprimary-key"><span class="toc-number">4.6.</span> <span class="toc-text">4.6 主键（primary key）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%94%AE"><span class="toc-number">4.7.</span> <span class="toc-text">4.7 外键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">5. MySQL数据库管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 数据表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 数据视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1"><span class="toc-number">5.3.1.</span> <span class="toc-text">5.3.1 数据抽象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.3.2.</span> <span class="toc-text">5.3.2 实例和模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.3.3.</span> <span class="toc-text">5.3.3 数据模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sql%E4%B8%AD%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="toc-number">5.3.4.</span> <span class="toc-text">5.3.4 SQL中的视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 存储过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">6.</span> <span class="toc-text">6. 参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 任务背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 任务内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2. 软件安装与服务器设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 系统环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 安装MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80mysql%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B9%B6%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2
+打开MySQL命令行并创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E8%B5%8B%E4%BA%88%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9D%83%E9%99%90"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 创建用户并赋予数据库权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%96%B0%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.2.4 用新用户登录数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E8%A7%86%E5%8C%96%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">3. 安装可视化环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85navicat"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 安装Navicat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85datagrip"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 安装DataGrip</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85datagrip"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 下载安装DataGrip</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 添加数据源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%9B%E5%BB%BAtable"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 可视化创建Table</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">4.</span> <span class="toc-text">4. 数据库的基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93database%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 数据库（database）定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 关系型数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 非关系型数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E8%A1%A8table"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 二维表（table）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8Crow"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 行（row）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97column"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 列（column）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AEprimary-key"><span class="toc-number">4.6.</span> <span class="toc-text">4.6 主键（primary key）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%94%AE"><span class="toc-number">4.7.</span> <span class="toc-text">4.7 外键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">5. MySQL数据库管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 数据表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 数据视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1"><span class="toc-number">5.3.1.</span> <span class="toc-text">5.3.1 数据抽象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.3.2.</span> <span class="toc-text">5.3.2 实例和模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.3.3.</span> <span class="toc-text">5.3.3 数据模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sql%E4%B8%AD%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="toc-number">5.3.4.</span> <span class="toc-text">5.3.4 SQL中的视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 存储过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">6.</span> <span class="toc-text">6. 参考资料</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -636,7 +684,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

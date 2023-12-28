@@ -57,7 +57,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -215,16 +215,25 @@ var _hmt = _hmt || [];
       
         <h1 id="真二叉树重构proper-rebuild">真二叉树重构(Proper Rebuild)</h1>
 <h2 id="description">Description</h2>
-<p>In general, given the preorder traversal sequence and postorder traversal sequence of a binary tree, we cannot determine the binary tree.</p>
+<p>In general, given the preorder traversal sequence and postorder
+traversal sequence of a binary tree, we cannot determine the binary
+tree.</p>
 <div data-align="center">
 <img src="/post/a9dc50af/img_ex1.png" class>
 </div>
 <p>Figure 1</p>
-<p>In Figure 1 for example, although they are two different binary tree, their preorder traversal sequence and postorder traversal sequence are both of the same.</p>
-<p>But for one proper binary tree, in which each internal node has two sons, we can uniquely determine it through its given preorder traversal sequence and postorder traversal sequence.</p>
-<p>Label n nodes in one binary tree using the integers in [1, n], we would like to output the inorder traversal sequence of a binary tree through its preorder and postorder traversal sequence.</p>
+<p>In Figure 1 for example, although they are two different binary tree,
+their preorder traversal sequence and postorder traversal sequence are
+both of the same.</p>
+<p>But for one proper binary tree, in which each internal node has two
+sons, we can uniquely determine it through its given preorder traversal
+sequence and postorder traversal sequence.</p>
+<p>Label n nodes in one binary tree using the integers in [1, n], we
+would like to output the inorder traversal sequence of a binary tree
+through its preorder and postorder traversal sequence.</p>
 <h2 id="input">Input</h2>
-<p>The 1st line is an integer n, i.e., the number of nodes in one given binary tree,</p>
+<p>The 1st line is an integer n, i.e., the number of nodes in one given
+binary tree,</p>
         
           <a class="article-more-a" href="/post/a9dc50af/#more">more >></a>
         
@@ -424,20 +433,25 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="原文">原文</h1>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What does the “yield” keyword do?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What
+does the “yield” keyword do?</a></p>
 <h1 id="翻译">翻译</h1>
 <blockquote>
-<p>To understand what <code>yield</code> does, you must understand what <em>generators</em> are. And before generators come <em>iterables</em>.</p>
+<p>To understand what <code>yield</code> does, you must understand what
+<em>generators</em> are. And before generators come
+<em>iterables</em>.</p>
 </blockquote>
 <p>为了理解yield的作用，我们必须先理解生成器，而在生成器之前必须先理解迭代器</p>
 <h2 id="迭代器">迭代器</h2>
 <blockquote>
-<p>When you create a list, you can read its items one by one. Reading its items one by one is called iteration:</p>
+<p>When you create a list, you can read its items one by one. Reading
+its items one by one is called iteration:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>当我们创建一个list，我们只能一个个读取list，而挨个读取的这个过程就被称为迭代</p>
 <blockquote>
-<p><code>mylist</code> is an <em>iterable</em>. When you use a list comprehension, you create a list, and so an iterable:</p>
+<p><code>mylist</code> is an <em>iterable</em>. When you use a list
+comprehension, you create a list, and so an iterable:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>mylist就是一个迭代器，当我们使用列表推导时，也就创造了一个list，或者说是一个迭代器</p>
@@ -539,7 +553,9 @@ var _hmt = _hmt || [];
 <p>罗胖在2016年《时间的朋友》跨年演讲里说，为什么现在越来越少的人愿意去电影院看电影？因为时间成本太高了，往返的两个小时，电影的两个小时，面对现如今良莠不齐的电影界，为了一部不知道质量的电影花去四个小时，这个代价越来越承受不起了。看完这部电影，我觉得挺值的，尽管在寒冷的冬天骑着自行车，手都要冻僵了。</p>
 <p>这几天在阅读《如何打造你的独特观点》这本书，加上对这部电影深有感触，尝试写点影评吧。<strong>内容涉及剧透，请选择性观看。</strong></p>
 <p>——————————————剧透分界线————————————————</p>
-<p>故事的主角米格因为崇拜歌神德拉库斯，从小喜欢音乐，可惜源于对曾曾祖父抛弃家人的原因，家族极度反感音乐，米格只能偷偷躲在角落里，模仿荧幕上的歌神拨弄着自己破旧的吉他。看着即将举行的才艺比赛，似乎看到了自己梦想实现的曙光。当看到自己一直崇拜的偶像的吉他和破碎照片上曾爷爷吉他一模一样，这让他坚信歌神就是自己的曾曾祖父，也终于鼓起勇气向家人要求参加比赛，愤怒的奶奶砸烂了他的吉他，也砸碎了他对家人的期待。一怒之下他决定遵从歌神「Seize your moment」，大胆跑去歌神纪念馆「借」吉他参加比赛，也正是这时候，让他穿越到了亡灵世界。</p>
+<p>故事的主角米格因为崇拜歌神德拉库斯，从小喜欢音乐，可惜源于对曾曾祖父抛弃家人的原因，家族极度反感音乐，米格只能偷偷躲在角落里，模仿荧幕上的歌神拨弄着自己破旧的吉他。看着即将举行的才艺比赛，似乎看到了自己梦想实现的曙光。当看到自己一直崇拜的偶像的吉他和破碎照片上曾爷爷吉他一模一样，这让他坚信歌神就是自己的曾曾祖父，也终于鼓起勇气向家人要求参加比赛，愤怒的奶奶砸烂了他的吉他，也砸碎了他对家人的期待。一怒之下他决定遵从歌神「Seize
+your
+moment」，大胆跑去歌神纪念馆「借」吉他参加比赛，也正是这时候，让他穿越到了亡灵世界。</p>
 <p>在亡灵世界，米格遇见了家族里灵位上的诸多亲人，还有一位迷一般的埃克托，当米格发现自己也在变成亡灵时，迫切希望可以回归现世，而回归现实的唯一方法便是得到亲人真诚的祝福，于是他将这一切希望寄托在了他的这些亲人上。出于对曾曾祖父的怨恨，曾曾祖母伊美尔达在祝福时，要求米格不允许再接触音乐，这使得执着于音乐梦想的米格不再对亲人抱有希望。于是他努力去逃脱亲人的掌控，试图去寻求「曾曾祖父」歌神的帮助，相信歌神会理解他的梦想，他找到了埃克托合作。埃克托很可怜，他的死法也很奇葩，他想尽办法想要去桥的另一边，看一眼他朝思暮想的女儿，却因为世人的遗忘始终失败。当看到现世过来的米格，他希望米格可以将自己照片带回现世供奉，这样他就拥有足够的力量，可以见到他最心爱的女儿了。</p>
 <p>米格在埃克托的帮助下，历经辛苦，冒险参加亡灵界的才艺比赛，终于见到了自己的偶像歌神，心里的激动可想而知。歌神也很意外自己竟然还有这么个后代，同样颇为激动，对米格很好，也准备为米格送祝福让他回家。只到埃克托突然出现，当年的真相才一幕幕揭开，米格对一直以来偶像的信仰彻底崩塌，原来一切都是歌神德拉库斯所为，害死才华横溢的埃克托，并将他的歌曲和吉他占为己有（此处脑补了好多柯南的剧情）。受制于歌神的权势，米格和埃克托被丢入了洞穴（有点类似《神雕侠侣》里裘千尺被囚禁的地穴的感觉），也正是在这里，米格才发现原来埃克托才是他真正的曾曾祖父，也明白了曾曾祖父的心愿。最后在流浪犬但丁和亲人们的帮助下，他们最终逃出洞穴，战胜了歌神，并揭发了歌神的真面目。米格和亲人们终于认识到了亲人的含义，在亲人的无条件祝福下，米格回到了现世，也唤起了太奶奶对曾曾祖父的回忆，得到了家人的理解和支持。</p>
 <p>故事的开头，曾一度在怀疑，故事是发生在我们国家么，黄色的皮肤，常见的发型，熟悉的家庭布局和慈祥的太奶奶，严厉的奶奶，让我也不禁有些失神。</p>
@@ -637,11 +653,20 @@ var _hmt = _hmt || [];
       
         <h1 id="题目信息">题目信息</h1>
 <h1 id="题目">题目</h1>
-<p>This time, you are supposed to find A+B where A and B are two polynomials.</p>
+<p>This time, you are supposed to find A+B where A and B are two
+polynomials.</p>
 <p><strong>Input</strong></p>
-<p>Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial: K N1 aN1 N2 aN2 ... NK aNK, where K is the number of nonzero terms in the polynomial, Ni and aNi (i=1, 2, ..., K) are the exponents and coefficients, respectively. It is given that 1 &lt;= K &lt;= 10，0 &lt;= NK &lt; ... &lt; N2 &lt; N1 &lt;=1000.</p>
+<p>Each input file contains one test case. Each case occupies 2 lines,
+and each line contains the information of a polynomial: K N1 aN1 N2 aN2
+... NK aNK, where K is the number of nonzero terms in the polynomial, Ni
+and aNi (i=1, 2, ..., K) are the exponents and coefficients,
+respectively. It is given that 1 &lt;= K &lt;= 10，0 &lt;= NK &lt; ...
+&lt; N2 &lt; N1 &lt;=1000.</p>
 <p><strong>Output</strong></p>
-<p>For each test case you should output the sum of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate to 1 decimal place.</p>
+<p>For each test case you should output the sum of A and B in one line,
+with the same format as the input. Notice that there must be NO extra
+space at the end of each line. Please be accurate to 1 decimal
+place.</p>
 <p><strong>Sample Input</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 1 2.4 0 3.2</span><br><span class="line">2 2 1.5 1 0.5</span><br></pre></td></tr></table></figure>
 <p><strong>Sample Output</strong></p>
@@ -737,11 +762,16 @@ var _hmt = _hmt || [];
       
         <h1 id="题目信息">题目信息</h1>
 <h2 id="题目">题目</h2>
-<p>Calculate a + b and output the sum in standard format -- that is, the digits must be separated into groups of three by commas (unless there are less than four digits).</p>
+<p>Calculate a + b and output the sum in standard format -- that is, the
+digits must be separated into groups of three by commas (unless there
+are less than four digits).</p>
 <p><strong>Input</strong></p>
-<p>Each input file contains one test case. Each case contains a pair of integers a and b where -1000000 &lt;= a, b &lt;= 1000000. The numbers are separated by a space.</p>
+<p>Each input file contains one test case. Each case contains a pair of
+integers a and b where -1000000 &lt;= a, b &lt;= 1000000. The numbers
+are separated by a space.</p>
 <p><strong>Output</strong></p>
-<p>For each test case, you should output the sum of a and b in one line. The sum must be written in the standard format.</p>
+<p>For each test case, you should output the sum of a and b in one line.
+The sum must be written in the standard format.</p>
 <p>Sample Input</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-1000000 9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Sample Output</p>
@@ -838,9 +868,9 @@ var _hmt = _hmt || [];
         <h1 id="故事背景">故事背景</h1>
 <p>在git上创建了一个仓库（创建仓库时初始了一个README.md），需要将本地一个已存在目录指向这个git仓库，并将目录内容push到仓库</p>
 <h2 id="故事环境">故事环境</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git --version</span></span><br><span class="line">git version 2.14.3 (Apple Git-98)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git --version</span></span><br><span class="line">git version 2.14.3 (Apple Git-98)</span><br></pre></td></tr></table></figure>
 <h1 id="开始探索">开始探索</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git init</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin git@github.com:xxxxx.git</span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote add origin git@github.com:xxxxx.git</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git pull origin master</span></span><br></pre></td></tr></table></figure>
 <h1 id="遇到问题">遇到问题</h1>
 <h2 id="执行git-pull-origin-master">1. 执行git pull origin master</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">From github.com:xxxxx</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure>
@@ -921,7 +951,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="背景">背景</h1>
-<p>最近有两处用到，一个是做简易的消息推送，Flask + Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变；</p>
+<p>最近有两处用到，一个是做简易的消息推送，Flask +
+Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变；</p>
 <p>另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据</p>
 <h1 id="解决方案">解决方案</h1>
 <h2 id="从csdn论坛中找到的一种方式">从<a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/390350359">CSDN论坛</a>中找到的一种方式</h2>
@@ -1037,18 +1068,21 @@ var _hmt = _hmt || [];
 <p>Errors should never pass silently.</p>
 <p>Unless explicitly silenced.</p>
 <p>In the face of ambiguity, refuse the temptation to guess.</p>
-<p>There should be one-- and preferably only one --obvious way to do it.</p>
-<p>Although that way may not be obvious at first unless you're Dutch.</p>
+<p>There should be one-- and preferably only one --obvious way to do
+it.</p>
+<p>Although that way may not be obvious at first unless you're
+Dutch.</p>
 <p>Now is better than never.</p>
 <p>Although never is often better than <em>right</em> now.</p>
 <p>If the implementation is hard to explain, it's a bad idea.</p>
 <p>If the implementation is easy to explain, it may be a good idea.</p>
 </blockquote>
 <h2 id="确认自己所用的python版本">1. 确认自己所用的Python版本</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 --version</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.version_info)</span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br></pre></td></tr></table></figure>
-<p>Python社区已将开发重点放在了Python 3上，因此后续开发项目时，应优先考虑使用Python 3</p>
+<p>Python社区已将开发重点放在了Python
+3上，因此后续开发项目时，应优先考虑使用Python 3</p>
 <h2 id="遵循pep-8-风格指南">2. 遵循PEP 8 风格指南</h2>
         
           <a class="article-more-a" href="/post/12ceb6de/#more">more >></a>
@@ -1118,7 +1152,8 @@ var _hmt = _hmt || [];
 <h2 id="使用背景">1.1 使用背景</h2>
 <p>系统中疑似存在丢syslog的情况，比如/var/log/auth.log一直找不到，网上找了很多解决方法一直未能解决，而我又需要知道每个人员针对服务器的操作，以及检测ssh是否有外人破解进来</p>
 <h2 id="安装">1.2 安装</h2>
-<p>部分linux系统中可能会报错 journalctl command not found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
+<p>部分linux系统中可能会报错 journalctl command not
+found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install systemd</span><br></pre></td></tr></table></figure>
 
         
@@ -1179,7 +1214,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

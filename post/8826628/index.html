@@ -61,7 +61,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -137,7 +137,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -215,14 +215,16 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu 16.04，问题是否仅仅出现在这个版本，尚待测试</p>
+        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu
+16.04，问题是否仅仅出现在这个版本，尚待测试</p>
 <h1 id="搜狗输入法无法显示候选词">1. 搜狗输入法无法显示候选词</h1>
 <p>最近在使用搜狗输入法时，用着用着就搜狗候选词就没了，导致无法输入中文</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
 <p>这个程序猜测就是搜狗输入法的启动程序，通过将这个程序启动，发现程序出现报错</p>
 <img src="/post/8826628/bug_show.png" class="" title="This is the error~">
-<p>通过搜索解决方案，找到了一种比较靠谱的<a target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/SogouPY.users</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<p>通过搜索解决方案，找到了一种比较靠谱的<a
+target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY.<span class="built_in">users</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
 <p>然后重启sogou-qimpanel，可以发现搜狗输入法的候选词已经有了，但之前的皮肤设置已经丢失</p>
 <blockquote>
 <p>额外想到的，我的pycharm也经常会出现主界面无法显示的问题，也是通过删除home下配置文件解决，具体原因待继续探究</p>
@@ -398,7 +400,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

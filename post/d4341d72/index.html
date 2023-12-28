@@ -62,7 +62,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -217,50 +217,81 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="原文">原文</h1>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What does the “yield” keyword do?</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What
+does the “yield” keyword do?</a></p>
 <h1 id="翻译">翻译</h1>
 <blockquote>
-<p>To understand what <code>yield</code> does, you must understand what <em>generators</em> are. And before generators come <em>iterables</em>.</p>
+<p>To understand what <code>yield</code> does, you must understand what
+<em>generators</em> are. And before generators come
+<em>iterables</em>.</p>
 </blockquote>
 <p>为了理解yield的作用，我们必须先理解生成器，而在生成器之前必须先理解迭代器</p>
 <h2 id="迭代器">迭代器</h2>
 <blockquote>
-<p>When you create a list, you can read its items one by one. Reading its items one by one is called iteration:</p>
+<p>When you create a list, you can read its items one by one. Reading
+its items one by one is called iteration:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>当我们创建一个list，我们只能一个个读取list，而挨个读取的这个过程就被称为迭代</p>
 <blockquote>
-<p><code>mylist</code> is an <em>iterable</em>. When you use a list comprehension, you create a list, and so an iterable:</p>
+<p><code>mylist</code> is an <em>iterable</em>. When you use a list
+comprehension, you create a list, and so an iterable:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>mylist就是一个迭代器，当我们使用列表推导时，也就创造了一个list，或者说是一个迭代器</p>
 <blockquote>
-<p>Everything you can use "<code>for... in...</code>" on is an iterable; <code>lists</code>, <code>strings</code>, files...</p>
-<p>These iterables are handy because you can read them as much as you wish, but you store all the values in memory and this is not always what you want when you have a lot of values.</p>
+<p>Everything you can use "<code>for... in...</code>" on is an iterable;
+<code>lists</code>, <code>strings</code>, files...</p>
+<p>These iterables are handy because you can read them as much as you
+wish, but you store all the values in memory and this is not always what
+you want when you have a lot of values.</p>
 </blockquote>
 <p>我们可以在这个基础上使用迭代器，例如lists，strings，files...</p>
 <p>这些迭代器看起来很方便，想读几次就可以读几次，但是这些数据是要存储在内存上的，当数据量很大时，结果并不总是如我们所愿。</p>
 <h2 id="生成器">生成器</h2>
 <blockquote>
-<p>Generators are iterators, a kind of iterable <strong>you can only iterate over once</strong>. Generators do not store all the values in memory, <strong>they generate the values on the fly</strong>:</p>
+<p>Generators are iterators, a kind of iterable <strong>you can only
+iterate over once</strong>. Generators do not store all the values in
+memory, <strong>they generate the values on the fly</strong>:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mygenerator = (x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mygenerator:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p>It is just the same except you used <code>()</code> instead of <code>[]</code>. BUT, you <strong>cannot</strong> perform <code>for i in mygenerator</code> a second time since generators can only be used once: they calculate 0, then forget about it and calculate 1, and end calculating 4, one by one.</p>
+<p>It is just the same except you used <code>()</code> instead of
+<code>[]</code>. BUT, you <strong>cannot</strong> perform
+<code>for i in mygenerator</code> a second time since generators can
+only be used once: they calculate 0, then forget about it and calculate
+1, and end calculating 4, one by one.</p>
 </blockquote>
 <p>生成器也是一种迭代器，不过只能迭代一次。生成器并不会将数据存储在内存中，它们一直在生成这些数据</p>
-<p>以上代码除了使用()来替代[]并没什么区别，但是由于生成器只能被使用一次，因此不可以使用for in：它们会依次输出0然后遗忘，接下来依次输出1，4</p>
+<p>以上代码除了使用()来替代[]并没什么区别，但是由于生成器只能被使用一次，因此不可以使用for
+in：它们会依次输出0然后遗忘，接下来依次输出1，4</p>
 <h2 id="yield">Yield</h2>
 <blockquote>
-<p>yield<code>is a keyword that is used like</code>return, except the function will return a generator.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span>():</span></span><br><span class="line"><span class="meta">... </span>   mylist = <span class="built_in">range</span>(<span class="number">3</span>)</span><br><span class="line"><span class="meta">... </span>   <span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>       <span class="keyword">yield</span> i*i</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mygenerator = createGenerator() <span class="comment"># create a generator</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mygenerator) <span class="comment"># mygenerator is an object!</span></span><br><span class="line">&lt;generator <span class="built_in">object</span> createGenerator at <span class="number">0xb7555c34</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mygenerator:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>yield<code>is a keyword that is used like</code>return, except the
+function will return a generator.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">createGenerator</span>():</span><br><span class="line"><span class="meta">... </span>   mylist = <span class="built_in">range</span>(<span class="number">3</span>)</span><br><span class="line"><span class="meta">... </span>   <span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>       <span class="keyword">yield</span> i*i</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mygenerator = createGenerator() <span class="comment"># create a generator</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(mygenerator) <span class="comment"># mygenerator is an object!</span></span><br><span class="line">&lt;generator <span class="built_in">object</span> createGenerator at <span class="number">0xb7555c34</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mygenerator:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>yield关键字除了函数返回的是个生成器，用起来很像return</p>
 <blockquote>
-<p>Here it's a useless example, but it's handy when you know your function will return a huge set of values that you will only need to read once.</p>
-<p>To master <code>yield</code>, you must understand that <strong>when you call the function, the code you have written in the function body does not run.</strong> The function only returns the generator object, this is a bit tricky :-)</p>
-<p>Then, your code will be run each time the <code>for</code> uses the generator.</p>
+<p>Here it's a useless example, but it's handy when you know your
+function will return a huge set of values that you will only need to
+read once.</p>
+<p>To master <code>yield</code>, you must understand that <strong>when
+you call the function, the code you have written in the function body
+does not run.</strong> The function only returns the generator object,
+this is a bit tricky :-)</p>
+<p>Then, your code will be run each time the <code>for</code> uses the
+generator.</p>
 <p>Now the hard part:</p>
-<p>The first time the <code>for</code> calls the generator object created from your function, it will run the code in your function from the beginning until it hits <code>yield</code>, then it'll return the first value of the loop. Then, each other call will run the loop you have written in the function one more time, and return the next value, until there is no value to return.</p>
-<p>The generator is considered empty once the function runs but does not hit <code>yield</code> anymore. It can be because the loop had come to an end, or because you do not satisfy an <code>"if/else"</code> anymore.</p>
+<p>The first time the <code>for</code> calls the generator object
+created from your function, it will run the code in your function from
+the beginning until it hits <code>yield</code>, then it'll return the
+first value of the loop. Then, each other call will run the loop you
+have written in the function one more time, and return the next value,
+until there is no value to return.</p>
+<p>The generator is considered empty once the function runs but does not
+hit <code>yield</code> anymore. It can be because the loop had come to
+an end, or because you do not satisfy an <code>"if/else"</code>
+anymore.</p>
 </blockquote>
 <p>这是一个实际用处不大的示例，但是当你的函数将会返回一个只需要读取一次的很大的数据集合时，这个会非常方便</p>
 <p>为了掌握yield，我们必须理解<strong>当我们调这个用函数时，我们写在函数体里的代码并不会运行</strong>。这个函数只会返回一个生成器对象，听上去有点tricky：）</p>
@@ -273,7 +304,7 @@ var _hmt = _hmt || [];
 <p>Generator:</p>
 </blockquote>
 <blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here you create the method of the node object that will return the generator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_child_candidates</span>(<span class="params">self, distance, min_dist, max_dist</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Here is the code that will be called each time you use the generator object:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># If there is still a child of the node object on its left</span></span><br><span class="line">    <span class="comment"># AND if distance is ok, return the next child</span></span><br><span class="line">    <span class="keyword">if</span> self._leftchild <span class="keyword">and</span> distance - max_dist &lt; self._median:</span><br><span class="line">        <span class="keyword">yield</span> self._leftchild</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If there is still a child of the node object on its right</span></span><br><span class="line">    <span class="comment"># AND if distance is ok, return the next child</span></span><br><span class="line">    <span class="keyword">if</span> self._rightchild <span class="keyword">and</span> distance + max_dist &gt;= self._median:</span><br><span class="line">        <span class="keyword">yield</span> self._rightchild</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If the function arrives here, the generator will be considered empty</span></span><br><span class="line">    <span class="comment"># there is no more than two values: the left and the right children</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here you create the method of the node object that will return the generator</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_get_child_candidates</span>(<span class="params">self, distance, min_dist, max_dist</span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Here is the code that will be called each time you use the generator object:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># If there is still a child of the node object on its left</span></span><br><span class="line">    <span class="comment"># AND if distance is ok, return the next child</span></span><br><span class="line">    <span class="keyword">if</span> self._leftchild <span class="keyword">and</span> distance - max_dist &lt; self._median:</span><br><span class="line">        <span class="keyword">yield</span> self._leftchild</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If there is still a child of the node object on its right</span></span><br><span class="line">    <span class="comment"># AND if distance is ok, return the next child</span></span><br><span class="line">    <span class="keyword">if</span> self._rightchild <span class="keyword">and</span> distance + max_dist &gt;= self._median:</span><br><span class="line">        <span class="keyword">yield</span> self._rightchild</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If the function arrives here, the generator will be considered empty</span></span><br><span class="line">    <span class="comment"># there is no more than two values: the left and the right children</span></span><br></pre></td></tr></table></figure>
 <p>Caller:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create an empty list and a list with the current object reference</span></span><br><span class="line">result, candidates = <span class="built_in">list</span>(), [self]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Loop on candidates (they contain only one element at the beginning)</span></span><br><span class="line"><span class="keyword">while</span> candidates:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get the last candidate and remove it from the list</span></span><br><span class="line">    node = candidates.pop()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get the distance between obj and the candidate</span></span><br><span class="line">    distance = node._get_dist(obj)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># If distance is ok, then you can fill the result</span></span><br><span class="line">    <span class="keyword">if</span> distance &lt;= max_dist <span class="keyword">and</span> distance &gt;= min_dist:</span><br><span class="line">        result.extend(node._values)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Add the children of the candidate in the candidates list</span></span><br><span class="line">    <span class="comment"># so the loop will keep running until it will have looked</span></span><br><span class="line">    <span class="comment"># at all the children of the children of the children, etc. of the candidate</span></span><br><span class="line">    candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -281,13 +312,22 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>This code contains several smart parts:</p>
 <ul>
-<li>The loop iterates on a list but the list expands while the loop is being iterated :-) It's a concise way to go through all these nested data even if it's a bit dangerous since you can end up with an infinite loop. In this case, <code>candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))</code> exhausts all the values of the generator, but <code>while</code> keeps creating new generator objects which will produce different values from the previous ones since it's not applied on the same node.</li>
-<li>The <code>extend()</code> method is a list object method that expects an iterable and adds its values to the list.</li>
+<li>The loop iterates on a list but the list expands while the loop is
+being iterated :-) It's a concise way to go through all these nested
+data even if it's a bit dangerous since you can end up with an infinite
+loop. In this case,
+<code>candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))</code>
+exhausts all the values of the generator, but <code>while</code> keeps
+creating new generator objects which will produce different values from
+the previous ones since it's not applied on the same node.</li>
+<li>The <code>extend()</code> method is a list object method that
+expects an iterable and adds its values to the list.</li>
 </ul>
 </blockquote>
 <p>这份代码包含了几个很聪明的地方：</p>
 <ul>
-<li>循环在list上迭代，但是list只在循环迭代时时才会expands :-)，这是种很简约的方法，遍历所有这些嵌套值，即使因为这可能会造成无限循环而看起来有点危险。在这种情况下，<code>candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))</code>，这条语句会耗尽生成器中的值，但是while会持续创建新的生成器对象，这些生成器对象将会产生和之前不一样的值，因为它们并不是应用在同一种模式</li>
+<li>循环在list上迭代，但是list只在循环迭代时时才会expands
+:-)，这是种很简约的方法，遍历所有这些嵌套值，即使因为这可能会造成无限循环而看起来有点危险。在这种情况下，<code>candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))</code>，这条语句会耗尽生成器中的值，但是while会持续创建新的生成器对象，这些生成器对象将会产生和之前不一样的值，因为它们并不是应用在同一种模式</li>
 <li>extend()方法方法是个list对象方法，它需要迭代器作为输入参数，并将值加入到list。</li>
 </ul>
 <blockquote>
@@ -299,7 +339,8 @@ var _hmt = _hmt || [];
 <p>But in your code it gets a generator, which is good because:</p>
 <ol type="1">
 <li>You don't need to read the values twice.</li>
-<li>You may have a lot of children and you don't want them all stored in memory.</li>
+<li>You may have a lot of children and you don't want them all stored in
+memory.</li>
 </ol>
 </blockquote>
 <p>在原问题代码中，得到的却是一个生成器，这样做的好处在于</p>
@@ -308,24 +349,37 @@ var _hmt = _hmt || [];
 <li>可能有很多的children，而且也并不想把它们都存放在内存中</li>
 </ul>
 <blockquote>
-<p>And it works because Python does not care if the argument of a method is a list or not. Python expects iterables so it will work with strings, lists, tuples and generators! This is called duck typing and is one of the reason why Python is so cool. But this is another story, for another question...</p>
-<p>You can stop here, or read a little bit to see an advanced use of a generator:</p>
+<p>And it works because Python does not care if the argument of a method
+is a list or not. Python expects iterables so it will work with strings,
+lists, tuples and generators! This is called duck typing and is one of
+the reason why Python is so cool. But this is another story, for another
+question...</p>
+<p>You can stop here, or read a little bit to see an advanced use of a
+generator:</p>
 </blockquote>
 <p>这可以生效，因为Python并不关心方法的参数是不是一个list，Python希望的是一个可以迭代的，包括string、list、tuple，甚至生成器也都可以！这被称为鸭子类型，同时也是Python为什么这么cool的原因之一，当然这是另一个故事了，涉及另一个问题了</p>
 <p>你可以在这里停下，去了解点生成器的一种高级用法：</p>
 <h2 id="控制一个生成器的消耗">控制一个生成器的消耗</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Bank</span>():</span> <span class="comment"># let&#x27;s create a bank, building ATMs</span></span><br><span class="line"><span class="meta">... </span>   crisis = <span class="literal">False</span></span><br><span class="line"><span class="meta">... </span>   <span class="function"><span class="keyword">def</span> <span class="title">create_atm</span>(<span class="params">self</span>):</span></span><br><span class="line"><span class="meta">... </span>       <span class="keyword">while</span> <span class="keyword">not</span> self.crisis:</span><br><span class="line"><span class="meta">... </span>           <span class="keyword">yield</span> <span class="string">&quot;$100&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc = Bank() <span class="comment"># when everything&#x27;s ok the ATM gives you as much as you want</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>corner_street_atm = hsbc.create_atm()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">$<span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">$<span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>([corner_street_atm.<span class="built_in">next</span>() <span class="keyword">for</span> cash <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)])</span><br><span class="line">[<span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc.crisis = <span class="literal">True</span> <span class="comment"># crisis is coming, no more money!</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wall_street_atm = hsbc.create_atm() <span class="comment"># it&#x27;s even true for new ATMs</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(wall_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc.crisis = <span class="literal">False</span> <span class="comment"># trouble is, even post-crisis the ATM remains empty</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>brand_new_atm = hsbc.create_atm() <span class="comment"># build a new one to get back in business</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> cash <span class="keyword">in</span> brand_new_atm:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span> cash</span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">Bank</span>(): <span class="comment"># let&#x27;s create a bank, building ATMs</span></span><br><span class="line"><span class="meta">... </span>   crisis = <span class="literal">False</span></span><br><span class="line"><span class="meta">... </span>   <span class="keyword">def</span> <span class="title function_">create_atm</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>       <span class="keyword">while</span> <span class="keyword">not</span> self.crisis:</span><br><span class="line"><span class="meta">... </span>           <span class="keyword">yield</span> <span class="string">&quot;$100&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc = Bank() <span class="comment"># when everything&#x27;s ok the ATM gives you as much as you want</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>corner_street_atm = hsbc.create_atm()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">$<span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">$<span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>([corner_street_atm.<span class="built_in">next</span>() <span class="keyword">for</span> cash <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)])</span><br><span class="line">[<span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>, <span class="string">&#x27;$100&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc.crisis = <span class="literal">True</span> <span class="comment"># crisis is coming, no more money!</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wall_street_atm = hsbc.create_atm() <span class="comment"># it&#x27;s even true for new ATMs</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(wall_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hsbc.crisis = <span class="literal">False</span> <span class="comment"># trouble is, even post-crisis the ATM remains empty</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(corner_street_atm.<span class="built_in">next</span>())</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;exceptions.StopIteration&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>brand_new_atm = hsbc.create_atm() <span class="comment"># build a new one to get back in business</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> cash <span class="keyword">in</span> brand_new_atm:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span> cash</span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">$<span class="number">100</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>Note:</strong> For Python3 use<code>print(corner_street_atm.__next__())</code> or <code>print(next(corner_street_atm))</code></p>
-<p>It can be useful for various things like controlling access to a resource.</p>
+<p><strong>Note:</strong> For Python3
+use<code>print(corner_street_atm.__next__())</code> or
+<code>print(next(corner_street_atm))</code></p>
+<p>It can be useful for various things like controlling access to a
+resource.</p>
 </blockquote>
-<p><strong>注意：</strong>在Python3中，使用<code>print(corner_street_atm.__next__())</code> or <code>print(next(corner_street_atm))</code></p>
+<p><strong>注意：</strong>在Python3中，使用<code>print(corner_street_atm.__next__())</code>
+or <code>print(next(corner_street_atm))</code></p>
 <p>这对于类似控制资源的访问这样的变化的事情挺有用</p>
 <h2 id="itertools你最好的朋友">itertools，你最好的朋友</h2>
 <blockquote>
-<p>The itertools module contains special functions to manipulate iterables. Ever wish to duplicate a generator? Chain two generators? Group values in a nested list with a one liner? <code>Map / Zip</code>without creating another list?</p>
+<p>The itertools module contains special functions to manipulate
+iterables. Ever wish to duplicate a generator? Chain two generators?
+Group values in a nested list with a one liner?
+<code>Map / Zip</code>without creating another list?</p>
 <p>Then just <code>import itertools</code>.</p>
-<p>An example? Let's see the possible orders of arrival for a 4 horse race:</p>
+<p>An example? Let's see the possible orders of arrival for a 4 horse
+race:</p>
 </blockquote>
 <p>itertools模块包含操作迭代器的特别函数，是否曾想过复制生成器？链接两个生成器呢？将嵌套列表中的归类为一个线性的？不用创建另一个list就可以map/zip？</p>
 <p>接下来import itertools就可以了。</p>
@@ -333,11 +387,19 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>horses = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>races = itertools.permutations(horses)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(races)</span><br><span class="line">&lt;itertools.permutations <span class="built_in">object</span> at <span class="number">0xb754f1dc</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">list</span>(itertools.permutations(horses)))</span><br><span class="line">[(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">1</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>),</span><br><span class="line"> (<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
 <h2 id="理解迭代的内部机制">理解迭代的内部机制</h2>
 <blockquote>
-<p>Iteration is a process implying iterables (implementing the <code>__iter__()</code> method) and iterators (implementing the <code>__next__()</code> method). Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.</p>
-<p>More about it in this article about <a target="_blank" rel="noopener" href="http://effbot.org/zone/python-for-statement.htm">how does the for loop work</a>.</p>
+<p>Iteration is a process implying iterables (implementing the
+<code>__iter__()</code> method) and iterators (implementing the
+<code>__next__()</code> method). Iterables are any objects you can get
+an iterator from. Iterators are objects that let you iterate on
+iterables.</p>
+<p>More about it in this article about <a
+target="_blank" rel="noopener" href="http://effbot.org/zone/python-for-statement.htm">how does the for
+loop work</a>.</p>
 </blockquote>
 <p>迭代是一个隐含了可迭代对象（实现了<code>__iter__()</code>方法）以及迭代器（实现了<code>_next()</code>方法），可迭代对象是你能得到迭代器的任何对象，迭代器则是可以让你在迭代对象上迭代的对象。</p>
-<p>更多内容阅读文章 <a target="_blank" rel="noopener" href="http://effbot.org/zone/python-for-statement.htm">how does the for loop work</a></p>
+<p>更多内容阅读文章 <a
+target="_blank" rel="noopener" href="http://effbot.org/zone/python-for-statement.htm">how does the for
+loop work</a></p>
 
       
 
@@ -528,7 +590,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

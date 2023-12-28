@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -215,7 +215,8 @@ var _hmt = _hmt || [];
       
         <h1 id="回归分析">1. 回归分析</h1>
 <h2 id="回归分析的概念">1.1 回归分析的概念</h2>
-<h3 id="回归分析相关分析与方差分析的异同">1.1.1 回归分析、相关分析与方差分析的异同</h3>
+<h3 id="回归分析相关分析与方差分析的异同">1.1.1
+回归分析、相关分析与方差分析的异同</h3>
 <p>都是研究变量之间的关系的，这些变量可以是随机的，也可以是非随机的，但不能全部为非随机，不同之处在于：</p>
 <ul>
 <li>回归分析着重在寻求变量之间近似的函数关系</li>
@@ -223,42 +224,99 @@ var _hmt = _hmt || [];
 <li>方差分析着重考虑一个或一些变量对特定变量的影响有无及大小，其方法是基于样本方差的分解而得名</li>
 </ul>
 <h3 id="定义">1.1.2 定义</h3>
-<p>设在一个问题中有因变量<span class="math inline">\(Y\)</span>及自变量<span class="math inline">\(X_1, …, X_p\)</span>，可以设想Y的值由两部分构成：一部分由<span class="math inline">\(X_1, …, X_p\)</span>的影响所致，这一部分表为<span class="math inline">\(X_1, …, X_p\)</span>的函数形式<span class="math inline">\(f(X_1, …, X_p)\)</span>，另一部分则由其他众多未加考虑的因素，包括随机因素的影响所致，它可视为一种随机误差，记为<span class="math inline">\(e\)</span>，得到模型</p>
+<p>设在一个问题中有因变量<span
+class="math inline">\(Y\)</span>及自变量<span class="math inline">\(X_1,
+…, X_p\)</span>，可以设想Y的值由两部分构成：一部分由<span
+class="math inline">\(X_1, …, X_p\)</span>的影响所致，这一部分表为<span
+class="math inline">\(X_1, …, X_p\)</span>的函数形式<span
+class="math inline">\(f(X_1, …,
+X_p)\)</span>，另一部分则由其他众多未加考虑的因素，包括随机因素的影响所致，它可视为一种随机误差，记为<span
+class="math inline">\(e\)</span>，得到模型</p>
 <p><span class="math display">\[Y = f(X_1, …, X_p) + e.\]</span></p>
 <p>e为随机误差，要求其均值为0，即</p>
 <p><span class="math display">\[E(e) = 0.\]</span></p>
-<p>于是得到：<span class="math inline">\(f(X_1, …, X_p)\)</span>就是在给定了自变量<span class="math inline">\(X_1, …, X_p\)</span>的值的条件下，因变量<span class="math inline">\(Y\)</span>的条件期望值，可写为</p>
-<p><span class="math display">\[f(X_1, …, X_p) = E(Y | X_1, …, X_p)\]</span></p>
-<p>函数<span class="math inline">\(f(x_1, …, x_p)\)</span>称为<span class="math inline">\(Y\)</span>对<span class="math inline">\(X_1, …, X_p\)</span>的回归函数，而方程</p>
+<p>于是得到：<span class="math inline">\(f(X_1, …,
+X_p)\)</span>就是在给定了自变量<span class="math inline">\(X_1, …,
+X_p\)</span>的值的条件下，因变量<span
+class="math inline">\(Y\)</span>的条件期望值，可写为</p>
+<p><span class="math display">\[f(X_1, …, X_p) = E(Y | X_1, …,
+X_p)\]</span></p>
+<p>函数<span class="math inline">\(f(x_1, …, x_p)\)</span>称为<span
+class="math inline">\(Y\)</span>对<span class="math inline">\(X_1, …,
+X_p\)</span>的回归函数，而方程</p>
 <p><span class="math display">\[f(x_1, …, x_p)\]</span></p>
-<p>则称为<span class="math inline">\(Y\)</span>对<span class="math inline">\(X_1, …, X_p\)</span>的回归方程，有时在回归函数和回归方程之前加上“理论”二字，以表示其直接来自模型，也可以说是模型的一个组成部分，而由数据估计所得，后者称为“经验回归函数”和“经验回归方程”</p>
-<p>设<span class="math inline">\(\xi\)</span>为一随机变量，即<span class="math inline">\(E(\xi - c)^2\)</span>作为<span class="math inline">\(c\)</span>的函数，在<span class="math inline">\(c = E(\xi)\)</span>处达到最小，由这个性质，可以怼理论回归函数<span class="math inline">\(f(x_1, …, x_p)\)</span>做如下解释：如果我们只掌握了因素<span class="math inline">\(X_1, …, X_p\)</span>，而希望利用它们的值以尽可能好地逼近<span class="math inline">\(Y\)</span>的值，则在均方误差最小的意义下，以使用理论回归函数为最好。</p>
+<p>则称为<span class="math inline">\(Y\)</span>对<span
+class="math inline">\(X_1, …,
+X_p\)</span>的回归方程，有时在回归函数和回归方程之前加上“理论”二字，以表示其直接来自模型，也可以说是模型的一个组成部分，而由数据估计所得，后者称为“经验回归函数”和“经验回归方程”</p>
+<p>设<span class="math inline">\(\xi\)</span>为一随机变量，即<span
+class="math inline">\(E(\xi - c)^2\)</span>作为<span
+class="math inline">\(c\)</span>的函数，在<span class="math inline">\(c
+= E(\xi)\)</span>处达到最小，由这个性质，可以怼理论回归函数<span
+class="math inline">\(f(x_1, …,
+x_p)\)</span>做如下解释：如果我们只掌握了因素<span
+class="math inline">\(X_1, …,
+X_p\)</span>，而希望利用它们的值以尽可能好地逼近<span
+class="math inline">\(Y\)</span>的值，则在均方误差最小的意义下，以使用理论回归函数为最好。</p>
 <h3 id="非参数回归与参数回归">1.1.3 非参数回归与参数回归</h3>
-<p>实际问题中，理论回归函数一般是未知的，统计回归分析的任务，就是根据<span class="math inline">\(X_1, …, X_p\)</span>和<span class="math inline">\(Y\)</span>的观察值，去估计这个函数，以及讨论与此有关的种种统计推断问题，如假设检验问题和区间估计问题，所用方法，在相当大的程度上取决于模型中的假定，也就是对回归函数<span class="math inline">\(f\)</span>及随机误差<span class="math inline">\(e\)</span>所做的假定。</p>
-<p>对于回归函数<span class="math inline">\(f\)</span>，一种情况是对<span class="math inline">\(f\)</span>的数学形式并无特殊的假定，这种情况称为<strong>非参数回归</strong>；另一种情况，是假定<span class="math inline">\(f\)</span>的数学形式已知，只是其中若干个参数未知，需要通过观察值去估计，这种情况称为<strong>参数回归</strong></p>
+<p>实际问题中，理论回归函数一般是未知的，统计回归分析的任务，就是根据<span
+class="math inline">\(X_1, …, X_p\)</span>和<span
+class="math inline">\(Y\)</span>的观察值，去估计这个函数，以及讨论与此有关的种种统计推断问题，如假设检验问题和区间估计问题，所用方法，在相当大的程度上取决于模型中的假定，也就是对回归函数<span
+class="math inline">\(f\)</span>及随机误差<span
+class="math inline">\(e\)</span>所做的假定。</p>
+<p>对于回归函数<span class="math inline">\(f\)</span>，一种情况是对<span
+class="math inline">\(f\)</span>的数学形式并无特殊的假定，这种情况称为<strong>非参数回归</strong>；另一种情况，是假定<span
+class="math inline">\(f\)</span>的数学形式已知，只是其中若干个参数未知，需要通过观察值去估计，这种情况称为<strong>参数回归</strong></p>
 <h3 id="线性回归">1.1.4 线性回归</h3>
-<p><strong>参数回归</strong>在应用上最重要且理论上发展得最完善的特例，是<span class="math inline">\(f\)</span>为线性函数的情形：</p>
-<p><span class="math display">\[f(x_1, …, x_p) = b_0 + b_{1}x_1 + … + b_{p}x_p\]</span></p>
-<p>这种情况称为<strong>线性回归</strong>，是今后讨论的主要对象，其限制看似较强，不过若自变量变化的范围不太大，而曲面<span class="math inline">\(y = f(x_1, …, x_p)\)</span>弯曲的程度也不过分，则在该较小的范围内，它可以近似地用一个平面（即线性函数）去代替，而不致引起过大的误差，其次有些形式上看似非线性的回归函数，可能通过自变量的代换转化为线性的。</p>
-<h3 id="随机误差e的方差sigma2">1.1.5 随机误差<span class="math inline">\(e\)</span>的方差<span class="math inline">\(\sigma^2\)</span></h3>
-<p>对随机误差<span class="math inline">\(e\)</span>，已假定其均值<span class="math inline">\(E(e) = 0\)</span>，<span class="math inline">\(e\)</span>的方差<span class="math inline">\(\sigma^2\)</span>是回归模型的一个重要参数，因为</p>
-<p><span class="math display">\[E[Y - f(X_1, …, X_p)]^2 = E(e^2) = Var(e) = \sigma^2，\]</span></p>
-<p><span class="math inline">\(\sigma^2\)</span>越小，用<span class="math inline">\(f(X_1, …, X_p)\)</span>逼近<span class="math inline">\(Y\)</span>所导致的均方误差就越小，回归方程也就越有用，<span class="math inline">\(\sigma^2\)</span>的大小由以下两点决定：</p>
+<p><strong>参数回归</strong>在应用上最重要且理论上发展得最完善的特例，是<span
+class="math inline">\(f\)</span>为线性函数的情形：</p>
+<p><span class="math display">\[f(x_1, …, x_p) = b_0 + b_{1}x_1 + … +
+b_{p}x_p\]</span></p>
+<p>这种情况称为<strong>线性回归</strong>，是今后讨论的主要对象，其限制看似较强，不过若自变量变化的范围不太大，而曲面<span
+class="math inline">\(y = f(x_1, …,
+x_p)\)</span>弯曲的程度也不过分，则在该较小的范围内，它可以近似地用一个平面（即线性函数）去代替，而不致引起过大的误差，其次有些形式上看似非线性的回归函数，可能通过自变量的代换转化为线性的。</p>
+<h3 id="随机误差e的方差sigma2">1.1.5 随机误差<span
+class="math inline">\(e\)</span>的方差<span
+class="math inline">\(\sigma^2\)</span></h3>
+<p>对随机误差<span class="math inline">\(e\)</span>，已假定其均值<span
+class="math inline">\(E(e) = 0\)</span>，<span
+class="math inline">\(e\)</span>的方差<span
+class="math inline">\(\sigma^2\)</span>是回归模型的一个重要参数，因为</p>
+<p><span class="math display">\[E[Y - f(X_1, …, X_p)]^2 = E(e^2) =
+Var(e) = \sigma^2，\]</span></p>
+<p><span class="math inline">\(\sigma^2\)</span>越小，用<span
+class="math inline">\(f(X_1, …, X_p)\)</span>逼近<span
+class="math inline">\(Y\)</span>所导致的均方误差就越小，回归方程也就越有用，<span
+class="math inline">\(\sigma^2\)</span>的大小由以下两点决定：</p>
 <ul>
-<li>在选择自变量时，是否把对因变量<span class="math inline">\(Y\)</span>有重要影响的那些都收进来了，如果是这样，则未被考虑的即作为随机误差去处理的那些因素，总的起作用就较小，因而<span class="math inline">\(\sigma^2\)</span>也就会较小；反之，若遗漏了，或因条件关系，使某些对<span class="math inline">\(Y\)</span>有重要影响的因素未被考虑，则其影响进入随机误差<span class="math inline">\(e\)</span>，将导致<span class="math inline">\(\sigma^2\)</span>增大</li>
+<li>在选择自变量时，是否把对因变量<span
+class="math inline">\(Y\)</span>有重要影响的那些都收进来了，如果是这样，则未被考虑的即作为随机误差去处理的那些因素，总的起作用就较小，因而<span
+class="math inline">\(\sigma^2\)</span>也就会较小；反之，若遗漏了，或因条件关系，使某些对<span
+class="math inline">\(Y\)</span>有重要影响的因素未被考虑，则其影响进入随机误差<span
+class="math inline">\(e\)</span>，将导致<span
+class="math inline">\(\sigma^2\)</span>增大</li>
 <li>回归函数的形式是否选得准</li>
 </ul>
 <p>在实用回归分析中，常假定误差服从正态分布，经验证明，对多数应用问题来说，这个假定是可以接受的，如果没有这个假定，则需要使用大样本方法</p>
 <h3 id="回归分析的应用">1.1.6 回归分析的应用</h3>
 <ul>
-<li>纯描述性的，只是对数据的一种总结，只涉及现有数据，不超出其外，用统计的语言来说，它并不企图对数据<span class="math inline">\((X_1, Y_1), … , (X_n, Y_n)\)</span>所来自的总体做任何推断</li>
+<li>纯描述性的，只是对数据的一种总结，只涉及现有数据，不超出其外，用统计的语言来说，它并不企图对数据<span
+class="math inline">\((X_1, Y_1), … , (X_n,
+Y_n)\)</span>所来自的总体做任何推断</li>
 <li>估计回归函数<span class="math inline">\(f\)</span></li>
-<li>预测，即在特定的自变量<span class="math inline">\((x_10, … , x_{p0})\)</span>之下，去预测因变量<span class="math inline">\(Y\)</span>将取的值<span class="math inline">\(y_0\)</span>
+<li>预测，即在特定的自变量<span class="math inline">\((x_10, … ,
+x_{p0})\)</span>之下，去预测因变量<span
+class="math inline">\(Y\)</span>将取的值<span
+class="math inline">\(y_0\)</span>
 <ul>
 <li>预测问题与回归函数虽然在实际上很不一样，但两者的解则一样</li>
-<li>预测的精度要比估计回归函数的精度差，因为在预测中，除了估计回归函数有一个误差外，还要再加上一个随机误差<span class="math inline">\(e_0\)</span></li>
+<li>预测的精度要比估计回归函数的精度差，因为在预测中，除了估计回归函数有一个误差外，还要再加上一个随机误差<span
+class="math inline">\(e_0\)</span></li>
 </ul></li>
-<li>控制，在这类应用中，不妨把自变量解释为输入值，因变量解释为输出值，目标是把输出值控制在给定的水平<span class="math inline">\(y_0\)</span>，若通过数据估计出了经验回归方程<span class="math inline">\(y = \hat{f}(x_1, …, x_n)\)</span>，则根据这方程可调整自变量<span class="math inline">\(X_1, …, X_p\)</span>的取值，以达到上述目的</li>
+<li>控制，在这类应用中，不妨把自变量解释为输入值，因变量解释为输出值，目标是把输出值控制在给定的水平<span
+class="math inline">\(y_0\)</span>，若通过数据估计出了经验回归方程<span
+class="math inline">\(y = \hat{f}(x_1, …,
+x_n)\)</span>，则根据这方程可调整自变量<span class="math inline">\(X_1,
+…, X_p\)</span>的取值，以达到上述目的</li>
 </ul>
 <h2 id="一元线性回归">1.2 一元线性回归</h2>
 <h2 id="多元线性回归">1.3 多元线性回归</h2>
@@ -400,7 +458,8 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1. 回归分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 回归分析的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90%E4%B8%8E%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 回归分析、相关分析与方差分析的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8F%82%E6%95%B0%E5%9B%9E%E5%BD%92%E4%B8%8E%E5%8F%82%E6%95%B0%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 非参数回归与参数回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.1.4 线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%AF%E5%B7%AEe%E7%9A%84%E6%96%B9%E5%B7%AEsigma2"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.1.5 随机误差\(e\)的方差\(\sigma^2\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.1.6 回归分析的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 一元线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 多元线性回归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 相关分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3. 方差分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text">4. 卡方分布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">5. 参考内容</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1. 回归分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 回归分析的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90%E4%B8%8E%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1
+回归分析、相关分析与方差分析的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8F%82%E6%95%B0%E5%9B%9E%E5%BD%92%E4%B8%8E%E5%8F%82%E6%95%B0%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 非参数回归与参数回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.1.4 线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%AF%E5%B7%AEe%E7%9A%84%E6%96%B9%E5%B7%AEsigma2"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.1.5 随机误差\(e\)的方差\(\sigma^2\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.1.6 回归分析的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 一元线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 多元线性回归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 相关分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3. 方差分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text">4. 卡方分布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">5. 参考内容</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -429,7 +488,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

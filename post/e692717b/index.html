@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -222,7 +222,9 @@ var _hmt = _hmt || [];
 <p>Datawhale组队学习中MySQL一周学习任务，通过一周组队自主学习，快速熟悉MySQL相关基础知识，并能掌握基本的数据查询操作方式</p>
 <h3 id="任务内容">1.1 任务内容</h3>
 <ul>
-<li>导入示例数据库，教程 <a target="_blank" rel="noopener" href="https://www.yiibai.com/mysql/how-to-load-sample-database-into-mysql-database-server.html">MySQL导入示例数据库 - MySQL教程™</a></li>
+<li>导入示例数据库，教程 <a
+target="_blank" rel="noopener" href="https://www.yiibai.com/mysql/how-to-load-sample-database-into-mysql-database-server.html">MySQL导入示例数据库
+- MySQL教程™</a></li>
 <li>SQL是什么？MySQL是什么？</li>
 <li>查询语句 SELECT FROM
 <ul>
@@ -256,8 +258,11 @@ var _hmt = _hmt || [];
 <li>SQL注释</li>
 <li>SQL代码规范
 <ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27466166">SQL编程格式的优化建议 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL style guide by Simon Holywell</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27466166">SQL编程格式的优化建议 -
+知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL style guide by Simon
+Holywell</a></li>
 </ul></li>
 </ul>
 <h2 id="导入示例数据库">2. 导入示例数据库</h2>
@@ -265,7 +270,8 @@ var _hmt = _hmt || [];
 <p>该任务提供了一个sql模板，我们更名为datawhale_day2_email.txt，并对其中建表部分，按照习惯进行了一定的修改</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS `email` (</span><br><span class="line">	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">	email VARCHAR(255) NOT NULL DEFAULT &#x27;&#x27;</span><br><span class="line">) Engine=InnoDB DEFAULT CHARSET utf8mb4;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>增加CREATE TABLE IF NOT EXISTS，这样只有当表不存在时才会去创建表</li>
+<li>增加CREATE TABLE IF NOT
+EXISTS，这样只有当表不存在时才会去创建表</li>
 <li>表名，字段名命名风格改为小写加下划线形式</li>
 <li>为主键id设置为主键，并使其值为默认自增变量auto_increment</li>
 <li>设置email字段不可为NULL，但为其添加默认值空字符串，这个习惯源于前公司的技术规定，所有字段都不可为空，但是可以设置默认值为空值</li>
@@ -289,7 +295,8 @@ var _hmt = _hmt || [];
 <h3 id="通过datagrip导入">2.2 通过DataGrip导入</h3>
 <p>此时我们先进入终端，删除此前通过datawhale_day2_email.txt生成的表和数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop table email;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+---------------------------+</span><br><span class="line">| Tables_in_datawhale_mysql |</span><br><span class="line">+---------------------------+</span><br><span class="line">| world                     |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
-<p>打开DataGrip后，右键数据库名，选择Run SQL Script，选择对应文件即可</p>
+<p>打开DataGrip后，右键数据库名，选择Run SQL
+Script，选择对应文件即可</p>
 <div data-align="center">
 <img src="/post/e692717b/datagrip_import_sql_01_20190228.png" class="">
 </div>
@@ -299,33 +306,91 @@ var _hmt = _hmt || [];
 </div>
 <h2 id="sql与mysql">3. SQL与MySQL</h2>
 <h3 id="sql是什么">3.1 SQL是什么</h3>
-<p>结构化查询语言(Structured Query Language)简称SQL(发音：/ˈes kjuː ˈel/ "S-Q-L")，是一种特殊目的的编程语言，是一种数据库查询和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/2317999">程序设计语言</a>，用于存取数据以及查询、更新和管理<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F">关系数据库系统</a>；同时也是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6/644744">数据库脚本文件</a>的扩展名。</p>
-<p>结构化查询语言是高级的非过程化编程语言，允许用户在高层<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1450">数据结构</a>上工作。它不要求用户指定对数据的存放方法，也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不同<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/215176">数据库系统</a>, 可以使用相同的结构化查询语言作为数据输入与管理的接口。结构化查询语言语句可以嵌套，这使它具有极大的灵活性和强大的功能。</p>
+<p>结构化查询语言(Structured Query Language)简称SQL(发音：/ˈes kjuː ˈel/
+"S-Q-L")，是一种特殊目的的编程语言，是一种数据库查询和<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/2317999">程序设计语言</a>，用于存取数据以及查询、更新和管理<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F">关系数据库系统</a>；同时也是<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6/644744">数据库脚本文件</a>的扩展名。</p>
+<p>结构化查询语言是高级的非过程化编程语言，允许用户在高层<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1450">数据结构</a>上工作。它不要求用户指定对数据的存放方法，也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不同<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/215176">数据库系统</a>,
+可以使用相同的结构化查询语言作为数据输入与管理的接口。结构化查询语言语句可以嵌套，这使它具有极大的灵活性和强大的功能。</p>
 <p>SQL包含三个部分：</p>
 <ul>
-<li>数据定义语言包含定义数据库及其对象的语句，例如表，<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/views.html">视图</a>，<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/triggers.html">触发器</a>，<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/stored-procedure.html">存储过程</a>等。</li>
-<li>数据操作语言包含允许您<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/update-data.html">更新</a>和<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/select-statement-query-data.html">查询数据</a>的语句。</li>
-<li>数据控制语言允许<a target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/grant.html">授予用户权限</a>访问数据库中特定数据的权限。</li>
+<li>数据定义语言包含定义数据库及其对象的语句，例如表，<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/views.html">视图</a>，<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/triggers.html">触发器</a>，<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/stored-procedure.html">存储过程</a>等。</li>
+<li>数据操作语言包含允许您<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/update-data.html">更新</a>和<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/select-statement-query-data.html">查询数据</a>的语句。</li>
+<li>数据控制语言允许<a
+target="_blank" rel="noopener" href="http://www.yiibai.com/mysql/grant.html">授予用户权限</a>访问数据库中特定数据的权限。</li>
 </ul>
 <h3 id="mysql是什么">3.2 MySQL是什么</h3>
-<p>MySQL is the world's most popular open source database. Whether you are a fast growing web property, technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance, scalable database applications.</p>
-<p><em>My</em>是MySQL的联合创始人 - <em>Monty Widenius</em> 的女儿的名字。MySQL是<em>My</em>和<em>SQL</em>的组合，这就是<em>MySQL</em>命名的由来。</p>
-<p>MySQL的官方网址： <a target="_blank" rel="noopener" href="http://www.mysql.com/">http://www.mysql.com/</a> ，MySQL的社区版本下载地址为： <a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/mysql/">http://dev.mysql.com/downloads/mysql/</a> 。</p>
-<p>MySQL是一个数据库管理系统，也是一个关系数据库。它是由<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=Oracle&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">Oracle</a>支持的开源软件。这意味着任何一个人都可以使用MySQL而不用支付一毛钱。 另外，如果需要，还可以更改其源代码或进行二次开发以满足您的需要。</p>
+<p>MySQL is the world's most popular open source database. Whether you
+are a fast growing web property, technology ISV or large enterprise,
+MySQL can cost-effectively help you deliver high performance, scalable
+database applications.</p>
+<p><em>My</em>是MySQL的联合创始人 - <em>Monty Widenius</em>
+的女儿的名字。MySQL是<em>My</em>和<em>SQL</em>的组合，这就是<em>MySQL</em>命名的由来。</p>
+<p>MySQL的官方网址： <a
+target="_blank" rel="noopener" href="http://www.mysql.com/">http://www.mysql.com/</a>
+，MySQL的社区版本下载地址为： <a
+target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/mysql/">http://dev.mysql.com/downloads/mysql/</a>
+。</p>
+<p>MySQL是一个数据库管理系统，也是一个关系数据库。它是由<a
+target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=Oracle&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">Oracle</a>支持的开源软件。这意味着任何一个人都可以使用MySQL而不用支付一毛钱。
+另外，如果需要，还可以更改其源代码或进行二次开发以满足您的需要。</p>
 <p>即使MySQL是开源软件，但是可以从Oracle购买商业许可证版本，以获得高级支持服务(特殊企业用户需要)。</p>
-<p>与其他数据库软件(如Oracle数据库或Microsoft SQL Server)相比，MySQL非常容易学习和掌握。</p>
-<p>MySQL可以在各种平台上运行UNIX，Linux，<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=Windows&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">Windows</a>等。可以将其安装在<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">服务器</a>甚至桌面系统上。 此外，MySQL是可靠，可扩展和快速的。</p>
+<p>与其他数据库软件(如Oracle数据库或Microsoft SQL
+Server)相比，MySQL非常容易学习和掌握。</p>
+<p>MySQL可以在各种平台上运行UNIX，Linux，<a
+target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=Windows&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">Windows</a>等。可以将其安装在<a
+target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">服务器</a>甚至桌面系统上。
+此外，MySQL是可靠，可扩展和快速的。</p>
 <h2 id="基本查询语句">4. 基本查询语句</h2>
 <h3 id="select-from">4.1 SELECT FROM</h3>
-<p>SQL语句是由简单的英语单词构成的，这些单词称为<strong>关键字</strong>，每个 SQL语句都是由一个或多个关键字构成的。最经常使用的SQL语句大概就是 SELECT语句了，它的用途是从一个或多个表中检索信息。</p>
+<p>SQL语句是由简单的英语单词构成的，这些单词称为<strong>关键字</strong>，每个
+SQL语句都是由一个或多个关键字构成的。最经常使用的SQL语句大概就是
+SELECT语句了，它的用途是从一个或多个表中检索信息。</p>
 <h4 id="select语法">4.1 SELECT语法</h4>
 <p>以下为MySQL5.7官方文档所给出的SELECT语法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    [ALL | DISTINCT | DISTINCTROW ]</span><br><span class="line">      [HIGH_PRIORITY]</span><br><span class="line">      [STRAIGHT_JOIN]</span><br><span class="line">      [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]</span><br><span class="line">      [SQL_CACHE | SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS]</span><br><span class="line">    select_expr [, select_expr ...]</span><br><span class="line">    [FROM table_references</span><br><span class="line">      [PARTITION partition_list]</span><br><span class="line">    [WHERE where_condition]</span><br><span class="line">    [GROUP BY &#123;col_name | expr | position&#125;</span><br><span class="line">      [ASC | DESC], ... [WITH ROLLUP]]</span><br><span class="line">    [HAVING where_condition]</span><br><span class="line">    [ORDER BY &#123;col_name | expr | position&#125;</span><br><span class="line">      [ASC | DESC], ...]</span><br><span class="line">    [LIMIT &#123;[offset,] row_count | row_count OFFSET offset&#125;]</span><br><span class="line">    [PROCEDURE procedure_name(argument_list)]</span><br><span class="line">    [INTO OUTFILE &#x27;file_name&#x27;</span><br><span class="line">        [CHARACTER SET charset_name]</span><br><span class="line">        export_options</span><br><span class="line">      | INTO DUMPFILE &#x27;file_name&#x27;</span><br><span class="line">      | INTO var_name [, var_name]]</span><br><span class="line">    [FOR UPDATE | LOCK IN SHARE MODE]]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Each <em>select_expr</em> indicates a column that you want to retrieve. There must be at least one <em>select_expr</em>.</li>
-<li><em>table_references</em> indicates the table or tables from which to retrieve rows. Its syntax is described in <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">Section 13.2.9.2, “JOIN Syntax”</a>.</li>
-<li><code>SELECT</code> supports explicit partition selection using the <code>PARTITION</code> with a list of partitions or subpartitions (or both) following the name of the table in a <em>table_reference</em> (see <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">Section 13.2.9.2, “JOIN Syntax”</a>). In this case, rows are selected only from the partitions listed, and any other partitions of the table are ignored. For more information and examples, see <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-selection.html">Section 22.5, “Partition Selection”</a>.<code>SELECT ... PARTITION</code> from tables using storage engines such as <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html"><code>MyISAM</code></a> that perform table-level locks (and thus partition locks) lock only the partitions or subpartitions named by the <code>PARTITION</code> option. For more information, see <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-limitations-locking.html">Section 22.6.4, “Partitioning and Locking”</a>.</li>
-<li>The <code>WHERE</code> clause, if given, indicates the condition or conditions that rows must satisfy to be selected. <em>where_condition</em> is an expression that evaluates to true for each row to be selected. The statement selects all rows if there is no <code>WHERE</code> clause. In the <code>WHERE</code> expression, you can use any of the functions and operators that MySQL supports, except for aggregate (summary) functions. See<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/expressions.html">Section 9.5, “Expressions”</a>, and <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/functions.html">Chapter 12, <em>Functions and Operators</em></a>.</li>
+<li>Each <em>select_expr</em> indicates a column that you want to
+retrieve. There must be at least one <em>select_expr</em>.</li>
+<li><em>table_references</em> indicates the table or tables from which
+to retrieve rows. Its syntax is described in <a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">Section
+13.2.9.2, “JOIN Syntax”</a>.</li>
+<li><code>SELECT</code> supports explicit partition selection using the
+<code>PARTITION</code> with a list of partitions or subpartitions (or
+both) following the name of the table in a <em>table_reference</em> (see
+<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">Section
+13.2.9.2, “JOIN Syntax”</a>). In this case, rows are selected only from
+the partitions listed, and any other partitions of the table are
+ignored. For more information and examples, see <a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-selection.html">Section
+22.5, “Partition Selection”</a>.<code>SELECT ... PARTITION</code> from
+tables using storage engines such as <a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html"><code>MyISAM</code></a>
+that perform table-level locks (and thus partition locks) lock only the
+partitions or subpartitions named by the <code>PARTITION</code> option.
+For more information, see <a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-limitations-locking.html">Section
+22.6.4, “Partitioning and Locking”</a>.</li>
+<li>The <code>WHERE</code> clause, if given, indicates the condition or
+conditions that rows must satisfy to be selected.
+<em>where_condition</em> is an expression that evaluates to true for
+each row to be selected. The statement selects all rows if there is no
+<code>WHERE</code> clause. In the <code>WHERE</code> expression, you can
+use any of the functions and operators that MySQL supports, except for
+aggregate (summary) functions. See<a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/expressions.html">Section
+9.5, “Expressions”</a>, and <a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/functions.html">Chapter
+12, <em>Functions and Operators</em></a>.</li>
 </ul>
 <h4 id="select语句解释">4.1.2 SELECT语句解释</h4>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select name, continent, gdp from world where gdp &gt; 100000000;</span><br><span class="line">+---------+-----------+-----------+</span><br><span class="line">| name    | continent | gdp       |</span><br><span class="line">+---------+-----------+-----------+</span><br><span class="line">| Algeria | Africa    | 188681000 |</span><br><span class="line">| Angola  | Africa    | 100990000 |</span><br><span class="line">+---------+-----------+-----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
@@ -355,9 +420,13 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT name, continent, gdp, CASE WHEN gdp &lt; 10000000 THEN &#x27;small&#x27; WHEN gdp &lt; 100000000 THEN &#x27;middle&#x27; ELSE &#x27;large&#x27; END AS description FROM world;</span><br><span class="line">+-------------+-----------+-----------+-------------+</span><br><span class="line">| name        | continent | gdp       | description |</span><br><span class="line">+-------------+-----------+-----------+-------------+</span><br><span class="line">| Afghanistan | Asia      |  20343000 | middle      |</span><br><span class="line">| Albania     | Europe    |  12960000 | middle      |</span><br><span class="line">| Algeria     | Africa    | 188681000 | large       |</span><br><span class="line">| Andorra     | Europe    |   3712000 | small       |</span><br><span class="line">| Angola      | Africa    | 100990000 | large       |</span><br><span class="line">| Test        | Africa    | 100990000 | large       |</span><br><span class="line">+-------------+-----------+-----------+-------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 <p>可以类似解释为</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">description = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> gdp &lt; <span class="number">10000000</span>:</span><br><span class="line">    description = <span class="string">&#x27;small&#x27;</span></span><br><span class="line"><span class="keyword">elif</span> gdp &lt; <span class="number">100000000</span>:</span><br><span class="line">    description = <span class="string">&#x27;middle&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    description = <span class="string">&#x27;large&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>需要注意的是，CASE后必须接着END来结束，不然会报错，如果没用ELSE，那么返回默认是NULL，此外上述用了个关键字AS，可以让列名更直观点，不然列名就会默认显示为“CASE WHEN gdp &lt; 10000000 THEN 'small' WHEN gdp &lt; 100000000 THEN 'middle' ELSE 'large' END”</p>
+<p>需要注意的是，CASE后必须接着END来结束，不然会报错，如果没用ELSE，那么返回默认是NULL，此外上述用了个关键字AS，可以让列名更直观点，不然列名就会默认显示为“CASE
+WHEN gdp &lt; 10000000 THEN 'small' WHEN gdp &lt; 100000000 THEN
+'middle' ELSE 'large' END”</p>
 <h3 id="筛选语句-where">4.2 筛选语句 WHERE</h3>
-<p>数据库表一般包含大量的数据，很少需要检索表中的所有行。通常只会根据特定操作或报告的需要提取表数据的子集。只检索所需数据需要指定搜索条件（search criteria），搜索条件也称为过滤条件（filter condition）。在SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤。</p>
+<p>数据库表一般包含大量的数据，很少需要检索表中的所有行。通常只会根据特定操作或报告的需要提取表数据的子集。只检索所需数据需要指定搜索条件（search
+criteria），搜索条件也称为过滤条件（filter
+condition）。在SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤。</p>
 <h4 id="操作符">4.2.1 操作符</h4>
 <table>
 <thead>
@@ -424,7 +493,9 @@ var _hmt = _hmt || [];
 <li>由字面值、通配符或两者组合构成的搜索条件</li>
 </ul></li>
 </ul>
-<p>通配符本身实际上是 SQL的WHERE子句中有特殊含义的字符，SQL支持几种通配符。为在搜索子句中使用通配符，必须使用LIKE操作符。LIKE指示 DBMS，后跟的搜索模式利用通配符匹配而不是简单的相等匹配进行比较。</p>
+<p>通配符本身实际上是
+SQL的WHERE子句中有特殊含义的字符，SQL支持几种通配符。为在搜索子句中使用通配符，必须使用LIKE操作符。LIKE指示
+DBMS，后跟的搜索模式利用通配符匹配而不是简单的相等匹配进行比较。</p>
 <p>最常使用的通配符是百分号（%）。在搜索串中，%表示任何字符出现任意次数，也可以出现0次</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT name, continent, gdp FROM world WHERE name LIKE &#x27;A%&#x27;;</span><br><span class="line">+-------------+-----------+-----------+</span><br><span class="line">| name        | continent | gdp       |</span><br><span class="line">+-------------+-----------+-----------+</span><br><span class="line">| Afghanistan | Asia      |  20343000 |</span><br><span class="line">| Albania     | Europe    |  12960000 |</span><br><span class="line">| Algeria     | Africa    | 188681000 |</span><br><span class="line">| Andorra     | Europe    |   3712000 |</span><br><span class="line">| Angola      | Africa    | 100990000 |</span><br><span class="line">+-------------+-----------+-----------+</span><br><span class="line">5 rows in set (0.07 sec)</span><br></pre></td></tr></table></figure>
 <p>表示匹配中name列以A开头的所有行</p>
@@ -437,10 +508,14 @@ var _hmt = _hmt || [];
 <h4 id="创建分组">4.3.1 创建分组</h4>
 <p>在使用GROUP BY子句前，需要知道一些重要的规定。</p>
 <ul>
-<li>GROUP BY子句可以包含任意数目的列，因而可以对分组进行嵌套，更细致地进行数据分组。</li>
-<li>如果在GROUP BY子句中嵌套了分组，数据将在最后指定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）。</li>
-<li>GROUP BY子句中列出的每一列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUPBY子句中指定相同的表达式。不能使用别名。</li>
-<li>大多数 SQL实现不允许GROUP BY列带有长度可变的数据类型（如文本或备注型字段）。</li>
+<li>GROUP
+BY子句可以包含任意数目的列，因而可以对分组进行嵌套，更细致地进行数据分组。</li>
+<li>如果在GROUP
+BY子句中嵌套了分组，数据将在最后指定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）。</li>
+<li>GROUP
+BY子句中列出的每一列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUPBY子句中指定相同的表达式。不能使用别名。</li>
+<li>大多数 SQL实现不允许GROUP
+BY列带有长度可变的数据类型（如文本或备注型字段）。</li>
 <li>除聚集计算语句外，SELECT语句中的每一列都必须在GROUPBY子句中给出。</li>
 <li>如果分组列中包含具有NULL值的行，则NULL将作为一个分组返回。如果列中有多行NULL值，它们将分为一组。</li>
 <li>GROUP BY子句必须出现在WHERE子句之后，ORDER BY子句之前</li>
@@ -448,17 +523,22 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT continent, COUNT(*) FROM world GROUP BY continent;</span><br><span class="line">+-----------+----------+</span><br><span class="line">| continent | COUNT(*) |</span><br><span class="line">+-----------+----------+</span><br><span class="line">| Africa    |        3 |</span><br><span class="line">| Asia      |        1 |</span><br><span class="line">| Europe    |        2 |</span><br><span class="line">+-----------+----------+</span><br><span class="line">3 rows in set (0.03 sec)</span><br></pre></td></tr></table></figure>
 <p>查找world表中，按continent字段分组，以及对应的行数</p>
 <h4 id="过滤分组">4.3.2 过滤分组</h4>
-<p>除了能用 GROUP BY分组数据外，SQL还允许过滤分组，规定包括哪些分组，排除哪些分组。</p>
-<p>WHERE过滤指定的是行而不是分组，事实上，WHERE没有分组的概念。那么，不使用 WHERE使用什么呢？SQL为此提供了另一个子句，就是HAVING子句，HAVING非常类似于WHERE。事实上，目前为止所学过的所有类型的WHERE子句都可以用HAVING来替代。唯一的差别是，WHERE过滤行，而HAVING过滤分组。</p>
+<p>除了能用 GROUP
+BY分组数据外，SQL还允许过滤分组，规定包括哪些分组，排除哪些分组。</p>
+<p>WHERE过滤指定的是行而不是分组，事实上，WHERE没有分组的概念。那么，不使用
+WHERE使用什么呢？SQL为此提供了另一个子句，就是HAVING子句，HAVING非常类似于WHERE。事实上，目前为止所学过的所有类型的WHERE子句都可以用HAVING来替代。唯一的差别是，WHERE过滤行，而HAVING过滤分组。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT continent, COUNT(*) FROM world GROUP BY continent HAVING COUNT(*) &gt; 1;</span><br><span class="line">+-----------+----------+</span><br><span class="line">| continent | COUNT(*) |</span><br><span class="line">+-----------+----------+</span><br><span class="line">| Africa    |        3 |</span><br><span class="line">| Europe    |        2 |</span><br><span class="line">+-----------+----------+</span><br><span class="line">2 rows in set (0.05 sec)</span><br></pre></td></tr></table></figure>
 <p>查找world表中，按continent字段分组，以及对应的行数，并过滤只显示对应条数大于1的数据</p>
-<p><strong>说明</strong>：HAVING 和 WHERE 的差别这里有另一种理解方法，WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响 HAVING子句中基于这些值过滤掉的分组。</p>
+<p><strong>说明</strong>：HAVING 和 WHERE
+的差别这里有另一种理解方法，WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响
+HAVING子句中基于这些值过滤掉的分组。</p>
 <h3 id="排序语句-order-by">4.4 排序语句 ORDER BY</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT continent, COUNT(*) FROM world GROUP BY continent HAVING COUNT(*) &gt; 1 ORDER BY COUNT(*) DESC;</span><br><span class="line">+-----------+----------+</span><br><span class="line">| continent | COUNT(*) |</span><br><span class="line">+-----------+----------+</span><br><span class="line">| Africa    |        3 |</span><br><span class="line">| Europe    |        2 |</span><br><span class="line">+-----------+----------+</span><br><span class="line">2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
 <p>在前一条过滤的基础上，按照对应行数逆序排序，DESC表示逆序，默认不加为正序</p>
 <h3 id="函数">4.5 函数</h3>
 <p>与大多数其他计算机语言一样，SQL也可以用函数来处理数据。函数一般是在数据上执行的，为数据的转换和处理提供了方便。</p>
-<p>与 SQL语句不一样，SQL函数不是可移植的。这意味着为特定 SQL实现编写的代码在其他实现中可能不正常。</p>
+<p>与 SQL语句不一样，SQL函数不是可移植的。这意味着为特定
+SQL实现编写的代码在其他实现中可能不正常。</p>
 <p>大多数 SQL实现支持以下类型的函数，</p>
 <ul>
 <li>用于处理文本字符串（如删除或填充值，转换值为大写或小写）的文本函数。</li>
@@ -480,231 +560,320 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ascii"><code>ASCII()</code></a></td>
-<td style="text-align: left;">Return numeric value of left-most character</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ascii"><code>ASCII()</code></a></td>
+<td style="text-align: left;">Return numeric value of left-most
+character</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_bin"><code>BIN()</code></a></td>
-<td style="text-align: left;">Return a string containing binary representation of a number</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_bin"><code>BIN()</code></a></td>
+<td style="text-align: left;">Return a string containing binary
+representation of a number</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_bit-length"><code>BIT_LENGTH()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_bit-length"><code>BIT_LENGTH()</code></a></td>
 <td style="text-align: left;">Return length of argument in bits</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_char"><code>CHAR()</code></a></td>
-<td style="text-align: left;">Return the character for each integer passed</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_char"><code>CHAR()</code></a></td>
+<td style="text-align: left;">Return the character for each integer
+passed</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_char-length"><code>CHAR_LENGTH()</code></a></td>
-<td style="text-align: left;">Return number of characters in argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_char-length"><code>CHAR_LENGTH()</code></a></td>
+<td style="text-align: left;">Return number of characters in
+argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_character-length"><code>CHARACTER_LENGTH()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_character-length"><code>CHARACTER_LENGTH()</code></a></td>
 <td style="text-align: left;">Synonym for CHAR_LENGTH()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_concat"><code>CONCAT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_concat"><code>CONCAT()</code></a></td>
 <td style="text-align: left;">Return concatenated string</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_concat-ws"><code>CONCAT_WS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_concat-ws"><code>CONCAT_WS()</code></a></td>
 <td style="text-align: left;">Return concatenate with separator</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_elt"><code>ELT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_elt"><code>ELT()</code></a></td>
 <td style="text-align: left;">Return string at index number</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_export-set"><code>EXPORT_SET()</code></a></td>
-<td style="text-align: left;">Return a string such that for every bit set in the value bits, you get an on string and for every unset bit, you get an off string</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_export-set"><code>EXPORT_SET()</code></a></td>
+<td style="text-align: left;">Return a string such that for every bit
+set in the value bits, you get an on string and for every unset bit, you
+get an off string</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_field"><code>FIELD()</code></a></td>
-<td style="text-align: left;">Index (position) of first argument in subsequent arguments</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_field"><code>FIELD()</code></a></td>
+<td style="text-align: left;">Index (position) of first argument in
+subsequent arguments</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_find-in-set"><code>FIND_IN_SET()</code></a></td>
-<td style="text-align: left;">Index (position) of first argument within second argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_find-in-set"><code>FIND_IN_SET()</code></a></td>
+<td style="text-align: left;">Index (position) of first argument within
+second argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_format"><code>FORMAT()</code></a></td>
-<td style="text-align: left;">Return a number formatted to specified number of decimal places</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_format"><code>FORMAT()</code></a></td>
+<td style="text-align: left;">Return a number formatted to specified
+number of decimal places</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_from-base64"><code>FROM_BASE64()</code></a></td>
-<td style="text-align: left;">Decode base64 encoded string and return result</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_from-base64"><code>FROM_BASE64()</code></a></td>
+<td style="text-align: left;">Decode base64 encoded string and return
+result</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_hex"><code>HEX()</code></a></td>
-<td style="text-align: left;">Hexadecimal representation of decimal or string value</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_hex"><code>HEX()</code></a></td>
+<td style="text-align: left;">Hexadecimal representation of decimal or
+string value</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_insert"><code>INSERT()</code></a></td>
-<td style="text-align: left;">Insert substring at specified position up to specified number of characters</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_insert"><code>INSERT()</code></a></td>
+<td style="text-align: left;">Insert substring at specified position up
+to specified number of characters</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_instr"><code>INSTR()</code></a></td>
-<td style="text-align: left;">Return the index of the first occurrence of substring</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_instr"><code>INSTR()</code></a></td>
+<td style="text-align: left;">Return the index of the first occurrence
+of substring</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lcase"><code>LCASE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lcase"><code>LCASE()</code></a></td>
 <td style="text-align: left;">Synonym for LOWER()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_left"><code>LEFT()</code></a></td>
-<td style="text-align: left;">Return the leftmost number of characters as specified</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_left"><code>LEFT()</code></a></td>
+<td style="text-align: left;">Return the leftmost number of characters
+as specified</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_length"><code>LENGTH()</code></a></td>
-<td style="text-align: left;">Return the length of a string in bytes</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_length"><code>LENGTH()</code></a></td>
+<td style="text-align: left;">Return the length of a string in
+bytes</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#operator_like"><code>LIKE</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#operator_like"><code>LIKE</code></a></td>
 <td style="text-align: left;">Simple pattern matching</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_load-file"><code>LOAD_FILE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_load-file"><code>LOAD_FILE()</code></a></td>
 <td style="text-align: left;">Load the named file</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_locate"><code>LOCATE()</code></a></td>
-<td style="text-align: left;">Return the position of the first occurrence of substring</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_locate"><code>LOCATE()</code></a></td>
+<td style="text-align: left;">Return the position of the first
+occurrence of substring</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lower"><code>LOWER()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lower"><code>LOWER()</code></a></td>
 <td style="text-align: left;">Return the argument in lowercase</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lpad"><code>LPAD()</code></a></td>
-<td style="text-align: left;">Return the string argument, left-padded with the specified string</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_lpad"><code>LPAD()</code></a></td>
+<td style="text-align: left;">Return the string argument, left-padded
+with the specified string</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ltrim"><code>LTRIM()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ltrim"><code>LTRIM()</code></a></td>
 <td style="text-align: left;">Remove leading spaces</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_make-set"><code>MAKE_SET()</code></a></td>
-<td style="text-align: left;">Return a set of comma-separated strings that have the corresponding bit in bits set</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_make-set"><code>MAKE_SET()</code></a></td>
+<td style="text-align: left;">Return a set of comma-separated strings
+that have the corresponding bit in bits set</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html#function_match"><code>MATCH</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html#function_match"><code>MATCH</code></a></td>
 <td style="text-align: left;">Perform full-text search</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_mid"><code>MID()</code></a></td>
-<td style="text-align: left;">Return a substring starting from the specified position</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_mid"><code>MID()</code></a></td>
+<td style="text-align: left;">Return a substring starting from the
+specified position</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#operator_not-like"><code>NOT LIKE</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#operator_not-like"><code>NOT LIKE</code></a></td>
 <td style="text-align: left;">Negation of simple pattern matching</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_not-regexp"><code>NOT REGEXP</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_not-regexp"><code>NOT REGEXP</code></a></td>
 <td style="text-align: left;">Negation of REGEXP</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_oct"><code>OCT()</code></a></td>
-<td style="text-align: left;">Return a string containing octal representation of a number</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_oct"><code>OCT()</code></a></td>
+<td style="text-align: left;">Return a string containing octal
+representation of a number</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_octet-length"><code>OCTET_LENGTH()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_octet-length"><code>OCTET_LENGTH()</code></a></td>
 <td style="text-align: left;">Synonym for LENGTH()</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ord"><code>ORD()</code></a></td>
-<td style="text-align: left;">Return character code for leftmost character of the argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ord"><code>ORD()</code></a></td>
+<td style="text-align: left;">Return character code for leftmost
+character of the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_position"><code>POSITION()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_position"><code>POSITION()</code></a></td>
 <td style="text-align: left;">Synonym for LOCATE()</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_quote"><code>QUOTE()</code></a></td>
-<td style="text-align: left;">Escape the argument for use in an SQL statement</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_quote"><code>QUOTE()</code></a></td>
+<td style="text-align: left;">Escape the argument for use in an SQL
+statement</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_regexp"><code>REGEXP</code></a></td>
-<td style="text-align: left;">Whether string matches regular expression</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_regexp"><code>REGEXP</code></a></td>
+<td style="text-align: left;">Whether string matches regular
+expression</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_repeat"><code>REPEAT()</code></a></td>
-<td style="text-align: left;">Repeat a string the specified number of times</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_repeat"><code>REPEAT()</code></a></td>
+<td style="text-align: left;">Repeat a string the specified number of
+times</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_replace"><code>REPLACE()</code></a></td>
-<td style="text-align: left;">Replace occurrences of a specified string</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_replace"><code>REPLACE()</code></a></td>
+<td style="text-align: left;">Replace occurrences of a specified
+string</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_reverse"><code>REVERSE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_reverse"><code>REVERSE()</code></a></td>
 <td style="text-align: left;">Reverse the characters in a string</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_right"><code>RIGHT()</code></a></td>
-<td style="text-align: left;">Return the specified rightmost number of characters</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_right"><code>RIGHT()</code></a></td>
+<td style="text-align: left;">Return the specified rightmost number of
+characters</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_regexp"><code>RLIKE</code></a></td>
-<td style="text-align: left;">Whether string matches regular expression</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/regexp.html#operator_regexp"><code>RLIKE</code></a></td>
+<td style="text-align: left;">Whether string matches regular
+expression</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_rpad"><code>RPAD()</code></a></td>
-<td style="text-align: left;">Append string the specified number of times</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_rpad"><code>RPAD()</code></a></td>
+<td style="text-align: left;">Append string the specified number of
+times</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_rtrim"><code>RTRIM()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_rtrim"><code>RTRIM()</code></a></td>
 <td style="text-align: left;">Remove trailing spaces</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_soundex"><code>SOUNDEX()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_soundex"><code>SOUNDEX()</code></a></td>
 <td style="text-align: left;">Return a soundex string</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#operator_sounds-like"><code>SOUNDS LIKE</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#operator_sounds-like"><code>SOUNDS LIKE</code></a></td>
 <td style="text-align: left;">Compare sounds</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_space"><code>SPACE()</code></a></td>
-<td style="text-align: left;">Return a string of the specified number of spaces</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_space"><code>SPACE()</code></a></td>
+<td style="text-align: left;">Return a string of the specified number of
+spaces</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#function_strcmp"><code>STRCMP()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#function_strcmp"><code>STRCMP()</code></a></td>
 <td style="text-align: left;">Compare two strings</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substr"><code>SUBSTR()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substr"><code>SUBSTR()</code></a></td>
 <td style="text-align: left;">Return the substring as specified</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substring"><code>SUBSTRING()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substring"><code>SUBSTRING()</code></a></td>
 <td style="text-align: left;">Return the substring as specified</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substring-index"><code>SUBSTRING_INDEX()</code></a></td>
-<td style="text-align: left;">Return a substring from a string before the specified number of occurrences of the delimiter</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substring-index"><code>SUBSTRING_INDEX()</code></a></td>
+<td style="text-align: left;">Return a substring from a string before
+the specified number of occurrences of the delimiter</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_to-base64"><code>TO_BASE64()</code></a></td>
-<td style="text-align: left;">Return the argument converted to a base-64 string</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_to-base64"><code>TO_BASE64()</code></a></td>
+<td style="text-align: left;">Return the argument converted to a base-64
+string</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_trim"><code>TRIM()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_trim"><code>TRIM()</code></a></td>
 <td style="text-align: left;">Remove leading and trailing spaces</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ucase"><code>UCASE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_ucase"><code>UCASE()</code></a></td>
 <td style="text-align: left;">Synonym for UPPER()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_unhex"><code>UNHEX()</code></a></td>
-<td style="text-align: left;">Return a string containing hex representation of a number</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_unhex"><code>UNHEX()</code></a></td>
+<td style="text-align: left;">Return a string containing hex
+representation of a number</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_upper"><code>UPPER()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_upper"><code>UPPER()</code></a></td>
 <td style="text-align: left;">Convert to uppercase</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_weight-string"><code>WEIGHT_STRING()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_weight-string"><code>WEIGHT_STRING()</code></a></td>
 <td style="text-align: left;">Return the weight string for a string</td>
 </tr>
 </tbody>
@@ -723,249 +892,338 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_adddate"><code>ADDDATE()</code></a></td>
-<td style="text-align: left;">Add time values (intervals) to a date value</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_adddate"><code>ADDDATE()</code></a></td>
+<td style="text-align: left;">Add time values (intervals) to a date
+value</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_addtime"><code>ADDTIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_addtime"><code>ADDTIME()</code></a></td>
 <td style="text-align: left;">Add time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz"><code>CONVERT_TZ()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz"><code>CONVERT_TZ()</code></a></td>
 <td style="text-align: left;">Convert from one time zone to another</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_curdate"><code>CURDATE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_curdate"><code>CURDATE()</code></a></td>
 <td style="text-align: left;">Return the current date</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-date"><code>CURRENT_DATE()</code>, <code>CURRENT_DATE</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-date"><code>CURRENT_DATE()</code>,
+<code>CURRENT_DATE</code></a></td>
 <td style="text-align: left;">Synonyms for CURDATE()</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-time"><code>CURRENT_TIME()</code>, <code>CURRENT_TIME</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-time"><code>CURRENT_TIME()</code>,
+<code>CURRENT_TIME</code></a></td>
 <td style="text-align: left;">Synonyms for CURTIME()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-timestamp"><code>CURRENT_TIMESTAMP()</code>, <code>CURRENT_TIMESTAMP</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_current-timestamp"><code>CURRENT_TIMESTAMP()</code>,
+<code>CURRENT_TIMESTAMP</code></a></td>
 <td style="text-align: left;">Synonyms for NOW()</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_curtime"><code>CURTIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_curtime"><code>CURTIME()</code></a></td>
 <td style="text-align: left;">Return the current time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date"><code>DATE()</code></a></td>
-<td style="text-align: left;">Extract the date part of a date or datetime expression</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date"><code>DATE()</code></a></td>
+<td style="text-align: left;">Extract the date part of a date or
+datetime expression</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-add"><code>DATE_ADD()</code></a></td>
-<td style="text-align: left;">Add time values (intervals) to a date value</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-add"><code>DATE_ADD()</code></a></td>
+<td style="text-align: left;">Add time values (intervals) to a date
+value</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-format"><code>DATE_FORMAT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-format"><code>DATE_FORMAT()</code></a></td>
 <td style="text-align: left;">Format date as specified</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-sub"><code>DATE_SUB()</code></a></td>
-<td style="text-align: left;">Subtract a time value (interval) from a date</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-sub"><code>DATE_SUB()</code></a></td>
+<td style="text-align: left;">Subtract a time value (interval) from a
+date</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff"><code>DATEDIFF()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff"><code>DATEDIFF()</code></a></td>
 <td style="text-align: left;">Subtract two dates</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_day"><code>DAY()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_day"><code>DAY()</code></a></td>
 <td style="text-align: left;">Synonym for DAYOFMONTH()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayname"><code>DAYNAME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayname"><code>DAYNAME()</code></a></td>
 <td style="text-align: left;">Return the name of the weekday</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofmonth"><code>DAYOFMONTH()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofmonth"><code>DAYOFMONTH()</code></a></td>
 <td style="text-align: left;">Return the day of the month (0-31)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofweek"><code>DAYOFWEEK()</code></a></td>
-<td style="text-align: left;">Return the weekday index of the argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofweek"><code>DAYOFWEEK()</code></a></td>
+<td style="text-align: left;">Return the weekday index of the
+argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofyear"><code>DAYOFYEAR()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_dayofyear"><code>DAYOFYEAR()</code></a></td>
 <td style="text-align: left;">Return the day of the year (1-366)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_extract"><code>EXTRACT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_extract"><code>EXTRACT()</code></a></td>
 <td style="text-align: left;">Extract part of a date</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_from-days"><code>FROM_DAYS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_from-days"><code>FROM_DAYS()</code></a></td>
 <td style="text-align: left;">Convert a day number to a date</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_from-unixtime"><code>FROM_UNIXTIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_from-unixtime"><code>FROM_UNIXTIME()</code></a></td>
 <td style="text-align: left;">Format Unix timestamp as a date</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_get-format"><code>GET_FORMAT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_get-format"><code>GET_FORMAT()</code></a></td>
 <td style="text-align: left;">Return a date format string</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_hour"><code>HOUR()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_hour"><code>HOUR()</code></a></td>
 <td style="text-align: left;">Extract the hour</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_last-day"><code>LAST_DAY</code></a></td>
-<td style="text-align: left;">Return the last day of the month for the argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_last-day"><code>LAST_DAY</code></a></td>
+<td style="text-align: left;">Return the last day of the month for the
+argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_localtime"><code>LOCALTIME()</code>, <code>LOCALTIME</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_localtime"><code>LOCALTIME()</code>,
+<code>LOCALTIME</code></a></td>
 <td style="text-align: left;">Synonym for NOW()</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_localtimestamp"><code>LOCALTIMESTAMP</code>, <code>LOCALTIMESTAMP()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_localtimestamp"><code>LOCALTIMESTAMP</code>,
+<code>LOCALTIMESTAMP()</code></a></td>
 <td style="text-align: left;">Synonym for NOW()</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_makedate"><code>MAKEDATE()</code></a></td>
-<td style="text-align: left;">Create a date from the year and day of year</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_makedate"><code>MAKEDATE()</code></a></td>
+<td style="text-align: left;">Create a date from the year and day of
+year</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_maketime"><code>MAKETIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_maketime"><code>MAKETIME()</code></a></td>
 <td style="text-align: left;">Create time from hour, minute, second</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_microsecond"><code>MICROSECOND()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_microsecond"><code>MICROSECOND()</code></a></td>
 <td style="text-align: left;">Return the microseconds from argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_minute"><code>MINUTE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_minute"><code>MINUTE()</code></a></td>
 <td style="text-align: left;">Return the minute from the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_month"><code>MONTH()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_month"><code>MONTH()</code></a></td>
 <td style="text-align: left;">Return the month from the date passed</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_monthname"><code>MONTHNAME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_monthname"><code>MONTHNAME()</code></a></td>
 <td style="text-align: left;">Return the name of the month</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_now"><code>NOW()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_now"><code>NOW()</code></a></td>
 <td style="text-align: left;">Return the current date and time</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_period-add"><code>PERIOD_ADD()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_period-add"><code>PERIOD_ADD()</code></a></td>
 <td style="text-align: left;">Add a period to a year-month</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_period-diff"><code>PERIOD_DIFF()</code></a></td>
-<td style="text-align: left;">Return the number of months between periods</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_period-diff"><code>PERIOD_DIFF()</code></a></td>
+<td style="text-align: left;">Return the number of months between
+periods</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_quarter"><code>QUARTER()</code></a></td>
-<td style="text-align: left;">Return the quarter from a date argument</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_quarter"><code>QUARTER()</code></a></td>
+<td style="text-align: left;">Return the quarter from a date
+argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_sec-to-time"><code>SEC_TO_TIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_sec-to-time"><code>SEC_TO_TIME()</code></a></td>
 <td style="text-align: left;">Converts seconds to 'HH:MM:SS' format</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_second"><code>SECOND()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_second"><code>SECOND()</code></a></td>
 <td style="text-align: left;">Return the second (0-59)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_str-to-date"><code>STR_TO_DATE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_str-to-date"><code>STR_TO_DATE()</code></a></td>
 <td style="text-align: left;">Convert a string to a date</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_subdate"><code>SUBDATE()</code></a></td>
-<td style="text-align: left;">Synonym for DATE_SUB() when invoked with three arguments</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_subdate"><code>SUBDATE()</code></a></td>
+<td style="text-align: left;">Synonym for DATE_SUB() when invoked with
+three arguments</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_subtime"><code>SUBTIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_subtime"><code>SUBTIME()</code></a></td>
 <td style="text-align: left;">Subtract times</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_sysdate"><code>SYSDATE()</code></a></td>
-<td style="text-align: left;">Return the time at which the function executes</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_sysdate"><code>SYSDATE()</code></a></td>
+<td style="text-align: left;">Return the time at which the function
+executes</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time"><code>TIME()</code></a></td>
-<td style="text-align: left;">Extract the time portion of the expression passed</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time"><code>TIME()</code></a></td>
+<td style="text-align: left;">Extract the time portion of the expression
+passed</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time-format"><code>TIME_FORMAT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time-format"><code>TIME_FORMAT()</code></a></td>
 <td style="text-align: left;">Format as time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time-to-sec"><code>TIME_TO_SEC()</code></a></td>
-<td style="text-align: left;">Return the argument converted to seconds</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_time-to-sec"><code>TIME_TO_SEC()</code></a></td>
+<td style="text-align: left;">Return the argument converted to
+seconds</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timediff"><code>TIMEDIFF()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timediff"><code>TIMEDIFF()</code></a></td>
 <td style="text-align: left;">Subtract time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestamp"><code>TIMESTAMP()</code></a></td>
-<td style="text-align: left;">With a single argument, this function returns the date or datetime expression; with two arguments, the sum of the arguments</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestamp"><code>TIMESTAMP()</code></a></td>
+<td style="text-align: left;">With a single argument, this function
+returns the date or datetime expression; with two arguments, the sum of
+the arguments</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestampadd"><code>TIMESTAMPADD()</code></a></td>
-<td style="text-align: left;">Add an interval to a datetime expression</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestampadd"><code>TIMESTAMPADD()</code></a></td>
+<td style="text-align: left;">Add an interval to a datetime
+expression</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestampdiff"><code>TIMESTAMPDIFF()</code></a></td>
-<td style="text-align: left;">Subtract an interval from a datetime expression</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_timestampdiff"><code>TIMESTAMPDIFF()</code></a></td>
+<td style="text-align: left;">Subtract an interval from a datetime
+expression</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_to-days"><code>TO_DAYS()</code></a></td>
-<td style="text-align: left;">Return the date argument converted to days</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_to-days"><code>TO_DAYS()</code></a></td>
+<td style="text-align: left;">Return the date argument converted to
+days</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_to-seconds"><code>TO_SECONDS()</code></a></td>
-<td style="text-align: left;">Return the date or datetime argument converted to seconds since Year 0</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_to-seconds"><code>TO_SECONDS()</code></a></td>
+<td style="text-align: left;">Return the date or datetime argument
+converted to seconds since Year 0</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_unix-timestamp"><code>UNIX_TIMESTAMP()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_unix-timestamp"><code>UNIX_TIMESTAMP()</code></a></td>
 <td style="text-align: left;">Return a Unix timestamp</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-date"><code>UTC_DATE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-date"><code>UTC_DATE()</code></a></td>
 <td style="text-align: left;">Return the current UTC date</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-time"><code>UTC_TIME()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-time"><code>UTC_TIME()</code></a></td>
 <td style="text-align: left;">Return the current UTC time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-timestamp"><code>UTC_TIMESTAMP()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_utc-timestamp"><code>UTC_TIMESTAMP()</code></a></td>
 <td style="text-align: left;">Return the current UTC date and time</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_week"><code>WEEK()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_week"><code>WEEK()</code></a></td>
 <td style="text-align: left;">Return the week number</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_weekday"><code>WEEKDAY()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_weekday"><code>WEEKDAY()</code></a></td>
 <td style="text-align: left;">Return the weekday index</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_weekofyear"><code>WEEKOFYEAR()</code></a></td>
-<td style="text-align: left;">Return the calendar week of the date (1-53)</td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_weekofyear"><code>WEEKOFYEAR()</code></a></td>
+<td style="text-align: left;">Return the calendar week of the date
+(1-53)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_year"><code>YEAR()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_year"><code>YEAR()</code></a></td>
 <td style="text-align: left;">Return the year</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_yearweek"><code>YEARWEEK()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_yearweek"><code>YEARWEEK()</code></a></td>
 <td style="text-align: left;">Return the year and week</td>
 </tr>
 </tbody>
 </table>
 <h4 id="数值函数">4.5.3 数值函数</h4>
 <table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Name</th>
@@ -974,123 +1232,154 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_abs"><code>ABS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_abs"><code>ABS()</code></a></td>
 <td>Return the absolute value</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_acos"><code>ACOS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_acos"><code>ACOS()</code></a></td>
 <td>Return the arc cosine</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_asin"><code>ASIN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_asin"><code>ASIN()</code></a></td>
 <td>Return the arc sine</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_atan"><code>ATAN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_atan"><code>ATAN()</code></a></td>
 <td>Return the arc tangent</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_atan2"><code>ATAN2()</code>, <code>ATAN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_atan2"><code>ATAN2()</code>,
+<code>ATAN()</code></a></td>
 <td>Return the arc tangent of the two arguments</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ceil"><code>CEIL()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ceil"><code>CEIL()</code></a></td>
 <td>Return the smallest integer value not less than the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ceiling"><code>CEILING()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ceiling"><code>CEILING()</code></a></td>
 <td>Return the smallest integer value not less than the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_conv"><code>CONV()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_conv"><code>CONV()</code></a></td>
 <td>Convert numbers between different number bases</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_cos"><code>COS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_cos"><code>COS()</code></a></td>
 <td>Return the cosine</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_cot"><code>COT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_cot"><code>COT()</code></a></td>
 <td>Return the cotangent</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_crc32"><code>CRC32()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_crc32"><code>CRC32()</code></a></td>
 <td>Compute a cyclic redundancy check value</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_degrees"><code>DEGREES()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_degrees"><code>DEGREES()</code></a></td>
 <td>Convert radians to degrees</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_exp"><code>EXP()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_exp"><code>EXP()</code></a></td>
 <td>Raise to the power of</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_floor"><code>FLOOR()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_floor"><code>FLOOR()</code></a></td>
 <td>Return the largest integer value not greater than the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ln"><code>LN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_ln"><code>LN()</code></a></td>
 <td>Return the natural logarithm of the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log"><code>LOG()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log"><code>LOG()</code></a></td>
 <td>Return the natural logarithm of the first argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log10"><code>LOG10()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log10"><code>LOG10()</code></a></td>
 <td>Return the base-10 logarithm of the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log2"><code>LOG2()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_log2"><code>LOG2()</code></a></td>
 <td>Return the base-2 logarithm of the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_mod"><code>MOD()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_mod"><code>MOD()</code></a></td>
 <td>Return the remainder</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_pi"><code>PI()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_pi"><code>PI()</code></a></td>
 <td>Return the value of pi</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_pow"><code>POW()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_pow"><code>POW()</code></a></td>
 <td>Return the argument raised to the specified power</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_power"><code>POWER()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_power"><code>POWER()</code></a></td>
 <td>Return the argument raised to the specified power</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_radians"><code>RADIANS()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_radians"><code>RADIANS()</code></a></td>
 <td>Return argument converted to radians</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_rand"><code>RAND()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_rand"><code>RAND()</code></a></td>
 <td>Return a random floating-point value</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_round"><code>ROUND()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_round"><code>ROUND()</code></a></td>
 <td>Round the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sign"><code>SIGN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sign"><code>SIGN()</code></a></td>
 <td>Return the sign of the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sin"><code>SIN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sin"><code>SIN()</code></a></td>
 <td>Return the sine of the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sqrt"><code>SQRT()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_sqrt"><code>SQRT()</code></a></td>
 <td>Return the square root of the argument</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_tan"><code>TAN()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_tan"><code>TAN()</code></a></td>
 <td>Return the tangent of the argument</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_truncate"><code>TRUNCATE()</code></a></td>
+<td style="text-align: center;"><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/mathematical-functions.html#function_truncate"><code>TRUNCATE()</code></a></td>
 <td>Truncate to specified number of decimal places</td>
 </tr>
 </tbody>
@@ -1128,11 +1417,13 @@ var _hmt = _hmt || [];
 <li>避免UNION语句与临时表</li>
 </ul>
 <h3 id="推荐工具">6.4 推荐工具</h3>
-<p>可以使用<a target="_blank" rel="noopener" href="https://www.sqlinform.com/">SQLinForm</a>来转换自己的SQL格式</p>
+<p>可以使用<a
+target="_blank" rel="noopener" href="https://www.sqlinform.com/">SQLinForm</a>来转换自己的SQL格式</p>
 <h2 id="作业">7. 作业</h2>
 <h3 id="作业一">7.1 作业一</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">项目一：查找重复的电子邮箱（难度：简单）</span><br><span class="line">创建 email表，并插入如下三行数据</span><br><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br><span class="line"></span><br><span class="line">编写一个 SQL 查询，查找 email 表中所有重复的电子邮箱。</span><br><span class="line">根据以上输入，你的查询应返回以下结果：</span><br><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br><span class="line">说明：所有电子邮箱都是小写字母。</span><br></pre></td></tr></table></figure>
-<p>分析题意，即选取存在重复email的数据，可以先将email分组，然后找出对应数据多于1条的数据，也就是GROUP BY 与 HAVING 语句的组合使用</p>
+<p>分析题意，即选取存在重复email的数据，可以先将email分组，然后找出对应数据多于1条的数据，也就是GROUP
+BY 与 HAVING 语句的组合使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT email FROM email GROUP BY email HAVING COUNT(*) &gt; 1;</span><br><span class="line">+---------+</span><br><span class="line">| email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
 <h3 id="作业二">7.2 作业二</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">项目二：查找大国（难度：简单）</span><br><span class="line">创建如下 World 表</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| name            | continent  | area       | population   | gdp           |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |</span><br><span class="line">| Albania         | Europe     | 28748      | 2831741      | 12960000      |</span><br><span class="line">| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |</span><br><span class="line">| Andorra         | Europe     | 468        | 78115        | 3712000       |</span><br><span class="line">| Angola          | Africa     | 1246700    | 20609294     | 100990000     |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">如果一个国家的面积超过300万平方公里，或者(人口超过2500万并且gdp超过2000万)，那么这个国家就是大国家。</span><br><span class="line">编写一个SQL查询，输出表中所有大国家的名称、人口和面积。</span><br><span class="line">例如，根据上表，我们应该输出:</span><br><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| name         | population  | area         |</span><br><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| Afghanistan  | 25500100    | 652230       |</span><br><span class="line">| Algeria      | 37100000    | 2381741      |</span><br><span class="line">+--------------+-------------+--------------+</span><br></pre></td></tr></table></figure>
@@ -1141,14 +1432,25 @@ var _hmt = _hmt || [];
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li>SQL必知必会（第4版），Ben Forta著，人民邮电出版社</li>
-<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/10450182?fr=aladdin">结构化查询语言 - 百度百科</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42341721/article/details/81168738">mysql是什么 - CSDN</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/10450182?fr=aladdin">结构化查询语言
+- 百度百科</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42341721/article/details/81168738">mysql是什么
+- CSDN</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.mysql.com/products/">MySQL官网产品介绍</a></li>
-<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL5.7官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/renpei/p/5485730.html">MySql 中 case when then else end 的用法 - 博客园</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/JiangLe/p/6897403.html">MySQL写注释的几种方法 - 博客园</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27466166">SQL编程格式的优化建议 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL style guide by Simon Holywell</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL5.7官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/renpei/p/5485730.html">MySql 中
+case when then else end 的用法 - 博客园</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/JiangLe/p/6897403.html">MySQL写注释的几种方法
+- 博客园</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27466166">SQL编程格式的优化建议 -
+知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL style guide by Simon
+Holywell</a></li>
 </ul>
 
       
@@ -1325,7 +1627,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

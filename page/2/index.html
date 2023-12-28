@@ -57,7 +57,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -216,7 +216,7 @@ var _hmt = _hmt || [];
         <h1 id="故事背景">故事背景</h1>
 <h2 id="系统配置">系统配置</h2>
 <h3 id="操作系统">操作系统</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-</span><br></pre></td></tr></table></figure>
 <h3 id="算法模型-backbone">算法模型 Backbone</h3>
 <ul>
 <li>ResNet V2</li>
@@ -225,7 +225,8 @@ var _hmt = _hmt || [];
 <li>Mask RCNN</li>
 </ul>
 <h2 id="故事描述">故事描述</h2>
-<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
+<p>在测试环境中，升级组件时，误把CUDA通过命令进行了升级，但由于cuda版本与cudnn版本不匹配，结果导致nvidia-smi命令报错，基于TensorFlow
+Serving的GPU图像识别推理也无法正常进行，于是做了些尝试终于将两者匹配，此时CUDA版本已经升级至11.0，经过测试意外地发现，此前的图像识别速度竟然提升了好几倍，猜测可能是CUDA相关升级导致的识别速度提升，但与算法同事和leader沟通没有结论后，我决定在新的测试机器上正式升级CUDA版本并验证是否速度会有提升</p>
 <h1 id="故事经过">故事经过</h1>
 <h2 id="安装cuda驱动">安装CUDA驱动</h2>
         
@@ -337,13 +338,15 @@ var _hmt = _hmt || [];
         <h1 id="故事背景">故事背景</h1>
 <h2 id="系统配置">系统配置</h2>
 <h3 id="操作系统信息">操作系统信息</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-Ubuntu SMP Tue Oct 2 17:16:02 UTC 2018</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-Ubuntu SMP Tue Oct 2 17:16:02 UTC 2018</span><br></pre></td></tr></table></figure>
 <h3 id="tensorflow-serving版本">Tensorflow Serving版本</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tensorflow_model_server -version</span></span><br><span class="line">TensorFlow ModelServer: 1.14.0-rc0+dev.sha.a854e85</span><br><span class="line">TensorFlow Library: 1.14.0-rc0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tensorflow_model_server -version</span></span><br><span class="line">TensorFlow ModelServer: 1.14.0-rc0+dev.sha.a854e85</span><br><span class="line">TensorFlow Library: 1.14.0-rc0</span><br></pre></td></tr></table></figure>
 <h3 id="系统语言编码信息">1.1.2 系统语言编码信息</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> locale</span></span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=</span><br><span class="line">LC_CTYPE=&quot;C&quot;</span><br><span class="line">LC_NUMERIC=&quot;C&quot;</span><br><span class="line">LC_TIME=&quot;C&quot;</span><br><span class="line">LC_COLLATE=&quot;C&quot;</span><br><span class="line">LC_MONETARY=&quot;C&quot;</span><br><span class="line">LC_MESSAGES=&quot;C&quot;</span><br><span class="line">LC_PAPER=&quot;C&quot;</span><br><span class="line">LC_NAME=&quot;C&quot;</span><br><span class="line">LC_ADDRESS=&quot;C&quot;</span><br><span class="line">LC_TELEPHONE=&quot;C&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;C&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;C&quot;</span><br><span class="line">LC_ALL=C</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">locale</span></span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=</span><br><span class="line">LC_CTYPE=&quot;C&quot;</span><br><span class="line">LC_NUMERIC=&quot;C&quot;</span><br><span class="line">LC_TIME=&quot;C&quot;</span><br><span class="line">LC_COLLATE=&quot;C&quot;</span><br><span class="line">LC_MONETARY=&quot;C&quot;</span><br><span class="line">LC_MESSAGES=&quot;C&quot;</span><br><span class="line">LC_PAPER=&quot;C&quot;</span><br><span class="line">LC_NAME=&quot;C&quot;</span><br><span class="line">LC_ADDRESS=&quot;C&quot;</span><br><span class="line">LC_TELEPHONE=&quot;C&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;C&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;C&quot;</span><br><span class="line">LC_ALL=C</span><br></pre></td></tr></table></figure>
 <h2 id="故事描述">故事描述</h2>
-<p>为了方便tensorflow serving的部署，我将tensorflow serving的配置信息以超级笔记模式下「代码块」暂时存在了Mac版印象笔记（Evernote）中，当我从笔记中直接复制内容并通过vim粘贴到tensorflow serving配置文件中时，tensorflow serving启动时报了如下错误提示</p>
+<p>为了方便tensorflow serving的部署，我将tensorflow
+serving的配置信息以超级笔记模式下「代码块」暂时存在了Mac版印象笔记（Evernote）中，当我从笔记中直接复制内容并通过vim粘贴到tensorflow
+serving配置文件中时，tensorflow serving启动时报了如下错误提示</p>
         
           <a class="article-more-a" href="/post/2ce48a21/#more">more >></a>
         
@@ -448,14 +451,20 @@ var _hmt = _hmt || [];
       
         <h1 id="basic-info">Basic Info</h1>
 <h2 id="link">Link</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.05460">Cognitive Graph for Multi-Hop Reading Comprehension at Scale</a></p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.05460">Cognitive Graph for
+Multi-Hop Reading Comprehension at Scale</a></p>
 <h2 id="author">Author</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ding%2C+M">Ming Ding</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhou%2C+C">Chang Zhou</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Chen%2C+Q">Qibin Chen</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Yang%2C+H">Hongxia Yang</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tang%2C+J">Jie Tang</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ding%2C+M">Ming
+Ding</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhou%2C+C">Chang
+Zhou</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Chen%2C+Q">Qibin
+Chen</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Yang%2C+H">Hongxia
+Yang</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tang%2C+J">Jie
+Tang</a></li>
 </ul>
 
         
@@ -566,12 +575,16 @@ var _hmt = _hmt || [];
       
         <h1 id="basic-info">Basic Info</h1>
 <h2 id="link">Link</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1809.00130.pdf">Semi-supervised Learning on Graphs with Generative Adversarial Nets</a></p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1809.00130.pdf">Semi-supervised
+Learning on Graphs with Generative Adversarial Nets</a></p>
 <h2 id="author">Author</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ding%2C+M">Ming Ding</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tang%2C+J">Jie Tang</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C+J">Jie Zhang</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ding%2C+M">Ming
+Ding</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tang%2C+J">Jie
+Tang</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C+J">Jie
+Zhang</a></li>
 </ul>
 
         
@@ -686,7 +699,8 @@ var _hmt = _hmt || [];
       
         <h1 id="basic-info">Basic Info</h1>
 <h2 id="link">Link</h2>
-<p><a target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/kdd18_jiezhong-DeepInf.pdf">DeepInf: Social Influence Prediction with Deep Learning</a></p>
+<p><a target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/kdd18_jiezhong-DeepInf.pdf">DeepInf:
+Social Influence Prediction with Deep Learning</a></p>
 <h2 id="author">Author</h2>
 <ul>
 <li>Jiezhong Qiu</li>
@@ -701,7 +715,15 @@ var _hmt = _hmt || [];
 <div data-align="center">
 <img src="/post/23cf489e/deep_inf_architecture.png" class>
 </div>
-<p>(a): Raw input which consists of a mini-batch of B instances; Each instance is a sub-network comprised <em>n</em> users who are sampled from the whole network. (b): An embedding layer which maps each user to a D-dimensional representation. (c): An Instance Normalization Layer which normalizes user’s embedding. (d): The formal input layer which concatenates together network embedding and other features. (e) A GCN and GAT Layer. (f) and (g) Compare model output and ground truth, we get the negative log likelihood loss. In this example, ego user v was finally activated (marked as black)</p>
+<p>(a): Raw input which consists of a mini-batch of B instances; Each
+instance is a sub-network comprised <em>n</em> users who are sampled
+from the whole network. (b): An embedding layer which maps each user to
+a D-dimensional representation. (c): An Instance Normalization Layer
+which normalizes user’s embedding. (d): The formal input layer which
+concatenates together network embedding and other features. (e) A GCN
+and GAT Layer. (f) and (g) Compare model output and ground truth, we get
+the negative log likelihood loss. In this example, ego user v was
+finally activated (marked as black)</p>
 <h1 id="reproduce">Reproduce</h1>
         
           <a class="article-more-a" href="/post/23cf489e/#more">more >></a>
@@ -818,18 +840,32 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="background">1. Background</h2>
-<p>Given input dimension <span class="math inline">\(d\)</span>, input data <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> can be expressed as <span class="math inline">\(\vec{x} = (x_1, ... , x_d)\)</span>, <span class="math inline">\(\vec{y} = (y_1, ..., y_d)\)</span>, an SVM kernel function <span class="math inline">\(k(\vec{x}, \vec{y})\)</span> can be expressed as the dot product of the transformation of <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> by a transformation function <span class="math inline">\(\gamma\)</span>, that is to say</p>
-<p><span class="math display">\[k(\vec{x}, \vec{y}) = \gamma(\vec{x}) \cdot \gamma(\vec{y})\]</span></p>
+<p>Given input dimension <span class="math inline">\(d\)</span>, input
+data <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> can be expressed as <span class="math inline">\(\vec{x} = (x_1, ... , x_d)\)</span>, <span class="math inline">\(\vec{y} = (y_1, ..., y_d)\)</span>, an SVM kernel
+function <span class="math inline">\(k(\vec{x}, \vec{y})\)</span> can be
+expressed as the dot product of the transformation of <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> by a transformation function
+<span class="math inline">\(\gamma\)</span>, that is to say</p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = \gamma(\vec{x})
+\cdot \gamma(\vec{y})\]</span></p>
 <h2 id="problems">2. Problems</h2>
-<p>Derive the transformation function <span class="math inline">\(\gamma\)</span> for the following SVM kernels, also compute the VC Dimension for the SVM model based on these kernels.</p>
+<p>Derive the transformation function <span class="math inline">\(\gamma\)</span> for the following SVM kernels,
+also compute the VC Dimension for the SVM model based on these
+kernels.</p>
 <ul>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></li>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y} + 1)^n\)</span></li>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) = e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></li>
+<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
+\vec{y})^n\)</span></li>
+<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
+\vec{y} + 1)^n\)</span></li>
+<li><span class="math inline">\(k(\vec{x}, \vec{y}) =
+e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></li>
 </ul>
-<h2 id="kvecx-vecy-vecx-cdot-vecyn">3. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n\)</span></h2>
+<h2 id="kvecx-vecy-vecx-cdot-vecyn">3. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
+\vec{y})^n\)</span></h2>
 <p>根据多项式展开公式</p>
-<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x} \cdot \vec{y})^n = (x_1y_1 + x_2y_2 + \cdots + x_dy_d) ^ n = \sum{\frac{n!}{n_1!n_2!\cdots n_d!}{(x_1y_1)}^{n_1}{(x_2y_2)}^{n_2} \cdots {(x_dy_d)}^{n_d}}\]</span></p>
+<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x} \cdot
+\vec{y})^n = (x_1y_1 + x_2y_2 + \cdots + x_dy_d) ^ n =
+\sum{\frac{n!}{n_1!n_2!\cdots n_d!}{(x_1y_1)}^{n_1}{(x_2y_2)}^{n_2}
+\cdots {(x_dy_d)}^{n_d}}\]</span></p>
 <p>所以</p>
         
           <a class="article-more-a" href="/post/4df49a2d/#more">more >></a>
@@ -929,38 +965,47 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="a_n-sumlimits_i1nfrac1i-1-frac12-...-frac1n数列a_n发散">1. <span class="math inline">\(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 + \frac{1}{2} + ... + \frac{1}{n}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
+        <h2 id="a_n-sumlimits_i1nfrac1i-1-frac12-...-frac1n数列a_n发散">1. <span class="math inline">\(a_n = \sum\limits_{i=1}^{n}\frac{1}{i} = 1 +
+\frac{1}{2} + ... + \frac{1}{n}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
 <p><span class="math display">\[\begin{align}
 
-a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\ 
+a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
 
-&amp;= 1 + \frac{1}{2} + ... +  \frac{1}{n} \\ 
+&amp;= 1 + \frac{1}{2} + ... +  \frac{1}{n} \\
 
-&amp;= 1 + \frac{1}{2} + (\frac{1}{3} + \frac{1}{4}) + (\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}) + ... \\ 
+&amp;= 1 + \frac{1}{2} + (\frac{1}{3} + \frac{1}{4}) + (\frac{1}{5} +
+\frac{1}{6} + \frac{1}{7} + \frac{1}{8}) + ... \\
 
-&amp;&gt; 1 + \frac{1}{2} + (\frac{1}{4} + \frac{1}{4}) + (\frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8}) + ...  + \frac{1}{n} \\ 
+&amp;&gt; 1 + \frac{1}{2} + (\frac{1}{4} + \frac{1}{4}) + (\frac{1}{8} +
+\frac{1}{8} + \frac{1}{8} + \frac{1}{8}) + ...  + \frac{1}{n} \\
 
-&amp;= 1 + \frac{1}{2} + \frac{1}{2} + ... \\ 
+&amp;= 1 + \frac{1}{2} + \frac{1}{2} + ... \\
 
 &amp;= 1 + \frac{m}{2}​
 
 \end{align}\]</span></p>
 <p>其中<span class="math inline">\(m\)</span>是<span class="math inline">\(\frac{1}{2}\)</span>的个数，随着n的增大而增大</p>
 <p>所以，</p>
-<p><span class="math display">\[\lim\limits_{n\rightarrow\infty}a_n = \infty\]</span></p>
-<h2 id="a_np---a_n-le-fracpn-forall-n-p-in-n数列a_n发散">2. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
-<p>举反例，如数列<span class="math inline">\(\{1 + \frac{1}{2} + ... + \frac{1}{n}\}\)</span>满足<span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)</span>，但是其发散</p>
-<h2 id="a_np---a_n-le-fracpn2-forall-n-p-in-n数列a_n收敛">3. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n^2}, \forall n, p \in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>收敛</h2>
+<p><span class="math display">\[\lim\limits_{n\rightarrow\infty}a_n =
+\infty\]</span></p>
+<h2 id="a_np---a_n-le-fracpn-forall-n-p-in-n数列a_n发散">2. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n}, \forall n, p
+\in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>发散</h2>
+<p>举反例，如数列<span class="math inline">\(\{1 + \frac{1}{2} + ...
++  \frac{1}{n}\}\)</span>满足<span class="math inline">\(|a_{n+p} -
+a_{n}| \le \frac{p}{n}, \forall n, p \in N^{*}\)</span>，但是其发散</p>
+<h2 id="a_np---a_n-le-fracpn2-forall-n-p-in-n数列a_n收敛">3. <span class="math inline">\(|a_{n+p} - a_{n}| \le \frac{p}{n^2}, \forall n, p
+\in N^{*}\)</span>，数列<span class="math inline">\(\{a_n\}\)</span>收敛</h2>
 <p><span class="math display">\[\forall n, p \in N^{*}\]</span></p>
 <p><span class="math display">\[\begin{align}
 
-|a_{n+p} - a_{n}| &amp;\le |a_{n+p} - a_{n+p+1}| + |a_{n+p-1} - a_{n+p-2}| + ... + |a_{n+1} - a_{n}| \\ 
+|a_{n+p} - a_{n}| &amp;\le |a_{n+p} - a_{n+p+1}| + |a_{n+p-1} -
+a_{n+p-2}| + ... + |a_{n+1} - a_{n}| \\
 
-&amp;\le \frac{1}{(n+p-1)^2} + ... + \frac{1}{n^2} \\ 
+&amp;\le \frac{1}{(n+p-1)^2} + ... + \frac{1}{n^2} \\
 
-&amp;\le \frac{1}{(n + p - 1)(n + p - 2)} + ... + \frac{1}{n(n - 1)} \\ 
+&amp;\le \frac{1}{(n + p - 1)(n + p - 2)} + ... + \frac{1}{n(n - 1)} \\
 
-&amp;= \frac{1}{n-1} - \frac{1}{n+p-1} \\ 
+&amp;= \frac{1}{n-1} - \frac{1}{n+p-1} \\
 
 &amp;&lt; \frac{1}{n-1}
 
@@ -1068,18 +1113,36 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="problems">1. Problems</h2>
-<p>We take 0/1 classification problem for data with d dimensional features as an example. A neural network with one hidden layer can be written as</p>
-<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2 \tag{1}\]</span></p>
-<p>where <span class="math inline">\(v\)</span> is the <span class="math inline">\(d\)</span> dimensional input feature of the data, while <span class="math inline">\(W_1\)</span>, <span class="math inline">\(w_2\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> are the parameters of the neural network model. <span class="math inline">\(W_1\)</span> is a <span class="math inline">\(n × d\)</span> matrix, <span class="math inline">\(w_2\)</span> is a n dimensional vector, and <span class="math inline">\(b_1\)</span> is a <span class="math inline">\(n\)</span> dimensional bias vector while <span class="math inline">\(b_2\)</span> is the bias. When <span class="math inline">\(o &gt; 0\)</span> we classify the datum as label 1, while when <span class="math inline">\(o ≤ 0\)</span> we classify it as label -1. This forms a neural network, or multi-layer-perceptron, with one hidden layer containing <span class="math inline">\(n\)</span> neurons. In this problem, we focus on the pre-training case with frozen parameters that <span class="math inline">\(W_1\)</span> and <span class="math inline">\(b_1\)</span> must be decided when seeing all <span class="math inline">\(v\)</span> without labels <span class="math inline">\((l_1, ...l_i)\)</span>, while <span class="math inline">\(w_2\)</span> and <span class="math inline">\(b_2\)</span> can be decided after seeing all labels of examples <span class="math inline">\((l_1, ...l_i)\)</span></p>
+<p>We take 0/1 classification problem for data with d dimensional
+features as an example. A neural network with one hidden layer can be
+written as</p>
+<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2
+\tag{1}\]</span></p>
+<p>where <span class="math inline">\(v\)</span> is the <span class="math inline">\(d\)</span> dimensional input feature of the data,
+while <span class="math inline">\(W_1\)</span>, <span class="math inline">\(w_2\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> are the parameters of the neural
+network model. <span class="math inline">\(W_1\)</span> is a <span class="math inline">\(n × d\)</span> matrix, <span class="math inline">\(w_2\)</span> is a n dimensional vector, and <span class="math inline">\(b_1\)</span> is a <span class="math inline">\(n\)</span> dimensional bias vector while <span class="math inline">\(b_2\)</span> is the bias. When <span class="math inline">\(o &gt; 0\)</span> we classify the datum as label
+1, while when <span class="math inline">\(o ≤ 0\)</span> we classify it
+as label -1. This forms a neural network, or multi-layer-perceptron,
+with one hidden layer containing <span class="math inline">\(n\)</span>
+neurons. In this problem, we focus on the pre-training case with frozen
+parameters that <span class="math inline">\(W_1\)</span> and <span class="math inline">\(b_1\)</span> must be decided when seeing all <span class="math inline">\(v\)</span> without labels <span class="math inline">\((l_1, ...l_i)\)</span>, while <span class="math inline">\(w_2\)</span> and <span class="math inline">\(b_2\)</span> can be decided after seeing all
+labels of examples <span class="math inline">\((l_1,
+...l_i)\)</span></p>
 <h3 id="problem1">1.1 Problem1</h3>
-<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC dimension of the neural network for the linear activation case, i.e. <span class="math inline">\(\sigma(x) = x\)</span>. Prove your result.</p>
+<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC
+dimension of the neural network for the linear activation case, i.e.
+<span class="math inline">\(\sigma(x) = x\)</span>. Prove your
+result.</p>
 <h3 id="problem2">1.2 Problem2</h3>
-<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC dimension of the neural network for the <span class="math inline">\(ReLU\)</span> activation case, i.e. <span class="math inline">\(\sigma(x) = max(0, x)\)</span>. Prove your result.</p>
+<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC
+dimension of the neural network for the <span class="math inline">\(ReLU\)</span> activation case, i.e. <span class="math inline">\(\sigma(x) = max(0, x)\)</span>. Prove your
+result.</p>
 <h3 id="hints">1.3 Hints</h3>
 <ul>
 <li>Recall the definition of VC dimension.</li>
 <li>Consider <span class="math inline">\(n &gt; d\)</span> and <span class="math inline">\(n ≤ d\)</span>.</li>
-<li>For problem 2, Start from <span class="math inline">\(d = 1\)</span></li>
+<li>For problem 2, Start from <span class="math inline">\(d =
+1\)</span></li>
 </ul>
         
           <a class="article-more-a" href="/post/6d2e787e/#more">more >></a>
@@ -1176,12 +1239,16 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="basic-info">Basic Info</h2>
-<p>Link: <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet Classification with Deep Convolutional Neural Networks - NIPS</a></p>
+<p>Link: <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet
+Classification with Deep Convolutional Neural Networks - NIPS</a></p>
 <p>Author:</p>
 <ul>
-<li><a href="kriz@cs.utoronto.ca">Alex Krizhevsky, University of Toronto</a></li>
-<li><a href="ilya@cs.utoronto.ca">Ilya Sutskever, University of Toronto</a></li>
-<li><a href="hinton@cs.utoronto.ca">Geoffrey E. Hinton, University of Toronto</a></li>
+<li><a href="kriz@cs.utoronto.ca">Alex Krizhevsky, University of
+Toronto</a></li>
+<li><a href="ilya@cs.utoronto.ca">Ilya Sutskever, University of
+Toronto</a></li>
+<li><a href="hinton@cs.utoronto.ca">Geoffrey E. Hinton, University of
+Toronto</a></li>
 </ul>
 <h2 id="summary">Summary</h2>
 <h2 id="research-objective">Research Objective</h2>
@@ -1367,7 +1434,7 @@ a_n &amp;= \sum\limits_{i=1}^{n}\frac{1}{i} \\
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

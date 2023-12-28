@@ -62,7 +62,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
 				<img src="/img/my_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">undefined</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -233,18 +233,21 @@ var _hmt = _hmt || [];
 <p>Errors should never pass silently.</p>
 <p>Unless explicitly silenced.</p>
 <p>In the face of ambiguity, refuse the temptation to guess.</p>
-<p>There should be one-- and preferably only one --obvious way to do it.</p>
-<p>Although that way may not be obvious at first unless you're Dutch.</p>
+<p>There should be one-- and preferably only one --obvious way to do
+it.</p>
+<p>Although that way may not be obvious at first unless you're
+Dutch.</p>
 <p>Now is better than never.</p>
 <p>Although never is often better than <em>right</em> now.</p>
 <p>If the implementation is hard to explain, it's a bad idea.</p>
 <p>If the implementation is easy to explain, it may be a good idea.</p>
 </blockquote>
 <h2 id="确认自己所用的python版本">1. 确认自己所用的Python版本</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 --version</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version</span></span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.version_info)</span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br></pre></td></tr></table></figure>
-<p>Python社区已将开发重点放在了Python 3上，因此后续开发项目时，应优先考虑使用Python 3</p>
+<p>Python社区已将开发重点放在了Python
+3上，因此后续开发项目时，应优先考虑使用Python 3</p>
 <h2 id="遵循pep-8-风格指南">2. 遵循PEP 8 风格指南</h2>
 <p>PEP 8全称为《 Python Enhancement Proposal #8 》</p>
 <ul>
@@ -271,52 +274,66 @@ var _hmt = _hmt || [];
 <ul>
 <li>检测somelist长度是否为空时，用 if not somelist 来判断</li>
 <li>import语句应放在文件开头，按照标准库模块、第三方模块、自用模块的顺序来import，三种之间间隔一行</li>
-<li>引入模块时使用绝对名称，一定要用相对名称时，用from .bar Import foo的方式</li>
+<li>引入模块时使用绝对名称，一定要用相对名称时，用from .bar Import
+foo的方式</li>
 </ul></li>
 </ul>
-<h2 id="了解bytesstr与unicode的区别">3. 了解bytes、str与unicode的区别</h2>
+<h2 id="了解bytesstr与unicode的区别">3.
+了解bytes、str与unicode的区别</h2>
 <ul>
-<li>Python 3有两种表示字符序列的类型，bytes和str，bytes为原始的8位值，str为Unicode字符</li>
-<li>Python 2也两种表示字符序列的类型，str和unicode，str为原始的8位值，unicode为Unicode字符</li>
+<li>Python
+3有两种表示字符序列的类型，bytes和str，bytes为原始的8位值，str为Unicode字符</li>
+<li>Python
+2也两种表示字符序列的类型，str和unicode，str为原始的8位值，unicode为Unicode字符</li>
 <li>可以用encode方法将Unicode字符转换成二进制数据，用decode方法将二进制数据转换成Unicode字符
 <div data-align="center">
 <img src="/post/12ceb6de/1.3%20bytes%20and%20str.png" class="">
 </div></li>
-<li>Python 3 中， 开发者不能用 &gt; 或 + 等操作符来混同 bytes 和 str 实例</li>
-<li>从文件中读取或写入二进制数据时，应以 'rb' 或 'wb' 等二进制模式来开启文件</li>
+<li>Python 3 中， 开发者不能用 &gt; 或 + 等操作符来混同 bytes 和 str
+实例</li>
+<li>从文件中读取或写入二进制数据时，应以 'rb' 或 'wb'
+等二进制模式来开启文件</li>
 </ul>
-<h2 id="用辅助函数来取代复杂的表达式">4. 用辅助函数来取代复杂的表达式</h2>
+<h2 id="用辅助函数来取代复杂的表达式">4.
+用辅助函数来取代复杂的表达式</h2>
 <ul>
 <li>编写Python程序时，不要过度应用Pythond的语法特性，不要一味追求过于紧凑的写法，那样会写出非常复杂的表达式</li>
 <li>将复杂的表达式移入辅助函数中，尤其是要反复使用的相同的逻辑</li>
-<li>使用 if/else 表达式，要比用 or 或 and 这样的 Boolean操作符写成的表达式更加清晰</li>
+<li>使用 if/else 表达式，要比用 or 或 and 这样的
+Boolean操作符写成的表达式更加清晰</li>
 </ul>
 <h2 id="了解切割序列的办法">5. 了解切割序列的办法</h2>
 <ul>
-<li>切割操作的基本写法为 somelist[start:end]，实际区间为[start, end)</li>
+<li>切割操作的基本写法为 somelist[start:end]，实际区间为[start,
+end)</li>
 <li>如果从列表开头获取切片，将start留空更好，如somelist[:5]</li>
 <li>如果切片一直要取到列表末尾，将end留空，如somelist[5:]</li>
 <li>如果指定切片起止索引时，要从列表尾部向前算，可使用负值来表示相关偏移量，如somelist[5:-1]</li>
 <li>切割列表时，即便start或者end索引越界也不会出问题，而访问列表单个元素时下标不可越界</li>
 </ul>
-<h2 id="单次切片操作内不要同时指定-start-end-和-stride">6. 单次切片操作内，不要同时指定 start、 end 和 stride</h2>
+<h2 id="单次切片操作内不要同时指定-start-end-和-stride">6.
+单次切片操作内，不要同时指定 start、 end 和 stride</h2>
 <ul>
 <li>Python 还提供了 somelist[start:end:stride] 的写法实现步进式切割</li>
 <li>Python还可利用x[::-1]实现字符串反转，这种技巧只针对ASCII字符有用，对已经编码成UTF-8字符串的Unicode字符无法奏效</li>
 <li>如果一定要配合start或end索引来使用stride，请考虑先做步进式切片，把切割结果赋给某个变量，然后再那个变量上做第二次切割；如果开发的程序对执行时间或内存用量的要求非常严格，以致不能使用两阶段切割法时，可以考虑内置模块itertools中的islide方法，该方法不允许start、end或slide指定负值</li>
 </ul>
-<h2 id="用列表list-comprehension推导来取代map和filter">7. 用列表（list comprehension）推导来取代map和filter</h2>
+<h2 id="用列表list-comprehension推导来取代map和filter">7. 用列表（list
+comprehension）推导来取代map和filter</h2>
 <ul>
 <li>列表推导要比map和filter函数清晰的多，因为其无需额外编写lambda表达式</li>
 <li>字典和集也支持列表推导表达式</li>
 </ul>
-<h2 id="不要使用含有两个以上表达式的列表推导">8. 不要使用含有两个以上表达式的列表推导</h2>
+<h2 id="不要使用含有两个以上表达式的列表推导">8.
+不要使用含有两个以上表达式的列表推导</h2>
 <ul>
 <li>列表推导也支持多个if条件，处在同一循环级别中的多项条件，彼此之间默认形成and表达式</li>
 <li>超过两个表达式的列表推导是很难理解的，应该尽量避免</li>
 </ul>
-<h2 id="用生成器表达式来改写数据量较大的列表推导">9. 用生成器表达式来改写数据量较大的列表推导</h2>
-<p>生成器表达式（generator expression）是对列表推导和生成器的一种泛化（generalization）。生成器在表达式运行了时，并不会把整个输出序列都呈现出来，而是会估值为迭代器（iterator），这个迭代器每次可以根据生成器表达式产生一项数据。把实现列表推导的那种写法放在一堆圆括号中，就构成了生成器表达式</p>
+<h2 id="用生成器表达式来改写数据量较大的列表推导">9.
+用生成器表达式来改写数据量较大的列表推导</h2>
+<p>生成器表达式（generator
+expression）是对列表推导和生成器的一种泛化（generalization）。生成器在表达式运行了时，并不会把整个输出序列都呈现出来，而是会估值为迭代器（iterator），这个迭代器每次可以根据生成器表达式产生一项数据。把实现列表推导的那种写法放在一堆圆括号中，就构成了生成器表达式</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">it = (<span class="built_in">len</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;/tmp/myfile.txt&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(it)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&lt;generator <span class="built_in">object</span> &lt;genexpr&gt; at <span class="number">0x10377ce08</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>可以将生成器表达式互相组合</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roots = ((x, x**<span class="number">0.5</span>) <span class="keyword">for</span> x <span class="keyword">in</span> it)</span><br></pre></td></tr></table></figure>
@@ -325,26 +342,34 @@ var _hmt = _hmt || [];
 <li>输入的数据量较大时，列表推导可能会因为占用太多内存而出问题</li>
 <li>串在一起的生成器表达式执行速度很快</li>
 </ul>
-<h2 id="尽量使用-enumerate-取代-range">10. 尽量使用 enumerate 取代 range</h2>
+<h2 id="尽量使用-enumerate-取代-range">10. 尽量使用 enumerate 取代
+range</h2>
 <ul>
-<li>enumerate 可以将各种迭代器包装成生成器，以便稍后产生输出值，生成器每次产生一对输出值，及循环下标和从迭代器中取得的下一个序列元素</li>
-<li>尽量用 enumerate 来改写那种将range与下标访问相结合的序列遍历代码</li>
+<li>enumerate
+可以将各种迭代器包装成生成器，以便稍后产生输出值，生成器每次产生一对输出值，及循环下标和从迭代器中取得的下一个序列元素</li>
+<li>尽量用 enumerate
+来改写那种将range与下标访问相结合的序列遍历代码</li>
 <li>可以给enumerate提供第二个参数，以指定开始计数时所用的值（默认为0）</li>
 </ul>
-<h2 id="用zip函数同时遍历两个迭代器">11. 用zip函数同时遍历两个迭代器</h2>
+<h2 id="用zip函数同时遍历两个迭代器">11.
+用zip函数同时遍历两个迭代器</h2>
 <ul>
-<li>如果要在 Python 2 中用zip来遍历数据量非常大的迭代器，那么应该使用itertools内置模块中的izip函数</li>
+<li>如果要在 Python 2
+中用zip来遍历数据量非常大的迭代器，那么应该使用itertools内置模块中的izip函数</li>
 <li>内置的zip函数可以平行遍历多个迭代器，把值汇聚成tuple形式</li>
-<li>Python 3中的zip相当于生成器，会在遍历过程中逐次产生元祖，而Python 2中的zip则是直接把这些元祖完全生成好，并一次性地返回整份列表</li>
+<li>Python 3中的zip相当于生成器，会在遍历过程中逐次产生元祖，而Python
+2中的zip则是直接把这些元祖完全生成好，并一次性地返回整份列表</li>
 <li>如果提供的迭代器长度不等，zip会自动提前终止</li>
 <li>itertools内置模块中的zip_longest函数可以平行地遍历多个迭代器，而不用在乎它们的长度是否相等</li>
 </ul>
-<h2 id="不要在-for-和-while-循环后面写-else-块">12. 不要在 for 和 while 循环后面写 else 块</h2>
+<h2 id="不要在-for-和-while-循环后面写-else-块">12. 不要在 for 和 while
+循环后面写 else 块</h2>
 <ul>
 <li>只有当整个循环主体都没遇到break语句时，循环后面的else块才会执行</li>
 <li>不要在循环后面使用else块，因为这种写法既不直观，又容易引人误解</li>
 </ul>
-<h2 id="合理利用-tryexceptelsefinally-结构中的每个代码块">13. 合理利用 try/except/else/finally 结构中的每个代码块</h2>
+<h2 id="合理利用-tryexceptelsefinally-结构中的每个代码块">13. 合理利用
+try/except/else/finally 结构中的每个代码块</h2>
 <ul>
 <li>如果既要将异常向上传播，又要在异常发生时执行清理工作，那就可以使用try/finally结构</li>
 <li>如果try块并没有发生异常，那么就执行else块</li>
@@ -353,16 +378,21 @@ var _hmt = _hmt || [];
 <li>顺利运行try块后，若想使某些操作能在finally块的清理代码之前执行，则可将这些操作写到else块中</li>
 </ul>
 <h1 id="函数">2. 函数</h1>
-<h2 id="尽量使用异常来表示特殊情况而不要返回none">14. 尽量使用异常来表示特殊情况，而不要返回None</h2>
+<h2 id="尽量使用异常来表示特殊情况而不要返回none">14.
+尽量使用异常来表示特殊情况，而不要返回None</h2>
 <ul>
 <li>用None这个返回值来表示有特殊意义的函数，很容易使调用者犯错，因为None和0及空字符串之类的值，在条件表达式里都会评估为False</li>
 <li>函数在遇到特殊情况时，应该抛出异常，而不要返回None，调用者看到该函数文档所描述的异常后，应该就可以编写相应的代码来处理他们了</li>
 </ul>
-<h2 id="了解如何在闭包里使用外围作用域中的变量">15. 了解如何在闭包里使用外围作用域中的变量</h2>
+<h2 id="了解如何在闭包里使用外围作用域中的变量">15.
+了解如何在闭包里使用外围作用域中的变量</h2>
 <ul>
-<li>Python 支持闭包（closure）：一种定义在某个作用域中的函数，这种函数引用了那个作用域里面的变量</li>
-<li>Python 的函数是一级对象（first-class object），我们可以直接引用函数、把函数赋给变量、把函数当作参数传给其他函数，并通过表达式及if语句对其进行比较和判断</li>
-<li>在表达式中引用变量时，Python 解释器将按如下顺序遍历各作用域，以解析该引用
+<li>Python
+支持闭包（closure）：一种定义在某个作用域中的函数，这种函数引用了那个作用域里面的变量</li>
+<li>Python 的函数是一级对象（first-class
+object），我们可以直接引用函数、把函数赋给变量、把函数当作参数传给其他函数，并通过表达式及if语句对其进行比较和判断</li>
+<li>在表达式中引用变量时，Python
+解释器将按如下顺序遍历各作用域，以解析该引用
 <ul>
 <li>当前函数的作用域</li>
 <li>任何外围作用域（例如，包含当前函数的其他函数）</li>
@@ -371,82 +401,114 @@ var _hmt = _hmt || [];
 </ul></li>
 <li>对于定义在某作用域内的闭包来说，它可以引用这些作用域中的变量</li>
 <li>使用默认方式对闭包内的变量赋值，不会影响外围作用域中的同名变量</li>
-<li>在 Python 3 中，程序可以在闭包内使用nonlocal语句来修饰某个名称，使该闭包能够修改外围作用域中的同名变量</li>
-<li>在 Python 2 中，程序可以使用可变值（例如，包含单个元素的列表）来实现与nonlocal语句相仿的机制</li>
+<li>在 Python 3
+中，程序可以在闭包内使用nonlocal语句来修饰某个名称，使该闭包能够修改外围作用域中的同名变量</li>
+<li>在 Python 2
+中，程序可以使用可变值（例如，包含单个元素的列表）来实现与nonlocal语句相仿的机制</li>
 <li>除了那种比较简单的函数，尽量不要使用nonlocal函数</li>
 </ul>
-<h2 id="考虑用生成器来改写直接返回列表的函数">16. 考虑用生成器来改写直接返回列表的函数</h2>
+<h2 id="考虑用生成器来改写直接返回列表的函数">16.
+考虑用生成器来改写直接返回列表的函数</h2>
 <ul>
 <li>使用生成器比把收集到的结果放入列表里返回给调用者更加清晰</li>
 <li>由生成器函数所返回的那个迭代器，可以把生成器函数体中，传给yield表达式的那些值，逐次产生出来</li>
 <li>无论输入量有多大，生成器都能产生一系列输出，因为这些输入量和输出量，都不会影响它在执行时所耗的内存</li>
 </ul>
-<h2 id="在参数上面迭代时要多加小心">17. 在参数上面迭代时，要多加小心</h2>
+<h2 id="在参数上面迭代时要多加小心">17.
+在参数上面迭代时，要多加小心</h2>
 <ul>
 <li>函数在输入的参数上面多次迭代时要当心：如果参数是迭代器，那么可能会导致奇怪的行为并错失某些值</li>
-<li>Python 的迭代器协议，描述了容器和迭代器之间应该如何与iter和next内置函数、for循环及相关表达式相互配合</li>
+<li>Python
+的迭代器协议，描述了容器和迭代器之间应该如何与iter和next内置函数、for循环及相关表达式相互配合</li>
 <li>把<code>__iter__</code>方法实现为生成器，即可定义自己的容器类型</li>
 <li>想判断某个值是迭代器还是容器，可以拿该值为参数，两次调用iter函数比较结果是否相同</li>
 </ul>
-<h2 id="用数量可变的位置参数减少视觉杂讯visual-noise">18. 用数量可变的位置参数减少视觉杂讯（visual noise）</h2>
+<h2 id="用数量可变的位置参数减少视觉杂讯visual-noise">18.
+用数量可变的位置参数减少视觉杂讯（visual noise）</h2>
 <ul>
 <li>在 def 语句中使用 *args，即可令函数接受数量可变的位置参数</li>
-<li>调用函数时，可以采用 * 操作符，把序列中的元素当成位置参数，传给该函数</li>
+<li>调用函数时，可以采用 *
+操作符，把序列中的元素当成位置参数，传给该函数</li>
 <li>对生成器使用 * 操作符，可能导致程序耗尽内存并崩溃</li>
-<li>在已经接受 *arg 参数的函数上面继续添加位置参数，可能会产生难以排查的 bug</li>
+<li>在已经接受 *arg 参数的函数上面继续添加位置参数，可能会产生难以排查的
+bug</li>
 </ul>
-<h2 id="用关键字参数来表达可选的行为">19. 用关键字参数来表达可选的行为</h2>
+<h2 id="用关键字参数来表达可选的行为">19.
+用关键字参数来表达可选的行为</h2>
 <ul>
 <li>关键字参数的顺序不限，只要把函数所要求的全部位置参数都指定好即可，还可以混合使用关键字参数和位置参数来调用函数；位置参数必须出现在关键字参数之前；每个参数只能指定一次</li>
 <li>只使用位置参数来调用函数，可能会导致这些参数值的含义不够明确，而关键字参数则能阐明每个参数的意图</li>
 <li>给函数添加新的行为时，可以使用带默认的关键字参数，以便与原有的函数调用代码保持兼容</li>
 <li>可选的关键字参数，总是应该以关键字形式来指定，而不应该以位置参数的形式来指定</li>
 </ul>
-<h2 id="用-none-和文档字符串来描述具有动态默认值的参数">20. 用 None 和文档字符串来描述具有动态默认值的参数</h2>
+<h2 id="用-none-和文档字符串来描述具有动态默认值的参数">20. 用 None
+和文档字符串来描述具有动态默认值的参数</h2>
 <ul>
 <li><strong>参数的默认值，会在每个模块加载进来的时候求出，而很多模块都是在程序启动时加载的，注意参数中用类似when=datetime.now()的情况，对[]或{}等动态的值，这可能会导致奇怪的行为</strong></li>
-<li>在 Python 中若想正确实现动态默认值，习惯上是把默认值设为None，并在文档字符串（docstring）里面把None所对应的实际行为描述出来</li>
+<li>在 Python
+中若想正确实现动态默认值，习惯上是把默认值设为None，并在文档字符串（docstring）里面把None所对应的实际行为描述出来</li>
 <li>如果参数的实际默认值是可变类型（mutable），那就一定要记得用None作为形式上的默认值</li>
 </ul>
-<h2 id="用只能以关键字形式指定的参数来确保代码明确">21. 用只能以关键字形式指定的参数来确保代码明确</h2>
+<h2 id="用只能以关键字形式指定的参数来确保代码明确">21.
+用只能以关键字形式指定的参数来确保代码明确</h2>
 <ul>
-<li><p>Python 3 中可以通过参数列表中的<code>*</code>号来标志位置参数的终结，之后参数只能以关键字形式来指定</p>
+<li><p>Python 3
+中可以通过参数列表中的<code>*</code>号来标志位置参数的终结，之后参数只能以关键字形式来指定</p>
 <ul>
-<li><p>```python def test_function(aaa, bbb, *, ccc=True, ddd=False): print(aaa, bbb, ccc, ddd) return ccc <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &lt;div align=center&gt;&#123;% asset_img &quot;21 Python3 Keyword Arguments.png&quot;%&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">- 与 Python 3 不同，Python 2 并没有明确的语法来定义这种只能以关键字形式指定的参数，不过，我们可以在参数列表中使用 ** 操作符，并且令函数在遇到无效的调用时抛出TypeErrors，这样就可以实现与 Python 3 相同的功能了</span><br><span class="line"></span><br><span class="line">  - ```python</span><br><span class="line">    def safe_division_d(number, divisor, **kwargs):</span><br><span class="line">        ignore_overflow = kwargs.pop(&#x27;ignore_overflow&#x27;, False)</span><br><span class="line">        ignore_zero_div = kwargs.pop(&#x27;ignore_zero_div&#x27;, False)</span><br><span class="line">        if kwargs:</span><br><span class="line">            raise TypeError(&#x27;Unexpected **kwargs: %r&#x27; % kwargs)</span><br><span class="line">        print ignore_overflow</span><br></pre></td></tr></table></figure></p>
+<li><p>```python def test_function(aaa, bbb, *, ccc=True, ddd=False):
+print(aaa, bbb, ccc, ddd) return ccc <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &lt;div align=center&gt;&#123;% asset_img &quot;21 Python3 Keyword Arguments.png&quot;%&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">- 与 Python 3 不同，Python 2 并没有明确的语法来定义这种只能以关键字形式指定的参数，不过，我们可以在参数列表中使用 ** 操作符，并且令函数在遇到无效的调用时抛出TypeErrors，这样就可以实现与 Python 3 相同的功能了</span><br><span class="line"></span><br><span class="line">  - ```python</span><br><span class="line">    def safe_division_d(number, divisor, **kwargs):</span><br><span class="line">        ignore_overflow = kwargs.pop(&#x27;ignore_overflow&#x27;, False)</span><br><span class="line">        ignore_zero_div = kwargs.pop(&#x27;ignore_zero_div&#x27;, False)</span><br><span class="line">        if kwargs:</span><br><span class="line">            raise TypeError(&#x27;Unexpected **kwargs: %r&#x27; % kwargs)</span><br><span class="line">        print ignore_overflow</span><br></pre></td></tr></table></figure></p>
 <div data-align="center">
 <img src="/post/12ceb6de/21%20Python2%20Keyword%20Arguments.png" class="">
 </div></li>
 </ul></li>
 </ul>
 <h1 id="类与继承">3. 类与继承</h1>
-<h2 id="尽量用辅助类来维护程序的状态而不要用字典和元组">22. 尽量用辅助类来维护程序的状态，而不要用字典和元组</h2>
+<h2 id="尽量用辅助类来维护程序的状态而不要用字典和元组">22.
+尽量用辅助类来维护程序的状态，而不要用字典和元组</h2>
 <ul>
 <li>用来保存程序状态的数据结构一旦变得过于复杂，就应该将其拆解为类，以便提供更加明确的接口，并更好地封装数据，这样做也能够在接口与具体实现之间创建抽象层</li>
 <li>当字典的嵌套多于一层的时候，就应该避免了</li>
-<li>元组的元素一旦超过两项，就应该考虑用其它方法来实现了，可以考虑使用 collections 模块中的 namedtuple（具名元组）类型来实现</li>
-<li>namedtuple 类无法指定各参数的默认值，对于可选属性比较多的数据来说，namedtuple 用起来很不方便；如果没办法完全控制 namedtuple 实例的用法，那么最好是定义自己的类</li>
+<li>元组的元素一旦超过两项，就应该考虑用其它方法来实现了，可以考虑使用
+collections 模块中的 namedtuple（具名元组）类型来实现</li>
+<li>namedtuple
+类无法指定各参数的默认值，对于可选属性比较多的数据来说，namedtuple
+用起来很不方便；如果没办法完全控制 namedtuple
+实例的用法，那么最好是定义自己的类</li>
 <li>保存内部状态的字典如果变得比较复杂，那就应该把这些代码拆解为多个辅助类</li>
 </ul>
-<h2 id="简单的接口应该接受函数而不是类的实例">23. 简单的接口应该接受函数，而不是类的实例</h2>
+<h2 id="简单的接口应该接受函数而不是类的实例">23.
+简单的接口应该接受函数，而不是类的实例</h2>
 <ul>
-<li>我们可以在 Python 代码中定义名为<code>__call__</code>的特殊方法，该方法使相关对象能够像函数那样得到调用</li>
-<li>对于连接各种 Python 组件的简单接口来说，通常应该给其直接传入函数，而不是先定义某个类，然后再传入该类的实例</li>
-<li>Python 中的函数能和方法都可以像一级类那样引用，因此，它们与其他类型的对象一样，也能够放在表达式里面</li>
+<li>我们可以在 Python
+代码中定义名为<code>__call__</code>的特殊方法，该方法使相关对象能够像函数那样得到调用</li>
+<li>对于连接各种 Python
+组件的简单接口来说，通常应该给其直接传入函数，而不是先定义某个类，然后再传入该类的实例</li>
+<li>Python
+中的函数能和方法都可以像一级类那样引用，因此，它们与其他类型的对象一样，也能够放在表达式里面</li>
 <li>如果要用函数来保存状态，那就应该定义新的类，并令其实现<code>__call__</code>的方法，而不要定义带状态的闭包</li>
 </ul>
-<h2 id="以-clssmethod-形式的多态去通用地构建对象">24. 以 <span class="citation" data-cites="clssmethod">@clssmethod</span> 形式的多态去通用地构建对象</h2>
+<h2 id="以-clssmethod-形式的多态去通用地构建对象">24. 以 <span
+class="citation" data-cites="clssmethod">@clssmethod</span>
+形式的多态去通用地构建对象</h2>
 <ul>
 <li>Python 中，不仅对象支持多态，类也支持多态</li>
 <li>多态，使得继承体系中的多个类都能以各自所独有的方式来实现某个方法</li>
-<li><span class="citation" data-cites="classmethod">@classmethod</span> 形式的多态，针对的是整个类，而不是从该类构建出的对象</li>
-<li>在 Python 程序中，每个类只能有一个构造器，也就是<code>__init__</code>方法，通过 <span class="citation" data-cites="classmethod">@classmethod</span> 的机制，可以用一种与构造器相仿的方式来构造类的对象</li>
+<li><span class="citation" data-cites="classmethod">@classmethod</span>
+形式的多态，针对的是整个类，而不是从该类构建出的对象</li>
+<li>在 Python
+程序中，每个类只能有一个构造器，也就是<code>__init__</code>方法，通过
+<span class="citation" data-cites="classmethod">@classmethod</span>
+的机制，可以用一种与构造器相仿的方式来构造类的对象</li>
 <li>通过类方法多态机制，我们能够以更加通用的方式来构建并拼接具体的子类</li>
 </ul>
 <h2 id="用-super-初始化父类">25. 用 super 初始化父类</h2>
 <ul>
 <li>如果子类受到了多重继承的影响（实际应避免这种做法），那么直接调用超类的<code>__init__</code>方法，可能会产生无法预知的行为</li>
 <li>如果子类继承自两个单独的超类，而那两个超类又继承自同一个公共基类，那么久构成了钻石形继承体系，这种继承会使钻石顶部的那个公共基类多次执行其<code>__init__</code>方法，从而产生意想不到的行为</li>
-<li>Python 2.2 增加了内置的 super 函数，并且定义了方法解析顺序（method resolution order，MRO），MRO 以标准的流程来安排超类之间的初始化顺序（e.g. 深度优先，从左至右），它也保证钻石顶部那个公共基类的<code>__init__</code>方法只会运行一次</li>
+<li>Python 2.2 增加了内置的 super 函数，并且定义了方法解析顺序（method
+resolution order，MRO），MRO
+以标准的流程来安排超类之间的初始化顺序（e.g.
+深度优先，从左至右），它也保证钻石顶部那个公共基类的<code>__init__</code>方法只会运行一次</li>
 <li>Python 2 中内置的super函数有两个问题值得注意
 <ul>
 <li>super语句写出来有点麻烦，我们必须指定</li>
@@ -583,7 +645,28 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8pythonic%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%80%9D%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">1. 用Pythonic的方式来思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">0. 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%87%AA%E5%B7%B1%E6%89%80%E7%94%A8%E7%9A%84python%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">1. 确认自己所用的Python版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B5%E5%BE%AApep-8-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97"><span class="toc-number">1.3.</span> <span class="toc-text">2. 遵循PEP 8 风格指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3bytesstr%E4%B8%8Eunicode%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">3. 了解bytes、str与unicode的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E6%9D%A5%E5%8F%96%E4%BB%A3%E5%A4%8D%E6%9D%82%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">4. 用辅助函数来取代复杂的表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%88%87%E5%89%B2%E5%BA%8F%E5%88%97%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">5. 了解切割序列的办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%AC%A1%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C%E5%86%85%E4%B8%8D%E8%A6%81%E5%90%8C%E6%97%B6%E6%8C%87%E5%AE%9A-start-end-%E5%92%8C-stride"><span class="toc-number">1.7.</span> <span class="toc-text">6. 单次切片操作内，不要同时指定 start、 end 和 stride</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%88%97%E8%A1%A8list-comprehension%E6%8E%A8%E5%AF%BC%E6%9D%A5%E5%8F%96%E4%BB%A3map%E5%92%8Cfilter"><span class="toc-number">1.8.</span> <span class="toc-text">7. 用列表（list comprehension）推导来取代map和filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%90%AB%E6%9C%89%E4%B8%A4%E4%B8%AA%E4%BB%A5%E4%B8%8A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.9.</span> <span class="toc-text">8. 不要使用含有两个以上表达式的列表推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9D%A5%E6%94%B9%E5%86%99%E6%95%B0%E6%8D%AE%E9%87%8F%E8%BE%83%E5%A4%A7%E7%9A%84%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.10.</span> <span class="toc-text">9. 用生成器表达式来改写数据量较大的列表推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8-enumerate-%E5%8F%96%E4%BB%A3-range"><span class="toc-number">1.11.</span> <span class="toc-text">10. 尽量使用 enumerate 取代 range</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8zip%E5%87%BD%E6%95%B0%E5%90%8C%E6%97%B6%E9%81%8D%E5%8E%86%E4%B8%A4%E4%B8%AA%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.12.</span> <span class="toc-text">11. 用zip函数同时遍历两个迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%9C%A8-for-%E5%92%8C-while-%E5%BE%AA%E7%8E%AF%E5%90%8E%E9%9D%A2%E5%86%99-else-%E5%9D%97"><span class="toc-number">1.13.</span> <span class="toc-text">12. 不要在 for 和 while 循环后面写 else 块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8-tryexceptelsefinally-%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E6%AF%8F%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.14.</span> <span class="toc-text">13. 合理利用 try&#x2F;except&#x2F;else&#x2F;finally 结构中的每个代码块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">2. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E6%9D%A5%E8%A1%A8%E7%A4%BA%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E8%80%8C%E4%B8%8D%E8%A6%81%E8%BF%94%E5%9B%9Enone"><span class="toc-number">2.1.</span> <span class="toc-text">14. 尽量使用异常来表示特殊情况，而不要返回None</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E5%9C%A8%E9%97%AD%E5%8C%85%E9%87%8C%E4%BD%BF%E7%94%A8%E5%A4%96%E5%9B%B4%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">15. 了解如何在闭包里使用外围作用域中的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%99%91%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8%E6%9D%A5%E6%94%B9%E5%86%99%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">16. 考虑用生成器来改写直接返回列表的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%8F%82%E6%95%B0%E4%B8%8A%E9%9D%A2%E8%BF%AD%E4%BB%A3%E6%97%B6%E8%A6%81%E5%A4%9A%E5%8A%A0%E5%B0%8F%E5%BF%83"><span class="toc-number">2.4.</span> <span class="toc-text">17. 在参数上面迭代时，要多加小心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%95%B0%E9%87%8F%E5%8F%AF%E5%8F%98%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%87%8F%E5%B0%91%E8%A7%86%E8%A7%89%E6%9D%82%E8%AE%AFvisual-noise"><span class="toc-number">2.5.</span> <span class="toc-text">18. 用数量可变的位置参数减少视觉杂讯（visual noise）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0%E6%9D%A5%E8%A1%A8%E8%BE%BE%E5%8F%AF%E9%80%89%E7%9A%84%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.6.</span> <span class="toc-text">19. 用关键字参数来表达可选的行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-none-%E5%92%8C%E6%96%87%E6%A1%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%A5%E6%8F%8F%E8%BF%B0%E5%85%B7%E6%9C%89%E5%8A%A8%E6%80%81%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">2.7.</span> <span class="toc-text">20. 用 None 和文档字符串来描述具有动态默认值的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%8F%AA%E8%83%BD%E4%BB%A5%E5%85%B3%E9%94%AE%E5%AD%97%E5%BD%A2%E5%BC%8F%E6%8C%87%E5%AE%9A%E7%9A%84%E5%8F%82%E6%95%B0%E6%9D%A5%E7%A1%AE%E4%BF%9D%E4%BB%A3%E7%A0%81%E6%98%8E%E7%A1%AE"><span class="toc-number">2.8.</span> <span class="toc-text">21. 用只能以关键字形式指定的参数来确保代码明确</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="toc-number">3.</span> <span class="toc-text">3. 类与继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E7%94%A8%E8%BE%85%E5%8A%A9%E7%B1%BB%E6%9D%A5%E7%BB%B4%E6%8A%A4%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8%E5%AD%97%E5%85%B8%E5%92%8C%E5%85%83%E7%BB%84"><span class="toc-number">3.1.</span> <span class="toc-text">22. 尽量用辅助类来维护程序的状态，而不要用字典和元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%BA%94%E8%AF%A5%E6%8E%A5%E5%8F%97%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">23. 简单的接口应该接受函数，而不是类的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5-clssmethod-%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%A4%9A%E6%80%81%E5%8E%BB%E9%80%9A%E7%94%A8%E5%9C%B0%E6%9E%84%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">24. 以 @clssmethod 形式的多态去通用地构建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-super-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%88%B6%E7%B1%BB"><span class="toc-number">3.4.</span> <span class="toc-text">25. 用 super 初始化父类</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8pythonic%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%80%9D%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">1. 用Pythonic的方式来思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">0. 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E8%87%AA%E5%B7%B1%E6%89%80%E7%94%A8%E7%9A%84python%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">1. 确认自己所用的Python版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B5%E5%BE%AApep-8-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97"><span class="toc-number">1.3.</span> <span class="toc-text">2. 遵循PEP 8 风格指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3bytesstr%E4%B8%8Eunicode%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">3.
+了解bytes、str与unicode的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E6%9D%A5%E5%8F%96%E4%BB%A3%E5%A4%8D%E6%9D%82%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">4.
+用辅助函数来取代复杂的表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%88%87%E5%89%B2%E5%BA%8F%E5%88%97%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">5. 了解切割序列的办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%AC%A1%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C%E5%86%85%E4%B8%8D%E8%A6%81%E5%90%8C%E6%97%B6%E6%8C%87%E5%AE%9A-start-end-%E5%92%8C-stride"><span class="toc-number">1.7.</span> <span class="toc-text">6.
+单次切片操作内，不要同时指定 start、 end 和 stride</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%88%97%E8%A1%A8list-comprehension%E6%8E%A8%E5%AF%BC%E6%9D%A5%E5%8F%96%E4%BB%A3map%E5%92%8Cfilter"><span class="toc-number">1.8.</span> <span class="toc-text">7. 用列表（list
+comprehension）推导来取代map和filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%90%AB%E6%9C%89%E4%B8%A4%E4%B8%AA%E4%BB%A5%E4%B8%8A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.9.</span> <span class="toc-text">8.
+不要使用含有两个以上表达式的列表推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9D%A5%E6%94%B9%E5%86%99%E6%95%B0%E6%8D%AE%E9%87%8F%E8%BE%83%E5%A4%A7%E7%9A%84%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.10.</span> <span class="toc-text">9.
+用生成器表达式来改写数据量较大的列表推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8-enumerate-%E5%8F%96%E4%BB%A3-range"><span class="toc-number">1.11.</span> <span class="toc-text">10. 尽量使用 enumerate 取代
+range</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8zip%E5%87%BD%E6%95%B0%E5%90%8C%E6%97%B6%E9%81%8D%E5%8E%86%E4%B8%A4%E4%B8%AA%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">1.12.</span> <span class="toc-text">11.
+用zip函数同时遍历两个迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%9C%A8-for-%E5%92%8C-while-%E5%BE%AA%E7%8E%AF%E5%90%8E%E9%9D%A2%E5%86%99-else-%E5%9D%97"><span class="toc-number">1.13.</span> <span class="toc-text">12. 不要在 for 和 while
+循环后面写 else 块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E7%90%86%E5%88%A9%E7%94%A8-tryexceptelsefinally-%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E6%AF%8F%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.14.</span> <span class="toc-text">13. 合理利用
+try&#x2F;except&#x2F;else&#x2F;finally 结构中的每个代码块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">2. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E6%9D%A5%E8%A1%A8%E7%A4%BA%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E8%80%8C%E4%B8%8D%E8%A6%81%E8%BF%94%E5%9B%9Enone"><span class="toc-number">2.1.</span> <span class="toc-text">14.
+尽量使用异常来表示特殊情况，而不要返回None</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E5%9C%A8%E9%97%AD%E5%8C%85%E9%87%8C%E4%BD%BF%E7%94%A8%E5%A4%96%E5%9B%B4%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">15.
+了解如何在闭包里使用外围作用域中的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%99%91%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8%E6%9D%A5%E6%94%B9%E5%86%99%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">16.
+考虑用生成器来改写直接返回列表的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%8F%82%E6%95%B0%E4%B8%8A%E9%9D%A2%E8%BF%AD%E4%BB%A3%E6%97%B6%E8%A6%81%E5%A4%9A%E5%8A%A0%E5%B0%8F%E5%BF%83"><span class="toc-number">2.4.</span> <span class="toc-text">17.
+在参数上面迭代时，要多加小心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%95%B0%E9%87%8F%E5%8F%AF%E5%8F%98%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%87%8F%E5%B0%91%E8%A7%86%E8%A7%89%E6%9D%82%E8%AE%AFvisual-noise"><span class="toc-number">2.5.</span> <span class="toc-text">18.
+用数量可变的位置参数减少视觉杂讯（visual noise）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0%E6%9D%A5%E8%A1%A8%E8%BE%BE%E5%8F%AF%E9%80%89%E7%9A%84%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.6.</span> <span class="toc-text">19.
+用关键字参数来表达可选的行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-none-%E5%92%8C%E6%96%87%E6%A1%A3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%A5%E6%8F%8F%E8%BF%B0%E5%85%B7%E6%9C%89%E5%8A%A8%E6%80%81%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">2.7.</span> <span class="toc-text">20. 用 None
+和文档字符串来描述具有动态默认值的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E5%8F%AA%E8%83%BD%E4%BB%A5%E5%85%B3%E9%94%AE%E5%AD%97%E5%BD%A2%E5%BC%8F%E6%8C%87%E5%AE%9A%E7%9A%84%E5%8F%82%E6%95%B0%E6%9D%A5%E7%A1%AE%E4%BF%9D%E4%BB%A3%E7%A0%81%E6%98%8E%E7%A1%AE"><span class="toc-number">2.8.</span> <span class="toc-text">21.
+用只能以关键字形式指定的参数来确保代码明确</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="toc-number">3.</span> <span class="toc-text">3. 类与继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E7%94%A8%E8%BE%85%E5%8A%A9%E7%B1%BB%E6%9D%A5%E7%BB%B4%E6%8A%A4%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8%E5%AD%97%E5%85%B8%E5%92%8C%E5%85%83%E7%BB%84"><span class="toc-number">3.1.</span> <span class="toc-text">22.
+尽量用辅助类来维护程序的状态，而不要用字典和元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%BA%94%E8%AF%A5%E6%8E%A5%E5%8F%97%E5%87%BD%E6%95%B0%E8%80%8C%E4%B8%8D%E6%98%AF%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">23.
+简单的接口应该接受函数，而不是类的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5-clssmethod-%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%A4%9A%E6%80%81%E5%8E%BB%E9%80%9A%E7%94%A8%E5%9C%B0%E6%9E%84%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">24. 以 @clssmethod
+形式的多态去通用地构建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-super-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%88%B6%E7%B1%BB"><span class="toc-number">3.4.</span> <span class="toc-text">25. 用 super 初始化父类</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -612,7 +695,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 Qian Hu
+    		&copy; 2023 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
