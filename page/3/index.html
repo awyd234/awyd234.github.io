@@ -193,6 +193,80 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-IOS学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/bfc6ccc4/">IOS学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/post/bfc6ccc4/" class="archive-article-date">
+  	<time datetime="2019-11-06T09:28:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="对c的扩展">对C的扩展</h2>
+<h3 id="import">#import</h3>
+<p>可保证头文件只被包含一次，无论此命令在那个文件中出现了多少次</p>
+<h3 id="nslog-和字符串">NSLog 和@字符串</h3>
+<p>NSLog类似于C语言的printf()，添加了例如时间戳、日期戳和自动附加换行符等特性</p>
+<p>NS前缀是来自Cocoa的函数，<span class="citation" data-cites="符号表示引用的字符串应作为Cocoa的NSString元素来处理">@符号表示引用的字符串应作为Cocoa的NSString元素来处理</span></p>
+<p>NSArray提供数组，NSDateFormatter帮助用不同方式来格式化日期，NSThread提供多线程编程工具，NSSpeechSynthesizer使听到语音</p>
+<p>使用NSLog()输出任意对象的值时，都会使用%<span class="citation" data-cites="格式说明">@格式说明</span>，使用这个说明符时，对象通过一个名为description的方法提供自己的NSLog()形式</p>
+<h3 id="boolean类型">Boolean类型</h3>
+<p>相比于C语言的bool类型，OC提供BOOL类型，具有YES(1)值和NO(0)值，编译器将BOOL认作8位二进制数</p>
+        
+          <a class="article-more-a" href="/post/bfc6ccc4/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/bfc6ccc4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-「论文笔记」Rich feature hierarchies for accurate object detection and semantic segmentation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1156,114 +1230,6 @@ X_p)\)</span>，另一部分则由其他众多未加考虑的因素，包括随�
 
 
   
-    <article id="post-「统计学学习」Day3-假设检验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/4534d777/">「统计学学习」Day3 假设检验</a>
-    </h1>
-  
-
-        
-        <a href="/post/4534d777/" class="archive-article-date">
-  	<time datetime="2019-01-07T13:30:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言">1. 前言</h1>
-<p>《女性品茶：20世纪统计怎样变革了科学》</p>
-<p>作者：萨尔斯伯格，美国统计学会（the American Statistical
-Association）的Fellow</p>
-<p>该书通俗生动地介绍了20世纪统计学的发展主线</p>
-<h1 id="假设检验的基本步骤">2. 假设检验的基本步骤</h1>
-<ul>
-<li>Step1：建立假设：<span class="math inline">\(H_0: \theta \in
-\Theta_0 \ vs \ H_1: \theta \in \Theta_1\)</span></li>
-<li>Step2：选择检验统计量，给出拒绝域<span class="math inline">\(W\)</span>的形式。
-<ul>
-<li>所谓拒绝域是指使原假设被拒绝的样本观测值所在的区域<span class="math inline">\(W\)</span>，一般将<span class="math inline">\(\bar{W}\)</span>称为接受域。</li>
-</ul></li>
-<li>Step3：选择显著性水平<span class="math inline">\(\alpha\)</span>。
-<ul>
-<li><span class="math inline">\(\alpha = P(拒绝H_0|H_0为真) = P_0(X \in
-W), \theta \in \Theta_0\)</span>，给出拒绝域的具体范围。</li>
-</ul></li>
-</ul>
-<h1 id="假设检验问题的两类错误和p值">3. 假设检验问题的两类错误和P值</h1>
-<h2 id="假设检验问题的两类错误">3.1 假设检验问题的两类错误</h2>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">原假设成立</th>
-<th style="text-align: center;">原假设不成立</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">接受</td>
-<td style="text-align: center;"><span class="math inline">\(\surd\)</span></td>
-<td style="text-align: center;">第二类错误（受伪）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">拒绝</td>
-<td style="text-align: center;">第一类错误（拒真）</td>
-<td style="text-align: center;"><span class="math inline">\(\surd\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>第一类错误即为显著性水平<span class="math inline">\(\alpha =
-P(拒绝H_0 | H_0为真) = P_0(X \in W)\)</span></p>
-        
-          <a class="article-more-a" href="/post/4534d777/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/4534d777/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1659,6 +1625,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Programing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
             
             <div class="clearfix"></div>

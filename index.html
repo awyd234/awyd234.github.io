@@ -193,6 +193,105 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Go-runtime相关函数源码阅读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/28ba3f10/">Go runtime相关函数源码阅读</a>
+    </h1>
+  
+
+        
+        <a href="/post/28ba3f10/" class="archive-article-date">
+  	<time datetime="2024-07-22T10:36:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统：macos 15</li>
+<li>go版本：go1.20</li>
+</ul>
+<h1 id="runqput">runqput</h1>
+<h2 id="源码">源码</h2>
+<p>位于src/runtime/proc.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// runqput tries to put g on the local runnable queue.</span></span><br><span class="line"><span class="comment">// If next is false, runqput adds g to the tail of the runnable queue.</span></span><br><span class="line"><span class="comment">// If next is true, runqput puts g in the pp.runnext slot.</span></span><br><span class="line"><span class="comment">// If the run queue is full, runnext puts g on the global queue.</span></span><br><span class="line"><span class="comment">// Executed only by the owner P.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">runqput</span><span class="params">(pp *p, gp *g, next <span class="type">bool</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> randomizeScheduler &amp;&amp; next &amp;&amp; fastrandn(<span class="number">2</span>) == <span class="number">0</span> &#123;</span><br><span class="line">		next = <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> next &#123;</span><br><span class="line">	retryNext:</span><br><span class="line">		oldnext := pp.runnext</span><br><span class="line">		<span class="keyword">if</span> !pp.runnext.cas(oldnext, guintptr(unsafe.Pointer(gp))) &#123;</span><br><span class="line">			<span class="keyword">goto</span> retryNext</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> oldnext == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Kick the old runnext out to the regular run queue.</span></span><br><span class="line">		gp = oldnext.ptr()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">retry:</span><br><span class="line">	h := atomic.LoadAcq(&amp;pp.runqhead) <span class="comment">// load-acquire, synchronize with consumers</span></span><br><span class="line">	t := pp.runqtail</span><br><span class="line">	<span class="keyword">if</span> t-h &lt; <span class="type">uint32</span>(<span class="built_in">len</span>(pp.runq)) &#123;</span><br><span class="line">		pp.runq[t%<span class="type">uint32</span>(<span class="built_in">len</span>(pp.runq))].set(gp)</span><br><span class="line">		atomic.StoreRel(&amp;pp.runqtail, t+<span class="number">1</span>) <span class="comment">// store-release, makes the item available for consumption</span></span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> runqputslow(pp, gp, h, t) &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// the queue is not full, now the put above must succeed</span></span><br><span class="line">	<span class="keyword">goto</span> retry</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="randomizescheduler">randomizeScheduler</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> randomizeScheduler &amp;&amp; next &amp;&amp; fastrandn(<span class="number">2</span>) == <span class="number">0</span> &#123;</span><br><span class="line">		next = <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>调度器的随机化标志，如果开启这会看fastrandn(2)生成的数据</p>
+        
+          <a class="article-more-a" href="/post/28ba3f10/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Study-Record//" class="article-tag-list-link color3">Study Record</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/28ba3f10/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-「架构实战营」作业二-微信朋友圈高性能复杂度分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1115,118 +1214,6 @@ get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值�
 
 
   
-    <article id="post-Linux下的文件批量重命名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/dcc491bf/">Linux下的文件批量重命名</a>
-    </h1>
-  
-
-        
-        <a href="/post/dcc491bf/" class="archive-article-date">
-  	<time datetime="2021-01-22T10:00:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="故事背景">故事背景</h1>
-<h2 id="故事描述">故事描述</h2>
-<p>最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，决定写这篇文章整理下</p>
-<h2 id="系统配置">系统配置</h2>
-<h3 id="操作系统">操作系统</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version
-5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP
-Wed May 30 11:</p>
-</blockquote>
-<h1 id="故事经过">故事经过</h1>
-<h2 id="综述">综述</h2>
-<p>针对这个问题，根据以往经验，以及网上搜索相关信息，和自己试验，大概可以通过Linux命令、shell脚本、Python脚本来解决</p>
-        
-          <a class="article-more-a" href="/post/dcc491bf/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Shell</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">File Processing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/dcc491bf/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1622,6 +1609,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Programing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
             
             <div class="clearfix"></div>

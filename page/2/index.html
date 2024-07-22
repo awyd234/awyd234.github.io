@@ -193,6 +193,118 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux下的文件批量重命名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/dcc491bf/">Linux下的文件批量重命名</a>
+    </h1>
+  
+
+        
+        <a href="/post/dcc491bf/" class="archive-article-date">
+  	<time datetime="2021-01-22T10:00:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="故事背景">故事背景</h1>
+<h2 id="故事描述">故事描述</h2>
+<p>最近被问到如何在Linux环境下对文件进行批量重命名，仔细想了一下，好像平时也没关注过这个的写法，之前有过类似需求时，作为一个Python开发者，更多地会想到直接用写Python脚本去处理，虽然知道可能可以通过shell脚本或者有直接的Linux命令去做，但一直没试过，决定写这篇文章整理下</p>
+<h2 id="系统配置">系统配置</h2>
+<h3 id="操作系统">操作系统</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version
+5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP
+Wed May 30 11:</p>
+</blockquote>
+<h1 id="故事经过">故事经过</h1>
+<h2 id="综述">综述</h2>
+<p>针对这个问题，根据以往经验，以及网上搜索相关信息，和自己试验，大概可以通过Linux命令、shell脚本、Python脚本来解决</p>
+        
+          <a class="article-more-a" href="/post/dcc491bf/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Shell</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">File Processing</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/dcc491bf/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-CUDA升级，从9-2到11-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1346,80 +1458,6 @@ Toronto</a></li>
 
 
   
-    <article id="post-IOS学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/bfc6ccc4/">IOS学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/post/bfc6ccc4/" class="archive-article-date">
-  	<time datetime="2019-11-06T09:28:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="对c的扩展">对C的扩展</h2>
-<h3 id="import">#import</h3>
-<p>可保证头文件只被包含一次，无论此命令在那个文件中出现了多少次</p>
-<h3 id="nslog-和字符串">NSLog 和@字符串</h3>
-<p>NSLog类似于C语言的printf()，添加了例如时间戳、日期戳和自动附加换行符等特性</p>
-<p>NS前缀是来自Cocoa的函数，<span class="citation" data-cites="符号表示引用的字符串应作为Cocoa的NSString元素来处理">@符号表示引用的字符串应作为Cocoa的NSString元素来处理</span></p>
-<p>NSArray提供数组，NSDateFormatter帮助用不同方式来格式化日期，NSThread提供多线程编程工具，NSSpeechSynthesizer使听到语音</p>
-<p>使用NSLog()输出任意对象的值时，都会使用%<span class="citation" data-cites="格式说明">@格式说明</span>，使用这个说明符时，对象通过一个名为description的方法提供自己的NSLog()形式</p>
-<h3 id="boolean类型">Boolean类型</h3>
-<p>相比于C语言的bool类型，OC提供BOOL类型，具有YES(1)值和NO(0)值，编译器将BOOL认作8位二进制数</p>
-        
-          <a class="article-more-a" href="/post/bfc6ccc4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/bfc6ccc4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1815,6 +1853,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Programing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
             
             <div class="clearfix"></div>

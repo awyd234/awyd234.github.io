@@ -193,6 +193,78 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-journalctl的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/38935867/">journalctl的使用</a>
+    </h1>
+  
+
+        
+        <a href="/post/38935867/" class="archive-article-date">
+  	<time datetime="2017-06-19T03:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用背景与安装">1、使用背景与安装</h1>
+<h2 id="使用背景">1.1 使用背景</h2>
+<p>系统中疑似存在丢syslog的情况，比如/var/log/auth.log一直找不到，网上找了很多解决方法一直未能解决，而我又需要知道每个人员针对服务器的操作，以及检测ssh是否有外人破解进来</p>
+<h2 id="安装">1.2 安装</h2>
+<p>部分linux系统中可能会报错 journalctl command not
+found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install systemd</span><br></pre></td></tr></table></figure>
+
+        
+          <a class="article-more-a" href="/post/38935867/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/38935867/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jQuery-DataTables的增删改方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1138,6 +1210,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Programing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
             
             <div class="clearfix"></div>
