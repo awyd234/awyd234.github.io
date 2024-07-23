@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://windtrack.xyz">
   <title>Go runtime相关函数源码阅读 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景介绍 环境  操作系统：macos 15 go版本：go1.20  整体脉络    runqput 源码 位于src&#x2F;runtime&#x2F;proc.go 12345678910111213141516171819202122232425262728293031323334353637&#x2F;&#x2F; runqput tries to put g on the local runnable queue.&#x2F;&#x2F; I">
+  <meta name="description" content="背景介绍 环境  操作系统：macos 15 go版本：go1.20 IDE：GoLand 辅助：ChatGPT 4o  整体脉络    runqput 源码 位于src&#x2F;runtime&#x2F;proc.go 12345678910111213141516171819202122232425262728293031323334353637&#x2F;&#x2F; runqput tries to put g on the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go runtime相关函数源码阅读">
 <meta property="og:url" content="http://windtrack.xyz/post/28ba3f10/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="背景介绍 环境  操作系统：macos 15 go版本：go1.20  整体脉络    runqput 源码 位于src&#x2F;runtime&#x2F;proc.go 12345678910111213141516171819202122232425262728293031323334353637&#x2F;&#x2F; runqput tries to put g on the local runnable queue.&#x2F;&#x2F; I">
+<meta property="og:description" content="背景介绍 环境  操作系统：macos 15 go版本：go1.20 IDE：GoLand 辅助：ChatGPT 4o  整体脉络    runqput 源码 位于src&#x2F;runtime&#x2F;proc.go 12345678910111213141516171819202122232425262728293031323334353637&#x2F;&#x2F; runqput tries to put g on the">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://windtrack.xyz/post/28ba3f10/9F3ED97E-980B-40AE-87FB-034C782CD6C1.png">
 <meta property="article:published_time" content="2024-07-22T10:36:44.000Z">
-<meta property="article:modified_time" content="2024-07-22T12:08:12.124Z">
+<meta property="article:modified_time" content="2024-07-23T08:40:06.610Z">
 <meta property="article:author" content="Qian Hu">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -221,6 +221,8 @@ var _hmt = _hmt || [];
 <ul>
 <li>操作系统：macos 15</li>
 <li>go版本：go1.20</li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
 </ul>
 <h2 id="整体脉络">整体脉络</h2>
 <div data-align="center">
@@ -274,6 +276,126 @@ guintptr(unsafe.Pointer(gp)))</h3>
 <h3 id="globrunqputbatchq-int32n1">globrunqputbatch(&amp;q,
 int32(n+1))</h3>
 <p>把batch里的goroutine放入全局队列，共n+1个goroutine</p>
+<h1 id="runqget">runqget</h1>
+<h2 id="源码-1">源码</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get g from local runnable queue.</span></span><br><span class="line"><span class="comment">// If inheritTime is true, gp should inherit the remaining time in the</span></span><br><span class="line"><span class="comment">// current time slice. Otherwise, it should start a new time slice.</span></span><br><span class="line"><span class="comment">// Executed only by the owner P.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">runqget</span><span class="params">(pp *p)</span></span> (gp *g, inheritTime <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="comment">// If there&#x27;s a runnext, it&#x27;s the next G to run.</span></span><br><span class="line">	next := pp.runnext</span><br><span class="line">	<span class="comment">// If the runnext is non-0 and the CAS fails, it could only have been stolen by another P,</span></span><br><span class="line">	<span class="comment">// because other Ps can race to set runnext to 0, but only the current P can set it to non-0.</span></span><br><span class="line">	<span class="comment">// Hence, there&#x27;s no need to retry this CAS if it fails.</span></span><br><span class="line">	<span class="keyword">if</span> next != <span class="number">0</span> &amp;&amp; pp.runnext.cas(next, <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> next.ptr(), <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		h := atomic.LoadAcq(&amp;pp.runqhead) <span class="comment">// load-acquire, synchronize with other consumers</span></span><br><span class="line">		t := pp.runqtail</span><br><span class="line">		<span class="keyword">if</span> t == h &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">		gp := pp.runq[h%<span class="type">uint32</span>(<span class="built_in">len</span>(pp.runq))].ptr()</span><br><span class="line">		<span class="keyword">if</span> atomic.CasRel(&amp;pp.runqhead, h, h+<span class="number">1</span>) &#123; <span class="comment">// cas-release, commits consume</span></span><br><span class="line">			<span class="keyword">return</span> gp, <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="整体分析">整体分析</h2>
+<p>此处代码没那么复杂，整体简要分析吧，inheritTime表示是否继承当前时间片的剩余时间</p>
+<h3 id="if-next-0-pp.runnext.casnext-0">if next != 0 &amp;&amp;
+pp.runnext.cas(next, 0)</h3>
+<p>runnext中有没有goroutine，有的就返回并置为0，如果这里不为0且没法转为0，则说明被其他P偷走了，其他的P只能将runnext设置为0而不能设置非0，因此CAS失败的话没必要重试</p>
+<h3 id="if-t-h">if t == h</h3>
+<p>检查本地队列是否为空，如果为空则直接返回</p>
+<h3 id="gp-pp.runqhuint32lenpp.runq.ptr">gp :=
+pp.runq[h%uint32(len(pp.runq))].ptr()</h3>
+<p>将本地队列的队首元素返回，并将队首指向下一个，获取到的goroutine不继承时间片，从新时间片开始</p>
+<h1 id="globrunqput">globrunqput</h1>
+<h2 id="源码-2">源码</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Put gp on the global runnable queue.</span></span><br><span class="line"><span class="comment">// sched.lock must be held.</span></span><br><span class="line"><span class="comment">// May run during STW, so write barriers are not allowed.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//go:nowritebarrierrec</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">globrunqput</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	assertLockHeld(&amp;sched.lock)</span><br><span class="line"></span><br><span class="line">	sched.runq.pushBack(gp)</span><br><span class="line">	sched.runqsize++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sched.lock锁">sched.lock锁</h2>
+<p>必须有sched.lock锁，保证线程安全，全局可运行队列是多个P共享的数据结构，可能被多个线程并发访问，为了保证数据一致性和防止竞态条件，必须在操作全局队列时持有sched.lock锁</p>
+<h2 id="write-barriers">write barriers</h2>
+<p>可能在Stop-The-World（STW）阶段运行，因此不能使用写屏障</p>
+<p>同时指定了//go:nowritebarrierrec，编译器在这个函数及其调用的函数中不允许使用写屏障</p>
+<h2 id="stop-the-worldstw">Stop-The-World（STW）</h2>
+<p>垃圾收集等操作中，Go
+runtime会停止所有goroutine，即进入了STW阶段，STW阶段运行的代码不能使用写屏障，因为写屏障会修改对象的状态，而在STW阶段对象的状态不能被修改</p>
+<h2 id="写屏障">写屏障</h2>
+<p>写屏障（Write
+Barrier）是一种内存管理技术，主要用于GC来维护堆对象的正确性和一致性，GC中，写屏障确保在对象引用被修改时，GC能正确地跟踪这些修改，以便进行有效的内存回收，写屏障的作用是维护GC的准确性，特别是在并发GC和增量GC中</p>
+<h3 id="基本概念">基本概念</h3>
+<ul>
+<li>维护引用关系
+<ul>
+<li>当一个对象引用发生变化时，写屏障记录这些变化，确保GC能正确地识别和处理被修改的引用</li>
+</ul></li>
+<li>辅助垃圾回收
+<ul>
+<li>写屏障帮助GC维护堆对象的准确状态，避免在垃圾回收过充值丢失引用，从而防止误回收活跃对象</li>
+</ul></li>
+</ul>
+<h3 id="类型">类型</h3>
+<ul>
+<li>插入式写屏障（Insertion Write Barrier）
+<ul>
+<li>在写入新引用时触发。</li>
+</ul></li>
+<li>删除式写屏障（Deletion Write Barrier）
+<ul>
+<li>在删除引用时触发。</li>
+</ul></li>
+<li>混合式写屏障（Mixed Write Barrier）
+<ul>
+<li>结合了插入和删除的功能。</li>
+</ul></li>
+</ul>
+<h3 id="go中的作用">Go中的作用</h3>
+<p>Go的GC使用写屏障来支持并发标记-清除算法，写屏障在Go的GC中起到了关键作用，特别是在垃圾收集器和应用程序同时运行的情况下，Go
+使用的主要是混合写屏障</p>
+<ul>
+<li><strong>增量更新（Incremental Update）</strong>：
+<ul>
+<li>在写入新引用时，写屏障记录新引用对象，使得垃圾收集器能够正确地标记新的引用</li>
+</ul></li>
+<li><strong>静态屏障（Static Barrier）</strong>：
+<ul>
+<li>在编译时插入写屏障代码，确保所有的指针写操作都经过写屏障</li>
+</ul></li>
+</ul>
+<h2 id="sched.runq.pushbackgp">sched.runq.pushBack(gp)</h2>
+<p>将goroutine放入全局队列的队尾，需要区分pp.runq</p>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 48%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Items</th>
+<th>pp.runq</th>
+<th>sched.runq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>定义</td>
+<td>每个处理器（P）独有的本地可运行队列</td>
+<td>全局可运行队列，所有P共用</td>
+</tr>
+<tr class="even">
+<td>作用</td>
+<td>P运行时，会首先从pp.runq中获取待执行的goroutine</td>
+<td>存储无法立即分配给某个P的goroutine</td>
+</tr>
+<tr class="odd">
+<td>特点</td>
+<td>高效性：本地队列，访问速度快，减少了全局锁竞争，提升了调度器性能</td>
+<td>负载均衡：某个P本地队列为空时，可以从sched.runq中获取goroutine来保持负载均衡</td>
+</tr>
+<tr class="even">
+<td>结构</td>
+<td>循环队列，通过runqhead和runqtail指针运行</td>
+<td>全局队列，需要加锁sched.lock保证线程安全</td>
+</tr>
+</tbody>
+</table>
+<h1 id="globrunqget">globrunqget</h1>
+<h2 id="源码-3">源码</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Try get a batch of G&#x27;s from the global runnable queue.</span></span><br><span class="line"><span class="comment">// sched.lock must be held.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">globrunqget</span><span class="params">(pp *p, max <span class="type">int32</span>)</span></span> *g &#123;</span><br><span class="line">	assertLockHeld(&amp;sched.lock)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> sched.runqsize == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	n := sched.runqsize/gomaxprocs + <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span> n &gt; sched.runqsize &#123;</span><br><span class="line">		n = sched.runqsize</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> max &gt; <span class="number">0</span> &amp;&amp; n &gt; max &#123;</span><br><span class="line">		n = max</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> n &gt; <span class="type">int32</span>(<span class="built_in">len</span>(pp.runq))/<span class="number">2</span> &#123;</span><br><span class="line">		n = <span class="type">int32</span>(<span class="built_in">len</span>(pp.runq)) / <span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	sched.runqsize -= n</span><br><span class="line"></span><br><span class="line">	gp := sched.runq.pop()</span><br><span class="line">	n--</span><br><span class="line">	<span class="keyword">for</span> ; n &gt; <span class="number">0</span>; n-- &#123;</span><br><span class="line">		gp1 := sched.runq.pop()</span><br><span class="line">		runqput(pp, gp1, <span class="literal">false</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> gp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="n-sched.runqsizegomaxprocs-1">n := sched.runqsize/gomaxprocs +
+1</h2>
+<p>计算每个P平均可获取的goroutine数量，加一为了保证至少一个</p>
+<p>如果这个数值大于了全局队列中的goroutine数量，则调整为该值，如果设置了max且大于0，调整为max</p>
+<p>确保n不会超过本地队列的一半</p>
+<h2 id="gp-sched.runq.pop">gp := sched.runq.pop()</h2>
+<p>获取全局队列中第一个goroutine，将这n个goroutine放入P的本地队列</p>
+<h3 id="对比runqputslow">对比runqputslow</h3>
+<p>runqputslow会在本地队列满时放一半到全局队列，globrunqget会在P的本地队列为空或者即将为空时放入，因此是不冲突的，不会反复来回倒腾</p>
+<h1 id="schedule">schedule</h1>
+<h1 id="findrunnable">findrunnable</h1>
+<h1 id="sysmon">sysmon</h1>
+<h1 id="rt0_go">rt0_go</h1>
 
       
 
@@ -421,7 +543,10 @@ int32(n+1))</h3>
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E8%84%89%E7%BB%9C"><span class="toc-number">1.2.</span> <span class="toc-text">整体脉络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#runqput"><span class="toc-number">2.</span> <span class="toc-text">runqput</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#randomizescheduler"><span class="toc-number">2.2.</span> <span class="toc-text">randomizeScheduler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#retrynext"><span class="toc-number">2.3.</span> <span class="toc-text">retryNext</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cas"><span class="toc-number">2.3.1.</span> <span class="toc-text">cas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pp.runnext.casoldnext-guintptrunsafe.pointergp"><span class="toc-number">2.3.2.</span> <span class="toc-text">!pp.runnext.cas(oldnext,
 guintptr(unsafe.Pointer(gp)))</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-oldnext-0"><span class="toc-number">2.3.3.</span> <span class="toc-text">if oldnext &#x3D;&#x3D; 0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#retry"><span class="toc-number">2.4.</span> <span class="toc-text">retry</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if-t-h-uint32lenpp.runq"><span class="toc-number">2.4.1.</span> <span class="toc-text">if t-h &lt; uint32(len(pp.runq))</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-runqputslowpp-gp-h-t"><span class="toc-number">2.4.2.</span> <span class="toc-text">if runqputslow(pp, gp, h, t)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#runqputslow"><span class="toc-number">2.5.</span> <span class="toc-text">runqputslow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#var-batch-lenpp.runq2-1g"><span class="toc-number">2.5.1.</span> <span class="toc-text">var batch [len(pp.runq)&#x2F;2 + 1]*g</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-n-uint32lenpp.runq2"><span class="toc-number">2.5.2.</span> <span class="toc-text">if n !&#x3D; uint32(len(pp.runq)&#x2F;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-i-uint320-i-n-i"><span class="toc-number">2.5.3.</span> <span class="toc-text">for i :&#x3D; uint32(0); i &lt; n; i++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-atomic.casrelpp.runqhead-h-hn"><span class="toc-number">2.5.4.</span> <span class="toc-text">if
 !atomic.CasRel(&amp;pp.runqhead, h, h+n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#batchn-gp"><span class="toc-number">2.5.5.</span> <span class="toc-text">batch[n] &#x3D; gp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-randomizescheduler"><span class="toc-number">2.5.6.</span> <span class="toc-text">if randomizeScheduler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-i-uint320-i-n-i-1"><span class="toc-number">2.5.7.</span> <span class="toc-text">for i :&#x3D; uint32(0); i &lt; n; i++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globrunqputbatchq-int32n1"><span class="toc-number">2.5.8.</span> <span class="toc-text">globrunqputbatch(&amp;q,
-int32(n+1))</span></a></li></ol></li></ol></li></ol>
+int32(n+1))</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#runqget"><span class="toc-number">3.</span> <span class="toc-text">runqget</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81-1"><span class="toc-number">3.1.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-number">3.2.</span> <span class="toc-text">整体分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if-next-0-pp.runnext.casnext-0"><span class="toc-number">3.2.1.</span> <span class="toc-text">if next !&#x3D; 0 &amp;&amp;
+pp.runnext.cas(next, 0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-t-h"><span class="toc-number">3.2.2.</span> <span class="toc-text">if t &#x3D;&#x3D; h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gp-pp.runqhuint32lenpp.runq.ptr"><span class="toc-number">3.2.3.</span> <span class="toc-text">gp :&#x3D;
+pp.runq[h%uint32(len(pp.runq))].ptr()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#globrunqput"><span class="toc-number">4.</span> <span class="toc-text">globrunqput</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81-2"><span class="toc-number">4.1.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sched.lock%E9%94%81"><span class="toc-number">4.2.</span> <span class="toc-text">sched.lock锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#write-barriers"><span class="toc-number">4.3.</span> <span class="toc-text">write barriers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stop-the-worldstw"><span class="toc-number">4.4.</span> <span class="toc-text">Stop-The-World（STW）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%B1%8F%E9%9A%9C"><span class="toc-number">4.5.</span> <span class="toc-text">写屏障</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">4.5.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.2.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#go%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.5.3.</span> <span class="toc-text">Go中的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sched.runq.pushbackgp"><span class="toc-number">4.6.</span> <span class="toc-text">sched.runq.pushBack(gp)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#globrunqget"><span class="toc-number">5.</span> <span class="toc-text">globrunqget</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81-3"><span class="toc-number">5.1.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n-sched.runqsizegomaxprocs-1"><span class="toc-number">5.2.</span> <span class="toc-text">n :&#x3D; sched.runqsize&#x2F;gomaxprocs +
+1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gp-sched.runq.pop"><span class="toc-number">5.3.</span> <span class="toc-text">gp :&#x3D; sched.runq.pop()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94runqputslow"><span class="toc-number">5.3.1.</span> <span class="toc-text">对比runqputslow</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#schedule"><span class="toc-number">6.</span> <span class="toc-text">schedule</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#findrunnable"><span class="toc-number">7.</span> <span class="toc-text">findrunnable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sysmon"><span class="toc-number">8.</span> <span class="toc-text">sysmon</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rt0_go"><span class="toc-number">9.</span> <span class="toc-text">rt0_go</span></a></li></ol>
                     </div>
                 </span>
             </div>
