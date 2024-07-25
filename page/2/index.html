@@ -193,6 +193,114 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python下实现单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/804c7090/">Python下实现单例模式</a>
+    </h1>
+  
+
+        
+        <a href="/post/804c7090/" class="archive-article-date">
+  	<time datetime="2021-01-26T07:01:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="综述">综述</h1>
+<p>单例模式是一种很常见的设计模式，一个类只允许创建一个对象（或者实例），那这个类就是一个单例类</p>
+<h1 id="new__方法">__new__方法</h1>
+<p>通常我们把__init__称作构造方法，但实际构造实例用的是__new__方法，这是一个特殊的类方法，不需要使用@classmethod装饰器，必须返回一个实例，返回的实例会作为第一个参数（即self）传给__init__方法，而__init__方法调用时需要传入实例，且禁止任何返回值，因此__init__方法其实是初始化方法，真正的构造方法实际是__new__</p>
+<p>__new__方法也可以返回其它类的实例，这样就不会调用__init__方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;init&#x27;</span>)</span><br><span class="line">        self.a = <span class="string">&#x27;b&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;init end&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;new&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>().__new__(cls)</span><br><span class="line">      </span><br><span class="line">c = A(c=<span class="string">&#x27;d&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>可以看到，这里的__new__方法会调用父类__new__方法，实际返回还是一个本身的实例，所以会正常调用__init__方法，结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new</span><br><span class="line">init</span><br><span class="line">init end</span><br></pre></td></tr></table></figure>
+<p>如果__new__方法不返回本身的实例，则不会去调用自身的__init__方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;init&#x27;</span>)</span><br><span class="line">        self.a = <span class="string">&#x27;b&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;init end&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;new&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="comment">#         return super().__new__(cls)</span></span><br><span class="line"></span><br><span class="line">c = A(c=<span class="string">&#x27;d&#x27;</span>)</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/post/804c7090/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Design Patterns</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Magic Function</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Decorater</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/804c7090/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux下的文件批量重命名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1301,134 +1409,6 @@ result.</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/6d2e787e/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-「论文笔记」ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/118818b/">「论文笔记」ImageNet Classification with Deep Convolutional Neural Networks</a>
-    </h1>
-  
-
-        
-        <a href="/post/118818b/" class="archive-article-date">
-  	<time datetime="2020-03-28T13:44:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="basic-info">Basic Info</h2>
-<p>Link: <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet
-Classification with Deep Convolutional Neural Networks - NIPS</a></p>
-<p>Author:</p>
-<ul>
-<li><a href="kriz@cs.utoronto.ca">Alex Krizhevsky, University of
-Toronto</a></li>
-<li><a href="ilya@cs.utoronto.ca">Ilya Sutskever, University of
-Toronto</a></li>
-<li><a href="hinton@cs.utoronto.ca">Geoffrey E. Hinton, University of
-Toronto</a></li>
-</ul>
-<h2 id="summary">Summary</h2>
-<h2 id="research-objective">Research Objective</h2>
-<p>作者的研究目标。</p>
-<h2 id="problem-statement">Problem Statement</h2>
-<p>问题陈述，要解决什么问题？</p>
-<h2 id="methods">Method(s)</h2>
-        
-          <a class="article-more-a" href="/post/118818b/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Computer Vision</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Object Detection</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comments</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Paper-Notes//" class="article-tag-list-link color2">Paper Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/118818b/">展开全文 >></a>
         </p>
       
 

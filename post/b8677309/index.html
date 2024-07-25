@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Archives: 2024/7 | Wind Track</title>
+  <title>Go语法背后的秘密作业题解 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/archives/2024/07/index.html">
+  <meta name="description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  1234567891011$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring Fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语法背后的秘密作业题解">
+<meta property="og:url" content="http://windtrack.xyz/post/b8677309/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  1234567891011$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring Fa">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-23T10:32:52.000Z">
+<meta property="article:modified_time" content="2024-07-25T10:33:02.077Z">
 <meta property="article:author" content="Qian Hu">
 <meta name="twitter:card" content="summary">
   
@@ -191,98 +193,248 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Go语法背后的秘密作业题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Go语法背后的秘密作业题解
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/b8677309/" class="archive-article-date">
+
+        
+        <a href="/post/b8677309/" class="archive-article-date">
   	<time datetime="2024-07-23T10:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/b8677309/">Go语法背后的秘密作业题解</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+<li>远程： 阿里云封装的centos</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+<li>远程：go1.14.12</li>
+</ul></li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">NAME=<span class="string">&quot;Alibaba Cloud Linux&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;3 (Soaring Falcon)&quot;</span></span><br><span class="line">ID=<span class="string">&quot;alinux&quot;</span></span><br><span class="line">ID_LIKE=<span class="string">&quot;rhel fedora centos anolis&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;3&quot;</span></span><br><span class="line">UPDATE_ID=<span class="string">&quot;9.1&quot;</span></span><br><span class="line">PLATFORM_ID=<span class="string">&quot;platform:al8&quot;</span></span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span></span><br><span class="line">ANSI_COLOR=<span class="string">&quot;0;31&quot;</span></span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.aliyun.com/&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="环境准备">环境准备</h2>
+<p>在本机MacOS15预览版上使用始终有问题，换用自有aliyun服务器，由于阿里云服务器代理不易设置，不好获取给的docker
+image，于是将本机环境的image打包后scp上去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机</span></span><br><span class="line">docker save -o go1.14.12-dev.tar xargin/go1.14.12-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 远程</span></span><br><span class="line">docker load -i go1.14.12-dev.tar</span><br><span class="line">docker docker run -it -v /home/awyd234/study/ch02/:/work xargin/go1.14.12-dev</span><br></pre></td></tr></table></figure>
+<h1
+id="必做一-channel-一页中找出所有红线报错在-runtime-中的位置使用-go-1.14.12-版本">必做一
+channel 一页中，找出所有红线报错在 runtime 中的位置，使用 Go 1.14.12
+版本</h1>
+<h2 id="作业内容">作业内容</h2>
+<figure>
+<img
+src="Go%E8%AF%AD%E6%B3%95%E8%83%8C%E5%90%8E%E7%9A%84%E7%A7%98%E5%AF%86%E4%BD%9C%E4%B8%9A%E9%A2%98%E8%A7%A3/image-20240723183723524-1731049-1731051.png"
+alt="image-20240723183723524" />
+<figcaption aria-hidden="true">image-20240723183723524</figcaption>
+</figure>
+<h2 id="close-nil">Close nil</h2>
+<h3 id="代码">代码</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ch <span class="keyword">chan</span> <span class="type">int</span></span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="报错提示">报错提示</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ <span class="keyword">go</span> run close_nil.<span class="keyword">go</span>                                         </span><br><span class="line"><span class="built_in">panic</span>: <span class="built_in">close</span> of <span class="literal">nil</span> channel</span><br><span class="line"></span><br><span class="line">goroutine <span class="number">1</span> [running]:</span><br><span class="line">main.main()</span><br><span class="line">        /work/close_nil/close_nil.<span class="keyword">go</span>:<span class="number">5</span> +<span class="number">0x2a</span></span><br><span class="line">exit status <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="dlv分析">dlv分析</h3>
+<p>先用dlv启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dlv debug close_nil.go</span><br></pre></td></tr></table></figure>
+<p>对main打断点 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b main.main</span><br></pre></td></tr></table></figure></p>
+<p>运行到close(ch)前</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(dlv) c</span><br><span class="line">&gt; main.main() ./send_to_nil.go:3 (hits goroutine(1):1 total:1) (PC: 0x46019f)</span><br><span class="line">     1: package main</span><br><span class="line">     2:</span><br><span class="line">=&gt;   3: func main() &#123;</span><br><span class="line">     4:         var ch chan int</span><br><span class="line">     5:         close(ch)</span><br><span class="line">     6:         ch &lt;- 1</span><br><span class="line">     7: &#125;</span><br><span class="line">(dlv) n</span><br><span class="line">&gt; main.main() ./send_to_nil.go:4 (PC: 0x4601ad)</span><br><span class="line">     1: package main</span><br><span class="line">     2:</span><br><span class="line">     3: func main() &#123;</span><br><span class="line">=&gt;   4:         var ch chan int</span><br><span class="line">     5:         close(ch)</span><br><span class="line">     6:         ch &lt;- 1</span><br><span class="line">     7: &#125;</span><br><span class="line">(dlv) n</span><br><span class="line">&gt; main.main() ./send_to_nil.go:5 (PC: 0x4601b6)</span><br><span class="line">     1: package main</span><br><span class="line">     2:</span><br><span class="line">     3: func main() &#123;</span><br><span class="line">     4:         var ch chan int</span><br><span class="line">=&gt;   5:         close(ch)</span><br><span class="line">     6:         ch &lt;- 1</span><br><span class="line">     7: &#125;</span><br></pre></td></tr></table></figure>
+<p>连续使用si命令进入</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; runtime.closechan() /usr/local/<span class="keyword">go</span>/src/runtime/<span class="keyword">chan</span>.<span class="keyword">go</span>:<span class="number">342</span> (PC: <span class="number">0x404d4a</span>)</span><br><span class="line">Warning: debugging optimized function</span><br><span class="line">   <span class="number">337</span>:         memmove(dst, src, t.size)</span><br><span class="line">   <span class="number">338</span>: &#125;</span><br><span class="line">   <span class="number">339</span>:</span><br><span class="line">   <span class="number">340</span>: <span class="function"><span class="keyword">func</span> <span class="title">closechan</span><span class="params">(c *hchan)</span></span> &#123;</span><br><span class="line">   <span class="number">341</span>:         <span class="keyword">if</span> c == <span class="literal">nil</span> &#123;</span><br><span class="line">=&gt; <span class="number">342</span>:                 <span class="built_in">panic</span>(plainError(<span class="string">&quot;close of nil channel&quot;</span>))</span><br><span class="line">   <span class="number">343</span>:         &#125;</span><br><span class="line">   <span class="number">344</span>:</span><br><span class="line">   <span class="number">345</span>:         lock(&amp;c.lock)</span><br><span class="line">   <span class="number">346</span>:         <span class="keyword">if</span> c.closed != <span class="number">0</span> &#123;</span><br><span class="line">   <span class="number">347</span>:                 unlock(&amp;c.lock)</span><br></pre></td></tr></table></figure>
+<p>可以看到在runtime/chan.go的342行有相关检查panic</p>
+<h2 id="write-close">Write close</h2>
+<h3 id="代码-1">代码</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	ch &lt;- <span class="number">1</span></span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+<h3 id="报错提示-1">报错提示</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># go run write_close.go</span><br><span class="line">panic: send on closed channel</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">main.main()</span><br><span class="line">        /work/write_close/write_close.go:6 +0x63</span><br><span class="line">exit status 2</span><br></pre></td></tr></table></figure>
+<h3 id="dlv分析-1">dlv分析</h3>
+<p>先用前面类似方法找到函数入口</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(dlv) si</span><br><span class="line">&gt; runtime.chansend1() /usr/local/<span class="keyword">go</span>/src/runtime/<span class="keyword">chan</span>.<span class="keyword">go</span>:<span class="number">126</span> (PC: <span class="number">0x404300</span>)</span><br><span class="line">Warning: debugging optimized function</span><br><span class="line">   <span class="number">121</span>:         <span class="keyword">return</span> add(c.buf, <span class="type">uintptr</span>(i)*<span class="type">uintptr</span>(c.elemsize))</span><br><span class="line">   <span class="number">122</span>: &#125;</span><br><span class="line">   <span class="number">123</span>:</span><br><span class="line">   <span class="number">124</span>: <span class="comment">// entry point for c &lt;- x from compiled code</span></span><br><span class="line">   <span class="number">125</span>: <span class="comment">//go:nosplit</span></span><br><span class="line">=&gt; <span class="number">126</span>: <span class="function"><span class="keyword">func</span> <span class="title">chansend1</span><span class="params">(c *hchan, elem unsafe.Pointer)</span></span> &#123;</span><br><span class="line">   <span class="number">127</span>:         chansend(c, elem, <span class="literal">true</span>, getcallerpc())</span><br><span class="line">   <span class="number">128</span>: &#125;</span><br><span class="line">   <span class="number">129</span>:</span><br><span class="line">   <span class="number">130</span>: <span class="comment">/*</span></span><br><span class="line"><span class="comment">   131:  * generic single channel send/recv</span></span><br></pre></td></tr></table></figure>
+<p>持续n和si找到</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(dlv) n</span><br><span class="line">&gt; runtime.chansend() /usr/local/<span class="keyword">go</span>/src/runtime/<span class="keyword">chan</span>.<span class="keyword">go</span>:<span class="number">186</span> (PC: <span class="number">0x40483b</span>)</span><br><span class="line">Warning: debugging optimized function</span><br><span class="line">   <span class="number">181</span>:         &#125;</span><br><span class="line">   <span class="number">182</span>:</span><br><span class="line">   <span class="number">183</span>:         lock(&amp;c.lock)</span><br><span class="line">   <span class="number">184</span>:</span><br><span class="line">   <span class="number">185</span>:         <span class="keyword">if</span> c.closed != <span class="number">0</span> &#123;</span><br><span class="line">=&gt; <span class="number">186</span>:                 unlock(&amp;c.lock)</span><br><span class="line">   <span class="number">187</span>:                 <span class="built_in">panic</span>(plainError(<span class="string">&quot;send on closed channel&quot;</span>))</span><br><span class="line">   <span class="number">188</span>:         &#125;</span><br><span class="line">   <span class="number">189</span>:</span><br><span class="line">   <span class="number">190</span>:         <span class="keyword">if</span> sg := c.recvq.dequeue(); sg != <span class="literal">nil</span> &#123;</span><br><span class="line">   <span class="number">191</span>:                 <span class="comment">// Found a waiting receiver. We pass the value we want to send</span></span><br></pre></td></tr></table></figure>
+<p>可以看到在runtime/chan.go的185行有相关检查panic</p>
+<h2 id="close-closed">Close closed</h2>
+<h3 id="代码-2">代码</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">	<span class="built_in">close</span>(ch)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="报错提示-2">报错提示</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># go run close_closed.go</span></span><br><span class="line">panic: close of closed channel</span><br><span class="line"></span><br><span class="line">goroutine 1 [running]:</span><br><span class="line">main.main()</span><br><span class="line">        /work/close_closed/close_closed.go:6 +0x57</span><br><span class="line"><span class="built_in">exit</span> status 2</span><br></pre></td></tr></table></figure>
+<h3 id="dlv分析-2">dlv分析</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(dlv) n</span><br><span class="line">&gt; runtime.closechan() /usr/local/<span class="keyword">go</span>/src/runtime/<span class="keyword">chan</span>.<span class="keyword">go</span>:<span class="number">347</span> (PC: <span class="number">0x404d20</span>)</span><br><span class="line">Warning: debugging optimized function</span><br><span class="line">   <span class="number">342</span>:                 <span class="built_in">panic</span>(plainError(<span class="string">&quot;close of nil channel&quot;</span>))</span><br><span class="line">   <span class="number">343</span>:         &#125;</span><br><span class="line">   <span class="number">344</span>:</span><br><span class="line">   <span class="number">345</span>:         lock(&amp;c.lock)</span><br><span class="line">   <span class="number">346</span>:         <span class="keyword">if</span> c.closed != <span class="number">0</span> &#123;</span><br><span class="line">=&gt; <span class="number">347</span>:                 unlock(&amp;c.lock)</span><br><span class="line">   <span class="number">348</span>:                 <span class="built_in">panic</span>(plainError(<span class="string">&quot;close of closed channel&quot;</span>))</span><br><span class="line">   <span class="number">349</span>:         &#125;</span><br><span class="line">   <span class="number">350</span>:</span><br><span class="line">   <span class="number">351</span>:         <span class="keyword">if</span> raceenabled &#123;</span><br><span class="line">   <span class="number">352</span>:                 callerpc := getcallerpc()</span><br></pre></td></tr></table></figure>
+<p>可以看到在runtime/chan.go的346行有相关检查panic</p>
+<h1 id="选做修复test-case">选做：修复test case</h1>
+<h2 id="作业内容-1">作业内容</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mapexpr</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;go/ast&quot;</span></span><br><span class="line">	<span class="string">&quot;go/parser&quot;</span></span><br><span class="line">	<span class="string">&quot;go/token&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/stretchr/testify/assert&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Eval : 判断 map 是否符合 bool 表达式</span></span><br><span class="line"><span class="comment">//	expr = `a &gt; 1 &amp;&amp; b &lt; 0`</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Eval</span><span class="params">(m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, expr <span class="type">string</span>)</span></span> (<span class="type">bool</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	fset := token.NewFileSet()</span><br><span class="line">	exprAst, err := parser.ParseExpr(expr)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>, err</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ast.Print(fset, exprAst)</span><br><span class="line">	<span class="keyword">return</span> judge(exprAst, m), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeaf</span><span class="params">(bop ast.Node)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	expr, ok := bop.(*ast.BinaryExpr)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	_, okL := expr.X.(*ast.Ident)</span><br><span class="line">	_, okR := expr.Y.(*ast.BasicLit)</span><br><span class="line">	<span class="keyword">if</span> okL &amp;&amp; okR &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// dfs</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">judge</span><span class="params">(bop ast.Node, m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> isLeaf(bop) &#123;</span><br><span class="line">		<span class="comment">// do the leaf logic</span></span><br><span class="line">		expr := bop.(*ast.BinaryExpr)</span><br><span class="line">		x := expr.X.(*ast.Ident)</span><br><span class="line">		y := expr.Y.(*ast.BasicLit)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// FIXME，修正这里的逻辑，使 test 能够正确通过</span></span><br><span class="line">		<span class="keyword">return</span> m[x.Name] == y.Value</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// not leaf</span></span><br><span class="line">	<span class="comment">// 那么一定是 binary expression</span></span><br><span class="line">	expr, ok := bop.(*ast.BinaryExpr)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;this cannot be true&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">switch</span> expr.Op &#123;</span><br><span class="line">	<span class="keyword">case</span> token.LAND:</span><br><span class="line">		<span class="keyword">return</span> judge(expr.X, m) &amp;&amp; judge(expr.Y, m)</span><br><span class="line">	<span class="keyword">case</span> token.LOR:</span><br><span class="line">		<span class="keyword">return</span> judge(expr.X, m) || judge(expr.Y, m)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;unsupported operator&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> testCase <span class="keyword">struct</span> &#123;</span><br><span class="line">	m      <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span></span><br><span class="line">	expr   <span class="type">string</span></span><br><span class="line">	result <span class="type">bool</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestMapExpr</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	cases := []testCase&#123;</span><br><span class="line">		testCase&#123;</span><br><span class="line">			m: <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>&#123;</span><br><span class="line">				<span class="string">&quot;invest&quot;</span>: <span class="string">&quot;20000&quot;</span>, <span class="string">&quot;posts&quot;</span>: <span class="string">&quot;144&quot;</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">			expr:   <span class="string">`invest &gt; 10000 &amp;&amp; posts &gt; 100`</span>,</span><br><span class="line">			result: <span class="literal">true</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, cas := <span class="keyword">range</span> cases &#123;</span><br><span class="line">		res, err := Eval(cas.m, cas.expr)</span><br><span class="line">		assert.Nil(t, err)</span><br><span class="line">		assert.Equal(t, res, cas.result)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果">运行结果</h2>
+<p>这个代码在go1.14.12中是无法运行的，由于 <code>reflect.Value</code>
+类型没有 <code>CanConvert</code> 方法，以及
+<code>reflect.StructField</code> 类型没有 <code>IsExported</code>
+方法，这里改用本机的go1.21.0运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">❯ go test ch02/fix_test/rule_match_test.go</span><br><span class="line">     0  *ast.BinaryExpr &#123;</span><br><span class="line">     1  .  X: *ast.BinaryExpr &#123;</span><br><span class="line">     2  .  .  X: *ast.Ident &#123;</span><br><span class="line">     3  .  .  .  NamePos: -</span><br><span class="line">     4  .  .  .  Name: &quot;invest&quot;</span><br><span class="line">     5  .  .  &#125;</span><br><span class="line">     6  .  .  OpPos: -</span><br><span class="line">     7  .  .  Op: &gt;</span><br><span class="line">     8  .  .  Y: *ast.BasicLit &#123;</span><br><span class="line">     9  .  .  .  ValuePos: -</span><br><span class="line">    10  .  .  .  Kind: INT</span><br><span class="line">    11  .  .  .  Value: &quot;10000&quot;</span><br><span class="line">    12  .  .  &#125;</span><br><span class="line">    13  .  &#125;</span><br><span class="line">    14  .  OpPos: -</span><br><span class="line">    15  .  Op: &amp;&amp;</span><br><span class="line">    16  .  Y: *ast.BinaryExpr &#123;</span><br><span class="line">    17  .  .  X: *ast.Ident &#123;</span><br><span class="line">    18  .  .  .  NamePos: -</span><br><span class="line">    19  .  .  .  Name: &quot;posts&quot;</span><br><span class="line">    20  .  .  &#125;</span><br><span class="line">    21  .  .  OpPos: -</span><br><span class="line">    22  .  .  Op: &gt;</span><br><span class="line">    23  .  .  Y: *ast.BasicLit &#123;</span><br><span class="line">    24  .  .  .  ValuePos: -</span><br><span class="line">    25  .  .  .  Kind: INT</span><br><span class="line">    26  .  .  .  Value: &quot;100&quot;</span><br><span class="line">    27  .  .  &#125;</span><br><span class="line">    28  .  &#125;</span><br><span class="line">    29  &#125;</span><br><span class="line">--- FAIL: TestMapExpr (0.00s)</span><br><span class="line">    rule_match_test.go:90:</span><br><span class="line">                Error Trace:    /Users/windtrack/go/src/work/windtrack.xyz/go-learn/ch02/fix_test/rule_match_test.go:90</span><br><span class="line">                Error:          Not equal:</span><br><span class="line">                                expected: false</span><br><span class="line">                                actual  : true</span><br><span class="line">                Test:           TestMapExpr</span><br><span class="line">FAIL</span><br><span class="line">FAIL    command-line-arguments  2.289s</span><br><span class="line">FAIL</span><br></pre></td></tr></table></figure>
+<h2 id="报错分析">报错分析</h2>
+<p>这里是因为表达式为大于，代码里只是判断是否相等，所以需要修改</p>
+<h3 id="代码修改">代码修改</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dfs</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">judge</span><span class="params">(bop ast.Node, m <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> isLeaf(bop) &#123;</span><br><span class="line">		<span class="comment">// do the leaf logic</span></span><br><span class="line">		expr := bop.(*ast.BinaryExpr)</span><br><span class="line">		x := expr.X.(*ast.Ident)</span><br><span class="line">		y := expr.Y.(*ast.BasicLit)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 支持了多种运算操作符</span></span><br><span class="line">		<span class="keyword">switch</span> expr.Op &#123;</span><br><span class="line">		<span class="keyword">case</span> token.GTR:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] &gt; y.Value</span><br><span class="line">		<span class="keyword">case</span> token.LEQ:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] &lt;= y.Value</span><br><span class="line">		<span class="keyword">case</span> token.LSS:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] &lt; y.Value</span><br><span class="line">		<span class="keyword">case</span> token.EQL:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] == y.Value</span><br><span class="line">		<span class="keyword">case</span> token.NEQ:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] != y.Value</span><br><span class="line">		<span class="keyword">case</span> token.GEQ:</span><br><span class="line">			<span class="keyword">return</span> m[x.Name] &gt;= y.Value</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;unsupported operator&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// not leaf</span></span><br><span class="line">	<span class="comment">// 那么一定是 binary expression</span></span><br><span class="line">	expr, ok := bop.(*ast.BinaryExpr)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;this cannot be true&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">switch</span> expr.Op &#123;</span><br><span class="line">	<span class="keyword">case</span> token.LAND:</span><br><span class="line">		<span class="keyword">return</span> judge(expr.X, m) &amp;&amp; judge(expr.Y, m)</span><br><span class="line">	<span class="keyword">case</span> token.LOR:</span><br><span class="line">		<span class="keyword">return</span> judge(expr.X, m) || judge(expr.Y, m)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;unsupported operator&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/b8677309/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/28ba3f10/" class="archive-article-date">
-  	<time datetime="2024-07-22T10:36:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/post/28ba3f10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go runtime相关函数源码阅读</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/28ba3f10/">Go runtime相关函数源码阅读</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Study-Record//" class="article-tag-list-link color3">Study Record</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.2.</span> <span class="toc-text">环境准备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E5%81%9A%E4%B8%80-channel-%E4%B8%80%E9%A1%B5%E4%B8%AD%E6%89%BE%E5%87%BA%E6%89%80%E6%9C%89%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99%E5%9C%A8-runtime-%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BD%BF%E7%94%A8-go-1.14.12-%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">必做一
+channel 一页中，找出所有红线报错在 runtime 中的位置，使用 Go 1.14.12
+版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#close-nil"><span class="toc-number">2.2.</span> <span class="toc-text">Close nil</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%8F%90%E7%A4%BA"><span class="toc-number">2.2.2.</span> <span class="toc-text">报错提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dlv%E5%88%86%E6%9E%90"><span class="toc-number">2.2.3.</span> <span class="toc-text">dlv分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#write-close"><span class="toc-number">2.3.</span> <span class="toc-text">Write close</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%8F%90%E7%A4%BA-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">报错提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dlv%E5%88%86%E6%9E%90-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">dlv分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#close-closed"><span class="toc-number">2.4.</span> <span class="toc-text">Close closed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%8F%90%E7%A4%BA-2"><span class="toc-number">2.4.2.</span> <span class="toc-text">报错提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dlv%E5%88%86%E6%9E%90-2"><span class="toc-number">2.4.3.</span> <span class="toc-text">dlv分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E4%BF%AE%E5%A4%8Dtest-case"><span class="toc-number">3.</span> <span class="toc-text">选做：修复test case</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.2.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E5%88%86%E6%9E%90"><span class="toc-number">3.3.</span> <span class="toc-text">报错分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9"><span class="toc-number">3.3.1.</span> <span class="toc-text">代码修改</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -305,8 +457,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
