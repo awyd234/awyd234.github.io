@@ -193,6 +193,129 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Go神奇的内置数据结构习题题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/a4abbd7b/">Go神奇的内置数据结构习题题解</a>
+    </h1>
+  
+
+        
+        <a href="/post/a4abbd7b/" class="archive-article-date">
+  	<time datetime="2024-07-25T10:49:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+<li>远程： 阿里云封装的centos</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+<li>远程：go1.14.12</li>
+</ul></li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">NAME=<span class="string">&quot;Alibaba Cloud Linux&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;3 (Soaring Falcon)&quot;</span></span><br><span class="line">ID=<span class="string">&quot;alinux&quot;</span></span><br><span class="line">ID_LIKE=<span class="string">&quot;rhel fedora centos anolis&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;3&quot;</span></span><br><span class="line">UPDATE_ID=<span class="string">&quot;9.1&quot;</span></span><br><span class="line">PLATFORM_ID=<span class="string">&quot;platform:al8&quot;</span></span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span></span><br><span class="line">ANSI_COLOR=<span class="string">&quot;0;31&quot;</span></span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.aliyun.com/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="必做封装一个数据结构-mymap">必做：封装一个数据结构 MyMap</h1>
+<h2 id="作业内容">作业内容</h2>
+<p>封装一个数据结构 MyMap，实现并发安全的
+Load，Store，Delete，LoadAndDelete，LoadOrStore 几个 API(禁止使用
+sync.Map)，不用考虑性能</p>
+<p>参考</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 只支持 int 即可。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Load(key <span class="keyword">interface</span>&#123;&#125;) (value <span class="keyword">interface</span>&#123;&#125;, ok <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Store(key, value <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Delete(key <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadOrStore(key, value <span class="keyword">interface</span>&#123;&#125;) (actual <span class="keyword">interface</span>&#123;&#125;, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadAndDelete(key <span class="keyword">interface</span>&#123;&#125;) (value <span class="keyword">interface</span>&#123;&#125;, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="实现">实现</h2>
+        
+          <a class="article-more-a" href="/post/a4abbd7b/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/a4abbd7b/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Go语法背后的秘密作业题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1119,106 +1242,6 @@ get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/a54b0171/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL下的事务隔离级别及可能出现的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/e22ed91d/">MySQL下的事务隔离级别及可能出现的问题</a>
-    </h1>
-  
-
-        
-        <a href="/post/e22ed91d/" class="archive-article-date">
-  	<time datetime="2021-01-30T03:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="事务">事务</h1>
-<p>事务就是一组原子性的SQL查询，或者说一个独立的工作单元</p>
-<h2 id="事务的acid">事务的ACID</h2>
-<h3 id="a-atomicity-原子性">A Atomicity 原子性</h3>
-<p>一个事务必须被视为一个不可分割的最小工作单位，整个事务中所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中一部分</p>
-<h3 id="c-consistency-一致性">C Consistency 一致性</h3>
-<p>事务总是从一个一致性状态转移到另一个一致性状态</p>
-<p>例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不会变的</p>
-<h3 id="i-isolation-隔离性">I Isolation 隔离性</h3>
-<p>一个事务所做的修改在最终提交之前，对其他事务是不可见的</p>
-        
-          <a class="article-more-a" href="/post/e22ed91d/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/e22ed91d/">展开全文 >></a>
         </p>
       
 

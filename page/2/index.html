@@ -193,6 +193,106 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL下的事务隔离级别及可能出现的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/e22ed91d/">MySQL下的事务隔离级别及可能出现的问题</a>
+    </h1>
+  
+
+        
+        <a href="/post/e22ed91d/" class="archive-article-date">
+  	<time datetime="2021-01-30T03:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事务">事务</h1>
+<p>事务就是一组原子性的SQL查询，或者说一个独立的工作单元</p>
+<h2 id="事务的acid">事务的ACID</h2>
+<h3 id="a-atomicity-原子性">A Atomicity 原子性</h3>
+<p>一个事务必须被视为一个不可分割的最小工作单位，整个事务中所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中一部分</p>
+<h3 id="c-consistency-一致性">C Consistency 一致性</h3>
+<p>事务总是从一个一致性状态转移到另一个一致性状态</p>
+<p>例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不会变的</p>
+<h3 id="i-isolation-隔离性">I Isolation 隔离性</h3>
+<p>一个事务所做的修改在最终提交之前，对其他事务是不可见的</p>
+        
+          <a class="article-more-a" href="/post/e22ed91d/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/e22ed91d/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python下实现单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1283,132 +1383,6 @@ a_{n+p-2}| + ... + |a_{n+1} - a_{n}| \\
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/26100f01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VC-Dimension-of-Neural-Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/6d2e787e/">VC Dimension of Neural Networks</a>
-    </h1>
-  
-
-        
-        <a href="/post/6d2e787e/" class="archive-article-date">
-  	<time datetime="2020-06-19T11:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="problems">1. Problems</h2>
-<p>We take 0/1 classification problem for data with d dimensional
-features as an example. A neural network with one hidden layer can be
-written as</p>
-<p><span class="math display">\[ o = w^T_2 σ(W_1v + b_1) + b_2
-\tag{1}\]</span></p>
-<p>where <span class="math inline">\(v\)</span> is the <span class="math inline">\(d\)</span> dimensional input feature of the data,
-while <span class="math inline">\(W_1\)</span>, <span class="math inline">\(w_2\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> are the parameters of the neural
-network model. <span class="math inline">\(W_1\)</span> is a <span class="math inline">\(n × d\)</span> matrix, <span class="math inline">\(w_2\)</span> is a n dimensional vector, and <span class="math inline">\(b_1\)</span> is a <span class="math inline">\(n\)</span> dimensional bias vector while <span class="math inline">\(b_2\)</span> is the bias. When <span class="math inline">\(o &gt; 0\)</span> we classify the datum as label
-1, while when <span class="math inline">\(o ≤ 0\)</span> we classify it
-as label -1. This forms a neural network, or multi-layer-perceptron,
-with one hidden layer containing <span class="math inline">\(n\)</span>
-neurons. In this problem, we focus on the pre-training case with frozen
-parameters that <span class="math inline">\(W_1\)</span> and <span class="math inline">\(b_1\)</span> must be decided when seeing all <span class="math inline">\(v\)</span> without labels <span class="math inline">\((l_1, ...l_i)\)</span>, while <span class="math inline">\(w_2\)</span> and <span class="math inline">\(b_2\)</span> can be decided after seeing all
-labels of examples <span class="math inline">\((l_1,
-...l_i)\)</span></p>
-<h3 id="problem1">1.1 Problem1</h3>
-<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC
-dimension of the neural network for the linear activation case, i.e.
-<span class="math inline">\(\sigma(x) = x\)</span>. Prove your
-result.</p>
-<h3 id="problem2">1.2 Problem2</h3>
-<p>Given <span class="math inline">\(n, d\)</span>, calculate the VC
-dimension of the neural network for the <span class="math inline">\(ReLU\)</span> activation case, i.e. <span class="math inline">\(\sigma(x) = max(0, x)\)</span>. Prove your
-result.</p>
-<h3 id="hints">1.3 Hints</h3>
-<ul>
-<li>Recall the definition of VC dimension.</li>
-<li>Consider <span class="math inline">\(n &gt; d\)</span> and <span class="math inline">\(n ≤ d\)</span>.</li>
-<li>For problem 2, Start from <span class="math inline">\(d =
-1\)</span></li>
-</ul>
-        
-          <a class="article-more-a" href="/post/6d2e787e/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VC Dimension</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Machine-Learning//" class="article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/6d2e787e/">展开全文 >></a>
         </p>
       
 

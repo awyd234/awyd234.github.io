@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Wind Track</title>
+  <title>Go神奇的内置数据结构习题题解 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/page/6/index.html">
+  <meta name="description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  123456789101112$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go神奇的内置数据结构习题题解">
+<meta property="og:url" content="http://windtrack.xyz/post/a4abbd7b/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  123456789101112$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-25T10:49:02.000Z">
+<meta property="article:modified_time" content="2024-07-25T12:17:35.103Z">
 <meta property="article:author" content="Qian Hu">
+<meta property="article:tag" content="Homework">
+<meta property="article:tag" content="Study Record">
+<meta property="article:tag" content="Programing Language">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
@@ -191,44 +197,136 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MySQL无法获取最新数据的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Go神奇的内置数据结构习题题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/27067a2b/">MySQL无法获取最新数据的解决方法</a>
+    <h1 class="article-title" itemprop="name">
+      Go神奇的内置数据结构习题题解
     </h1>
   
 
         
-        <a href="/post/27067a2b/" class="archive-article-date">
-  	<time datetime="2017-09-30T03:16:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
+        <a href="/post/a4abbd7b/" class="archive-article-date">
+  	<time datetime="2024-07-25T10:49:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="背景">背景</h1>
-<p>最近有两处用到，一个是做简易的消息推送，Flask +
-Websocket，需要开着长连接，同时去数据库获取最新数据，结果发现一旦连接上后，即使修改了数据库的数据，返回的数据始终不变；</p>
-<p>另一个则是做抓取数据并异步处理，这个用的MySQLdb写的，抓取数据后会将将数据插入数据库，并留个id在redis，供异步处理程序去异步获取并处理，结果发现通过id并取不到最新数据</p>
-<h1 id="解决方案">解决方案</h1>
-<h2 id="从csdn论坛中找到的一种方式">从<a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/390350359">CSDN论坛</a>中找到的一种方式</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>           <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> REPEATABLE<span class="operator">-</span>READ <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-<p>如果是以上情况，则可以执行语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">set</span> <span class="keyword">global</span> TRANSACTION ISOLATION LEVEL READ COMMITTED ;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="keyword">rows</span> affected (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-<p>此时再去查找</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>           <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> REPEATABLE<span class="operator">-</span>READ <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+-----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line">  </span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> <span class="string">&#x27;%iso%&#x27;</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> Variable_name <span class="operator">|</span> <span class="keyword">Value</span>          <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> tx_isolation  <span class="operator">|</span> READ<span class="operator">-</span>COMMITTED <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------+----------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/post/27067a2b/#more">more >></a>
-        
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+<li>远程： 阿里云封装的centos</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+<li>远程：go1.14.12</li>
+</ul></li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">NAME=<span class="string">&quot;Alibaba Cloud Linux&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;3 (Soaring Falcon)&quot;</span></span><br><span class="line">ID=<span class="string">&quot;alinux&quot;</span></span><br><span class="line">ID_LIKE=<span class="string">&quot;rhel fedora centos anolis&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;3&quot;</span></span><br><span class="line">UPDATE_ID=<span class="string">&quot;9.1&quot;</span></span><br><span class="line">PLATFORM_ID=<span class="string">&quot;platform:al8&quot;</span></span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span></span><br><span class="line">ANSI_COLOR=<span class="string">&quot;0;31&quot;</span></span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.aliyun.com/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="必做封装一个数据结构-mymap">必做：封装一个数据结构 MyMap</h1>
+<h2 id="作业内容">作业内容</h2>
+<p>封装一个数据结构 MyMap，实现并发安全的
+Load，Store，Delete，LoadAndDelete，LoadOrStore 几个 API(禁止使用
+sync.Map)，不用考虑性能</p>
+<p>参考</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 只支持 int 即可。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Load(key <span class="keyword">interface</span>&#123;&#125;) (value <span class="keyword">interface</span>&#123;&#125;, ok <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Store(key, value <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Delete(key <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadOrStore(key, value <span class="keyword">interface</span>&#123;&#125;) (actual <span class="keyword">interface</span>&#123;&#125;, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadAndDelete(key <span class="keyword">interface</span>&#123;&#125;) (value <span class="keyword">interface</span>&#123;&#125;, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="实现">实现</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 只支持 int 即可。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	data <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">	lock sync.RWMutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewMyMap</span><span class="params">()</span></span> MyMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyMap&#123;</span><br><span class="line">		data: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Load(key <span class="type">int</span>) (value <span class="type">int</span>, ok <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	value, ok = m.data[key]</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Store(key, value <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	m.data[key] = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Delete(key <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadOrStore(key, value <span class="type">int</span>) (actual <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="keyword">if</span> actual, loaded = m.data[key]; !loaded &#123;</span><br><span class="line">		m.data[key] = value</span><br><span class="line">		actual = value</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadAndDelete(key <span class="type">int</span>) (value <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	value, loaded = m.data[key]</span><br><span class="line">	<span class="keyword">if</span> loaded &#123;</span><br><span class="line">		<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="v1优化-by-chatgpt-4o">v1优化 by ChatGPT-4o</h2>
+<h3 id="改进建议">改进建议</h3>
+<p><strong>读写锁</strong>：在 <code>Load</code> 操作中，使用读锁
+<code>RLock</code> 而不是写锁
+<code>Lock</code>，这样在读取时不会阻塞其他读取操作。</p>
+<h3 id="具体实现">具体实现</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MyMap 只支持 int 类型的键值对</span></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	data <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">	lock sync.RWMutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NewMyMap 创建一个新的 MyMap 实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewMyMap</span><span class="params">()</span></span> MyMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyMap&#123;</span><br><span class="line">		data: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Load 从 map 中加载值，如果键存在，返回值和 true，否则返回 nil 和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Load(key <span class="type">int</span>) (value <span class="type">int</span>, ok <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.RLock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.RUnlock()</span><br><span class="line">	value, ok = m.data[key]</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Store 将键值对存储到 map 中</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Store(key, value <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	m.data[key] = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Delete 从 map 中删除键值对</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Delete(key <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LoadOrStore 如果键存在，返回已存在的值和 true，否则存储新的键值对并返回新值和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadOrStore(key, value <span class="type">int</span>) (actual <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="keyword">if</span> actual, loaded = m.data[key]; !loaded &#123;</span><br><span class="line">		m.data[key] = value</span><br><span class="line">		actual = value</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LoadAndDelete 如果键存在，返回值并删除键值对，否则返回 nil 和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadAndDelete(key <span class="type">int</span>) (value <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	value, loaded = m.data[key]</span><br><span class="line">	<span class="keyword">if</span> loaded &#123;</span><br><span class="line">		<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="v2优化-by-chatgpt-4o">v2优化 by ChatGPT-4o</h2>
+<h3 id="改进建议-1">改进建议</h3>
+<ul>
+<li><strong>减少锁的粒度</strong>：我们可以尝试进一步优化锁的使用方式，以提高并发性能。例如，可以在
+<code>LoadOrStore</code> 和 <code>LoadAndDelete</code>
+方法中先尝试使用读锁进行初步检查，再在需要时升级为写锁。</li>
+<li><strong>使用<code>sync.Map</code>中的一些优化思想</strong>：虽然不能使用
+<code>sync.Map</code>，但我们可以参考一些它的优化思想，比如减少写锁的持有时间。</li>
+</ul>
+<h3 id="实现-1">实现</h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// MyMap 只支持 int 类型的键值对</span></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	data <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">	lock sync.RWMutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NewMyMap 创建一个新的 MyMap 实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewMyMap</span><span class="params">()</span></span> MyMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyMap&#123;</span><br><span class="line">		data: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Load 从 map 中加载值，如果键存在，返回值和 true，否则返回 0 和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Load(key <span class="type">int</span>) (value <span class="type">int</span>, ok <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.RLock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.RUnlock()</span><br><span class="line">	value, ok = m.data[key]</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Store 将键值对存储到 map 中</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Store(key, value <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	m.data[key] = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Delete 从 map 中删除键值对</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> Delete(key <span class="type">int</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LoadOrStore 如果键存在，返回已存在的值和 true，否则存储新的键值对并返回新值和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadOrStore(key, value <span class="type">int</span>) (actual <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.RLock()</span><br><span class="line">	actual, loaded = m.data[key]</span><br><span class="line">	m.lock.RUnlock()</span><br><span class="line">	<span class="keyword">if</span> loaded &#123;</span><br><span class="line">		<span class="keyword">return</span> actual, <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	<span class="comment">// Double check to avoid race condition</span></span><br><span class="line">	actual, loaded = m.data[key]</span><br><span class="line">	<span class="keyword">if</span> !loaded &#123;</span><br><span class="line">		m.data[key] = value</span><br><span class="line">		actual = value</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> actual, loaded</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LoadAndDelete 如果键存在，返回值并删除键值对，否则返回 0 和 false</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> LoadAndDelete(key <span class="type">int</span>) (value <span class="type">int</span>, loaded <span class="type">bool</span>) &#123;</span><br><span class="line">	m.lock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.lock.Unlock()</span><br><span class="line">	value, loaded = m.data[key]</span><br><span class="line">	<span class="keyword">if</span> loaded &#123;</span><br><span class="line">		<span class="built_in">delete</span>(m.data, key)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1
+id="选做比较mymap与sync.map性能差异">选做：比较MyMap与sync.Map性能差异</h1>
+<h2 id="作业内容-1">作业内容</h2>
+<p>写 benchmark，比较 MyMap 与 sync.Map 的同名函数性能差异(LoadAndDelete
+可以不用比较，该函数在 Go 1.15 引入，我们的作业环境是
+1.14.12)，输出相应的性能报告(注意，你应该使用 RunParallel)</p>
+<h2 id="benchmark编写">benchmark编写</h2>
+<p>两者写法类似</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMyMap_Load</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	m := NewMyMap()</span><br><span class="line">	b.ResetTimer()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		m.Load(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMyMap_Store</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	m := NewMyMap()</span><br><span class="line">	b.ResetTimer()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		m.Store(i, i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMyMap_Delete</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	m := NewMyMap()</span><br><span class="line">	b.ResetTimer()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		m.Delete(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMyMap_LoadOrStore</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	m := NewMyMap()</span><br><span class="line">	b.ResetTimer()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		m.LoadOrStore(i, i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkMyMap_LoadAndDelete</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	m := NewMyMap()</span><br><span class="line">	b.ResetTimer()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">		m.LoadAndDelete(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="benchmark环境">benchmark环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+</ul></li>
+</ul>
+<h2 id="benchmark运行">benchmark运行</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">❯ go <span class="built_in">test</span> -bench .</span><br><span class="line">goos: darwin</span><br><span class="line">goarch: arm64</span><br><span class="line">pkg: windtrack.xyz/go-learn/ch03/mymap</span><br><span class="line">BenchmarkMyMap_Load-10                  64793887                18.43 ns/op</span><br><span class="line">BenchmarkMyMap_Store-10                 12454856               130.1 ns/op</span><br><span class="line">BenchmarkMyMap_Delete-10                61281549                18.77 ns/op</span><br><span class="line">BenchmarkMyMap_LoadOrStore-10           13300420               165.6 ns/op</span><br><span class="line">BenchmarkMyMap_LoadAndDelete-10         63953100                18.45 ns/op</span><br><span class="line">BenchmarkSyncMap_Load-10                213983780                5.611 ns/op</span><br><span class="line">BenchmarkSyncMap_Store-10                3623101               427.9 ns/op</span><br><span class="line">BenchmarkSyncMap_Delete-10              224768961                5.299 ns/op</span><br><span class="line">BenchmarkSyncMap_LoadOrStore-10          3964867               386.2 ns/op</span><br><span class="line">BenchmarkSyncMap_LoadAndDelete-10       226042053                5.300 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok      windtrack.xyz/go-learn/ch03/mymap       18.480s</span><br></pre></td></tr></table></figure>
+<h1 id="选做使用-channel-实现一个-trylock">选做：使用 channel 实现一个
+trylock</h1>
+<h2 id="作业内容-2">作业内容</h2>
+<p>模板 trylock.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyLock <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// you should have a channel here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m * MyLock)</span></span> TryLock() <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现-2">实现</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyLock <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// you should have a channel here</span></span><br><span class="line">	ch <span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewMyLock</span><span class="params">()</span></span> *MyLock &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;MyLock&#123;</span><br><span class="line">		ch: <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;, <span class="number">1</span>),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyLock)</span></span> TryLock() <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">select</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> m.ch &lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyLock)</span></span> Unlock() &#123;</span><br><span class="line">	<span class="keyword">select</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> &lt;-m.ch:</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	lock := NewMyLock()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 尝试获取锁</span></span><br><span class="line">	<span class="keyword">if</span> lock.TryLock() &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;Lock acquired in main&quot;</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;Unable to acquire lock in main&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 启动一个goroutine来尝试获取锁</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> lock.TryLock() &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;Lock acquired in goroutine&quot;</span>)</span><br><span class="line">			lock.Unlock()</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;Unable to acquire lock in goroutine&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">	lock.Unlock()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 再次尝试获取锁</span></span><br><span class="line">	<span class="keyword">if</span> lock.TryLock() &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;Lock re-acquired in main&quot;</span>)</span><br><span class="line">		lock.Unlock()</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;Unable to re-acquire lock in main&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="选做修复deadlock.go的死锁">选做：修复deadlock.go的死锁</h1>
+<h2 id="作业内容-3">作业内容</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> task <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	m   <span class="keyword">map</span>[<span class="type">int</span>]task</span><br><span class="line">	mux sync.RWMutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> finishJob(t task, id <span class="type">int</span>) &#123;</span><br><span class="line">	m.mux.Lock()</span><br><span class="line">	<span class="keyword">defer</span> m.mux.Unlock()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// finish task</span></span><br><span class="line">	<span class="built_in">delete</span>(m.m, id)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *MyMap)</span></span> DoMyJob(taskID <span class="type">int</span>) &#123;</span><br><span class="line">	m.mux.RLock()</span><br><span class="line">	<span class="keyword">defer</span> m.mux.RUnlock()</span><br><span class="line"></span><br><span class="line">	t := m.m[taskID]</span><br><span class="line"></span><br><span class="line">	m.finishJob(t, taskID)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> taskMap = &amp;MyMap&#123;</span><br><span class="line">		m: <span class="keyword">map</span>[<span class="type">int</span>]task&#123;&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	taskMap.DoMyJob(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="选做实现mycontext">选做：实现MyContext</h1>
+<h2 id="作业内容-4">作业内容</h2>
+<p>在 context 学习过程中，我们知道，在子节点中 WithValue
+的数据，父节点是查不到的。请实现一个 MyContext，其 WithValue 方法赋值的
+k，v 在父节点中也可以查得到。模板：mycontext.go。</p>
+<h1 id="选做实现或封装社区的-timewheel">选做++：实现，或封装社区的
+timewheel</h1>
+<h2 id="作业内容-5">作业内容</h2>
+<p>使用 benchmark 或 pprof 比较大量 timer 存活时，内置 timer 和
+timewheel 的性能差异。不要求提交代码，只需要性能对比报告 markdown</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -239,11 +337,19 @@ Websocket，需要开着长连接，同时去数据库获取最新数据，结�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
         		</li>
       		
 		</ul>
@@ -255,7 +361,7 @@ Websocket，需要开着长连接，同时去数据库获取最新数据，结�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
+        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
         		</li>
       		
 		</ul>
@@ -263,16 +369,75 @@ Websocket，需要开着长连接，同时去数据库获取最新数据，结�
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/27067a2b/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/a4abbd7b/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/post/b8677309/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go语法背后的秘密作业题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -287,736 +452,34 @@ Websocket，需要开着长连接，同时去数据库获取最新数据，结�
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《Effective-Python》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/12ceb6de/">《Effective Python》读书笔记</a>
-    </h1>
-  
-
-        
-        <a href="/post/12ceb6de/" class="archive-article-date">
-  	<time datetime="2017-06-20T06:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="用pythonic的方式来思考">1. 用Pythonic的方式来思考</h1>
-<h2 id="前言">0. 前言</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>The Zen of Python, by Tim Peters</p>
-<p>Beautiful is better than ugly.</p>
-<p>Explicit is better than implicit.</p>
-<p>Simple is better than complex.</p>
-<p>Complex is better than complicated.</p>
-<p>Flat is better than nested.</p>
-<p>Sparse is better than dense.</p>
-<p>Readability counts.</p>
-<p>Special cases aren't special enough to break the rules.</p>
-<p>Although practicality beats purity.</p>
-<p>Errors should never pass silently.</p>
-<p>Unless explicitly silenced.</p>
-<p>In the face of ambiguity, refuse the temptation to guess.</p>
-<p>There should be one-- and preferably only one --obvious way to do
-it.</p>
-<p>Although that way may not be obvious at first unless you're
-Dutch.</p>
-<p>Now is better than never.</p>
-<p>Although never is often better than <em>right</em> now.</p>
-<p>If the implementation is hard to explain, it's a bad idea.</p>
-<p>If the implementation is easy to explain, it may be a good idea.</p>
-</blockquote>
-<h2 id="确认自己所用的python版本">1. 确认自己所用的Python版本</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version</span></span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.version_info)</span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br></pre></td></tr></table></figure>
-<p>Python社区已将开发重点放在了Python
-3上，因此后续开发项目时，应优先考虑使用Python 3</p>
-<h2 id="遵循pep-8-风格指南">2. 遵循PEP 8 风格指南</h2>
-        
-          <a class="article-more-a" href="/post/12ceb6de/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/12ceb6de/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E5%81%9A%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-mymap"><span class="toc-number">2.</span> <span class="toc-text">必做：封装一个数据结构 MyMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v1%E4%BC%98%E5%8C%96-by-chatgpt-4o"><span class="toc-number">2.3.</span> <span class="toc-text">v1优化 by ChatGPT-4o</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE"><span class="toc-number">2.3.1.</span> <span class="toc-text">改进建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.2.</span> <span class="toc-text">具体实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v2%E4%BC%98%E5%8C%96-by-chatgpt-4o"><span class="toc-number">2.4.</span> <span class="toc-text">v2优化 by ChatGPT-4o</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE-1"><span class="toc-number">2.4.1.</span> <span class="toc-text">改进建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">2.4.2.</span> <span class="toc-text">实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E6%AF%94%E8%BE%83mymap%E4%B8%8Esync.map%E6%80%A7%E8%83%BD%E5%B7%AE%E5%BC%82"><span class="toc-number">3.</span> <span class="toc-text">选做：比较MyMap与sync.Map性能差异</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#benchmark%E7%BC%96%E5%86%99"><span class="toc-number">3.2.</span> <span class="toc-text">benchmark编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#benchmark%E7%8E%AF%E5%A2%83"><span class="toc-number">3.3.</span> <span class="toc-text">benchmark环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#benchmark%E8%BF%90%E8%A1%8C"><span class="toc-number">3.4.</span> <span class="toc-text">benchmark运行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E4%BD%BF%E7%94%A8-channel-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA-trylock"><span class="toc-number">4.</span> <span class="toc-text">选做：使用 channel 实现一个
+trylock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-2"><span class="toc-number">4.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">4.2.</span> <span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E4%BF%AE%E5%A4%8Ddeadlock.go%E7%9A%84%E6%AD%BB%E9%94%81"><span class="toc-number">5.</span> <span class="toc-text">选做：修复deadlock.go的死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-3"><span class="toc-number">5.1.</span> <span class="toc-text">作业内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E5%AE%9E%E7%8E%B0mycontext"><span class="toc-number">6.</span> <span class="toc-text">选做：实现MyContext</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-4"><span class="toc-number">6.1.</span> <span class="toc-text">作业内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E5%AE%9E%E7%8E%B0%E6%88%96%E5%B0%81%E8%A3%85%E7%A4%BE%E5%8C%BA%E7%9A%84-timewheel"><span class="toc-number">7.</span> <span class="toc-text">选做++：实现，或封装社区的
+timewheel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-5"><span class="toc-number">7.1.</span> <span class="toc-text">作业内容</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-journalctl的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/38935867/">journalctl的使用</a>
-    </h1>
-  
-
-        
-        <a href="/post/38935867/" class="archive-article-date">
-  	<time datetime="2017-06-19T03:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用背景与安装">1、使用背景与安装</h1>
-<h2 id="使用背景">1.1 使用背景</h2>
-<p>系统中疑似存在丢syslog的情况，比如/var/log/auth.log一直找不到，网上找了很多解决方法一直未能解决，而我又需要知道每个人员针对服务器的操作，以及检测ssh是否有外人破解进来</p>
-<h2 id="安装">1.2 安装</h2>
-<p>部分linux系统中可能会报错 journalctl command not
-found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install systemd</span><br></pre></td></tr></table></figure>
-
-        
-          <a class="article-more-a" href="/post/38935867/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/38935867/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery-DataTables的增删改方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/997527c4/">jQuery DataTables的增删改方案</a>
-    </h1>
-  
-
-        
-        <a href="/post/997527c4/" class="archive-article-date">
-  	<time datetime="2017-06-13T02:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="综述">1、综述</h1>
-<p>我需要使用具有增删改成的数据表功能，</p>
-<h1 id="行编辑方案">2、 行编辑方案</h1>
-<h1 id="添加行及删除行">3、 添加行及删除行</h1>
-
-        
-          <a class="article-more-a" href="/post/997527c4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/997527c4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-将linux下的rm改造成mv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/8ecc0390/">将linux下的rm改造成mv</a>
-    </h1>
-  
-
-        
-        <a href="/post/8ecc0390/" class="archive-article-date">
-  	<time datetime="2017-05-26T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="目的及构想">1. 目的及构想</h1>
-<p>防止误删文件，尤其是用root用户时误删根目录导致不可逆的操作，将rm命令映射成mv命令，将数据mv到伪回收站下，利用程序进行清理回收站。</p>
-<p>清理回收站有两种构想，一种是设置命令清空回收站，另一种则是通过定时任务去清理删除超过一定时间的数据，由于rm命令已被映射为mv命令，需要使用/bin/rm来进行真正的rm操作</p>
-<h1 id="修改etcprofile">2. 修改/etc/profile</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">this_path=&quot;/mnt/.trash/&quot;$USER</span><br><span class="line">if [ ! -d $this_path ]; then</span><br><span class="line">	mkdir $&#123;this_path&#125;</span><br><span class="line">fi  </span><br><span class="line"></span><br><span class="line">alias rm=trash</span><br><span class="line">alias ur=undelfile</span><br><span class="line">alias rl=&#x27;ls /mnt/.trash/$USER/&#x27;</span><br><span class="line"></span><br><span class="line">trash()</span><br><span class="line">&#123;</span><br><span class="line">	mv $@ $this_path/$(date +%Y%m%d%H%M%S)_$@ </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">undelfile()</span><br><span class="line">&#123;</span><br><span class="line">	mv -i $this_path/$@ ./ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在/mnt下建立目录.trash作为伪回收站，用户打开shell时，检测.trash目录下是否已有用户所属目录，若无则建立一个，该用户所有的rm操作会mv到此目录下。并对rm的文件或目录加上时间戳以作区分，ur命令可用于将回收站的数据恢复到本地（时间戳暂时需要自己删除），rl命令可以用于查看回收站现有数据</p>
-<h1 id="todo">3. Todo</h1>
-<h2 id="针对sudo操作时的生效暂时未找到好办法">3.1
-针对sudo操作时的生效，暂时未找到好办法</h2>
-<h2 id="回收站的定期清理功能">3.2 回收站的定期清理功能</h2>
-
-        
-          <a class="article-more-a" href="/post/8ecc0390/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/8ecc0390/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git使用杂记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/d88c701/">Git使用杂记</a>
-    </h1>
-  
-
-        
-        <a href="/post/d88c701/" class="archive-article-date">
-  	<time datetime="2017-05-24T06:25:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git客户端">1. Git客户端</h1>
-<h2 id="windows7安装的git支持中文">1.1 windows7安装的git支持中文</h2>
-<p>git config –-global core.quotepath false</p>
-<h1 id="git日常命令">2.Git日常命令</h1>
-<h2 id="修改origin指向例如git迁移后使用">2.1
-修改origin指向（例如git迁移后使用）</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote -v    <span class="comment"># 查看远程分支情况</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote <span class="built_in">rm</span> origin   <span class="comment"># 删除对应远程对应中的origin</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote add origin &lt;git repository address&gt; <span class="comment"># 添加远程对应的origin</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="fetch-与-pull-操作">2.2 fetch 与 pull 操作</h2>
-<p>FETCH_HEAD指的是，某个branch在服务器上的最新状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git fetch origin master:tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git diff tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git merge tmp</span></span><br></pre></td></tr></table></figure>
-<p>操作即先将远程origin的master主分支下载最新版本到本地origin/tmp分支上，然后将本地master分支与tmp分支diff，最后进行merge</p>
-        
-          <a class="article-more-a" href="/post/d88c701/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/d88c701/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ubuntu-16-04下搜狗输入法崩溃的解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/8826628/">ubuntu 16.04下搜狗输入法崩溃的解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/post/8826628/" class="archive-article-date">
-  	<time datetime="2017-03-24T17:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu
-16.04，问题是否仅仅出现在这个版本，尚待测试</p>
-<h1 id="搜狗输入法无法显示候选词">1. 搜狗输入法无法显示候选词</h1>
-<p>最近在使用搜狗输入法时，用着用着就搜狗候选词就没了，导致无法输入中文</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
-<p>这个程序猜测就是搜狗输入法的启动程序，通过将这个程序启动，发现程序出现报错</p>
-<img src="/post/8826628/bug_show.png" class title="This is the error~">
-<p>通过搜索解决方案，找到了一种比较靠谱的<a target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY.<span class="built_in">users</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
-<p>然后重启sogou-qimpanel，可以发现搜狗输入法的候选词已经有了，但之前的皮肤设置已经丢失</p>
-<blockquote>
-<p>额外想到的，我的pycharm也经常会出现主界面无法显示的问题，也是通过删除home下配置文件解决，具体原因待继续探究</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/post/8826628/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/8826628/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MongoDB配置与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/40db9361/">MongoDB配置与使用</a>
-    </h1>
-  
-
-        
-        <a href="/post/40db9361/" class="archive-article-date">
-  	<time datetime="2017-03-24T06:42:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原总结内容因系统关机未保存丢失了，需要重新总结</p>
-
-        
-          <a class="article-more-a" href="/post/40db9361/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/40db9361/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python项目环境的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/942a5d5c/">Python项目环境的搭建</a>
-    </h1>
-  
-
-        
-        <a href="/post/942a5d5c/" class="archive-article-date">
-  	<time datetime="2017-03-23T16:48:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="virtualenv">1. Virtualenv</h1>
-<p>virtualenv是一个用来创建独立的Python环境的包</p>
-<h2 id="安装virtualenv">1.1 安装virtualenv</h2>
-<p>首先使用pip3安装virtualenv</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
-<h2 id="创建与使用环境">1.2 创建与使用环境</h2>
-<p>创建env环境，比如我们创建名为env_test的虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .<span class="built_in">env</span> <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> .<span class="built_in">env</span>/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="生成与使用requirements.txt">1.3 生成与使用requirements.txt</h2>
-<p>通过pip3 list可以列出当前安装的python3第三方包</p>
-        
-          <a class="article-more-a" href="/post/942a5d5c/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/942a5d5c/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Preface" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/8dd1c645/">Preface</a>
-    </h1>
-  
-
-        
-        <a href="/post/8dd1c645/" class="archive-article-date">
-  	<time datetime="2017-03-22T18:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言">前言</h1>
-<p>现从事Python
-Web开发，以前在公司的时候关注多在业务和小trick，经过最近面试被一次次打击，才发现自己对技术背后的原理的理解太浅了，决定弄个blog做点总结，顺便没事扯扯淡，满足下自己文艺的心理。</p>
-<p>之前用过CSDN一类，感觉太麻烦写了一半没写了。原本打算自己用Django搭个blog出来的，顺便加深对Django的学习。</p>
-<p>对于前端一直没有好的灵感，学习了<a target="_blank" rel="noopener" href="http://paine1690.github.io/">朋友的blog</a>，才发现原来blog还可以这样，不用自己去写后台管理，主题很好看，也有不错的域名，于是研究了下<a target="_blank" rel="noopener" href="https://hexo.io/docs/">官方docs</a>，先弄个临时blog吧，后续会迁移到自己写的blog上去。</p>
-
-        
-          <a class="article-more-a" href="/post/8dd1c645/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Others//" class="article-tag-list-link color2">Others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/8dd1c645/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1039,8 +502,8 @@ Web开发，以前在公司的时候关注多在业务和小trick，经过最近
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
