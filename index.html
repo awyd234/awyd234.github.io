@@ -193,6 +193,136 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Go并发编程最佳实践习题题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/2e60d9c6/">Go并发编程最佳实践习题题解</a>
+    </h1>
+  
+
+        
+        <a href="/post/2e60d9c6/" class="archive-article-date">
+  	<time datetime="2024-07-28T10:41:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+<li>远程： 阿里云封装的centos</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+<li>远程：go1.14.12</li>
+</ul></li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">NAME=<span class="string">&quot;Alibaba Cloud Linux&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;3 (Soaring Falcon)&quot;</span></span><br><span class="line">ID=<span class="string">&quot;alinux&quot;</span></span><br><span class="line">ID_LIKE=<span class="string">&quot;rhel fedora centos anolis&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;3&quot;</span></span><br><span class="line">UPDATE_ID=<span class="string">&quot;9.1&quot;</span></span><br><span class="line">PLATFORM_ID=<span class="string">&quot;platform:al8&quot;</span></span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span></span><br><span class="line">ANSI_COLOR=<span class="string">&quot;0;31&quot;</span></span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.aliyun.com/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="必做题">必做题</h1>
+<h2 id="作业内容">作业内容</h2>
+<p>使⽤任意并发⼯具，完成这样⼀个程序，并发请求 <a target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a> 和 <a target="_blank" rel="noopener" href="https://bing.com/">https://bing.com</a>，任意⼀个站点先获取到了完整的
+html，即中⽌另⼀个流程，并把结果输出⾄⽂件：{sitename}.html，例如百度先获取到了结果，即输出baidu.html，若
+bing 先获取到了结果，就输出 bing.html。</p>
+<h2 id="作业分析">作业分析</h2>
+<ul>
+<li>这里需要两个爬虫并行，那么肯定是需要起goroutine的</li>
+<li>爬虫可能会超时，所以可以考虑设置一个带超时时间的context来做</li>
+<li>两个爬虫一但一个完成，另一个需要马上中止，而<code>http.Get</code>方法是很难中止的，所以这里用了<code>http.NewRequestWithContext</code>来实现</li>
+<li>为了显式地看到另一个爬虫确实被中止了，这里用<code>sync.WaitGroup</code>来进行了一个等待</li>
+<li>由于close时也可能报错，但同时又想作为defer处理，所以弄了个defer
+func，显式去修改返回的err值</li>
+</ul>
+<h2 id="实现">实现</h2>
+        
+          <a class="article-more-a" href="/post/2e60d9c6/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/2e60d9c6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Go神奇的内置数据结构习题题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1154,126 +1284,9 @@ server交互的乱象</p>
 
 
   
-    <article id="post-LeetCode-146-LRU-Cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/a54b0171/">LeetCode - 146.LRU Cache</a>
-    </h1>
-  
-
-        
-        <a href="/post/a54b0171/" class="archive-article-date">
-  	<time datetime="2021-02-05T18:18:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="常见的缓存机制">常见的缓存机制</h1>
-<h2 id="lru-cache">LRU Cache</h2>
-<p>Least Recently
-Used，在操作系统里是一种常用的页面置换算法，置换策略即，选择最近最久未使用的页面予以淘汰</p>
-<h1 id="leetcode---146.lru-cache">LeetCode - 146.LRU Cache</h1>
-<p>link: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/lru-cache/">https://leetcode-cn.com/problems/lru-cache/</a></p>
-<h2 id="中文题目">中文题目</h2>
-<p>运用你所掌握的数据结构，设计和实现一个 LRU (最近最少使用) 缓存机制 。
-实现 LRUCache 类：</p>
-<p>LRUCache(int capacity) 以正整数作为容量 capacity 初始化 LRU 缓存 int
-get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1
-。 void put(int key, int value)
-如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。</p>
-<p>进阶：你是否可以在 O(1) 时间复杂度内完成这两种操作？</p>
-<p><strong>Example</strong></p>
-        
-          <a class="article-more-a" href="/post/a54b0171/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Interview</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hash</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Double Linked List</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/a54b0171/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

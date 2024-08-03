@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://windtrack.xyz">
-  <title>Archives: 2024 | Wind Track</title>
+  <title>Go并发编程最佳实践习题题解 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="http://windtrack.xyz/archives/2024/index.html">
+  <meta name="description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  123456789101112$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go并发编程最佳实践习题题解">
+<meta property="og:url" content="http://windtrack.xyz/post/2e60d9c6/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="背景介绍 环境  操作系统  本机：MacOS 15 远程： 阿里云封装的centos  go版本  本机：go1.21.0 远程：go1.14.12  IDE：GoLand 辅助：ChatGPT 4o  123456789101112$ cat &#x2F;etc&#x2F;os-releaseNAME&#x3D;&quot;Alibaba Cloud Linux&quot;VERSION&#x3D;&quot;3 (Soaring">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-28T10:41:16.000Z">
+<meta property="article:modified_time" content="2024-07-29T17:21:09.753Z">
 <meta property="article:author" content="Qian Hu">
+<meta property="article:tag" content="Homework">
+<meta property="article:tag" content="Study Record">
+<meta property="article:tag" content="Programing Language">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
@@ -191,36 +197,104 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Go并发编程最佳实践习题题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Go并发编程最佳实践习题题解
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/2e60d9c6/" class="archive-article-date">
+
+        
+        <a href="/post/2e60d9c6/" class="archive-article-date">
   	<time datetime="2024-07-28T10:41:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/2e60d9c6/">Go并发编程最佳实践习题题解</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景介绍">背景介绍</h1>
+<h2 id="环境">环境</h2>
+<ul>
+<li>操作系统
+<ul>
+<li>本机：MacOS 15</li>
+<li>远程： 阿里云封装的centos</li>
+</ul></li>
+<li>go版本
+<ul>
+<li>本机：go1.21.0</li>
+<li>远程：go1.14.12</li>
+</ul></li>
+<li>IDE：GoLand</li>
+<li>辅助：ChatGPT 4o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">NAME=<span class="string">&quot;Alibaba Cloud Linux&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;3 (Soaring Falcon)&quot;</span></span><br><span class="line">ID=<span class="string">&quot;alinux&quot;</span></span><br><span class="line">ID_LIKE=<span class="string">&quot;rhel fedora centos anolis&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;3&quot;</span></span><br><span class="line">UPDATE_ID=<span class="string">&quot;9.1&quot;</span></span><br><span class="line">PLATFORM_ID=<span class="string">&quot;platform:al8&quot;</span></span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span></span><br><span class="line">ANSI_COLOR=<span class="string">&quot;0;31&quot;</span></span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.aliyun.com/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="必做题">必做题</h1>
+<h2 id="作业内容">作业内容</h2>
+<p>使⽤任意并发⼯具，完成这样⼀个程序，并发请求 <a
+target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a> 和 <a
+target="_blank" rel="noopener" href="https://bing.com/">https://bing.com</a>，任意⼀个站点先获取到了完整的
+html，即中⽌另⼀个流程，并把结果输出⾄⽂件：{sitename}.html，例如百度先获取到了结果，即输出baidu.html，若
+bing 先获取到了结果，就输出 bing.html。</p>
+<h2 id="作业分析">作业分析</h2>
+<ul>
+<li>这里需要两个爬虫并行，那么肯定是需要起goroutine的</li>
+<li>爬虫可能会超时，所以可以考虑设置一个带超时时间的context来做</li>
+<li>两个爬虫一但一个完成，另一个需要马上中止，而<code>http.Get</code>方法是很难中止的，所以这里用了<code>http.NewRequestWithContext</code>来实现</li>
+<li>为了显式地看到另一个爬虫确实被中止了，这里用<code>sync.WaitGroup</code>来进行了一个等待</li>
+<li>由于close时也可能报错，但同时又想作为defer处理，所以弄了个defer
+func，显式去修改返回的err值</li>
+</ul>
+<h2 id="实现">实现</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;io&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	BaiduUrl = <span class="string">&quot;https://www.baidu.com&quot;</span></span><br><span class="line">	BingUrl  = <span class="string">&quot;https://www.bing.com&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">crawler</span><span class="params">(ctx context.Context, website <span class="type">string</span>)</span></span> (content <span class="type">string</span>, err <span class="type">error</span>) &#123;</span><br><span class="line">	req, err := http.NewRequestWithContext(ctx, <span class="string">&quot;GET&quot;</span>, website, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;http.NewRequestWithContext err: %v\n&quot;</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	client := http.Client&#123;&#125;</span><br><span class="line">	resp, err := client.Do(req)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;http.Get err: %v\n&quot;</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> resp != <span class="literal">nil</span> &#123;</span><br><span class="line">			err = resp.Body.Close()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> contentByte []<span class="type">byte</span></span><br><span class="line">	contentByte, err = io.ReadAll(resp.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;Read err: %v\n&quot;</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	content = <span class="type">string</span>(contentByte)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">crawlerWrapper</span><span class="params">(ctx context.Context, website <span class="type">string</span>, result <span class="keyword">chan</span> <span class="type">string</span>, cancelFunc context.CancelFunc, wg *sync.WaitGroup)</span></span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> wg.Done()</span><br><span class="line">	content, err := crawler(ctx, website)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;Crawler err: %v\n&quot;</span>, err)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-ctx.Done():</span><br><span class="line">			fmt.Println(<span class="string">&quot;CrawlerWrapper Stopped&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		<span class="keyword">case</span> result &lt;- content:</span><br><span class="line">			cancelFunc()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">writeFile</span><span class="params">(filename, content <span class="type">string</span>)</span></span> (err <span class="type">error</span>) &#123;</span><br><span class="line">	file, err := os.Create(filename)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		err = file.Close()</span><br><span class="line">	&#125;()</span><br><span class="line">	_, err = file.WriteString(content)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ctx, cancel := context.WithCancel(context.Background())</span><br><span class="line">	result := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line"></span><br><span class="line">	wg.Add(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> crawlerWrapper(ctx, BaiduUrl, result, cancel, &amp;wg)</span><br><span class="line">	<span class="keyword">go</span> crawlerWrapper(ctx, BingUrl, result, cancel, &amp;wg)</span><br><span class="line"></span><br><span class="line">	t := time.NewTimer(<span class="number">10</span> * time.Second)</span><br><span class="line">	<span class="keyword">defer</span> t.Stop()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">select</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> &lt;-t.C:</span><br><span class="line">		fmt.Printf(<span class="string">&quot;Timeout\n&quot;</span>)</span><br><span class="line">	<span class="keyword">case</span> res := &lt;-result:</span><br><span class="line">		err := writeFile(<span class="string">&quot;crawler.html&quot;</span>, res)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;WriteFile err: %v\n&quot;</span>, err)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;WriteFile success\n&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果">运行结果</h2>
+<p>文件被写入，同时显式地可以看到另一个爬虫被中止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.Get err: Get &quot;https://www.bing.com&quot;: context canceled</span><br><span class="line">Crawler err: Get &quot;https://www.bing.com&quot;: context canceled</span><br><span class="line">WriteFile success</span><br></pre></td></tr></table></figure>
+<h1 id="选做一">选做一</h1>
+<h2 id="作业内容-1">作业内容</h2>
+<p>安装 herdtools (https://github.com/herd/herdtools7)，在本机上使⽤
+litmus7 执⾏下列脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X86 OOO </span><br><span class="line">&#123; x=0; y=0; &#125; </span><br><span class="line"> P0 | P1 ; </span><br><span class="line"> MOV [x],$1 | MOV [y],$1 ; </span><br><span class="line"> MOV EAX,[y] | MOV EAX,[x] ; </span><br><span class="line">locations [x;y;] </span><br><span class="line">exists (0:EAX=0 /\ 1:EAX=0) </span><br></pre></td></tr></table></figure>
+<p>并阅读明⽩输出结果，⽆需提交。</p>
+<h1 id="选做二">选做二</h1>
+<h2 id="作业内容n">作业内容n</h2>
+<p>为什么使⽤ atomic.cas
+可以实现⼀个互斥锁，为什么临界区内的内存读写操作不会被重排到 cas
+操作之外？</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,7 +318,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -257,200 +331,117 @@ var _hmt = _hmt || [];
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/2e60d9c6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/a4abbd7b/" class="archive-article-date">
-  	<time datetime="2024-07-25T10:49:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/post/a4abbd7b/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go神奇的内置数据结构习题题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/a4abbd7b/">Go神奇的内置数据结构习题题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E5%81%9A%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">必做题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.</span> <span class="toc-text">作业内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">作业分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">2.4.</span> <span class="toc-text">运行结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E4%B8%80"><span class="toc-number">3.</span> <span class="toc-text">选做一</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9-1"><span class="toc-number">3.1.</span> <span class="toc-text">作业内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E4%BA%8C"><span class="toc-number">4.</span> <span class="toc-text">选做二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9n"><span class="toc-number">4.1.</span> <span class="toc-text">作业内容n</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/b8677309/" class="archive-article-date">
-  	<time datetime="2024-07-23T10:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/b8677309/">Go语法背后的秘密作业题解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/28ba3f10/" class="archive-article-date">
-  	<time datetime="2024-07-22T10:36:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-22</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/28ba3f10/">Go runtime相关函数源码阅读</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Study Record</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Programing-Language//" class="article-tag-list-link color5">Programing Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -473,8 +464,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

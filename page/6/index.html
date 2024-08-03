@@ -193,6 +193,91 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-在已有目录上添加git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/27f87702/">在已有目录上添加Git</a>
+    </h1>
+  
+
+        
+        <a href="/post/27f87702/" class="archive-article-date">
+  	<time datetime="2017-12-28T04:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="故事背景">故事背景</h1>
+<p>在git上创建了一个仓库（创建仓库时初始了一个README.md），需要将本地一个已存在目录指向这个git仓库，并将目录内容push到仓库</p>
+<h2 id="故事环境">故事环境</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git --version</span></span><br><span class="line">git version 2.14.3 (Apple Git-98)</span><br></pre></td></tr></table></figure>
+<h1 id="开始探索">开始探索</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote add origin git@github.com:xxxxx.git</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git pull origin master</span></span><br></pre></td></tr></table></figure>
+<h1 id="遇到问题">遇到问题</h1>
+<h2 id="执行git-pull-origin-master">1. 执行git pull origin master</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">From github.com:xxxxx</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">fatal: refusing to merge unrelated histories</span><br></pre></td></tr></table></figure>
+<p>此时会提示拒绝merge</p>
+        
+          <a class="article-more-a" href="/post/27f87702/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/27f87702/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL无法获取最新数据的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -932,90 +1017,9 @@ found，似乎有不少人反对systemd项目，认为其违反了linux精神，
 
 
   
-    <article id="post-Preface" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/8dd1c645/">Preface</a>
-    </h1>
-  
-
-        
-        <a href="/post/8dd1c645/" class="archive-article-date">
-  	<time datetime="2017-03-22T18:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言">前言</h1>
-<p>现从事Python
-Web开发，以前在公司的时候关注多在业务和小trick，经过最近面试被一次次打击，才发现自己对技术背后的原理的理解太浅了，决定弄个blog做点总结，顺便没事扯扯淡，满足下自己文艺的心理。</p>
-<p>之前用过CSDN一类，感觉太麻烦写了一半没写了。原本打算自己用Django搭个blog出来的，顺便加深对Django的学习。</p>
-<p>对于前端一直没有好的灵感，学习了<a target="_blank" rel="noopener" href="http://paine1690.github.io/">朋友的blog</a>，才发现原来blog还可以这样，不用自己去写后台管理，主题很好看，也有不错的域名，于是研究了下<a target="_blank" rel="noopener" href="https://hexo.io/docs/">官方docs</a>，先弄个临时blog吧，后续会迁移到自己写的blog上去。</p>
-
-        
-          <a class="article-more-a" href="/post/8dd1c645/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Others//" class="article-tag-list-link color2">Others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/8dd1c645/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
