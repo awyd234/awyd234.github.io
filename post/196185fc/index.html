@@ -5,21 +5,21 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://windtrack.xyz">
+  <link rel="dns-prefetch" href="https://windtrack.xyz">
   <title>「架构实战营」作业二 微信朋友圈高性能复杂度分析 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  朋友圈复杂度总体分析    微信朋友圈属于高质量复杂度，低业务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「架构实战营」作业二 微信朋友圈高性能复杂度分析">
-<meta property="og:url" content="http://windtrack.xyz/post/196185fc/index.html">
+<meta property="og:url" content="https://windtrack.xyz/post/196185fc/index.html">
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="背景介绍 极客大学业务架构实战营课程作业 作业 分析一下微信朋友圈的高性能复杂度 作业要求  对照模块 2 讲述的复杂度分析方法，分析微信朋友圈的复杂度； 针对各个复杂度，画出你的架构设计方案（无需做备选方案，只需要最终的方案即可）； 给出你的架构方案中关键的设计理由。 3~5 页 PPT 即可，涵盖复杂度分析、架构设计、设计理由。  朋友圈复杂度总体分析    微信朋友圈属于高质量复杂度，低业务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/%E6%80%BB%E4%BD%93%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%9B%BE.png">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/%E6%B4%9E%E5%AF%9F%E8%B0%83%E7%A0%94%E6%9C%BA%E6%9E%84PHD%E5%8F%91%E5%B8%83%E4%BA%86%E7%9A%84%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A.jpeg">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.jpg">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%BA%94%E5%AF%B9%E6%80%9D%E8%B7%AF.jpg">
-<meta property="og:image" content="http://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg">
+<meta property="og:image" content="https://windtrack.xyz/post/196185fc/%E6%80%BB%E4%BD%93%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%9B%BE.png">
+<meta property="og:image" content="https://windtrack.xyz/post/196185fc/%E6%B4%9E%E5%AF%9F%E8%B0%83%E7%A0%94%E6%9C%BA%E6%9E%84PHD%E5%8F%91%E5%B8%83%E4%BA%86%E7%9A%84%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A.jpeg">
+<meta property="og:image" content="https://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.jpg">
+<meta property="og:image" content="https://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E9%AB%98%E6%80%A7%E8%83%BD%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%BA%94%E5%AF%B9%E6%80%9D%E8%B7%AF.jpg">
+<meta property="og:image" content="https://windtrack.xyz/post/196185fc/%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%8F%91%E5%B8%83%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg">
 <meta property="article:published_time" content="2021-04-18T15:15:45.000Z">
 <meta property="article:modified_time" content="2021-12-25T15:41:03.877Z">
 <meta property="article:author" content="Qian Hu">
@@ -29,7 +29,7 @@
 <meta property="article:tag" content="Study Record">
 <meta property="article:tag" content="Wechat">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://windtrack.xyz/post/196185fc/%E6%80%BB%E4%BD%93%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%9B%BE.png">
+<meta name="twitter:image" content="https://windtrack.xyz/post/196185fc/%E6%80%BB%E4%BD%93%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -473,7 +473,7 @@ WeChat），成为中国互联网历史上第一款月活用户突破 10 亿的�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/196185fc/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windtrack.xyz/post/196185fc/" alt="微信分享二维码">
     </div>
 </div>
 

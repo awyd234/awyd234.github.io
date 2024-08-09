@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://windtrack.xyz">
+  <link rel="dns-prefetch" href="https://windtrack.xyz">
   <title>将linux下的rm改造成mv | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 目的及构想 防止误删文件，尤其是用root用户时误删根目录导致不可逆的操作，将rm命令映射成mv命令，将数据mv到伪回收站下，利用程序进行清理回收站。 清理回收站有两种构想，一种是设置命令清空回收站，另一种则是通过定时任务去清理删除超过一定时间的数据，由于rm命令已被映射为mv命令，需要使用&#x2F;bin&#x2F;rm来进行真正的rm操作 2. 修改&#x2F;etc&#x2F;profile 123456789101112">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将linux下的rm改造成mv">
-<meta property="og:url" content="http://windtrack.xyz/post/8ecc0390/index.html">
+<meta property="og:url" content="https://windtrack.xyz/post/8ecc0390/index.html">
 <meta property="og:site_name" content="Wind Track">
 <meta property="og:description" content="1. 目的及构想 防止误删文件，尤其是用root用户时误删根目录导致不可逆的操作，将rm命令映射成mv命令，将数据mv到伪回收站下，利用程序进行清理回收站。 清理回收站有两种构想，一种是设置命令清空回收站，另一种则是通过定时任务去清理删除超过一定时间的数据，由于rm命令已被映射为mv命令，需要使用&#x2F;bin&#x2F;rm来进行真正的rm操作 2. 修改&#x2F;etc&#x2F;profile 123456789101112">
 <meta property="og:locale" content="zh_CN">
@@ -302,7 +302,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://windtrack.xyz/post/8ecc0390/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windtrack.xyz/post/8ecc0390/" alt="微信分享二维码">
     </div>
 </div>
 
