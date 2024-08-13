@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://windtrack.xyz/post/e22ed91d/</loc>
+    
+    <lastmod>2024-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://windtrack.xyz/post/2e60d9c6/</loc>
     
     <lastmod>2024-07-29</lastmod>
@@ -389,15 +398,6 @@
   </url>
   
   <url>
-    <loc>https://windtrack.xyz/post/e22ed91d/</loc>
-    
-    <lastmod>2021-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://windtrack.xyz/post/27067a2b/</loc>
     
     <lastmod>2021-12-25</lastmod>
@@ -580,7 +580,7 @@
 
   <url>
     <loc>https://windtrack.xyz/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -588,518 +588,518 @@
   
   <url>
     <loc>https://windtrack.xyz/tags/Linux/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Tensorflow-Serving/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Nvidia/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/CUDA/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/CUDNN/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Inference-Speed/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Hexo/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/LaTex/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Homework/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Machine-Learning/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Kernel-Function/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/SVM/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Algorithm/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/LeetCode/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Interview/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Hash/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Double-Linked-List/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/BinarySearch/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/TopologicalSort/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/List/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Shell/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Python/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/File-Processing/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/MySQL/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Database/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/PAT/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Design-Patterns/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Magic-Function/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Decorater/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Translations/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/StackOverflow/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/VC-Dimension/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Datawhale/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/AI/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Data-Mining/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/LogisticRegression/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/DecisionTree/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Practice/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/RandomForest/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/GBDT/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/XGBoost/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/LightGBM/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Model-Evaluation/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Grid-Search/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Software-Architecture/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/GeekTime/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Study-Record/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Wechat/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Notes/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Deep-Learning/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/CogQA/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Paper/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/GCN/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Social-Influence/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Social-Network/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/GAN/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Semi-supervised-Learning/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Computer-Vision/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Object-Detection/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Comments/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Movie/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Mathematics/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Limit/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Sequence-Convergence/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Calculus/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Mathematical-Analysis/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Evernote/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/tools/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/system-code/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/DataStructure/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/BinarryTree/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Programing/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Programing-Language/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/tags/Go/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -1108,105 +1108,105 @@
   
   <url>
     <loc>https://windtrack.xyz/categories/Linux/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Machine-Learning/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Algorithm/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Algorithn/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/MySQL/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Others/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Python/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Data-Mining/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Software-Architecture/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Paper-Notes/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Movie/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Mathematical-Analysis/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Git/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/CTF/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://windtrack.xyz/categories/Programing-Language/</loc>
-    <lastmod>2024-08-10</lastmod>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
