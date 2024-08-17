@@ -193,6 +193,204 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode反转链表相关题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/cb7efc19/">LeetCode反转链表相关题整理</a>
+    </h1>
+  
+
+        
+        <a href="/post/cb7efc19/" class="archive-article-date">
+  	<time datetime="2021-02-07T12:41:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="综述">综述</h1>
+<p>最近在面试过程中，连着被问了几次反转链表相关的问题，发现自己虽然知道大体原理，但还是在写到具体细节时会乱掉，加上面试的紧张氛围下，更容易手足无措导致无法正确写出结果，而反转链表是一个非常基础的问题，写不出来会是一个很大的减分</p>
+<h2 id="链表节点定义">链表节点定义</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+<h1 id="普通反转链表">普通反转链表</h1>
+<h2 id="url">url</h2>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">Leet
+Code 206 反转链表</a></p>
+<h2 id="难度">难度</h2>
+<p>Easy</p>
+<h2 id="题目">题目</h2>
+        
+          <a class="article-more-a" href="/post/cb7efc19/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Interview</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">List</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Algorithn//" class="article-tag-list-link color5">Algorithn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/cb7efc19/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Flask框架的基本原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/84a261e5/">Flask框架的基本原理</a>
+    </h1>
+  
+
+        
+        <a href="/post/84a261e5/" class="archive-article-date">
+  	<time datetime="2021-02-05T18:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="综述">综述</h1>
+<h2 id="此文目的">此文目的</h2>
+<p>Flask是Python下非常流行的一种Web开发框架，但是作为Web框架，Flask又是如何接收来自远程的请求并作出响应的呢，通过查资料、看源码和进行简单的实验，我想弄清楚这样的一个实现过程</p>
+<h1 id="wsgi协议">WSGI协议</h1>
+<p>Web Server Gateway Interface，以下来自Wikipedia</p>
+<blockquote>
+<p>The <strong>Web Server Gateway Interface</strong>
+(<strong>WSGI</strong>, pronounced <em>whiskey</em>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-1">1]</a>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-2">2]</a>
+or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Help:Pronunciation_respelling_key"><em>WIZ-ghee</em></a>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-3">3]</a>)
+is a simple <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Calling_convention">calling
+convention</a> for <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_server">web servers</a> to
+forward requests to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_application">web
+applications</a> or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_framework">frameworks</a>
+written in the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python
+programming language</a>. The current version of WSGI, version 1.0.1, is
+specified in <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Python_Enhancement_Proposal">Python
+Enhancement Proposal</a> (PEP) 3333.[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-:0-4">4]</a></p>
+<p>WSGI was originally specified as PEP-333 in 2003.[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#cite_note-5">5]</a>
+PEP-3333, published in 2010, updates the specification for <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Python_3">Python 3</a>.</p>
+</blockquote>
+<p>WSGI是用来在web服务器向用Python写的Web应用/框架传递请求的调用约定，在PEP-333/PEP-3333提出，是为了解决各Python程序和web
+server交互的乱象</p>
+<h2 id="一个简单的web接口">一个简单的Web接口</h2>
+<p>在Python中，我们可以使用wsgiref来实现一个简单的web接口</p>
+
+        
+          <a class="article-more-a" href="/post/84a261e5/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/84a261e5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode-146-LRU-Cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1114,274 +1312,6 @@ Zhang</a></li>
 
 
   
-    <article id="post-「论文学习」DeepInf-Social-Influence-Prediction-with-Deep-Learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/23cf489e/">「论文学习」DeepInf: Social Influence Prediction with Deep Learning</a>
-    </h1>
-  
-
-        
-        <a href="/post/23cf489e/" class="archive-article-date">
-  	<time datetime="2020-07-18T12:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="basic-info">Basic Info</h1>
-<h2 id="link">Link</h2>
-<p><a target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/kdd18_jiezhong-DeepInf.pdf">DeepInf:
-Social Influence Prediction with Deep Learning</a></p>
-<h2 id="author">Author</h2>
-<ul>
-<li>Jiezhong Qiu</li>
-<li>Jian Tang</li>
-<li>Hao Ma</li>
-<li>Yuxiao Dong</li>
-<li>Kuansan Wang</li>
-<li>Jie Tang</li>
-</ul>
-<h1 id="methods">Method(s)</h1>
-<h2 id="architecture">Architecture</h2>
-<div data-align="center">
-<img src="/post/23cf489e/deep_inf_architecture.png" class>
-</div>
-<p>(a): Raw input which consists of a mini-batch of B instances; Each
-instance is a sub-network comprised <em>n</em> users who are sampled
-from the whole network. (b): An embedding layer which maps each user to
-a D-dimensional representation. (c): An Instance Normalization Layer
-which normalizes user’s embedding. (d): The formal input layer which
-concatenates together network embedding and other features. (e) A GCN
-and GAT Layer. (f) and (g) Compare model output and ground truth, we get
-the negative log likelihood loss. In this example, ego user v was
-finally activated (marked as black)</p>
-<h1 id="reproduce">Reproduce</h1>
-        
-          <a class="article-more-a" href="/post/23cf489e/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GCN</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Social Influence</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Social Network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Paper-Notes//" class="article-tag-list-link color2">Paper Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/23cf489e/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kernel-Functions-for-Support-Vector-Machines" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/4df49a2d/">Kernel Functions for Support Vector Machines</a>
-    </h1>
-  
-
-        
-        <a href="/post/4df49a2d/" class="archive-article-date">
-  	<time datetime="2020-07-11T12:22:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="background">1. Background</h2>
-<p>Given input dimension <span class="math inline">\(d\)</span>, input
-data <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> can be expressed as <span class="math inline">\(\vec{x} = (x_1, ... , x_d)\)</span>, <span class="math inline">\(\vec{y} = (y_1, ..., y_d)\)</span>, an SVM kernel
-function <span class="math inline">\(k(\vec{x}, \vec{y})\)</span> can be
-expressed as the dot product of the transformation of <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> by a transformation function
-<span class="math inline">\(\gamma\)</span>, that is to say</p>
-<p><span class="math display">\[k(\vec{x}, \vec{y}) = \gamma(\vec{x})
-\cdot \gamma(\vec{y})\]</span></p>
-<h2 id="problems">2. Problems</h2>
-<p>Derive the transformation function <span class="math inline">\(\gamma\)</span> for the following SVM kernels,
-also compute the VC Dimension for the SVM model based on these
-kernels.</p>
-<ul>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
-\vec{y})^n\)</span></li>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
-\vec{y} + 1)^n\)</span></li>
-<li><span class="math inline">\(k(\vec{x}, \vec{y}) =
-e^{-\sigma(||\vec{x}||^2 + ||\vec{y}||^2)^n}\)</span></li>
-</ul>
-<h2 id="kvecx-vecy-vecx-cdot-vecyn">3. <span class="math inline">\(k(\vec{x}, \vec{y}) = (\vec{x} \cdot
-\vec{y})^n\)</span></h2>
-<p>根据多项式展开公式</p>
-<p><span class="math display">\[k(\vec{x}, \vec{y}) = (\vec{x} \cdot
-\vec{y})^n = (x_1y_1 + x_2y_2 + \cdots + x_dy_d) ^ n =
-\sum{\frac{n!}{n_1!n_2!\cdots n_d!}{(x_1y_1)}^{n_1}{(x_2y_2)}^{n_2}
-\cdots {(x_dy_d)}^{n_d}}\]</span></p>
-<p>所以</p>
-        
-          <a class="article-more-a" href="/post/4df49a2d/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kernel Function</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Machine-Learning//" class="article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/4df49a2d/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1785,6 +1715,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
               </li>
             
             <div class="clearfix"></div>
