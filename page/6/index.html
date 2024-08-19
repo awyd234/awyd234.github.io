@@ -193,6 +193,225 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python中的yield关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/d4341d72/">Python中的yield关键字</a>
+    </h1>
+  
+
+        
+        <a href="/post/d4341d72/" class="archive-article-date">
+  	<time datetime="2017-12-30T08:39:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原文">原文</h1>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What
+does the “yield” keyword do?</a></p>
+<h1 id="翻译">翻译</h1>
+<blockquote>
+<p>To understand what <code>yield</code> does, you must understand what
+<em>generators</em> are. And before generators come
+<em>iterables</em>.</p>
+</blockquote>
+<p>为了理解yield的作用，我们必须先理解生成器，而在生成器之前必须先理解迭代器</p>
+<h2 id="迭代器">迭代器</h2>
+<blockquote>
+<p>When you create a list, you can read its items one by one. Reading
+its items one by one is called iteration:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>当我们创建一个list，我们只能一个个读取list，而挨个读取的这个过程就被称为迭代</p>
+<blockquote>
+<p><code>mylist</code> is an <em>iterable</em>. When you use a list
+comprehension, you create a list, and so an iterable:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>mylist就是一个迭代器，当我们使用列表推导时，也就创造了一个list，或者说是一个迭代器</p>
+        
+          <a class="article-more-a" href="/post/d4341d72/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Translations</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">StackOverflow</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/d4341d72/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-不仅仅是寻梦，也蕴含着亲情和温情的故事-《寻梦环游记》影评" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/ee916ad3/">不仅仅是寻梦，也蕴含着亲情和温情的故事 -- 《寻梦环游记》影评</a>
+    </h1>
+  
+
+        
+        <a href="/post/ee916ad3/" class="archive-article-date">
+  	<time datetime="2017-12-29T11:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近刚补完了这部电影，眼瞅着上映已经一个多月了，原本打算等视频网站出了再看的，出于之前被《疯狂的动物城》和《奇幻森林》支配的恐惧，我不再小瞧任何一部动画电影，还是决定去电影院观赏，事实证明这个决定很英明。</p>
+<p>罗胖在2016年《时间的朋友》跨年演讲里说，为什么现在越来越少的人愿意去电影院看电影？因为时间成本太高了，往返的两个小时，电影的两个小时，面对现如今良莠不齐的电影界，为了一部不知道质量的电影花去四个小时，这个代价越来越承受不起了。看完这部电影，我觉得挺值的，尽管在寒冷的冬天骑着自行车，手都要冻僵了。</p>
+<p>这几天在阅读《如何打造你的独特观点》这本书，加上对这部电影深有感触，尝试写点影评吧。<strong>内容涉及剧透，请选择性观看。</strong></p>
+<p>——————————————剧透分界线————————————————</p>
+<p>故事的主角米格因为崇拜歌神德拉库斯，从小喜欢音乐，可惜源于对曾曾祖父抛弃家人的原因，家族极度反感音乐，米格只能偷偷躲在角落里，模仿荧幕上的歌神拨弄着自己破旧的吉他。看着即将举行的才艺比赛，似乎看到了自己梦想实现的曙光。当看到自己一直崇拜的偶像的吉他和破碎照片上曾爷爷吉他一模一样，这让他坚信歌神就是自己的曾曾祖父，也终于鼓起勇气向家人要求参加比赛，愤怒的奶奶砸烂了他的吉他，也砸碎了他对家人的期待。一怒之下他决定遵从歌神「Seize
+your
+moment」，大胆跑去歌神纪念馆「借」吉他参加比赛，也正是这时候，让他穿越到了亡灵世界。</p>
+<p>在亡灵世界，米格遇见了家族里灵位上的诸多亲人，还有一位迷一般的埃克托，当米格发现自己也在变成亡灵时，迫切希望可以回归现世，而回归现实的唯一方法便是得到亲人真诚的祝福，于是他将这一切希望寄托在了他的这些亲人上。出于对曾曾祖父的怨恨，曾曾祖母伊美尔达在祝福时，要求米格不允许再接触音乐，这使得执着于音乐梦想的米格不再对亲人抱有希望。于是他努力去逃脱亲人的掌控，试图去寻求「曾曾祖父」歌神的帮助，相信歌神会理解他的梦想，他找到了埃克托合作。埃克托很可怜，他的死法也很奇葩，他想尽办法想要去桥的另一边，看一眼他朝思暮想的女儿，却因为世人的遗忘始终失败。当看到现世过来的米格，他希望米格可以将自己照片带回现世供奉，这样他就拥有足够的力量，可以见到他最心爱的女儿了。</p>
+<p>米格在埃克托的帮助下，历经辛苦，冒险参加亡灵界的才艺比赛，终于见到了自己的偶像歌神，心里的激动可想而知。歌神也很意外自己竟然还有这么个后代，同样颇为激动，对米格很好，也准备为米格送祝福让他回家。只到埃克托突然出现，当年的真相才一幕幕揭开，米格对一直以来偶像的信仰彻底崩塌，原来一切都是歌神德拉库斯所为，害死才华横溢的埃克托，并将他的歌曲和吉他占为己有（此处脑补了好多柯南的剧情）。受制于歌神的权势，米格和埃克托被丢入了洞穴（有点类似《神雕侠侣》里裘千尺被囚禁的地穴的感觉），也正是在这里，米格才发现原来埃克托才是他真正的曾曾祖父，也明白了曾曾祖父的心愿。最后在流浪犬但丁和亲人们的帮助下，他们最终逃出洞穴，战胜了歌神，并揭发了歌神的真面目。米格和亲人们终于认识到了亲人的含义，在亲人的无条件祝福下，米格回到了现世，也唤起了太奶奶对曾曾祖父的回忆，得到了家人的理解和支持。</p>
+<p>故事的开头，曾一度在怀疑，故事是发生在我们国家么，黄色的皮肤，常见的发型，熟悉的家庭布局和慈祥的太奶奶，严厉的奶奶，让我也不禁有些失神。</p>
+<p>故事的本身穿越到亡灵世界的设定，这一切究竟是一场梦，还是神明给予的一次认知穿越呢。我本人倾向于无神主义，不过从电影乃至动画的效果，这种设定也是合理的。</p>
+<p>曾曾奶奶伊美尔达和曾曾祖父埃克托，是我在故事中最喜欢的两个角色了。</p>
+        
+          <a class="article-more-a" href="/post/ee916ad3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comments</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Movie</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Movie//" class="article-tag-list-link color1">Movie</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/ee916ad3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-PAT-甲级-1002-A-B-for-Polynomials" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -877,169 +1096,6 @@ found，似乎有不少人反对systemd项目，认为其违反了linux精神，
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/8ecc0390/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git使用杂记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/d88c701/">Git使用杂记</a>
-    </h1>
-  
-
-        
-        <a href="/post/d88c701/" class="archive-article-date">
-  	<time datetime="2017-05-24T06:25:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git客户端">1. Git客户端</h1>
-<h2 id="windows7安装的git支持中文">1.1 windows7安装的git支持中文</h2>
-<p>git config –-global core.quotepath false</p>
-<h1 id="git日常命令">2.Git日常命令</h1>
-<h2 id="修改origin指向例如git迁移后使用">2.1
-修改origin指向（例如git迁移后使用）</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote -v    <span class="comment"># 查看远程分支情况</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote <span class="built_in">rm</span> origin   <span class="comment"># 删除对应远程对应中的origin</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git remote add origin &lt;git repository address&gt; <span class="comment"># 添加远程对应的origin</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="fetch-与-pull-操作">2.2 fetch 与 pull 操作</h2>
-<p>FETCH_HEAD指的是，某个branch在服务器上的最新状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git fetch origin master:tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git diff tmp</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git merge tmp</span></span><br></pre></td></tr></table></figure>
-<p>操作即先将远程origin的master主分支下载最新版本到本地origin/tmp分支上，然后将本地master分支与tmp分支diff，最后进行merge</p>
-        
-          <a class="article-more-a" href="/post/d88c701/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/d88c701/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ubuntu-16-04下搜狗输入法崩溃的解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/8826628/">ubuntu 16.04下搜狗输入法崩溃的解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/post/8826628/" class="archive-article-date">
-  	<time datetime="2017-03-24T17:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu
-16.04，问题是否仅仅出现在这个版本，尚待测试</p>
-<h1 id="搜狗输入法无法显示候选词">1. 搜狗输入法无法显示候选词</h1>
-<p>最近在使用搜狗输入法时，用着用着就搜狗候选词就没了，导致无法输入中文</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
-<p>这个程序猜测就是搜狗输入法的启动程序，通过将这个程序启动，发现程序出现报错</p>
-<img src="/post/8826628/bug_show.png" class title="This is the error~">
-<p>通过搜索解决方案，找到了一种比较靠谱的<a target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY.<span class="built_in">users</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
-<p>然后重启sogou-qimpanel，可以发现搜狗输入法的候选词已经有了，但之前的皮肤设置已经丢失</p>
-<blockquote>
-<p>额外想到的，我的pycharm也经常会出现主界面无法显示的问题，也是通过删除home下配置文件解决，具体原因待继续探究</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/post/8826628/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/8826628/">展开全文 >></a>
         </p>
       
 

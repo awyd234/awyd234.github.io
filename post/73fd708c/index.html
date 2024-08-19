@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://windtrack.xyz">
-  <title>Archives | Wind Track</title>
+  <title>HTTPS原理和应用 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep curious to the world, and do cool things that matter.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind Track">
-<meta property="og:url" content="https://windtrack.xyz/archives/page/7/index.html">
+  <meta name="description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程   img  证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTPS原理和应用">
+<meta property="og:url" content="https://windtrack.xyz/post/73fd708c/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="Keep curious to the world, and do cool things that matter.">
+<meta property="og:description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程   img  证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-19T09:08:52.000Z">
+<meta property="article:modified_time" content="2024-08-19T09:54:14.349Z">
 <meta property="article:author" content="Qian Hu">
 <meta name="twitter:card" content="summary">
   
@@ -191,204 +193,283 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-HTTPS原理和应用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTPS原理和应用
+    </h1>
+  
+
+        
+        <a href="/post/73fd708c/" class="archive-article-date">
+  	<time datetime="2024-08-19T09:08:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="背景">背景</h1>
+<h2 id="https常见问题">HTTPS常见问题</h2>
+<ul>
+<li>为什么用了 HTTPS 就是安全的？</li>
+<li>HTTPS 的底层原理如何实现？</li>
+<li>用了 HTTPS 就一定安全吗？</li>
+</ul>
+<h1 id="https交互过程">HTTPS交互过程</h1>
+<figure>
+<img
+src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/mloginfful.jpeg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h2 id="证书验证阶段">证书验证阶段</h2>
+<ul>
+<li>浏览器发起https请求</li>
+<li>服务端返回SSL/TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名</li>
+<li>浏览器验证证书是否合法
+<ul>
+<li>证书颁发机构是否可信</li>
+<li>证书是否过期</li>
+<li>证书中域名与访问的域名是否匹配</li>
+</ul></li>
+</ul>
+<h2 id="数据传输阶段">数据传输阶段</h2>
+<ul>
+<li>证书验证合法后，浏览器生成随机的对称密钥</li>
+<li>浏览器公钥加密生成的对称密钥后传输给浏览器</li>
+<li>浏览器用私钥解密得到对称密钥</li>
+<li>浏览器和服务器间使用对称密钥加密来对数据加解密</li>
+</ul>
+<h1 id="使用https好处">使用HTTPS好处</h1>
+<ul>
+<li>保护用户隐私</li>
+<li>防止篡改</li>
+<li>验证服务器的身份</li>
+</ul>
+<h1 id="http的安全与不安全">HTTP的安全与不安全</h1>
+<h2 id="https如何保证安全">HTTPS如何保证安全</h2>
+<h3 id="数据加密">数据加密</h3>
+<ul>
+<li>对称加密：数据传输使用对称加解密（AES，DES等），效率高，适合对大数据量加密</li>
+<li>非对称加密：会话密钥协商阶段，使用非对称加密（如RSA）加密对称密钥，保证密钥传输安全性</li>
+</ul>
+<h3 id="数据完整性">数据完整性</h3>
+<p>数据传输前生成一个哈希值，使用消息摘要算法（如SHA-256），接受方可以计算哈希值进行对比</p>
+<h3 id="服务器认证">服务器认证</h3>
+<p>证书由专业颁发机构（CA）签名，保证了服务器的身份</p>
+<h3 id="防止重放攻击">防止重放攻击</h3>
+<p>随机数、时间戳等</p>
+<h2 id="https的不安全因素">HTTPS的不安全因素</h2>
+<h3 id="不正确的配置">不正确的配置</h3>
+<ul>
+<li>弱加密算法：服务器使用了过时或较弱的加密算法（如md5）</li>
+<li>证书配置错误：证书未正确配置（证书链不完整，证书签发给错误的域名），浏览器无法验证，但用户选择了忽略安全警告</li>
+<li>中间件或者第三方组件的漏洞：使用HTTPS的应用可能依赖了中间件和第三方库</li>
+</ul>
+<h3 id="中间人攻击">中间人攻击</h3>
+<ul>
+<li>SSL/TLS剥离攻击（SSL
+Stripping）：攻击者将用户HTTPS请求降级为HTTP，而用户忽视了警告</li>
+<li>恶意证书颁发机构：CA被攻破，攻击者获取合法的伪造证书</li>
+</ul>
+<h3 id="社会工程攻击">社会工程攻击</h3>
+<ul>
+<li>钓鱼网站</li>
+<li>恶意软件：修改系统的可信根证书，添加恶意的CA证书，从而劫持HTTPS请求</li>
+</ul>
+<h3 id="https漏洞">HTTPS漏洞</h3>
+<ul>
+<li>TLS协议漏洞：随着时间的推移，TLS协议中可能会发现新的漏洞，例如历史上著名的Heartbleed、POODLE、BEAST攻击等。这些漏洞可以被利用来攻击HTTPS连接。</li>
+<li>服务器或客户端漏洞：HTTPS的安全性也依赖于服务器和客户端的实现。例如，如果服务器的软件版本过旧，或者客户端的TLS实现有漏洞，都会影响HTTPS的整体安全性</li>
+</ul>
+<h2 id="如何提高https正确性">如何提高HTTPS正确性</h2>
+<ul>
+<li><p>使用强加密算法：配置服务器使用最新和强大的加密算法（如AES-GCM、ECDHE）和TLS版本（如TLS
+1.2或1.3）。禁用弱加密算法和协议（如SSL 2.0/3.0）。</p></li>
+<li><p>正确配置证书：确保证书链完整，证书颁发机构可信，并且证书签发的域名与网站匹配。使用EV（扩展验证）证书进一步提高可信度。</p></li>
+<li><p>启用HSTS：通过启用HTTP严格传输安全（HSTS），强制浏览器在未来的访问中始终使用HTTPS，防止SSL剥离攻击。</p></li>
+<li><p>定期更新和审计：定期更新服务器和客户端软件，修补已知的漏洞。定期审计配置，确保不存在错误或过时的配置。</p></li>
+<li><p>监控和检测：部署监控工具来检测和预防中间人攻击、伪造证书攻击等威胁。通过浏览器的证书透明性日志（Certificate
+Transparency）监控你的域名是否有异常的证书签发。</p></li>
+<li><p>用户教育：教育用户如何识别钓鱼网站和其他社会工程攻击。指导用户如何查看浏览器中的证书信息，确保访问的是合法的HTTPS网站。</p></li>
+</ul>
+<h1 id="qa">Q&amp;A</h1>
+<h2
+id="数据传送为什么不需要先用对称公钥加密再用对称密钥加密">数据传送为什么不需要先用对称公钥加密再用对称密钥加密</h2>
+<p>非对称加解密的效率很低，而https场景中存在大量交互</p>
+<p>浏览器中没有非对称加密的私钥，无法对数据进行解密</p>
+<h2 id="为什么需要ca机构颁发的证书">为什么需要CA机构颁发的证书</h2>
+<p>HTTP传输过程中容易被监听或者伪造服务器，如果任何人都可以构造证书，就会产生中间人攻击</p>
+<figure>
+<img
+src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/34fwbli4dv.jpeg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h2 id="https产生性能开销优化">HTTPS产生性能开销优化</h2>
+<p>现代硬件和优化手段（如HTTP/2、TLS Session
+Resumption等）已经大大降低了这种开销</p>
+<ul>
+<li>HTTP/2：支持多路复用、头部压缩等特性</li>
+<li>TLS Session Resumption：通过会话缓存或会话票证（Session
+Ticket）来复用之前的加密会话，减少握手开销</li>
+<li>使用现代加密算法：更高效的加密算法（如AES-GCM）来提升性能</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/d88c701/" class="archive-article-date">
-  	<time datetime="2017-05-24T06:25:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/d88c701/">Git使用杂记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windtrack.xyz/post/73fd708c/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/8826628/" class="archive-article-date">
-  	<time datetime="2017-03-24T17:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/post/f0d646e1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          对称加密与非对称加密
+        
+      </div>
+    </a>
+  
+  
+    <a href="/post/b78edf2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode - 70.Climbing Stair</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/8826628/">ubuntu 16.04下搜狗输入法崩溃的解决方案</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">HTTPS常见问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#https%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">HTTPS交互过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E9%98%B6%E6%AE%B5"><span class="toc-number">2.1.</span> <span class="toc-text">证书验证阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%98%B6%E6%AE%B5"><span class="toc-number">2.2.</span> <span class="toc-text">数据传输阶段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8https%E5%A5%BD%E5%A4%84"><span class="toc-number">3.</span> <span class="toc-text">使用HTTPS好处</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E7%9A%84%E5%AE%89%E5%85%A8%E4%B8%8E%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">HTTP的安全与不安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%AE%89%E5%85%A8"><span class="toc-number">4.1.</span> <span class="toc-text">HTTPS如何保证安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86"><span class="toc-number">4.1.1.</span> <span class="toc-text">数据加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">4.1.2.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%A4%E8%AF%81"><span class="toc-number">4.1.3.</span> <span class="toc-text">服务器认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E6%AD%A2%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB"><span class="toc-number">4.1.4.</span> <span class="toc-text">防止重放攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https%E7%9A%84%E4%B8%8D%E5%AE%89%E5%85%A8%E5%9B%A0%E7%B4%A0"><span class="toc-number">4.2.</span> <span class="toc-text">HTTPS的不安全因素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">不正确的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-number">4.2.2.</span> <span class="toc-text">中间人攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E6%94%BB%E5%87%BB"><span class="toc-number">4.2.3.</span> <span class="toc-text">社会工程攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.2.4.</span> <span class="toc-text">HTTPS漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98https%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="toc-number">4.3.</span> <span class="toc-text">如何提高HTTPS正确性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#qa"><span class="toc-number">5.</span> <span class="toc-text">Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%9C%80%E8%A6%81%E5%85%88%E7%94%A8%E5%AF%B9%E7%A7%B0%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E5%86%8D%E7%94%A8%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86"><span class="toc-number">5.1.</span> <span class="toc-text">数据传送为什么不需要先用对称公钥加密再用对称密钥加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81ca%E6%9C%BA%E6%9E%84%E9%A2%81%E5%8F%91%E7%9A%84%E8%AF%81%E4%B9%A6"><span class="toc-number">5.2.</span> <span class="toc-text">为什么需要CA机构颁发的证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https%E4%BA%A7%E7%94%9F%E6%80%A7%E8%83%BD%E5%BC%80%E9%94%80%E4%BC%98%E5%8C%96"><span class="toc-number">5.3.</span> <span class="toc-text">HTTPS产生性能开销优化</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/40db9361/" class="archive-article-date">
-  	<time datetime="2017-03-24T06:42:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/40db9361/">MongoDB配置与使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/942a5d5c/" class="archive-article-date">
-  	<time datetime="2017-03-23T16:48:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/942a5d5c/">Python项目环境的搭建</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/post/8dd1c645/" class="archive-article-date">
-  	<time datetime="2017-03-22T18:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/post/8dd1c645/">Preface</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Others//" class="article-tag-list-link color2">Others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span>
-    </nav>
   
 
 
@@ -412,8 +493,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
