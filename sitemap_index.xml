@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://windtrack.xyz/post/73fd708c/</loc>
+    <loc>https://windtrack.xyz/post/f0d646e1/</loc>
     
     <lastmod>2024-08-19</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://windtrack.xyz/post/f0d646e1/</loc>
+    <loc>https://windtrack.xyz/post/73fd708c/</loc>
     
     <lastmod>2024-08-19</lastmod>
     
@@ -1154,6 +1154,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://windtrack.xyz/tags/Encrypt/</loc>
+    <lastmod>2024-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -1256,6 +1263,13 @@
   
   <url>
     <loc>https://windtrack.xyz/categories/Programing-Language/</loc>
+    <lastmod>2024-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://windtrack.xyz/categories/Encrypt/</loc>
     <lastmod>2024-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -8,14 +8,18 @@
   <link rel="dns-prefetch" href="https://windtrack.xyz">
   <title>对称加密与非对称加密 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="对称加密 定义 加解密使用同一密钥 工作原理  加密过程：明文通过加密算法和一个密钥加密成不可读的密文 解密过程：接收方使用相同密钥和解密算法解密成明文  常见对称加密算法 AES 工作原理  加密模式：分组加密算法，使用固定大小的块进行加密，默认是128bit&#x2F;16Byte的块 密钥长度：支持128&#x2F;192&#x2F;256位密钥长度，长度越大，安全性越高，对应加解密复杂度也会增加 轮数：根据不同长度密钥">
+<meta property="og:type" content="article">
 <meta property="og:title" content="对称加密与非对称加密">
 <meta property="og:url" content="https://windtrack.xyz/post/f0d646e1/index.html">
 <meta property="og:site_name" content="Wind Track">
+<meta property="og:description" content="对称加密 定义 加解密使用同一密钥 工作原理  加密过程：明文通过加密算法和一个密钥加密成不可读的密文 解密过程：接收方使用相同密钥和解密算法解密成明文  常见对称加密算法 AES 工作原理  加密模式：分组加密算法，使用固定大小的块进行加密，默认是128bit&#x2F;16Byte的块 密钥长度：支持128&#x2F;192&#x2F;256位密钥长度，长度越大，安全性越高，对应加解密复杂度也会增加 轮数：根据不同长度密钥">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-19T09:15:43.000Z">
-<meta property="article:modified_time" content="2024-08-19T09:15:43.576Z">
+<meta property="article:modified_time" content="2024-08-19T11:08:15.961Z">
 <meta property="article:author" content="Qian Hu">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Encrypt">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
@@ -211,7 +215,151 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="对称加密">对称加密</h1>
+<h2 id="定义">定义</h2>
+<p>加解密使用同一密钥</p>
+<h2 id="工作原理">工作原理</h2>
+<ul>
+<li><p>加密过程：明文通过加密算法和一个密钥加密成不可读的密文</p></li>
+<li><p>解密过程：接收方使用相同密钥和解密算法解密成明文</p></li>
+</ul>
+<h2 id="常见对称加密算法">常见对称加密算法</h2>
+<h3 id="aes">AES</h3>
+<h4 id="工作原理-1">工作原理</h4>
+<ul>
+<li>加密模式：分组加密算法，使用固定大小的块进行加密，默认是128bit/16Byte的块</li>
+<li>密钥长度：支持128/192/256位密钥长度，长度越大，安全性越高，对应加解密复杂度也会增加</li>
+<li>轮数：根据不同长度密钥，加密过程经过多轮（10、12、14）加密操作，每一轮含多个步骤，如字节替代、行移位、列混淆和轮密钥加</li>
+</ul>
+<h4 id="优点">优点</h4>
+<ul>
+<li>高安全性：AES被认为是目前最安全的对称加密算法之一</li>
+<li>性能优异：AES的加密和解密速度都很快，尤其是在硬件支持下，AES的性能表现非常优秀</li>
+<li>灵活性：支持多种密钥长度和加密模式，适应不同安全需求</li>
+</ul>
+<h3 id="des">3DES</h3>
+<h4 id="工作原理-2">工作原理</h4>
+<ul>
+<li>三重加密：使用3个不同密钥进行加密，或者一个密钥加密三次</li>
+<li>密钥长度：112/168位</li>
+</ul>
+<h3 id="rc4">RC4</h3>
+<p>与分组加密算法不同，RC4是一种流加密算法，即数据按字节或比特流的方式加密</p>
+<h4 id="工作原理-3">工作原理</h4>
+<ul>
+<li><p>流加密：RC4生成一个密钥流，然后将数据流的每个字节与密钥流的相应字节进行异或（XOR）操作，从而生成密文。解密过程与加密过程相同，只需再次进行异或操作即可恢复明文</p></li>
+<li><p>密钥长度：RC4支持可变长度的密钥（通常为40至256位）</p></li>
+</ul>
+<h2 id="优缺点">优缺点</h2>
+<h3 id="优点-1">优点</h3>
+<ul>
+<li>速度快</li>
+<li>算法简单</li>
+</ul>
+<h3 id="缺点">缺点</h3>
+<ul>
+<li>密钥管理难：需要通信双方安全的传输和存储，可能会泄露</li>
+<li>扩展性差：多方通信中，每一对通信方都需要一个独立的密钥，通信方增加后，密钥管理难度变复杂</li>
+</ul>
+<h1 id="非对称加密">非对称加密</h1>
+<h2 id="定义-1">定义</h2>
+<p>有两个密钥，公钥和私钥，公钥用于加密，私钥用于解密</p>
+<h2 id="工作原理-4">工作原理</h2>
+<ul>
+<li>公钥加密：公钥公开给所有人，用于加密数据，只有持有私钥才能解密</li>
+<li>私钥解密：公钥加密，公钥和密钥是一对</li>
+</ul>
+<h2 id="常见算法">常见算法</h2>
+<h3 id="rsa">RSA</h3>
+<h4 id="工作原理-5">工作原理</h4>
+<ul>
+<li>大数分解：安全性基于大数分解的计算难度，RSA算法生成两个大素数，利用它们生成公钥和私钥</li>
+<li>密钥生成
+<ul>
+<li>选择两个大素数p和q，计算乘积<span class="math inline">\(n = p *
+q\)</span></li>
+<li>计算n的欧拉函数，<span class="math inline">\(\varphi(n) = (p - 1) *
+(q - 1)\)</span></li>
+<li>选择一个与<span
+class="math inline">\(\varphi(n)\)</span>互质的整数e，作为公钥的指数</li>
+<li>计算公钥的指数d使得<span class="math inline">\(e * d = 1(mod
+\varphi(n))\)</span></li>
+<li>公钥为(e, n)，私钥为(d, n)</li>
+</ul></li>
+<li>加解密过程
+<ul>
+<li>密文 = 明文 ^ e mod n</li>
+<li>明文 = 密文 ^ d mod n</li>
+</ul></li>
+</ul>
+<h4 id="缺点-1">缺点</h4>
+<ul>
+<li>速度较慢</li>
+<li>密钥长度大：通常需要较大的密钥长度（2048位或者更大），增加了存储和传输开销</li>
+</ul>
+<h3 id="ecc椭圆曲线算法">ECC（椭圆曲线算法）</h3>
+<h4 id="工作原理-6">工作原理</h4>
+<ul>
+<li>基于椭圆离散曲线对数问题，被认为比RSA大数分解问题更难</li>
+<li>密钥生成
+<ul>
+<li>选择一个椭圆曲线上的基点G和一个随机数d作为私钥。</li>
+<li>计算<span class="math inline">\(Q = d * G\)</span>，得到公钥Q。</li>
+<li>公钥为Q，私钥为d</li>
+</ul></li>
+<li>加解密过程
+<ul>
+<li>加密：使用接收方的公钥和椭圆曲线上的点生成密文</li>
+<li>解密：使用私钥对密文进行解密，还原出明文</li>
+</ul></li>
+</ul>
+<h4 id="优点-2">优点</h4>
+<ul>
+<li>高效性：在同样安全级别下，ECC所需密钥长度远小于RSA，加解密更快，性能更高</li>
+<li>较小的密钥：使用较短的密钥，占用存储空间少</li>
+</ul>
+<h2 id="优缺点-1">优缺点</h2>
+<h3 id="优点-3">优点</h3>
+<ul>
+<li>安全性高</li>
+<li>密钥管理简单</li>
+</ul>
+<h3 id="缺点-2">缺点</h3>
+<ul>
+<li>速度慢</li>
+<li>算法复杂</li>
+</ul>
+<h1 id="其他算法">其他算法</h1>
+<h2
+id="哈希算法摘要算法摘要信息算法">哈希算法/摘要算法/摘要信息算法</h2>
+<p>将任意长度的数据转换为固定长度的哈希值（摘要）</p>
+<p>哈希算法是单向的，无法从哈希值反推原始数据</p>
+<h3 id="md5">MD5</h3>
+<h3 id="sha-256">SHA-256</h3>
+<h2 id="数字签名算法">数字签名算法</h2>
+<h3 id="dsa">DSA</h3>
+<h4 id="工作原理-7">工作原理</h4>
+<ul>
+<li>基于离散对数问题：DSA的安全性依赖于离散对数问题的难度</li>
+<li>签名生成
+<ul>
+<li>生成私钥x和对应的公钥y。</li>
+<li>对要签名的数据计算哈希值H。</li>
+<li>生成一个随机数k，计算签名值r和s。</li>
+<li>签名由(r, s)组成</li>
+</ul></li>
+<li>签名验证：验证方使用签名(r,
+s)、公钥y和哈希值H来验证签名是否有效</li>
+</ul>
+<h4 id="优点-4">优点</h4>
+<ul>
+<li>DSA专用于数字签名，不用于加密数据，所以生成和验证签名方面性能较好</li>
+</ul>
+<h4 id="缺点-3">缺点</h4>
+<ul>
+<li>速度较慢：签名生成速度较快，但是验证速度较慢</li>
+<li>随机数要求高：随机数生成不当，容易造成私钥泄露</li>
+</ul>
 
       
 
@@ -241,7 +389,33 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Encrypt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Encrypt//" class="article-tag-list-link color3">Encrypt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -334,7 +508,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">对称加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">常见对称加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#aes"><span class="toc-number">1.3.1.</span> <span class="toc-text">AES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#des"><span class="toc-number">1.3.2.</span> <span class="toc-text">3DES</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rc4"><span class="toc-number">1.3.3.</span> <span class="toc-text">RC4</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">工作原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">非对称加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="toc-number">2.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">常见算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsa"><span class="toc-number">2.3.1.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ecc%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.2.</span> <span class="toc-text">ECC（椭圆曲线算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="toc-number">2.4.</span> <span class="toc-text">优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-number">2.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">其他算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95%E6%91%98%E8%A6%81%E4%BF%A1%E6%81%AF%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">哈希算法&#x2F;摘要算法&#x2F;摘要信息算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#md5"><span class="toc-number">3.1.1.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sha-256"><span class="toc-number">3.1.2.</span> <span class="toc-text">SHA-256</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">数字签名算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dsa"><span class="toc-number">3.2.1.</span> <span class="toc-text">DSA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-4"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-3"><span class="toc-number">3.2.1.3.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -760,6 +934,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
               </li>
             
             <div class="clearfix"></div>

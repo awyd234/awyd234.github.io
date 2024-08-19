@@ -213,8 +213,23 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-
+        <h1 id="对称加密">对称加密</h1>
+<h2 id="定义">定义</h2>
+<p>加解密使用同一密钥</p>
+<h2 id="工作原理">工作原理</h2>
+<ul>
+<li><p>加密过程：明文通过加密算法和一个密钥加密成不可读的密文</p></li>
+<li><p>解密过程：接收方使用相同密钥和解密算法解密成明文</p></li>
+</ul>
+<h2 id="常见对称加密算法">常见对称加密算法</h2>
+<h3 id="aes">AES</h3>
+<h4 id="工作原理-1">工作原理</h4>
+<ul>
+<li>加密模式：分组加密算法，使用固定大小的块进行加密，默认是128bit/16Byte的块</li>
+<li>密钥长度：支持128/192/256位密钥长度，长度越大，安全性越高，对应加解密复杂度也会增加</li>
+<li>轮数：根据不同长度密钥，加密过程经过多轮（10、12、14）加密操作，每一轮含多个步骤，如字节替代、行移位、列混淆和轮密钥加</li>
+</ul>
+<h4 id="优点">优点</h4>
         
           <a class="article-more-a" href="/post/f0d646e1/#more">more >></a>
         
@@ -225,7 +240,33 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Encrypt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Encrypt//" class="article-tag-list-link color3">Encrypt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -1685,6 +1726,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
               </li>
             
             <div class="clearfix"></div>
