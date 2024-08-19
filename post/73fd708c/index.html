@@ -8,17 +8,20 @@
   <link rel="dns-prefetch" href="https://windtrack.xyz">
   <title>HTTPS原理和应用 | Wind Track</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程   img  证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据">
+  <meta name="description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程     证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据传输阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTPS原理和应用">
 <meta property="og:url" content="https://windtrack.xyz/post/73fd708c/index.html">
 <meta property="og:site_name" content="Wind Track">
-<meta property="og:description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程   img  证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据">
+<meta property="og:description" content="背景 HTTPS常见问题  为什么用了 HTTPS 就是安全的？ HTTPS 的底层原理如何实现？ 用了 HTTPS 就一定安全吗？  HTTPS交互过程     证书验证阶段  浏览器发起https请求 服务端返回SSL&#x2F;TLS证书，包含公钥与由可信任的证书颁发机构（CA）前面的数字签名 浏览器验证证书是否合法  证书颁发机构是否可信 证书是否过期 证书中域名与访问的域名是否匹配   数据传输阶">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://windtrack.xyz/post/73fd708c/mloginfful.jpeg">
+<meta property="og:image" content="https://windtrack.xyz/post/73fd708c/34fwbli4dv.jpeg">
 <meta property="article:published_time" content="2024-08-19T09:08:52.000Z">
-<meta property="article:modified_time" content="2024-08-19T09:54:14.349Z">
+<meta property="article:modified_time" content="2024-08-19T10:03:41.891Z">
 <meta property="article:author" content="Qian Hu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://windtrack.xyz/post/73fd708c/mloginfful.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Wind Track" type="application/atom+xml">
   
@@ -221,12 +224,11 @@ var _hmt = _hmt || [];
 <li>用了 HTTPS 就一定安全吗？</li>
 </ul>
 <h1 id="https交互过程">HTTPS交互过程</h1>
-<figure>
-<img
-src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/mloginfful.jpeg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<div data-align="center">
+<img src="/post/73fd708c/mloginfful.jpeg" class="">
+</div>
+<p><img
+src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/mloginfful.jpeg" /></p>
 <h2 id="证书验证阶段">证书验证阶段</h2>
 <ul>
 <li>浏览器发起https请求</li>
@@ -305,12 +307,11 @@ id="数据传送为什么不需要先用对称公钥加密再用对称密钥加�
 <p>浏览器中没有非对称加密的私钥，无法对数据进行解密</p>
 <h2 id="为什么需要ca机构颁发的证书">为什么需要CA机构颁发的证书</h2>
 <p>HTTP传输过程中容易被监听或者伪造服务器，如果任何人都可以构造证书，就会产生中间人攻击</p>
-<figure>
-<img
-src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/34fwbli4dv.jpeg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<div data-align="center">
+<img src="/post/73fd708c/34fwbli4dv.jpeg" class="">
+</div>
+<p><img
+src="HTTPS%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/34fwbli4dv.jpeg" /></p>
 <h2 id="https产生性能开销优化">HTTPS产生性能开销优化</h2>
 <p>现代硬件和优化手段（如HTTP/2、TLS Session
 Resumption等）已经大大降低了这种开销</p>
