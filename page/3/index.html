@@ -193,120 +193,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-印象笔记存储导致的tensorflow-serving的坑-Error-parsing-text-format-tensorflow-serving-ModelServerConfig" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/2ce48a21/">印象笔记存储导致的tensorflow serving的坑 Error parsing text-format tensorflow.serving.ModelServerConfig</a>
-    </h1>
-  
-
-        
-        <a href="/post/2ce48a21/" class="archive-article-date">
-  	<time datetime="2020-09-26T20:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="故事背景">故事背景</h1>
-<h2 id="系统配置">系统配置</h2>
-<h3 id="操作系统信息">操作系统信息</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /proc/version</span></span><br><span class="line">Linux version 4.4.0-138-generic (buildd@lcy01-amd64-006) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #164-Ubuntu SMP Tue Oct 2 17:16:02 UTC 2018</span><br></pre></td></tr></table></figure>
-<h3 id="tensorflow-serving版本">Tensorflow Serving版本</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tensorflow_model_server -version</span></span><br><span class="line">TensorFlow ModelServer: 1.14.0-rc0+dev.sha.a854e85</span><br><span class="line">TensorFlow Library: 1.14.0-rc0</span><br></pre></td></tr></table></figure>
-<h3 id="系统语言编码信息">1.1.2 系统语言编码信息</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">locale</span></span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=</span><br><span class="line">LC_CTYPE=&quot;C&quot;</span><br><span class="line">LC_NUMERIC=&quot;C&quot;</span><br><span class="line">LC_TIME=&quot;C&quot;</span><br><span class="line">LC_COLLATE=&quot;C&quot;</span><br><span class="line">LC_MONETARY=&quot;C&quot;</span><br><span class="line">LC_MESSAGES=&quot;C&quot;</span><br><span class="line">LC_PAPER=&quot;C&quot;</span><br><span class="line">LC_NAME=&quot;C&quot;</span><br><span class="line">LC_ADDRESS=&quot;C&quot;</span><br><span class="line">LC_TELEPHONE=&quot;C&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;C&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;C&quot;</span><br><span class="line">LC_ALL=C</span><br></pre></td></tr></table></figure>
-<h2 id="故事描述">故事描述</h2>
-<p>为了方便tensorflow serving的部署，我将tensorflow
-serving的配置信息以超级笔记模式下「代码块」暂时存在了Mac版印象笔记（Evernote）中，当我从笔记中直接复制内容并通过vim粘贴到tensorflow
-serving配置文件中时，tensorflow serving启动时报了如下错误提示</p>
-        
-          <a class="article-more-a" href="/post/2ce48a21/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Tensorflow Serving</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Evernote</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">system code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/2ce48a21/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-「论文学习」Cognitive-Graph-for-Multi-Hop-Reading-Comprehension-at-Scale" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1393,6 +1279,104 @@ Malik</a></p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/e0a070c0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-「西瓜书学习」Ch03-线性模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/bdbd8fa5/">「西瓜书学习」Ch03.线性模型</a>
+    </h1>
+  
+
+        
+        <a href="/post/bdbd8fa5/" class="archive-article-date">
+  	<time datetime="2019-05-30T04:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本形式">1. 基本形式</h2>
+<p>给定由<span class="math inline">\(d\)</span>个属性描述的示例<span class="math inline">\(\boldsymbol{x}=(x_1;x_2;…;x_d)\)</span>，其中<span class="math inline">\(x_i\)</span>是<span class="math inline">\(\boldsymbol{x}\)</span>在第<span class="math inline">\(i\)</span>个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即</p>
+<p><span class="math display">\[f(\boldsymbol{x})=w_1x_1+w_2x_2+…+w_dx_d+b
+\tag{3.1}\]</span></p>
+<p>一般用向量形式写成</p>
+<p><span class="math display">\[f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b
+\tag{3.2}\]</span></p>
+<p>其中<span class="math inline">\(\boldsymbol{w}=(w_1;w_2;…;w_d)\)</span>。<span class="math inline">\(\boldsymbol{w}\)</span>和<span class="math inline">\(b\)</span>学得之后，模型就得以确定</p>
+<h2 id="线性回归">2. 线性回归</h2>
+<p>给定数据集<span class="math inline">\(D={(\boldsymbol{x}_1,y_1),
+(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}\)</span>，其中<span class="math inline">\(\boldsymbol{x}_i=(x_{i1}, x_{i2},…,x_{id}),
+y_i\in\mathbb{R}\)</span>，"线性回归"(linear
+regression)试图学得一个线性模型以尽可能准确地预测实值输出标记。</p>
+<p>我们先考虑一种最简单的情形：输入属性的数目只有一个。为便于讨论，此时我们忽略关于属性的下标，即<span class="math inline">\(D=\{(x_i,y_i)\}_{i=1}^m\)</span>，其中<span class="math inline">\(x_i\in\mathbb{R}\)</span>，对于离散属性，若属性值之间存在"序"(order)的关系，可通过连续化将其转化为连续值；若属性值间不存在序关系，假定有<span class="math inline">\(k\)</span>个属性值，则通常转化为<span class="math inline">\(k\)</span>维向量。</p>
+<p>线性回归试图学得</p>
+        
+          <a class="article-more-a" href="/post/bdbd8fa5/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/bdbd8fa5/">展开全文 >></a>
         </p>
       
 

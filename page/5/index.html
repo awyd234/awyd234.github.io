@@ -193,94 +193,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-「统计学学习」Day1-基本知识与大数定律" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/d568403d/">「统计学学习」Day1 基本知识与大数定律</a>
-    </h1>
-  
-
-        
-        <a href="/post/d568403d/" class="archive-article-date">
-  	<time datetime="2019-01-04T06:52:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基础知识">1. 基础知识</h1>
-<h2 id="population-mean">1.1 Population Mean</h2>
-<p><span class="math display">\[\mu = \frac{\sum\limits_{i=1}^N{x_i}}{N}
-= \frac{x_1 + x_2 + … + x_N}{N}\]</span></p>
-<h2 id="sample-mean">1.2 Sample Mean</h2>
-<p><span class="math display">\[\bar{X} =
-\frac{\sum\limits_{i=1}^n{x_i}}{n} = \frac{x_1 + x_2 + … +
-x_n}{n}\]</span></p>
-<h2 id="dispersion">1.3 Dispersion</h2>
-<p><span class="math display">\[\sigma^2 = variance\]</span></p>
-<p><span class="math display">\[\sigma ^2 =
-\frac{\sum\limits_{i=1}^N{(x_i - \mu)}}{N}\]</span></p>
-<p><span class="math display">\[\begin{align}
-
-\sigma ^2 &amp;= \frac{\sum\limits_{i=1}^N{(x_i - \mu)}}{N}\\ &amp;=
-\frac{\sum\limits_{i=1}^N{({x_i}^2 - 2x_i\mu + \mu^2)}}{N}\\ &amp;=
-\frac{\sum\limits_{i=1}^N{x_i^2} - 2\mu\sum\limits_{i=1}^N{x_i} +
-\mu^{2}N}{N}\\ &amp;= \frac{\sum\limits_{i=1}^N{x_i^2}}{N} - 2\mu^2 +
-\mu^2\\ &amp;= \frac{\sum\limits_{i=1}^N{x_i^2}}{N} - \mu^2\\ &amp;=
-\frac{\sum\limits_{i=1}^N{x_i}}{N} -
-\frac{(\sum\limits_{i=1}^N{x_i})^2}{N^2}
-
-\end{align}\]</span></p>
-<h2 id="sample-variance">1.4 Sample Variance</h2>
-        
-          <a class="article-more-a" href="/post/d568403d/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/d568403d/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Hexo渲染LaTex数学公式的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1245,6 +1157,110 @@ binary tree,</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/a9dc50af/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySQL一些基础知识及存储引擎比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/f5548b11/">MySQL一些基础知识及存储引擎比较</a>
+    </h1>
+  
+
+        
+        <a href="/post/f5548b11/" class="archive-article-date">
+  	<time datetime="2018-01-09T10:38:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一些基础知识">1. 一些基础知识</h1>
+<h2 id="索引类型">1.1 索引类型</h2>
+<p>由存储引擎层实现</p>
+<p>索引的优点：</p>
+<ul>
+<li>大大减少了服务器需要扫描的数据量</li>
+<li>可以帮助服务器避免排序和临时表</li>
+<li>可以将随机I/O变成顺序I/O</li>
+</ul>
+<h3 id="b-tree索引">1.1.1 B-Tree索引</h3>
+<p><strong>一般没有特定指明类型时，多半是B-Tree索引；除了Archive引擎，大多数引擎都支持B-Tree</strong></p>
+<p>NDB集群存储引擎内部实际使用T-Tree结构存储，InnoDB则使用B+Tree</p>
+<p>MyISAM使用前缀压缩技术使索引更小，InnoDB则按原数据格式进行存储</p>
+<p>B-Tree对索引列是顺序组织存储的，所以很适合查找范围数据，适合于全键值、键值范围或键前缀查找，其中键前缀查找只适用于根据最左前缀的查找</p>
+        
+          <a class="article-more-a" href="/post/f5548b11/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/f5548b11/">展开全文 >></a>
         </p>
       
 

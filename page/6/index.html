@@ -193,110 +193,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MySQL一些基础知识及存储引擎比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/f5548b11/">MySQL一些基础知识及存储引擎比较</a>
-    </h1>
-  
-
-        
-        <a href="/post/f5548b11/" class="archive-article-date">
-  	<time datetime="2018-01-09T10:38:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一些基础知识">1. 一些基础知识</h1>
-<h2 id="索引类型">1.1 索引类型</h2>
-<p>由存储引擎层实现</p>
-<p>索引的优点：</p>
-<ul>
-<li>大大减少了服务器需要扫描的数据量</li>
-<li>可以帮助服务器避免排序和临时表</li>
-<li>可以将随机I/O变成顺序I/O</li>
-</ul>
-<h3 id="b-tree索引">1.1.1 B-Tree索引</h3>
-<p><strong>一般没有特定指明类型时，多半是B-Tree索引；除了Archive引擎，大多数引擎都支持B-Tree</strong></p>
-<p>NDB集群存储引擎内部实际使用T-Tree结构存储，InnoDB则使用B+Tree</p>
-<p>MyISAM使用前缀压缩技术使索引更小，InnoDB则按原数据格式进行存储</p>
-<p>B-Tree对索引列是顺序组织存储的，所以很适合查找范围数据，适合于全键值、键值范围或键前缀查找，其中键前缀查找只适用于根据最左前缀的查找</p>
-        
-          <a class="article-more-a" href="/post/f5548b11/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/f5548b11/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Python中的yield关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1013,78 +909,6 @@ Dutch.</p>
 
 
   
-    <article id="post-journalctl的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/38935867/">journalctl的使用</a>
-    </h1>
-  
-
-        
-        <a href="/post/38935867/" class="archive-article-date">
-  	<time datetime="2017-06-19T03:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用背景与安装">1、使用背景与安装</h1>
-<h2 id="使用背景">1.1 使用背景</h2>
-<p>系统中疑似存在丢syslog的情况，比如/var/log/auth.log一直找不到，网上找了很多解决方法一直未能解决，而我又需要知道每个人员针对服务器的操作，以及检测ssh是否有外人破解进来</p>
-<h2 id="安装">1.2 安装</h2>
-<p>部分linux系统中可能会报错 journalctl command not
-found，似乎有不少人反对systemd项目，认为其违反了linux精神，我对这些古老精神并非完全遵守，还是希望先实现自己监控服务器的目的</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install systemd</span><br></pre></td></tr></table></figure>
-
-        
-          <a class="article-more-a" href="/post/38935867/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/38935867/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-jQuery-DataTables的增删改方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1125,6 +949,169 @@ found，似乎有不少人反对systemd项目，认为其违反了linux精神，
       
         <p class="article-more-link">
           <a class="article-more-a" href="/post/997527c4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-将linux下的rm改造成mv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/8ecc0390/">将linux下的rm改造成mv</a>
+    </h1>
+  
+
+        
+        <a href="/post/8ecc0390/" class="archive-article-date">
+  	<time datetime="2017-05-26T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目的及构想">1. 目的及构想</h1>
+<p>防止误删文件，尤其是用root用户时误删根目录导致不可逆的操作，将rm命令映射成mv命令，将数据mv到伪回收站下，利用程序进行清理回收站。</p>
+<p>清理回收站有两种构想，一种是设置命令清空回收站，另一种则是通过定时任务去清理删除超过一定时间的数据，由于rm命令已被映射为mv命令，需要使用/bin/rm来进行真正的rm操作</p>
+<h1 id="修改etcprofile">2. 修改/etc/profile</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">this_path=&quot;/mnt/.trash/&quot;$USER</span><br><span class="line">if [ ! -d $this_path ]; then</span><br><span class="line">	mkdir $&#123;this_path&#125;</span><br><span class="line">fi  </span><br><span class="line"></span><br><span class="line">alias rm=trash</span><br><span class="line">alias ur=undelfile</span><br><span class="line">alias rl=&#x27;ls /mnt/.trash/$USER/&#x27;</span><br><span class="line"></span><br><span class="line">trash()</span><br><span class="line">&#123;</span><br><span class="line">	mv $@ $this_path/$(date +%Y%m%d%H%M%S)_$@ </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">undelfile()</span><br><span class="line">&#123;</span><br><span class="line">	mv -i $this_path/$@ ./ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在/mnt下建立目录.trash作为伪回收站，用户打开shell时，检测.trash目录下是否已有用户所属目录，若无则建立一个，该用户所有的rm操作会mv到此目录下。并对rm的文件或目录加上时间戳以作区分，ur命令可用于将回收站的数据恢复到本地（时间戳暂时需要自己删除），rl命令可以用于查看回收站现有数据</p>
+<h1 id="todo">3. Todo</h1>
+<h2 id="针对sudo操作时的生效暂时未找到好办法">3.1
+针对sudo操作时的生效，暂时未找到好办法</h2>
+<h2 id="回收站的定期清理功能">3.2 回收站的定期清理功能</h2>
+
+        
+          <a class="article-more-a" href="/post/8ecc0390/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/8ecc0390/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ubuntu-16-04下搜狗输入法崩溃的解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/8826628/">ubuntu 16.04下搜狗输入法崩溃的解决方案</a>
+    </h1>
+  
+
+        
+        <a href="/post/8826628/" class="archive-article-date">
+  	<time datetime="2017-03-24T17:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ubuntu环境下没找到好用的中文输入法，一直用的搜狗，不知道为何搜狗输入法经常就会出现崩溃的情况，我的环境是Ubuntu
+16.04，问题是否仅仅出现在这个版本，尚待测试</p>
+<h1 id="搜狗输入法无法显示候选词">1. 搜狗输入法无法显示候选词</h1>
+<p>最近在使用搜狗输入法时，用着用着就搜狗候选词就没了，导致无法输入中文</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<p>这个程序猜测就是搜狗输入法的启动程序，通过将这个程序启动，发现程序出现报错</p>
+<img src="/post/8826628/bug_show.png" class title="This is the error~">
+<p>通过搜索解决方案，找到了一种比较靠谱的<a target="_blank" rel="noopener" href="http://blog.csdn.net/jilijelon/article/details/53759965">方案</a>，通过报错，怀疑应该是皮肤图片加载失败，于是采用第三种方法，删除~/.config下的搜狗输入法相关配置文件，是否可以少删，这点需要验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/SogouPY.<span class="built_in">users</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -rf ~/.config/sogou-qimpanel</span></span><br></pre></td></tr></table></figure>
+<p>然后重启sogou-qimpanel，可以发现搜狗输入法的候选词已经有了，但之前的皮肤设置已经丢失</p>
+<blockquote>
+<p>额外想到的，我的pycharm也经常会出现主界面无法显示的问题，也是通过删除home下配置文件解决，具体原因待继续探究</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/post/8826628/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/8826628/">展开全文 >></a>
         </p>
       
 
