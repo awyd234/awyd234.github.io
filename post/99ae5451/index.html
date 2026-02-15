@@ -18,8 +18,9 @@
 <meta property="og:image" content="https://windtrack.xyz/post/99ae5451/2020-02-09-15812482347815-blocking-io-model.png">
 <meta property="og:image" content="https://windtrack.xyz/post/99ae5451/2020-02-09-15812482347824-non-blocking-io-model.png">
 <meta property="og:image" content="https://windtrack.xyz/post/99ae5451/image-20240819201803041.png">
-<meta property="article:published_time" content="2024-08-19T11:11:52.000Z">
-<meta property="article:modified_time" content="2024-08-28T08:47:04.164Z">
+<meta property="og:image" content="https://windtrack.xyz/post/99ae5451/2020-02-09-15812482347853-netpoll-modules.png">
+<meta property="article:published_time" content="2024-08-19T03:11:52.000Z">
+<meta property="article:modified_time" content="2026-02-15T05:16:00.517Z">
 <meta property="article:author" content="Qian Hu">
 <meta property="article:tag" content="Network">
 <meta property="article:tag" content="Operating System">
@@ -213,7 +214,7 @@ var _hmt = _hmt || [];
 
         
         <a href="/post/99ae5451/" class="archive-article-date">
-  	<time datetime="2024-08-19T11:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-19</time>
+  	<time datetime="2024-08-19T03:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-19</time>
 </a>
         
       </header>
@@ -224,19 +225,17 @@ var _hmt = _hmt || [];
 <h2 id="堵塞io">堵塞I/O</h2>
 <p>执行<code>read</code>或<code>write</code>等系统调用时，应用程序会被堵塞</p>
 <div data-align="center">
-<img src="/post/99ae5451/2020-02-09-15812482347815-blocking-io-model.png" class="">
+
 </div>
-<p><img
-src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/2020-02-09-15812482347815-blocking-io-model.png" /></p>
+<p><img src="2020-02-09-15812482347815-blocking-io-model.png" /></p>
 <p>应用程序由用户态陷入内核态，内核检查文件描述符是否可读，存在数据时，OS内核将准备好的数据拷贝给应用程序并交回控制权</p>
 <p>一旦执行I/O操作，应用程序会陷入堵塞状态等待I/O操作的结束</p>
 <h2 id="非堵塞io">非堵塞I/O</h2>
 <p>进程把一个文件描述符设置为非堵塞时，执行<code>read</code>或<code>write</code>等I/O操作会立刻返回</p>
 <div data-align="center">
-<img src="/post/99ae5451/2020-02-09-15812482347824-non-blocking-io-model.png" class="">
+
 </div>
-<p><img
-src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/2020-02-09-15812482347824-non-blocking-io-model.png" /></p>
+<p><img src="2020-02-09-15812482347824-non-blocking-io-model.png" /></p>
 <p>第一次从文件描述符读取数据会触发系统调用并返回<code>EAGAIN</code>错误，意味着文件描述符还在等待缓冲区中的数据，应用程序轮询<code>read</code>直到返回值大于0</p>
 <h2 id="信号驱动io">信号驱动I/O</h2>
 <h3 id="工作原理">工作原理</h3>
@@ -265,10 +264,9 @@ I/O，AIO）允许程序发起I/O操作后立即返回，程序无需等待I/O�
 <h3 id="工作原理-2">工作原理</h3>
 <p>使用<code>fd_set</code>位图结构来管理文件描述符集合，程序需要手动将需要监控的文件描述符添加到<code>fd_set</code>中，并调用<code>select</code>函数来等待这些文件描述符的状态变化</p>
 <div data-align="center">
-<img src="/post/99ae5451/image-20240819201803041.png" class="">
+
 </div>
-<p><img
-src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/image-20240819201803041.png" /></p>
+<p><img src="image-20240819201803041.png" /></p>
 <h3 id="特点-2">特点</h3>
 <ul>
 <li>最早的I/O多路复用机制之一，几乎所有Unix/Linux都可用</li>
@@ -310,9 +308,43 @@ src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/image-202408192018
 </ul>
 <h3 id="核心函数">核心函数</h3>
 <h4 id="epoll_create1">epoll_create1</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">epoll_create1</span><span class="params">(<span class="type">int</span> flags)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1</code></pre>
+</td>
+<td class="code">
+<pre><code>int epoll_create1(int flags);</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <h4 id="epoll_ctl">epoll_ctl</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">epoll_ctl</span><span class="params">(<span class="type">int</span> epfd, <span class="type">int</span> op, <span class="type">int</span> fd, <span class="keyword">struct</span> epoll_event *event)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1</code></pre>
+</td>
+<td class="code">
+<pre><code>int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <ul>
 <li><code>epfd</code>: 由 <code>epoll_create1</code> 返回的
 <code>epoll</code> 文件描述符。</li>
@@ -326,7 +358,24 @@ src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/image-202408192018
 <h4 id="epoll_wait">epoll_wait</h4>
 <p>用于等待 <code>epoll</code> 实例中的事件，返回已准备好进行 I/O
 操作的文件描述符集合</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">epoll_wait</span><span class="params">(<span class="type">int</span> epfd, <span class="keyword">struct</span> epoll_event *events, <span class="type">int</span> maxevents, <span class="type">int</span> timeout)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1</code></pre>
+</td>
+<td class="code">
+<pre><code>int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <ul>
 <li><code>epfd</code>: <code>epoll</code> 文件描述符。</li>
 <li><code>events</code>: 用于接收事件的数组。</li>
@@ -365,7 +414,166 @@ src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/image-202408192018
 </ul></li>
 </ul>
 <h3 id="示例代码">示例代码</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_EVENTS 10</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> epfd, nfds;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">ev</span>, <span class="title">events</span>[<span class="title">MAX_EVENTS</span>];</span></span><br><span class="line">    <span class="type">int</span> listen_sock, conn_sock;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 假设listen_sock是一个已绑定并监听的套接字</span></span><br><span class="line"></span><br><span class="line">    epfd = epoll_create1(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (epfd == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;epoll_create1&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ev.events = EPOLLIN;</span><br><span class="line">    ev.data.fd = listen_sock;</span><br><span class="line">    <span class="keyword">if</span> (epoll_ctl(epfd, EPOLL_CTL_ADD, listen_sock, &amp;ev) == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;epoll_ctl: listen_sock&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        nfds = epoll_wait(epfd, events, MAX_EVENTS, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (nfds == <span class="number">-1</span>) &#123;</span><br><span class="line">            perror(<span class="string">&quot;epoll_wait&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> n = <span class="number">0</span>; n &lt; nfds; ++n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (events[n].data.fd == listen_sock) &#123;</span><br><span class="line">                conn_sock = accept(listen_sock, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">                <span class="keyword">if</span> (conn_sock == <span class="number">-1</span>) &#123;</span><br><span class="line">                    perror(<span class="string">&quot;accept&quot;</span>);</span><br><span class="line">                    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ev.events = EPOLLIN;</span><br><span class="line">                ev.data.fd = conn_sock;</span><br><span class="line">                <span class="keyword">if</span> (epoll_ctl(epfd, EPOLL_CTL_ADD, conn_sock, &amp;ev) == <span class="number">-1</span>) &#123;</span><br><span class="line">                    perror(<span class="string">&quot;epoll_ctl: conn_sock&quot;</span>);</span><br><span class="line">                    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 处理客户端的读写</span></span><br><span class="line">                <span class="type">char</span> buffer[<span class="number">512</span>];</span><br><span class="line">                <span class="type">ssize_t</span> count = read(events[n].data.fd, buffer, <span class="keyword">sizeof</span>(buffer));</span><br><span class="line">                <span class="keyword">if</span> (count == <span class="number">-1</span>) &#123;</span><br><span class="line">                    perror(<span class="string">&quot;read&quot;</span>);</span><br><span class="line">                    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// 对端关闭连接</span></span><br><span class="line">                    close(events[n].data.fd);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 正常读取数据</span></span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;Received: %s&quot;</span>, buffer);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    close(epfd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</code></pre>
+</td>
+<td class="code">
+<pre><code>#include &lt;sys/epoll.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_EVENTS 10
+
+int main() &#123;
+    int epfd, nfds;
+    struct epoll_event ev, events[MAX_EVENTS];
+    int listen_sock, conn_sock;
+
+    // 假设listen_sock是一个已绑定并监听的套接字
+
+    epfd = epoll_create1(0);
+    if (epfd == -1) &#123;
+        perror(&quot;epoll_create1&quot;);
+        exit(EXIT_FAILURE);
+    &#125;
+
+    ev.events = EPOLLIN;
+    ev.data.fd = listen_sock;
+    if (epoll_ctl(epfd, EPOLL_CTL_ADD, listen_sock, &amp;ev) == -1) &#123;
+        perror(&quot;epoll_ctl: listen_sock&quot;);
+        exit(EXIT_FAILURE);
+    &#125;
+
+    for (;;) &#123;
+        nfds = epoll_wait(epfd, events, MAX_EVENTS, -1);
+        if (nfds == -1) &#123;
+            perror(&quot;epoll_wait&quot;);
+            exit(EXIT_FAILURE);
+        &#125;
+
+        for (int n = 0; n &lt; nfds; ++n) &#123;
+            if (events[n].data.fd == listen_sock) &#123;
+                conn_sock = accept(listen_sock, NULL, NULL);
+                if (conn_sock == -1) &#123;
+                    perror(&quot;accept&quot;);
+                    exit(EXIT_FAILURE);
+                &#125;
+
+                ev.events = EPOLLIN;
+                ev.data.fd = conn_sock;
+                if (epoll_ctl(epfd, EPOLL_CTL_ADD, conn_sock, &amp;ev) == -1) &#123;
+                    perror(&quot;epoll_ctl: conn_sock&quot;);
+                    exit(EXIT_FAILURE);
+                &#125;
+            &#125; else &#123;
+                // 处理客户端的读写
+                char buffer[512];
+                ssize_t count = read(events[n].data.fd, buffer, sizeof(buffer));
+                if (count == -1) &#123;
+                    perror(&quot;read&quot;);
+                    exit(EXIT_FAILURE);
+                &#125; else if (count == 0) &#123;
+                    // 对端关闭连接
+                    close(events[n].data.fd);
+                &#125; else &#123;
+                    // 正常读取数据
+                    printf(&quot;Received: %s&quot;, buffer);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    close(epfd);
+    return 0;
+&#125;
+</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <h3 id="优缺点">优缺点</h3>
 <h4 id="优点"><strong>优点</strong></h4>
 <ul>
@@ -393,14 +601,101 @@ src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/image-202408192018
 <div data-align="center">
 
 </div>
-<p><img
-src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/2020-02-09-15812482347853-netpoll-modules.png" /></p>
+<p><img src="2020-02-09-15812482347853-netpoll-modules.png" /></p>
 <p>编译器会根据平台选择树中特定分支进行编译，如果是linux，则是使用epoll</p>
 <h2 id="相关源码">相关源码</h2>
 <h3 id="基本函数">基本函数</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollinit</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollopen</span><span class="params">(fd <span class="type">uintptr</span>, pd *pollDesc)</span></span> <span class="type">int32</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpoll</span><span class="params">(delta <span class="type">int64</span>)</span></span> gList</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollBreak</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollIsPollDescriptor</span><span class="params">(fd <span class="type">uintptr</span>)</span></span> <span class="type">bool</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5</code></pre>
+</td>
+<td class="code">
+<pre><code>func netpollinit()
+func netpollopen(fd uintptr, pd *pollDesc) int32
+func netpoll(delta int64) gList
+func netpollBreak()
+func netpollIsPollDescriptor(fd uintptr) bool</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <h3 id="初始化">初始化</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollinit</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> errno <span class="type">uintptr</span></span><br><span class="line">	epfd, errno = syscall.EpollCreate1(syscall.EPOLL_CLOEXEC)</span><br><span class="line">	<span class="keyword">if</span> errno != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;runtime: epollcreate failed with&quot;</span>, errno)</span><br><span class="line">		throw(<span class="string">&quot;runtime: netpollinit failed&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	r, w, errpipe := nonblockingPipe()</span><br><span class="line">	<span class="keyword">if</span> errpipe != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;runtime: pipe failed with&quot;</span>, -errpipe)</span><br><span class="line">		throw(<span class="string">&quot;runtime: pipe failed&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	ev := syscall.EpollEvent&#123;</span><br><span class="line">		Events: syscall.EPOLLIN,</span><br><span class="line">	&#125;</span><br><span class="line">	*(**<span class="type">uintptr</span>)(unsafe.Pointer(&amp;ev.Data)) = &amp;netpollBreakRd</span><br><span class="line">	errno = syscall.EpollCtl(epfd, syscall.EPOLL_CTL_ADD, r, &amp;ev)</span><br><span class="line">	<span class="keyword">if</span> errno != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;runtime: epollctl failed with&quot;</span>, errno)</span><br><span class="line">		throw(<span class="string">&quot;runtime: epollctl failed&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	netpollBreakRd = <span class="type">uintptr</span>(r)</span><br><span class="line">	netpollBreakWr = <span class="type">uintptr</span>(w)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</code></pre>
+</td>
+<td class="code">
+<pre><code>func netpollinit() &#123;
+    var errno uintptr
+  epfd, errno = syscall.EpollCreate1(syscall.EPOLL_CLOEXEC)
+ if errno != 0 &#123;
+     println(&quot;runtime: epollcreate failed with&quot;, errno)
+        throw(&quot;runtime: netpollinit failed&quot;)
+    &#125;
+    r, w, errpipe := nonblockingPipe()
+    if errpipe != 0 &#123;
+       println(&quot;runtime: pipe failed with&quot;, -errpipe)
+        throw(&quot;runtime: pipe failed&quot;)
+   &#125;
+    ev := syscall.EpollEvent&#123;
+        Events: syscall.EPOLLIN,
+  &#125;
+    *(**uintptr)(unsafe.Pointer(&amp;ev.Data)) = &amp;netpollBreakRd
+    errno = syscall.EpollCtl(epfd, syscall.EPOLL_CTL_ADD, r, &amp;ev)
+ if errno != 0 &#123;
+     println(&quot;runtime: epollctl failed with&quot;, errno)
+       throw(&quot;runtime: epollctl failed&quot;)
+   &#125;
+    netpollBreakRd = uintptr(r)
+ netpollBreakWr = uintptr(w)
+&#125;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <p>这个流程用到了上述提到的系统调用</p>
 <ul>
 <li>执行<code>syscall.EpollCreate1</code>创建epoll实例</li>
@@ -414,7 +709,36 @@ src="I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8select-poll-epoll/2020-02-09-1581248
 <li>保存管道的读写端文件描述符，以便在后续的网络事件处理中使用</li>
 </ul>
 <h3 id="监听边缘触发事件">监听边缘触发事件</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollopen</span><span class="params">(fd <span class="type">uintptr</span>, pd *pollDesc)</span></span> <span class="type">uintptr</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> ev syscall.EpollEvent</span><br><span class="line">	ev.Events = syscall.EPOLLIN | syscall.EPOLLOUT | syscall.EPOLLRDHUP | syscall.EPOLLET</span><br><span class="line">	tp := taggedPointerPack(unsafe.Pointer(pd), pd.fdseq.Load())</span><br><span class="line">	*(*taggedPointer)(unsafe.Pointer(&amp;ev.Data)) = tp</span><br><span class="line">	<span class="keyword">return</span> syscall.EpollCtl(epfd, syscall.EPOLL_CTL_ADD, <span class="type">int32</span>(fd), &amp;ev)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5
+6
+7</code></pre>
+</td>
+<td class="code">
+<pre><code>func netpollopen(fd uintptr, pd *pollDesc) uintptr &#123;
+  var ev syscall.EpollEvent
+    ev.Events = syscall.EPOLLIN | syscall.EPOLLOUT | syscall.EPOLLRDHUP | syscall.EPOLLET
+ tp := taggedPointerPack(unsafe.Pointer(pd), pd.fdseq.Load())
+  *(*taggedPointer)(unsafe.Pointer(&amp;ev.Data)) = tp
+  return syscall.EpollCtl(epfd, syscall.EPOLL_CTL_ADD, int32(fd), &amp;ev)
+&#125;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <p>将文件描述符<code>fd</code>注册到<code>epoll</code>实例的一个函数
 <code>netpollopen</code></p>
 <ul>
@@ -447,7 +771,182 @@ Triggered），提高性能，减少重复通知。</li>
 <h3
 id="轮询网络并返回一组已经准备就绪的-goroutine">轮询网络并返回一组已经准备就绪的
 goroutine</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// netpoll checks for ready network connections.</span></span><br><span class="line"><span class="comment">// Returns list of goroutines that become runnable.</span></span><br><span class="line"><span class="comment">// delay &lt; 0: blocks indefinitely</span></span><br><span class="line"><span class="comment">// delay == 0: does not block, just polls</span></span><br><span class="line"><span class="comment">// delay &gt; 0: block for up to that many nanoseconds</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpoll</span><span class="params">(delay <span class="type">int64</span>)</span></span> gList &#123;</span><br><span class="line">	<span class="keyword">if</span> epfd == <span class="number">-1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> gList&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> waitms <span class="type">int32</span></span><br><span class="line">	<span class="keyword">if</span> delay &lt; <span class="number">0</span> &#123;</span><br><span class="line">		waitms = <span class="number">-1</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> delay == <span class="number">0</span> &#123;</span><br><span class="line">		waitms = <span class="number">0</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> delay &lt; <span class="number">1e6</span> &#123;</span><br><span class="line">		waitms = <span class="number">1</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> delay &lt; <span class="number">1e15</span> &#123;</span><br><span class="line">		waitms = <span class="type">int32</span>(delay / <span class="number">1e6</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// An arbitrary cap on how long to wait for a timer.</span></span><br><span class="line">		<span class="comment">// 1e9 ms == ~11.5 days.</span></span><br><span class="line">		waitms = <span class="number">1e9</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> events [<span class="number">128</span>]syscall.EpollEvent</span><br><span class="line">retry:</span><br><span class="line">	n, errno := syscall.EpollWait(epfd, events[:], <span class="type">int32</span>(<span class="built_in">len</span>(events)), waitms)</span><br><span class="line">	<span class="keyword">if</span> errno != <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> errno != _EINTR &#123;</span><br><span class="line">			<span class="built_in">println</span>(<span class="string">&quot;runtime: epollwait on fd&quot;</span>, epfd, <span class="string">&quot;failed with&quot;</span>, errno)</span><br><span class="line">			throw(<span class="string">&quot;runtime: netpoll failed&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// If a timed sleep was interrupted, just return to</span></span><br><span class="line">		<span class="comment">// recalculate how long we should sleep now.</span></span><br><span class="line">		<span class="keyword">if</span> waitms &gt; <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> gList&#123;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">goto</span> retry</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> toRun gList</span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int32</span>(<span class="number">0</span>); i &lt; n; i++ &#123;</span><br><span class="line">		ev := events[i]</span><br><span class="line">		<span class="keyword">if</span> ev.Events == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> *(**<span class="type">uintptr</span>)(unsafe.Pointer(&amp;ev.Data)) == &amp;netpollBreakRd &#123;</span><br><span class="line">			<span class="keyword">if</span> ev.Events != syscall.EPOLLIN &#123;</span><br><span class="line">				<span class="built_in">println</span>(<span class="string">&quot;runtime: netpoll: break fd ready for&quot;</span>, ev.Events)</span><br><span class="line">				throw(<span class="string">&quot;runtime: netpoll: break fd ready for something unexpected&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> delay != <span class="number">0</span> &#123;</span><br><span class="line">				<span class="comment">// netpollBreak could be picked up by a</span></span><br><span class="line">				<span class="comment">// nonblocking poll. Only read the byte</span></span><br><span class="line">				<span class="comment">// if blocking.</span></span><br><span class="line">				<span class="keyword">var</span> tmp [<span class="number">16</span>]<span class="type">byte</span></span><br><span class="line">				read(<span class="type">int32</span>(netpollBreakRd), noescape(unsafe.Pointer(&amp;tmp[<span class="number">0</span>])), <span class="type">int32</span>(<span class="built_in">len</span>(tmp)))</span><br><span class="line">				netpollWakeSig.Store(<span class="number">0</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> mode <span class="type">int32</span></span><br><span class="line">		<span class="keyword">if</span> ev.Events&amp;(syscall.EPOLLIN|syscall.EPOLLRDHUP|syscall.EPOLLHUP|syscall.EPOLLERR) != <span class="number">0</span> &#123;</span><br><span class="line">			mode += <span class="string">&#x27;r&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> ev.Events&amp;(syscall.EPOLLOUT|syscall.EPOLLHUP|syscall.EPOLLERR) != <span class="number">0</span> &#123;</span><br><span class="line">			mode += <span class="string">&#x27;w&#x27;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> mode != <span class="number">0</span> &#123;</span><br><span class="line">			tp := *(*taggedPointer)(unsafe.Pointer(&amp;ev.Data))</span><br><span class="line">			pd := (*pollDesc)(tp.pointer())</span><br><span class="line">			tag := tp.tag()</span><br><span class="line">			<span class="keyword">if</span> pd.fdseq.Load() == tag &#123;</span><br><span class="line">				pd.setEventErr(ev.Events == syscall.EPOLLERR, tag)</span><br><span class="line">				netpollready(&amp;toRun, pd, mode)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> toRun</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</code></pre>
+</td>
+<td class="code">
+<pre><code>// netpoll checks for ready network connections.
+// Returns list of goroutines that become runnable.
+// delay &lt; 0: blocks indefinitely
+// delay == 0: does not block, just polls
+// delay &gt; 0: block for up to that many nanoseconds
+func netpoll(delay int64) gList &#123;
+    if epfd == -1 &#123;
+     return gList&#123;&#125;
+ &#125;
+    var waitms int32
+   if delay &lt; 0 &#123;
+       waitms = -1
+   &#125; else if delay == 0 &#123;
+        waitms = 0
+    &#125; else if delay &lt; 1e6 &#123;
+        waitms = 1
+    &#125; else if delay &lt; 1e15 &#123;
+       waitms = int32(delay / 1e6)
+ &#125; else &#123;
+       // An arbitrary cap on how long to wait for a timer.
+     // 1e9 ms == ~11.5 days.
+     waitms = 1e9
+  &#125;
+    var events [128]syscall.EpollEvent
+retry:
+   n, errno := syscall.EpollWait(epfd, events[:], int32(len(events)), waitms)
+    if errno != 0 &#123;
+     if errno != _EINTR &#123;
+            println(&quot;runtime: epollwait on fd&quot;, epfd, &quot;failed with&quot;, errno)
+         throw(&quot;runtime: netpoll failed&quot;)
+        &#125;
+        // If a timed sleep was interrupted, just return to
+      // recalculate how long we should sleep now.
+     if waitms &gt; 0 &#123;
+          return gList&#123;&#125;
+     &#125;
+        goto retry
+   &#125;
+    var toRun gList
+  for i := int32(0); i &lt; n; i++ &#123;
+        ev := events[i]
+       if ev.Events == 0 &#123;
+         continue
+     &#125;
+
+      if *(**uintptr)(unsafe.Pointer(&amp;ev.Data)) == &amp;netpollBreakRd &#123;
+            if ev.Events != syscall.EPOLLIN &#123;
+               println(&quot;runtime: netpoll: break fd ready for&quot;, ev.Events)
+                throw(&quot;runtime: netpoll: break fd ready for something unexpected&quot;)
+          &#125;
+            if delay != 0 &#123;
+             // netpollBreak could be picked up by a
+              // nonblocking poll. Only read the byte
+              // if blocking.
+              var tmp [16]byte
+               read(int32(netpollBreakRd), noescape(unsafe.Pointer(&amp;tmp[0])), int32(len(tmp)))
+             netpollWakeSig.Store(0)
+           &#125;
+            continue
+     &#125;
+
+      var mode int32
+     if ev.Events&amp;(syscall.EPOLLIN|syscall.EPOLLRDHUP|syscall.EPOLLHUP|syscall.EPOLLERR) != 0 &#123;
+          mode += &#39;r&#39;
+     &#125;
+        if ev.Events&amp;(syscall.EPOLLOUT|syscall.EPOLLHUP|syscall.EPOLLERR) != 0 &#123;
+            mode += &#39;w&#39;
+     &#125;
+        if mode != 0 &#123;
+          tp := *(*taggedPointer)(unsafe.Pointer(&amp;ev.Data))
+         pd := (*pollDesc)(tp.pointer())
+           tag := tp.tag()
+           if pd.fdseq.Load() == tag &#123;
+             pd.setEventErr(ev.Events == syscall.EPOLLERR, tag)
+                netpollready(&amp;toRun, pd, mode)
+            &#125;
+        &#125;
+    &#125;
+    return toRun
+&#125;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <p>它用于处理网络轮询，检查哪些文件描述符已准备好进行I/O操作，并将相应的goroutine标记为可运行（runnable）</p>
 <ul>
 <li>入参delay，根据具体值的范围有修正
@@ -479,7 +978,68 @@ goroutine</h3>
 </ul></li>
 </ul>
 <h3 id="唤醒网络轮询器">唤醒网络轮询器</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// netpollBreak interrupts an epollwait.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollBreak</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// Failing to cas indicates there is an in-flight wakeup, so we&#x27;re done here.</span></span><br><span class="line">	<span class="keyword">if</span> !netpollWakeSig.CompareAndSwap(<span class="number">0</span>, <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> b <span class="type">byte</span></span><br><span class="line">		n := write(netpollBreakWr, unsafe.Pointer(&amp;b), <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">if</span> n == <span class="number">1</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> n == -_EINTR &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> n == -_EAGAIN &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">println</span>(<span class="string">&quot;runtime: netpollBreak write failed with&quot;</span>, -n)</span><br><span class="line">		throw(<span class="string">&quot;runtime: netpollBreak write failed&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</code></pre>
+</td>
+<td class="code">
+<pre><code>// netpollBreak interrupts an epollwait.
+func netpollBreak() &#123;
+    // Failing to cas indicates there is an in-flight wakeup, so we&#39;re done here.
+   if !netpollWakeSig.CompareAndSwap(0, 1) &#123;
+       return
+   &#125;
+
+  for &#123;
+       var b byte
+     n := write(netpollBreakWr, unsafe.Pointer(&amp;b), 1)
+     if n == 1 &#123;
+         break
+        &#125;
+        if n == -_EINTR &#123;
+           continue
+     &#125;
+        if n == -_EAGAIN &#123;
+          return
+       &#125;
+        println(&quot;runtime: netpollBreak write failed with&quot;, -n)
+        throw(&quot;runtime: netpollBreak write failed&quot;)
+ &#125;
+&#125;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 <p>用于中断正在进行的 <code>epoll_wait</code>
 调用。这在需要唤醒正在阻塞等待 I/O 事件的 Go runtime
 时非常有用，通常用于处理定时事件、关闭操作或其他需要立即停止阻塞等待的情况</p>
@@ -508,7 +1068,28 @@ goroutine</h3>
 </ul>
 <h3
 id="判断文件描述符是否被轮询器使用">判断文件描述符是否被轮询器使用</h3>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">netpollIsPollDescriptor</span><span class="params">(fd <span class="type">uintptr</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> fd == <span class="type">uintptr</span>(epfd) || fd == netpollBreakRd || fd == netpollBreakWr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter">
+<pre><code>1
+2
+3</code></pre>
+</td>
+<td class="code">
+<pre><code>func netpollIsPollDescriptor(fd uintptr) bool &#123;
+   return fd == uintptr(epfd) || fd == netpollBreakRd || fd == netpollBreakWr
+&#125;</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
 
       
 
@@ -795,39 +1376,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Nvidia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CUDNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Inference Speed</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Homework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Programing Language</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Study Record</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,27 +1392,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LaTex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kernel Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Operating-System</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -875,38 +1404,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BinarySearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TopologicalSort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Interview</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Double Linked List</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
@@ -915,31 +1412,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">List</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Design Patterns</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Magic Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Decorater</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,123 +1424,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">VC Dimension</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Datawhale</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Data Mining</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RandomForest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XGBoost</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Model Evaluation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Grid Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekTime</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Wechat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mathematical-Analysis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Notes</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Deep Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Social Influence</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Social Network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mathematics</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Limit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Sequence Convergence</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Calculus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mathematical Analysis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1080,14 +1441,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">system code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DataStructure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BinarryTree</a>
               </li>
              
               <li class="article-tag-list-item">
