@@ -193,534 +193,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Hexo渲染LaTex数学公式的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/47b88860/">Hexo渲染LaTex数学公式的方法</a>
-    </h1>
-  
-
-        
-        <a href="/post/47b88860/" class="archive-article-date">
-  	<time datetime="2018-12-23T18:01:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景故事">背景故事</h2>
-<p>我使用的Hexo在GitHub
-Pages搭建的blog中，使用主题为Yilia，其自带的是Mathjax，页面无法正常渲染出数学公式</p>
-<h2 id="解决方法">解决方法</h2>
-<p>首先下载pandoc</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install Pandoc</span><br></pre></td></tr></table></figure>
-<p>接着安装 hexo-renderer-pandoc</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>安装完成后，重新生成文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo clean</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>此时公式显示正常</p>
-        
-          <a class="article-more-a" href="/post/47b88860/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LaTex</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/47b88860/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-「西瓜书学习」Ch02-模型评估与选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/300d7fb/">「西瓜书学习」Ch02.模型评估与选择</a>
-    </h1>
-  
-
-        
-        <a href="/post/300d7fb/" class="archive-article-date">
-  	<time datetime="2018-12-23T17:14:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="经验误差与过拟合">1. 经验误差与过拟合</h2>
-<h3 id="误差error">1.1 误差(Error)</h3>
-<p>学习器的实际预测输出与样本的真实输出之间的差异</p>
-<ul>
-<li>训练误差(Training Error) / 经验误差(Empirical
-Error)：学习器在训练集上的误差</li>
-<li>泛化误差(Generalization Error)：在新样本上的误差</li>
-</ul>
-<h3 id="过拟合overfitting">1.2 过拟合(Overfitting)</h3>
-<p>可能将训练样本自身的一些特点当做了所有潜在样本都会具有的一般性质，导致泛化性能下降</p>
-<p>无法避免，只能缓解，或者减小其风险</p>
-<h3 id="欠拟合underfitting">1.3 欠拟合(Underfitting)</h3>
-<p>指对训练样本的一般性质尚未学好</p>
-<ul>
-<li>决策树学习中扩展分支</li>
-<li>神经网络学习中增加训练轮数</li>
-</ul>
-        
-          <a class="article-more-a" href="/post/300d7fb/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/300d7fb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-「一周算法实践」Task3-模型调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/773d27b5/">「一周算法实践」Task3 模型调优</a>
-    </h1>
-  
-
-        
-        <a href="/post/773d27b5/" class="archive-article-date">
-  	<time datetime="2018-12-15T07:43:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景介绍">背景介绍</h2>
-<p>由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程</p>
-<h2 id="github-link">GitHub Link</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/awyd234/ai_related_learning/tree/master/datawhale_dm_practice">GitHub
-- Datawhale Datamining Practice - awyd234</a></p>
-<h2 id="任务描述">任务描述</h2>
-<p><strong>【任务3 -
-模型调优】</strong>使用网格搜索法对7个模型进行调优（调参时采用五折交叉验证的方式），并进行模型评估，记得展示代码的运行结果~</p>
-<h2 id="代码实现">代码实现</h2>
-<p>此处需要用到sklearn中的GridSearchCV</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br></pre></td></tr></table></figure>
-<p>修改fit_and_evaluate_model函数，将model修改为带入参数的GridSearchCV</p>
-        
-          <a class="article-more-a" href="/post/773d27b5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Practice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Model Evaluation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Grid Search</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Data-Mining//" class="article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/773d27b5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-「一周算法实践」Task2-模型评估" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/a0e056d3/">「一周算法实践」Task2 模型评估</a>
-    </h1>
-  
-
-        
-        <a href="/post/a0e056d3/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景介绍">背景介绍</h2>
-<p>由Datawhale组织的「一周算法实践」活动，通过短期实践一个比较完整的数据挖掘项目，迅速了解相关实际过程</p>
-<h2 id="github-link">GitHub Link</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/awyd234/ai_related_learning/tree/master/datawhale_dm_practice">GitHub
-- Datawhale Datamining Practice - awyd234</a></p>
-<h2 id="任务描述">任务描述</h2>
-<p><strong>【任务2 -
-模型评估】</strong>记录7个模型（在Task1的基础上）关于accuracy、precision，recall和F1-score、auc值的评分表格，并画出Roc曲线。</p>
-<h2 id="评价指标">评价指标</h2>
-<p>对二分类问题常用的评估指标是精度(precision)、召回率(recall)、F1值(F1-score)，通常以关注的类为正类，其他类为负类</p>
-<h2 id="实践过程">实践过程</h2>
-<p>画ROC曲线需要用到matplotlib</p>
-        
-          <a class="article-more-a" href="/post/a0e056d3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Practice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Model Evaluation</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Data-Mining//" class="article-tag-list-link color2">Data Mining</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/a0e056d3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-207-Course-Schedule" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/bb306368/">LeetCode 207. Course Schedule</a>
-    </h1>
-  
-
-        
-        <a href="/post/bb306368/" class="archive-article-date">
-  	<time datetime="2018-12-12T15:20:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="leetcode---207.course-schedule">LeetCode - 207.Course
-Schedule</h1>
-<p>link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/course-schedule/">https://leetcode.com/problems/course-schedule/</a></p>
-<h2 id="题目">题目</h2>
-<p>There are a total of <em>n</em> courses you have to take, labeled
-from <code>0</code> to <code>n-1</code>.</p>
-<p>Some courses may have prerequisites, for example to take course 0 you
-have to first take course 1, which is expressed as a pair:
-<code>[0,1]</code></p>
-<p>Given the total number of courses and a list of prerequisite
-<strong>pairs</strong>, is it possible for you to finish all
-courses?</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: true</span><br><span class="line">Explanation: There are a total of 2 courses to take. </span><br><span class="line">             To take course 1 you should have finished course 0. So it is possible.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: 2, [[1,0],[0,1]]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: There are a total of 2 courses to take. </span><br><span class="line">             To take course 1 you should have finished course 0, and to take course 0 you should</span><br><span class="line">             also have finished course 1. So it is impossible.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/post/bb306368/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BinarySearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TopologicalSort</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/post/bb306368/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-「一周算法实践」Task1-2-模型构建之集成模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1290,9 +762,540 @@ binary tree,</p>
 
 
   
+    <article id="post-Python中的yield关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/d4341d72/">Python中的yield关键字</a>
+    </h1>
+  
+
+        
+        <a href="/post/d4341d72/" class="archive-article-date">
+  	<time datetime="2017-12-30T08:39:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原文">原文</h1>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do">What
+does the “yield” keyword do?</a></p>
+<h1 id="翻译">翻译</h1>
+<blockquote>
+<p>To understand what <code>yield</code> does, you must understand what
+<em>generators</em> are. And before generators come
+<em>iterables</em>.</p>
+</blockquote>
+<p>为了理解yield的作用，我们必须先理解生成器，而在生成器之前必须先理解迭代器</p>
+<h2 id="迭代器">迭代器</h2>
+<blockquote>
+<p>When you create a list, you can read its items one by one. Reading
+its items one by one is called iteration:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>当我们创建一个list，我们只能一个个读取list，而挨个读取的这个过程就被称为迭代</p>
+<blockquote>
+<p><code>mylist</code> is an <em>iterable</em>. When you use a list
+comprehension, you create a list, and so an iterable:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mylist = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> mylist:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(i)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>mylist就是一个迭代器，当我们使用列表推导时，也就创造了一个list，或者说是一个迭代器</p>
+        
+          <a class="article-more-a" href="/post/d4341d72/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Translations</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">StackOverflow</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/d4341d72/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-不仅仅是寻梦，也蕴含着亲情和温情的故事-《寻梦环游记》影评" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/ee916ad3/">不仅仅是寻梦，也蕴含着亲情和温情的故事 -- 《寻梦环游记》影评</a>
+    </h1>
+  
+
+        
+        <a href="/post/ee916ad3/" class="archive-article-date">
+  	<time datetime="2017-12-29T11:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近刚补完了这部电影，眼瞅着上映已经一个多月了，原本打算等视频网站出了再看的，出于之前被《疯狂的动物城》和《奇幻森林》支配的恐惧，我不再小瞧任何一部动画电影，还是决定去电影院观赏，事实证明这个决定很英明。</p>
+<p>罗胖在2016年《时间的朋友》跨年演讲里说，为什么现在越来越少的人愿意去电影院看电影？因为时间成本太高了，往返的两个小时，电影的两个小时，面对现如今良莠不齐的电影界，为了一部不知道质量的电影花去四个小时，这个代价越来越承受不起了。看完这部电影，我觉得挺值的，尽管在寒冷的冬天骑着自行车，手都要冻僵了。</p>
+<p>这几天在阅读《如何打造你的独特观点》这本书，加上对这部电影深有感触，尝试写点影评吧。<strong>内容涉及剧透，请选择性观看。</strong></p>
+<p>——————————————剧透分界线————————————————</p>
+<p>故事的主角米格因为崇拜歌神德拉库斯，从小喜欢音乐，可惜源于对曾曾祖父抛弃家人的原因，家族极度反感音乐，米格只能偷偷躲在角落里，模仿荧幕上的歌神拨弄着自己破旧的吉他。看着即将举行的才艺比赛，似乎看到了自己梦想实现的曙光。当看到自己一直崇拜的偶像的吉他和破碎照片上曾爷爷吉他一模一样，这让他坚信歌神就是自己的曾曾祖父，也终于鼓起勇气向家人要求参加比赛，愤怒的奶奶砸烂了他的吉他，也砸碎了他对家人的期待。一怒之下他决定遵从歌神「Seize
+your
+moment」，大胆跑去歌神纪念馆「借」吉他参加比赛，也正是这时候，让他穿越到了亡灵世界。</p>
+<p>在亡灵世界，米格遇见了家族里灵位上的诸多亲人，还有一位迷一般的埃克托，当米格发现自己也在变成亡灵时，迫切希望可以回归现世，而回归现实的唯一方法便是得到亲人真诚的祝福，于是他将这一切希望寄托在了他的这些亲人上。出于对曾曾祖父的怨恨，曾曾祖母伊美尔达在祝福时，要求米格不允许再接触音乐，这使得执着于音乐梦想的米格不再对亲人抱有希望。于是他努力去逃脱亲人的掌控，试图去寻求「曾曾祖父」歌神的帮助，相信歌神会理解他的梦想，他找到了埃克托合作。埃克托很可怜，他的死法也很奇葩，他想尽办法想要去桥的另一边，看一眼他朝思暮想的女儿，却因为世人的遗忘始终失败。当看到现世过来的米格，他希望米格可以将自己照片带回现世供奉，这样他就拥有足够的力量，可以见到他最心爱的女儿了。</p>
+<p>米格在埃克托的帮助下，历经辛苦，冒险参加亡灵界的才艺比赛，终于见到了自己的偶像歌神，心里的激动可想而知。歌神也很意外自己竟然还有这么个后代，同样颇为激动，对米格很好，也准备为米格送祝福让他回家。只到埃克托突然出现，当年的真相才一幕幕揭开，米格对一直以来偶像的信仰彻底崩塌，原来一切都是歌神德拉库斯所为，害死才华横溢的埃克托，并将他的歌曲和吉他占为己有（此处脑补了好多柯南的剧情）。受制于歌神的权势，米格和埃克托被丢入了洞穴（有点类似《神雕侠侣》里裘千尺被囚禁的地穴的感觉），也正是在这里，米格才发现原来埃克托才是他真正的曾曾祖父，也明白了曾曾祖父的心愿。最后在流浪犬但丁和亲人们的帮助下，他们最终逃出洞穴，战胜了歌神，并揭发了歌神的真面目。米格和亲人们终于认识到了亲人的含义，在亲人的无条件祝福下，米格回到了现世，也唤起了太奶奶对曾曾祖父的回忆，得到了家人的理解和支持。</p>
+<p>故事的开头，曾一度在怀疑，故事是发生在我们国家么，黄色的皮肤，常见的发型，熟悉的家庭布局和慈祥的太奶奶，严厉的奶奶，让我也不禁有些失神。</p>
+<p>故事的本身穿越到亡灵世界的设定，这一切究竟是一场梦，还是神明给予的一次认知穿越呢。我本人倾向于无神主义，不过从电影乃至动画的效果，这种设定也是合理的。</p>
+<p>曾曾奶奶伊美尔达和曾曾祖父埃克托，是我在故事中最喜欢的两个角色了。</p>
+        
+          <a class="article-more-a" href="/post/ee916ad3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Movie</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comments</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Movie//" class="article-tag-list-link color1">Movie</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/ee916ad3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《Effective-Python》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/12ceb6de/">《Effective Python》读书笔记</a>
+    </h1>
+  
+
+        
+        <a href="/post/12ceb6de/" class="archive-article-date">
+  	<time datetime="2017-06-20T06:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用pythonic的方式来思考">1. 用Pythonic的方式来思考</h1>
+<h2 id="前言">0. 前言</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> this</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The Zen of Python, by Tim Peters</p>
+<p>Beautiful is better than ugly.</p>
+<p>Explicit is better than implicit.</p>
+<p>Simple is better than complex.</p>
+<p>Complex is better than complicated.</p>
+<p>Flat is better than nested.</p>
+<p>Sparse is better than dense.</p>
+<p>Readability counts.</p>
+<p>Special cases aren't special enough to break the rules.</p>
+<p>Although practicality beats purity.</p>
+<p>Errors should never pass silently.</p>
+<p>Unless explicitly silenced.</p>
+<p>In the face of ambiguity, refuse the temptation to guess.</p>
+<p>There should be one-- and preferably only one --obvious way to do
+it.</p>
+<p>Although that way may not be obvious at first unless you're
+Dutch.</p>
+<p>Now is better than never.</p>
+<p>Although never is often better than <em>right</em> now.</p>
+<p>If the implementation is hard to explain, it's a bad idea.</p>
+<p>If the implementation is easy to explain, it may be a good idea.</p>
+</blockquote>
+<h2 id="确认自己所用的python版本">1. 确认自己所用的Python版本</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3 --version</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.version_info)</span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br></pre></td></tr></table></figure>
+<p>Python社区已将开发重点放在了Python
+3上，因此后续开发项目时，应优先考虑使用Python 3</p>
+<h2 id="遵循pep-8-风格指南">2. 遵循PEP 8 风格指南</h2>
+        
+          <a class="article-more-a" href="/post/12ceb6de/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/12ceb6de/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-将linux下的rm改造成mv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/8ecc0390/">将linux下的rm改造成mv</a>
+    </h1>
+  
+
+        
+        <a href="/post/8ecc0390/" class="archive-article-date">
+  	<time datetime="2017-05-26T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目的及构想">1. 目的及构想</h1>
+<p>防止误删文件，尤其是用root用户时误删根目录导致不可逆的操作，将rm命令映射成mv命令，将数据mv到伪回收站下，利用程序进行清理回收站。</p>
+<p>清理回收站有两种构想，一种是设置命令清空回收站，另一种则是通过定时任务去清理删除超过一定时间的数据，由于rm命令已被映射为mv命令，需要使用/bin/rm来进行真正的rm操作</p>
+<h1 id="修改etcprofile">2. 修改/etc/profile</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">this_path=&quot;/mnt/.trash/&quot;$USER</span><br><span class="line">if [ ! -d $this_path ]; then</span><br><span class="line">	mkdir $&#123;this_path&#125;</span><br><span class="line">fi  </span><br><span class="line"></span><br><span class="line">alias rm=trash</span><br><span class="line">alias ur=undelfile</span><br><span class="line">alias rl=&#x27;ls /mnt/.trash/$USER/&#x27;</span><br><span class="line"></span><br><span class="line">trash()</span><br><span class="line">&#123;</span><br><span class="line">	mv $@ $this_path/$(date +%Y%m%d%H%M%S)_$@ </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">undelfile()</span><br><span class="line">&#123;</span><br><span class="line">	mv -i $this_path/$@ ./ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在/mnt下建立目录.trash作为伪回收站，用户打开shell时，检测.trash目录下是否已有用户所属目录，若无则建立一个，该用户所有的rm操作会mv到此目录下。并对rm的文件或目录加上时间戳以作区分，ur命令可用于将回收站的数据恢复到本地（时间戳暂时需要自己删除），rl命令可以用于查看回收站现有数据</p>
+<h1 id="todo">3. Todo</h1>
+<h2 id="针对sudo操作时的生效暂时未找到好办法">3.1
+针对sudo操作时的生效，暂时未找到好办法</h2>
+<h2 id="回收站的定期清理功能">3.2 回收站的定期清理功能</h2>
+
+        
+          <a class="article-more-a" href="/post/8ecc0390/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/8ecc0390/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python项目环境的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/942a5d5c/">Python项目环境的搭建</a>
+    </h1>
+  
+
+        
+        <a href="/post/942a5d5c/" class="archive-article-date">
+  	<time datetime="2017-03-23T16:48:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="virtualenv">1. Virtualenv</h1>
+<p>virtualenv是一个用来创建独立的Python环境的包</p>
+<h2 id="安装virtualenv">1.1 安装virtualenv</h2>
+<p>首先使用pip3安装virtualenv</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pip3 install virtualenv</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建与使用环境">1.2 创建与使用环境</h2>
+<p>创建env环境，比如我们创建名为env_test的虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">virtualenv --prompt=<span class="string">&quot;(env_test)&quot;</span> .<span class="built_in">env</span> <span class="comment"># 创建环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> .<span class="built_in">env</span>/bin/activate <span class="comment"># 激活环境</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">deactivate <span class="comment"># 退出环境</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="生成与使用requirements.txt">1.3 生成与使用requirements.txt</h2>
+<p>通过pip3 list可以列出当前安装的python3第三方包</p>
+        
+          <a class="article-more-a" href="/post/942a5d5c/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/post/942a5d5c/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1304,7 +1307,7 @@ binary tree,</p>
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2024 Qian Hu
+    		&copy; 2026 Qian Hu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1424,15 +1427,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Programing Language</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Study Record</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LaTex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Homework</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,11 +1479,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">Operating-System</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Operating System</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">I/O</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BinarySearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TopologicalSort</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,23 +1515,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BinarySearch</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TopologicalSort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">List</a>
+                <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,7 +1539,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PAT</a>
+                <a href="javascript:void(0)" class="js-tag color5">List</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1584,11 +1627,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Study Record</a>
+                <a href="javascript:void(0)" class="js-tag color2">Wechat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Wechat</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mathematical-Analysis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,15 +1643,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CogQA</a>
+                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Paper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GCN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1620,27 +1659,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Semi-supervised Learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Computer Vision</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Comments</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Movie</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1685,38 +1708,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Programing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Programing Language</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Dynamic Programming</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Operating System</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">I/O</a>
               </li>
             
             <div class="clearfix"></div>
